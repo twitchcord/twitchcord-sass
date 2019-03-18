@@ -1,15 +1,8 @@
-// compileCompressed: ~dist/twitchcord.css
+// compileCompressed: twitchcord.css
 
 @import 'main';
 
 /*
-████████╗██╗    ██╗██╗████████╗ ██████╗██╗  ██╗ ██████╗ ██████╗ ██████╗ ██████╗
-╚══██╔══╝██║    ██║██║╚══██╔══╝██╔════╝██║  ██║██╔════╝██╔═══██╗██╔══██╗██╔══██╗
-   ██║   ██║ █╗ ██║██║   ██║   ██║     ███████║██║     ██║   ██║██████╔╝██║  ██║
-   ██║   ██║███╗██║██║   ██║   ██║     ██╔══██║██║     ██║   ██║██╔══██╗██║  ██║
-   ██║   ╚███╔███╔╝██║   ██║   ╚██████╗██║  ██║╚██████╗╚██████╔╝██║  ██║██████╔╝
-   ╚═╝    ╚══╝╚══╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝
-
 ///////////////////////////////////////
 //
 //  Created by Baked
@@ -32,45 +25,8 @@
 ///////////////////////////////////////
 */
 
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 .tc-refreshing {
   animation: rotate360 1s infinite;
-}
-
-::-webkit-input-placeholder, body, button, input, select, textarea, html, body, * {
-  font-family: var(--font)!important;
-}
-
-* {
-  font-size: 100%;
-}
-
-html, body {
-  background-color: RGB(var(--tc-color-4));
-  height: 100%;
-}
-
-body {
-  text-rendering: optimizeLegibility;
-}
-
-a {
-  color: RGB(var(--tc-color-10));
-}
-
-.disabled,
-button:disabled, button:disabled:hover,
-input:disabled, input:disabled:hover,
-textarea:disabled, textarea:disabled:hover {
-  pointer-events: all!important;
-  cursor: not-allowed!important;
-}
-
-strong, .strong {
-  font-weight: 700;
 }
 
 // Remove app shake from Ctrl+Alt+Shift up/down keybind

@@ -142,7 +142,7 @@
       margin: 0 7px 0 0;
     }
     // Muted / defeaned icons container
-    #{classes('layout.channels.marginResetOld')} {
+    #{classes('layout.channels.marginResetButton')} {
       margin: 0 10px 0 0;
     }
     // Muted / defeaned icons
@@ -225,7 +225,7 @@
     @include ellipsis(100%, inline-block);
     @include text(RGB(var(--tc-tint-9))!important, 14px, 400, $transform: capitalize);
     order: 3;
-    + #{classes('layout.channels.marginResetOld')} {
+    + #{classes('layout.channels.marginResetButton')} {
       @include size(18px);
       order: 4;
       // Create channel button (+)

@@ -48,11 +48,12 @@ textarea:disabled:hover {
   pointer-events: all!important;
 }
 
-strong, .strong {
+.strong,
+strong {
   font-weight: 700;
 }
 
 // Remove app shake effect from Ctrl+Alt+Shift up/down keybind
-#{classes('base.app')} {
+#{classes('base.app.app')} {
   transform: none!important;
 }

@@ -403,7 +403,7 @@
           display: none;
         }
         .splashArt-3I5Qmp, .splashBackup-34qbYs {
-          @include size(100%)
+          @include size(100%);
           opacity: 0.2;
           filter: none;
           background-position-x: 50%;

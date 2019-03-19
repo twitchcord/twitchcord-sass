@@ -98,7 +98,7 @@
       }
       // Actual activity text
       strong {
-        @include text(inherit, 12px, 400)
+        @include text(inherit, 12px, 400);
         @include ellipsis(140px, inline-block);
       }
     }
@@ -109,7 +109,7 @@
     }
     // DM convo inner container
     #{$dmchannelname} {
-      @include ellipsis
+      @include ellipsis;
       @include text(RGB(var(--tc-tint-9)), 12px, 400, 20px);
       align-items: center;
       flex-wrap: wrap;

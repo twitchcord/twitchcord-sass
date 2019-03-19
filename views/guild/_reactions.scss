@@ -24,7 +24,7 @@
 }
 #{$messagebtnoption} {
   background: none;
-	@include mask(var(--horizontal-dots-icon), RGB(var(--tc-tint-6)), 24px, $important: true)
+	@include mask(var(--horizontal-dots-icon), RGB(var(--tc-tint-6)), 24px, $important: true);
   background-color: RGB(var(--tc-tint-6));
   transform: rotate(90deg);
 }

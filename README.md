@@ -1,3 +1,3 @@
 # Twitchcord Sass
 
-The raw Sass version of Twitchcord's CSS.
+The raw Sass version of Twitchcord's Styles.

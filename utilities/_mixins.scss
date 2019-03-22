@@ -120,9 +120,9 @@
   $size: 10px,
   $border-width: 1px,
   $border-type: solid,
-  $border-color: RGB(var(--tc-color-2)),
+  $border-color: RGB(var(--tc-tint-1)),
   $foreground-color: RGB(var(--tc-color-5)),
-  $background-color: RGB(var(--tc-color-2))
+  $background-color: RGB(var(--tc-tint-1))
 ) {
   ::-webkit-scrollbar {
     width:  $size!important;

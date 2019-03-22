@@ -105,13 +105,13 @@
 
 // Remove button used in various user/server settings sections
 .button-mM-y8i {
-    background-color: RGB(var(--notification-color))!important;
+    background-color: var(--fail-color)!important;
     border-radius: 0!important;
     box-shadow: none!important;
     background-image: image('close2.png');
     transition: background-color 0.2s;
     &:hover {
-      background-color: RGB(var(--notification-color-hover))!important;
+      background-color: var(--fail-color)!important;
       box-shadow: none!important;
     }
 }
@@ -151,7 +151,7 @@
 .ui-standard-sidebar-view .sidebar-region .sidebar .header-2RyJ0Y {
   font-size: 11px;
   font-weight: 400;
-  color: RGB(var(--tc-tint-10));
+  color: RGB(var(--tc-tint-11));
   display: flex;
   align-items: center;
   line-height: 25px;
@@ -185,7 +185,7 @@
 
 
 .layer-3QrUeG .ui-standard-sidebar-view .scrollerWrap-2lJEkd .defaultColor-1_ajX0 {
-    color: RGB(var(--tc-tint-10))!important;
+    color: RGB(var(--tc-tint-11))!important;
 }
 
 .layer-3QrUeG .ui-standard-sidebar-view .scrollerWrap-2lJEkd .h2-2gWE-o {

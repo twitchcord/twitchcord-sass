@@ -27,8 +27,8 @@
     // Dividers
     #{$chatdivider} {
       height: 30px;
-      padding: 0 48px;
-      margin: 10px 0;
+      padding: 0 60px;
+      margin: 21px 0 12px 10px;
       z-index: 4;
       overflow: hidden;
       align-items: center;
@@ -36,16 +36,15 @@
       display: flex;
       position: sticky;
       top: -9px;
-      margin-left: 12px;
       background: RGB(var(--tc-color-1));
       #{$chatdividerspan} {
-        @include text(RGB(var(--tc-tint-9))!important, 16px);
+        @include text(RGB(var(--tc-tint-10))!important, 16px);
         background-color: transparent !important;
         padding: 0;
         width: 100%;
         &::before,
         &::after {
-          border-color: RGB(var(--tc-tint-3))!important;
+          border-color: RGB(var(--tc-tint-5))!important;
         }
         &::before {
           margin-right: 30px;
@@ -58,10 +57,10 @@
         position: relative;
         margin: 20px 0 0 12px;
         #{$chatdividerspan} {
-          @include text(RGB(var(--glow-color))!important, 12px!important, 700, $transform: uppercase);
+          @include text(RGB(var(--tc-color-8))!important, 12px!important, 700, $transform: uppercase);
           &::before,
           &::after {
-            border-color: RGB(var(--tc-color-7))!important;
+            border-color: RGB(var(--tc-color-8))!important;
           }
         }
       }
@@ -72,7 +71,7 @@
     }
     // Message group container
     @at-root #{$messagegroup} {
-      margin-left: 16px;
+      margin-left: 28px;
       min-height: calc(var(--chat-avatar-size) + 20px);
       overflow: visible;
       padding: 11px 0 0 0;
@@ -85,7 +84,7 @@
         border-right: 1px solid RGB(var(--tc-color-1));
         border-left: 4px solid RGB(var(--tc-color-7));
         #{$messagelocalbot} {
-          @include text(RGB(var(--tc-tint-6)), 12px, 400);
+          @include text(RGB(var(--tc-tint-7)), 12px, 400);
           margin: 8px 0 0 44px;
           #{$message} {
             h2 {
@@ -115,14 +114,14 @@
         margin-top: 4px;
         margin-left: -3px;
         #{$textareainner} {
-          background-color: RGB(var(--tc-color-2))!important;
-          border: 1px solid RGB(var(--tc-tint-3));
+          background-color: RGB(var(--tc-tint-1))!important;
+          border: 1px solid var(--border-color);
           border-radius: 0;
           min-height: 33px;
           line-height: 33px;
           box-sizing: border-box;
           #{$textarea} {
-            color: RGB(var(--tc-tint-9))!important;
+            color: RGB(var(--tc-tint-10))!important;
             background-color: transparent;
             border: none;
             font-size: 14px;
@@ -138,9 +137,9 @@
       // This is backup styling in case Twitchcord JS isn't loaded yet
       // for whatever reason
       #{$messagesystem} {
-        @include text(RGB(var(--tc-tint-6)), 12px, 400, 16px);
+        @include text(RGB(var(--tc-tint-11)), 12px, 400, 16px);
         align-items: center;
-        background: RGB(var(--tc-color-2));
+        background: var(--empty-hover-color);
         border-bottom: 1px solid RGBA(var(--tc-color-4), 0.4);
         border-top: 1px solid RGBA(var(--tc-color-4), 0.4);
         border-right: 1px solid RGBA(var(--tc-color-4), 0.4);
@@ -161,7 +160,7 @@
         }
         // User's name link
         a {
-          color: RGB(var(--tc-tint-10))!important;
+          color: RGB(var(--tc-color-10))!important;
           font-weight: 700;
           // Any other links
           &:nth-of-type(2) {
@@ -170,12 +169,12 @@
           }
         }
         #{$messagesystemtimestamp} {
-          color: RGB(var(--tc-tint-6))!important;
+          color: RGB(var(--tc-tint-7))!important;
         }
       }
       // Container for 'escape to cancel - enter to save'
       #{$messageeditoperations} {
-        color: RGB(var(--tc-tint-6))!important;
+        color: RGB(var(--tc-tint-7))!important;
         padding-right: 10px;
         a {
           color: RGB(var(--tc-color-10))!important;
@@ -194,9 +193,8 @@
           display: none;
         }
         #{$messagesystem} {
-          @include text(RGB(var(--tc-tint-6)), 12px, 700, 16px);
+          @include text(RGB(var(--tc-tint-11)), 12px, 700, 16px);
           border: none;
-          border-right: 1px solid RGB(var(--tc-color-1));
           border-left: 4px solid RGB(var(--tc-color-7));
           padding: 10px 15px;
           margin: 0;
@@ -208,16 +206,16 @@
         // Message failed to send
         #{$messagesendfailed} {
           #{$messagemarkup} {
-            color: RGB(var(--notification-color))!important;
+            color: var(--fail-color)!important;
             a {
-              color: RGB(var(--notification-color))!important;
+              color: var(--fail-color)!important;
             }
           }
         }
         #{$messagecontent} {
           margin: -1px 6px 0 calc(var(--chat-avatar-size) + var(--chat-avatar-margin));
           #{$messagemarkup} {
-            color: RGB(var(--tc-tint-9));
+            color: RGB(var(--tc-tint-11));
             line-height: 1.5;
             font-size: 14px;
             font-weight: 400;
@@ -239,7 +237,7 @@
             line-height: 18px;
             display: flex;
             align-items: center;
-            color: RGB(var(--tc-tint-6));
+            color: RGB(var(--tc-tint-7));
           }
           time {
             font-size: 12px;
@@ -306,12 +304,12 @@
           background: none!important;
           border-radius: 0;
           .mention {
-            color: #fff!important;
-            background-color: RGB(var(--tc-color-7))!important;
-            padding: 3px 6px;
+            color: RGB(var(--tc-color-1))!important;
+            background-color: RGB(var(--contrasted-color))!important;
+            padding: 2px 4px;
             &:hover {
-              color: #fff;
-              background-color: RGB(var(--tc-color-8))!important;
+              color: RGB(var(--tc-color-1))!important;
+              background-color: RGB(var(--contrasted-color))!important;
             }
           }
           // Remove mentioned pill
@@ -321,7 +319,7 @@
         }
         // (edited) indicator after edited messages
         #{$messageedited} {
-          color: RGB(var(--tc-tint-6))!important;
+          color: RGB(var(--tc-tint-7))!important;
           cursor: help!important;
           font-size: 12px;
         }
@@ -356,7 +354,7 @@
       }
       #{$messagegroupblockedbtn} {
         background: RGB(var(--tc-color-2))!important;
-        color: RGB(var(--tc-tint-6))!important;
+        color: RGB(var(--tc-tint-7))!important;
         font-size: 11px;
         font-weight: 700;
         border-radius: 0;
@@ -396,7 +394,7 @@
       .base-34jWEe {
         background-image: none;
         @include size(100%, 150px);
-        @include mask(var(--castle-image), RGB(var(--tc-tint-9)));
+        @include mask(var(--castle-image), RGB(var(--tc-tint-10)));
         margin: 0 auto;
         padding: 0;
         opacity: 0.6;
@@ -405,7 +403,7 @@
       }
       .h1-1IDj26 {
         font-weight: 400;
-        color: RGB(var(--tc-tint-9));
+        color: RGB(var(--tc-tint-10));
         font-size: 12px;
         text-transform: none;
         margin: 20px 0 15px;
@@ -441,7 +439,7 @@
 //## Wrapper for blocked users in DMs and verification countdown message and phone verification in guilds
 #{$chat} {
   #{$chatbottomwrapper} {
-    color: RGB(var(--tc-tint-7));
+    color: RGB(var(--tc-tint-8));
     background: none;
     letter-spacing: 0;
     font-size: 14px;
@@ -466,7 +464,7 @@
       border: none;
     }
     #{$textarea} {
-      color: RGB(var(--tc-tint-9))!important;
+      color: RGB(var(--tc-tint-10))!important;
       background-color: transparent;
       border: none;
       letter-spacing: 0;
@@ -476,7 +474,7 @@
       margin-right: 5px;
       padding: 6px 6px 6px 12px;
       &::-webkit-input-placeholder {
-        color: RGB(var(--tc-tint-6))!important;
+        color: RGB(var(--tc-tint-9))!important;
       }
     }
     .textAreaDisabled-2_o-kZ,
@@ -489,8 +487,8 @@
       border-radius: 0;
     }
     #{$textareainner} {
-      background-color: RGB(var(--tc-color-2))!important;
-      border: 1px solid RGB(var(--tc-tint-3));
+      background-color: RGB(var(--tc-tint-1))!important;
+      border: 1px solid var(--border-color);
       border-radius: 0;
       min-height: 33px;
       line-height: 33px;
@@ -501,6 +499,13 @@
         order: 2;
         width: 95px;
       }
+    }
+  }
+  // Buttons container (Gift, GIF, Emojis)
+  .buttons-205you {
+    // Gift button
+    > .buttonWrapper-1ZmCpA:first-of-type {
+      display: none;
     }
   }
   .attachButton-1UjEWA,

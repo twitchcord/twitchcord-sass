@@ -28,6 +28,16 @@
   overflow: hidden;
 }
 
+.mobileIndicator-329Gd6 {
+  @include mask(var(--mobile-phone-icon), RGB(var(--tc-color-10)), 11px);
+  @include size(20px);
+  margin: 0 0 0 2px;
+  order: 2;
+  g {
+    display: none;
+  }
+}
+
 #{$memberswrap} {
   #{$members} {
 
@@ -131,7 +141,7 @@
 .members-1998pB .member-3W1lQa {
     padding: 5px!important;
     margin-left: 15px;
-    color: RGB(var(--tc-tint-9))!important;
+    color: RGB(var(--tc-tint-10))!important;
     height: 40px;
     line-height: 40px;
 }
@@ -139,7 +149,7 @@
 .members-1998pB .member-3W1lQa .activity-1IYsbk {
   line-height: 0;
   font-size: 0;
-  color: RGB(var(--tc-tint-6));
+  color: RGB(var(--tc-tint-7));
   opacity: 1;
   height: 14px;
 }
@@ -173,7 +183,7 @@
     padding: 0!important;
     margin-left: 0;
     margin-right: 5px;
-    color: RGB(var(--tc-tint-9))!important;
+    color: RGB(var(--tc-tint-10))!important;
     height: 38px;
     line-height: 34px;
     border-radius: 0;

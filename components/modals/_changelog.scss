@@ -39,9 +39,9 @@
     ul {
       padding-left: 10px;
       li {
-        @include text(RGB(var(--tc-tint-9))!important, 14px!important, 400!important, 20px!important);
+        @include text(RGB(var(--tc-tint-10))!important, 14px!important, 400!important, 20px!important);
         &::before {
-          background-color: RGB(var(--tc-tint-9))!important;
+          background-color: RGB(var(--tc-tint-10))!important;
           opacity: 1;
         }
       }

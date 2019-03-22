@@ -6,8 +6,8 @@
 
 // Channels outer container
 #{classes('layout.channels.channels')} {
-  background: RGB(var(--tc-color-2));
-  border-right: 1px solid RGB(var(--tc-color-4));
+  background: RGB(var(--tc-tint-1));
+  border-right: 1px solid var(--border-color);
   width: var(--channels-width);
   z-index: 99;
   // Account panel bottom left
@@ -20,35 +20,13 @@
   }
   // Unread / mentions indicators
   #{classes('layout.channels.unreadBarContainer')} {
-    @include size(calc(100% - 2px), 30px);
-    border-radius: 0;
-    left: 1px;
-    line-height: 30px;
-    padding: 8px 0;
-    z-index: 1;
+    overflow: visible;
+  }
+  #{classes('layout.channels.unreadBottom')} {
     #{classes('layout.channels.unreadBar')} {
-      @include text(#fff, 11px, 700, 20px);
-      @include absolute(top 0);
-      background: RGB(var(--tc-color-2))!important;
-      box-shadow: none!important;
-      height: 46px;
-      padding: 0;
-      &::before {
-        content: '';
-        @include size(calc(100% - 20px), 20px);
-        @include absolute(top 13px left 0);
-        background: RGB(var(--notification-color));
-        display: block;
-        margin: 0 10px;
-        z-index: -1;
-        &:hover {
-          background: RGB(var(--notification-color-hover));
-        }
-      }
       // Unread / mentions indicator active
       &#{classes('layout.channels.unreadBarActive')} {
-        transform: translateY(150%) !important;
-        transition: var(--transition-none, transform 0.2s);
+        top: -15px;
       }
     }
   }
@@ -61,10 +39,13 @@
     // Lazy loading bandaid
     padding-bottom: 1000%;
     margin-bottom: -995%;
-
+    // Direct child div of scroller
+    > div:first-of-type[style*='width: 100%;'] {
+      height: 0!important;
+    }
     // container-0, container-1, container-2, etc.
     > [class|='container'] {
-      margin: 10px 0 0 2px;
+      margin: 0 0 0 10px;
       // Seems to sometimes exist in 'container-0' when there is no category
       > div[style*='height: 16px;'] {
         height: 0!important;
@@ -80,7 +61,7 @@
     &::-webkit-scrollbar-track-piece {
       visibility: hidden;
       // Lazy load bandaid
-      // margin-bottom: 38%;
+      margin-bottom: 35%;
     }
     &::-webkit-scrollbar-track {
       background: transparent!important;
@@ -95,11 +76,11 @@
     }
   }
   #{classes('layout.channels.scrollerWrap')} {
-    padding: 2px 2px 0px 10px;
+    padding: 1px 1px 0 0;
   }
   // Voice collapsed icon container
   #{classes('layout.channels.voiceCollapsedIconContainer')} {
-    @include mask(var(--speaker-icon), RGB(var(--tc-tint-6)), 12px);
+    @include mask(var(--speaker-icon), RGB(var(--tc-tint-7)), 12px);
     @include size(19px, 18px);
     margin: -1px 0 0 -2px;
   }
@@ -108,7 +89,9 @@
   #{classes('layout.channels.categoryContainerDragAfter')},
   #{classes('layout.channels.categoryContainerDragBefore')},
   #{classes('layout.channels.categoryContainerUserOver')} {
-    @include reset;
+    height: 35px;
+    margin: 5px 4px 3px 0;
+    padding: 10px 0 5px;
   }
   // Show 'Create Channel' '+' button on category hover
   #{classes('layout.channels.categoryContainerDefault')} {
@@ -130,20 +113,20 @@
     @include reset;
     #{classes('layout.channels.voiceDeafenedIcon')},
     #{classes('layout.channels.voiceMutedIcon')} {
-      fill: RGB(var(--tc-tint-6));
+      fill: RGB(var(--tc-tint-7));
       opacity: 1;
       path {
-        fill: RGB(var(--tc-tint-6));
+        fill: RGB(var(--tc-tint-7));
         opacity: 1;
       }
     }
     // Voice avatar container
     #{classes('layout.channels.voiceAvatarContainer')} {
-      margin: 0 7px 0 0;
+      margin: 0!important;
     }
     // Muted / defeaned icons container
     #{classes('layout.channels.marginResetButton')} {
-      margin: 0 10px 0 0;
+      margin: 0 8px 0 0;
     }
     // Muted / defeaned icons
     #{classes('layout.channels.voiceIconSpacing')} {
@@ -157,7 +140,7 @@
   #{classes('layout.channels.channelContainerDragBefore')} {
     &::before {
       @include absolute(right 0 left 0);
-      background-color: RGB(var(--tc-green-color));
+      background-color: var(--success-color);
       border-radius: 0;
     }
     #{classes('layout.channels.content')} {
@@ -171,21 +154,20 @@
   #{classes('layout.channels.categoryWrapperHoveredCollapsed')},
   #{classes('layout.channels.categoryWrapperMuted')},
   #{classes('layout.channels.categoryWrapperUnread')} {
+    @include reset;
     align-items: center;
     box-shadow: none;
     height: 26px;
-    margin: 0;
-    padding: 0 6px 0 0;
     &:hover {
-      background: RGB(var(--tc-color-4));
+      background: none;
     }
     // Category folder icon
     &::before {
       @include mask(var(--folder-icon), RGB(var(--tc-tint-9)));
-      @include size(15.75px, 14px);
+      @include size(14px, 16px);
       content: '';
       display: inline-flex;
-      margin: -2px 5px 0 0;
+      margin: -2px 7px 0 0;
       order: 2;
       position: relative;
     }
@@ -198,7 +180,7 @@
   #{classes('layout.channels.categoryIconMuted')},
   #{classes('layout.channels.categoryIconTransition')},
   #{classes('layout.channels.categoryIconUnread')} {
-    @include mask(var(--down-arrow-icon), RGB(var(--tc-tint-9)), 15px);
+    @include mask(var(--down-arrow-icon), RGB(var(--tc-tint-9)), 13px);
     @include relative(top -1px left 0);
     @include size(22px!important);
     margin: 0;
@@ -208,6 +190,11 @@
     path {
       display: none;
     }
+  }
+  // Hovered category collapse icon
+  #{classes('layout.channels.categoryIconHovered')},
+  #{classes('layout.channels.categoryIconHoveredCollapsed')} {
+    background-color: #fff;
   }
   // We had to set transform to none above to prevent a background color
   // flashing issue when the arrows were loaded in
@@ -226,28 +213,29 @@
     @include text(RGB(var(--tc-tint-9))!important, 14px, 400, $transform: capitalize);
     order: 3;
     + #{classes('layout.channels.marginResetButton')} {
-      @include size(18px);
+      @include size(20px);
       order: 4;
       // Create channel button (+)
       #{classes('components.buttons.button')} {
         @include button-undo-active;
-        @include size(18px);
+        @include size(20px);
         background: none!important;
         border: none!important;
         min-height: 0;
         min-width: 0;
         padding: 0;
         #{classes('components.buttons.contents')} {
-          @include size(18px);
+          @include size(20px);
           #{classes('layout.channels.categoryAddChannelIcon')} {
-            @include mask(var(--create-category-icon), RGB(var(--tc-tint-9)), 16px);
+            @include mask(var(--plus-icon), RGB(var(--tc-tint-9)), 15px);
+            @include size(20px);
             opacity: 1;
+            visibility: hidden;
             polygon {
               display: none;
             }
             &:hover {
-              color: RGB(var(--contrasted-color));
-              opacity: 1;
+              background-color: #fff;
             }
             &:hover:active,
             &:active {
@@ -262,6 +250,12 @@
     height: 26px;
   }
   #{classes('layout.channels.container0')} {
+    margin: 5px 7px 3px 10px!important;
+    padding: 10px 0 0!important;
+    // Fix for margin on voice channels with no category
+    #{classes('layout.channels.voiceListDefault')} {
+      margin-left: 17px;
+    }
     // Fix for padding on channels with no category
     #{classes('layout.channels.content')} {
       padding-left: 6px!important;
@@ -281,10 +275,10 @@
       }
     }
     svg[name="Invite"] {
-      @include mask(var(--add-user-icon), RGB(var(--tc-tint-6)), 19px);
+      @include mask(var(--add-user-icon), RGB(var(--tc-tint-7)), 19px);
       opacity: 1;
       &:hover {
-        background-color: RGB(var(--tc-tint-9));
+        background-color: RGB(var(--tc-tint-10));
         opacity: 1;
       }
       path {
@@ -292,10 +286,10 @@
       }
     }
     svg[name="Gear"] {
-      @include mask(var(--gear-icon), RGB(var(--tc-tint-6)), 14px);
+      @include mask(var(--gear-icon), RGB(var(--tc-tint-7)), 14px);
       opacity: 1;
       &:hover {
-        background-color: RGB(var(--tc-tint-9));
+        background-color: RGB(var(--tc-tint-10));
         opacity: 1;
       }
       path {
@@ -310,7 +304,7 @@
     @include size(100%, 26px);
     border-radius: 0;
     margin: 0;
-    padding: 3px 10px 3px 26px;
+    padding: 3px 8px 3px 22px;
     // Was meant for unread badge counts
     // #{classes('layout.channels.contentMutedText')}  {
     //   .unread-count-channel-badge {
@@ -358,10 +352,10 @@
     &#{classes('layout.channels.contentSelectedText')},
     &#{classes('layout.channels.contentConnectedVoice')},
     &#{classes('layout.channels.contentSelectedVoice')} {
-      background: RGB(var(--tc-color-3));
+      background: RGB(var(--tc-tint-2));
       svg[name="Invite"],
       svg[name="Gear"] {
-        background-color: RGB(var(--contrasted-color));
+        background-color: #fff;
         opacity: 0.8;
         &:hover {
           opacity: 1;
@@ -375,7 +369,7 @@
       #{classes('layout.channels.colorMutedVoice')},
       #{classes('layout.channels.colorSelectedVoice')},
       #{classes('layout.channels.colorUnreadVoice')} {
-        background-color: RGB(var(--contrasted-color))!important;
+        background-color: #fff!important;
         opacity: 1;
       }
       // Default Discord # icons
@@ -394,10 +388,28 @@
     &#{classes('layout.channels.contentHoveredVoice')},
     &#{classes('layout.channels.contentHoveredVoice')}:active,
     &#{classes('layout.channels.contentSelectedVoice')}:active {
-      background: RGB(var(--tc-color-4));
+      background: RGB(var(--tc-tint-3));
+      // Twitch-like # for text channels instead of default Discord's
+      > #{classes('layout.channels.marginReset')} {
+        &:first-of-type {
+          &::before {
+            color: RGB(var(--tc-tint-9));
+          }
+        }
+      }
+      #{classes('layout.channels.name')} {
+        color: RGB(var(--tc-tint-11));
+      }
       // Edit channel, Create instant invite buttons
       #{classes('layout.channels.iconSpacing')} {
         opacity: 1;
+        svg[name="Invite"],
+        svg[name="Gear"] {
+          background-color: RGB(var(--tc-tint-9));
+          &:hover {
+            background-color: #fff;
+          }
+        }
       }
     }
     // Add lock icon to locked voice/text channels
@@ -420,9 +432,13 @@
   #{classes('layout.channels.colorMutedVoice')},
   #{classes('layout.channels.colorSelectedVoice')},
   #{classes('layout.channels.colorUnreadVoice')} {
-    @include mask(var(--speaker-icon), RGB(var(--tc-tint-6)), 12px);
+    @include mask(var(--speaker-icon), RGB(var(--tc-tint-7)), 12px);
     @include size(19px, 18px);
     margin: -1px 0 0 -2px;
+  }
+  // Hovered speaker icons only
+  #{classes('layout.channels.colorHoveredVoice')} {
+    background-color: RGB(var(--tc-tint-9));
   }
   #{classes('layout.channels.contentConnectedText')},
   #{classes('layout.channels.contentDefaultText')},
@@ -437,7 +453,7 @@
         @include size(13px, 17px);
         // Twitch-like # for text channels instead of default Discord's
         &::before {
-          @include text(RGB(var(--tc-tint-6)), 14px, 400);
+          @include text(RGB(var(--tc-tint-7)), 14px, 400);
           content: '#';
           margin: 0 0 0 3px;
         }
@@ -459,11 +475,15 @@
   }
   // Selected and connected #
   #{classes('layout.channels.contentConnectedText')},
-  #{classes('layout.channels.contentSelectedText')} {
+  // This is a 'fix' so that it doesn't change already read hovered channels
+  #{classes('layout.channels.unread')} + #{classes('layout.channels.contentHoveredText')},
+  #{classes('layout.channels.contentSelectedText')},
+  #{classes('layout.channels.contentUnreadText')} {
     > #{classes('layout.channels.marginReset')} {
       &:first-of-type {
         &::before {
-          color: RGB(var(--contrasted-color));
+          color: #fff;
+          filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
         }
       }
     }
@@ -498,7 +518,8 @@
   #{classes('layout.channels.nameUnreadText')},
   #{classes('layout.channels.nameConnectedVoice')},
   #{classes('layout.channels.nameSelectedVoice')} {
-    color: RGB(var(--contrasted-color));
+    color: #fff!important;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
     opacity: 1;
   }
   // Make room for lock icon
@@ -508,11 +529,11 @@
   }
   #{classes('layout.channels.voiceListDefault')} {
       padding: 0;
-      margin: 0 -2px 8px 20px;
+      margin: 0 -2px 8px 39px;
   }
   #{classes('layout.channels.voiceListCollapse')} {
     padding: 0;
-    margin: 0 0 8px 20px;
+    margin: 0 0 8px 39px;
   }
   // Lower opacity of users in locked voice chat
   #{classes('layout.channels.wrapperLockedVoice')} {
@@ -549,11 +570,6 @@
   // Voice chat users container inner
   #{classes('layout.channels.voiceUserContainer')} {
     margin-left: 2px;
-  }
-  #{classes('layout.channels.voiceListCollapse')} {
-    #{classes('layout.channels.voiceAvatarContainer')} {
-      margin: 0;
-    }
   }
   #{classes('layout.channels.voiceUserHovered')} {
     &:active {
@@ -611,11 +627,11 @@
   // Voice channel count indication
   // https://i.imgur.com/HlGCRyb.png
   #{classes('layout.channels.voiceLimitWrapper')} {
-    @include text(RGB(var(--tc-tint-6)), 11px);
-    background-color: RGB(var(--tc-color-1));
-    border: 1px solid RGBA(var(--tc-color-4), 0.7);
+    @include text(RGB(var(--tc-tint-8)), 11px);
+    background-color: RGB(var(--tc-tint-2));
+    border: 1px solid var(--border-color);
     border-radius: 0;
-    margin-right: -5px;
+    margin-right: -4px;
     padding: 0 5px;
   }
 }

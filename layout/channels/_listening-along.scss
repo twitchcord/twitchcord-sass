@@ -11,7 +11,7 @@
   background: RGB(var(--tc-color-3));
   border-top: 1px solid RGB(var(--tc-color-4));
   #{classes('layout.channels.listeningAlong.subtitle')} {
-    @include text(RGB(var(--tc-tint-6)), 12px, 400, 20px);
+    @include text(RGB(var(--tc-tint-7)), 12px, 400, 20px);
   }
   // Info icon container
   #{classes('layout.channels.listeningAlong.icons')} {

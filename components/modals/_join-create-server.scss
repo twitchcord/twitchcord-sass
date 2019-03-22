@@ -8,7 +8,7 @@
   border-radius: 0;
   height: 430px;
   h5 {
-    color: RGB(var(--tc-tint-10))!important;
+    color: RGB(var(--tc-tint-11))!important;
     font-weight: 400!important;
     text-transform: none!important;
     font-size: 24px!important;
@@ -18,7 +18,7 @@
   p {
     line-height: 18px;
     font-size: 12px;
-    color: RGB(var(--tc-tint-7));
+    color: RGB(var(--tc-tint-8));
   }
   .create-guild .guild-form li:first-child {
     margin-left: 20px;
@@ -32,7 +32,7 @@
     }
     .link-container {
       label {
-        color: RGB(var(--tc-tint-6))!important;
+        color: RGB(var(--tc-tint-7))!important;
         margin: 10px 0;
       }
     }
@@ -61,7 +61,7 @@
     }
   }
   .create-or-join header {
-    color: RGB(var(--tc-tint-10))!important;
+    color: RGB(var(--tc-tint-11))!important;
     font-weight: 400!important;
     text-transform: none!important;
     font-size: 24px!important;
@@ -91,7 +91,7 @@
     // Normal body text
     // https://i.imgur.com/OeDDAIs.png
     .action-body {
-        color: RGB(var(--tc-tint-7));
+        color: RGB(var(--tc-tint-8));
         font-size: 12px;
         line-height: 18px;
     }
@@ -119,13 +119,13 @@
     &.create {
       .action-icon {
         background: none;
-        @include mask(var(--discord-staff-badge), RGB(var(--tc-tint-9)), 100px);
+        @include mask(var(--discord-staff-badge), RGB(var(--tc-tint-10)), 100px);
       }
     }
     &.join {
       .action-icon {
         background: none;
-        @include mask(var(--handshake-icon), RGB(var(--tc-tint-9)));
+        @include mask(var(--handshake-icon), RGB(var(--tc-tint-10)));
       }
     }
   }
@@ -145,7 +145,7 @@
     display: none;
     &::after {
       content: 'or';
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
       background: RGB(var(--tc-color-3));
       height: 50px;
       width: 50px;

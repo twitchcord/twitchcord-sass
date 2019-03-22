@@ -35,7 +35,7 @@
 
 
 .activityFeed-28jde9 .channelName-2rTyk5 {
-  color: RGB(var(--tc-tint-9))!important;
+  color: RGB(var(--tc-tint-10))!important;
 }
 
 .activityFeed-28jde9 .headerSubtitle-3mUZXH {
@@ -78,7 +78,7 @@
   // On user tooltip, i.e. 'Played 1 day ago'
   @at-root .soloAvatarTooltipTimestamp-162FCk {
     opacity: 1;
-    color: RGB(var(--tc-tint-6));
+    color: RGB(var(--tc-tint-7));
   }
   .section-2UZnnA {
     + .section-2UZnnA {
@@ -129,7 +129,7 @@
   // Discriminators
   .discriminator-1Kma2g,
   .discriminator-pIKHPn {
-    @include text(RGB(var(--tc-tint-6)), 11px, 400, 18px);
+    @include text(RGB(var(--tc-tint-7)), 11px, 400, 18px);
     margin-left: 4px;
     opacity: 0;
   }
@@ -142,7 +142,7 @@
   .gameName-wzJptK,
   // Usernames
   .tag-10JqWu {
-    color: RGB(var(--tc-tint-9))!important;
+    color: RGB(var(--tc-tint-10))!important;
   }
   .status-oxiHuE {
     @include size(8px);
@@ -155,13 +155,13 @@
   // Empty 'Quick Launcher' section
   .emptyState-N8MHmB {
     border: none;
-    color: RGB(var(--tc-tint-7));
+    color: RGB(var(--tc-tint-8));
     margin-left: 10px;
   }
   // Empty 'Now Playing' section
   .emptyState-2-sT0o {
     background: RGB(var(--tc-color-2));
-    border: 1px solid RGB(var(--tc-tint-3)) !important;
+    border: 1px solid RGB(var(--tc-tint-4)) !important;
     border-radius: 0;
     &::before {
       content: '';
@@ -181,7 +181,7 @@
     }
     .subtitle-nN6eXt {
       font-size: 14px;
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
     }
   }
   // Sleeping wumpus, background-image
@@ -261,7 +261,7 @@
     cursor: default;
     position: relative;
     top: 10px;
-    color: RGB(var(--tc-tint-10));
+    color: RGB(var(--tc-tint-11));
     font-size: 14px;
     font-weight: 400;
     line-height: 10px;
@@ -337,12 +337,12 @@
               .description-1CCuDd {
                 @include ellipsis(100%, inline-block);
                 max-height: 20px;
-                color: RGB(var(--tc-tint-9));
+                color: RGB(var(--tc-tint-10));
               }
               .timestamp-JB3BQ5 {
                 text-transform: capitalize;
                 font-weight: 400;
-                color: RGB(var(--tc-tint-6));
+                color: RGB(var(--tc-tint-7));
               }
             }
           }
@@ -528,7 +528,7 @@
       .dockItemText-3qYREY {
         @include ellipsis(180px, inline-block);
         align-items: flex-start;
-        color: RGB(var(--tc-tint-10));
+        color: RGB(var(--tc-tint-11));
         font-weight: 400;
         height: 20px;
         text-align: left;
@@ -676,7 +676,7 @@
       }
       .playTime-2SuPqW,
       .playTime-1laRtO {
-        @include text(RGB(var(--tc-tint-6)), 12px, 400);
+        @include text(RGB(var(--tc-tint-7)), 12px, 400);
         margin: 0;
       }
       .gameIcon-gg34Dz,
@@ -825,7 +825,7 @@
         }
         .description-13oVu5 {
           order: 3;
-          color: RGB(var(--tc-tint-9));
+          color: RGB(var(--tc-tint-10));
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;

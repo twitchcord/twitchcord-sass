@@ -32,7 +32,7 @@
       border-radius: 0;
     }
     .price-_ZRMIA {
-      color: RGB(var(--tc-tint-6))!important;
+      color: RGB(var(--tc-tint-7))!important;
       font-size: 12px;
       font-weight: 400;
       line-height: 1.5;
@@ -41,7 +41,7 @@
       overflow: hidden;
     }
     .nitroWheel-3Zi8Ke {
-      @include mask(var(--discord-nitro-badge), RGB(var(--tc-tint-6)));
+      @include mask(var(--discord-nitro-badge), RGB(var(--tc-tint-7)));
       @include relative(top -1px);
       path {
         display: none;

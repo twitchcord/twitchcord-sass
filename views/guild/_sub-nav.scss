@@ -34,21 +34,21 @@
       }
       // Video call
       &[name="VideoCamera"] {
-        @include mask(var(--video-camera-icon), RGB(var(--tc-tint-6)));
+        @include mask(var(--video-camera-icon), RGB(var(--tc-tint-7)));
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
       }
       // Voice call
       &[name="Phone"] {
-        @include mask(var(--phone-icon), RGB(var(--tc-tint-6)), 20px);
+        @include mask(var(--phone-icon), RGB(var(--tc-tint-7)), 20px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
       }
       // Pinned messages
       &[name="Pin"] {
-        @include mask(var(--thumbtack-icon), RGB(var(--tc-tint-6)), 14px);
+        @include mask(var(--thumbtack-icon), RGB(var(--tc-tint-7)), 14px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
@@ -58,14 +58,14 @@
       }
       // Channel unmuted
       &[name="NotificationBell"] {
-        @include mask(var(--server-muted-icon), RGB(var(--tc-tint-6)), 18px);
+        @include mask(var(--server-muted-icon), RGB(var(--tc-tint-7)), 18px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
       }
       // Channel muted
       &[name="NotificationBellOff"] {
-        @include mask(var(--server-unmuted-icon), RGB(var(--tc-tint-6)), 18px);
+        @include mask(var(--server-unmuted-icon), RGB(var(--tc-tint-7)), 18px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
@@ -87,7 +87,7 @@
       }
       // Add friends to group DM
       &[name="PersonPlus"] {
-        @include mask(var(--group-dm-icon), RGB(var(--tc-tint-6)));
+        @include mask(var(--group-dm-icon), RGB(var(--tc-tint-7)));
         @include size(26px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
@@ -97,7 +97,7 @@
         }
       }
       &[name="People"] {
-        @include mask(var(--channel-members-icon), RGB(var(--tc-tint-6)), 36px);
+        @include mask(var(--channel-members-icon), RGB(var(--tc-tint-7)), 36px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
@@ -111,7 +111,7 @@
       @include size(10px);
       box-shadow: none;
       pointer-events: none;
-      background-color: RGB(var(--notification-color));
+      background-color: var(--fail-color);
       top: 5px;
       left: 20px;
       border: 2px solid RGB(var(--tc-color-1));
@@ -209,7 +209,6 @@
   }
   &-name-and-topic-container {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
@@ -218,10 +217,10 @@
   &-topic-contain {
     font-size: 12px;
     font-weight: 400;
-    color: RGB(var(--tc-tint-9));
+    color: RGB(var(--tc-tint-10));
     width: 100%;
-    line-height: 24px;
-    margin-left: 1px;
+    line-height: 26px;
+    margin: 5px 0 0 10px;
   }
   // Hide these when not on DMs
   &-topic-type,
@@ -234,7 +233,7 @@
   &-topic {
     @include ellipsis(100%, inline-block);
     vertical-align: bottom;
-    color: RGB(var(--tc-tint-9));
+    color: RGB(var(--tc-color-10));
     &:empty {
       display: none;
     }

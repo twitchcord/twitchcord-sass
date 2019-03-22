@@ -99,7 +99,7 @@
   }
 
   #friends .friends-table .friends-row .friends-column-name .discriminator {
-      color: RGB(var(--tc-tint-7));
+      color: RGB(var(--tc-tint-8));
       font-size: 12px;
       font-weight: 400;
       margin-left: 4px;
@@ -127,7 +127,7 @@
   }
 
   #friends .friends-table .friends-row .friends-column-status .status-text {
-      color: RGB(var(--tc-tint-7));
+      color: RGB(var(--tc-tint-8));
       opacity: 0.7;
       font-size: 12px;
       font-weight: 400;
@@ -148,7 +148,7 @@
   }
 
   #friends .friends-table .friends-row .friends-column-guilds:empty::after {
-      color: RGB(var(--tc-tint-5));
+      color: RGB(var(--tc-tint-6));
       line-height: 30px;
       margin-left: 3px;
       font-size: 14px;

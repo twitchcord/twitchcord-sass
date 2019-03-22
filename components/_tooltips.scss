@@ -6,11 +6,10 @@
 #{classes('layout.channels.wrapperLockedVoice')} {
   &::before {
     @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
-    animation: fadeIn 0.15s ease-in forwards;
     background: RGB(var(--tooltip-color))!important;
-    border: 1px solid RGB(var(--tooltip-border-color))!important;
-    border-radius: 1px!important;
-    padding: 6px 20px;
+    border: none!important;
+    border-radius: 2px!important;
+    padding: 4px 10px;
     text-align: center;
     z-index: 9999999;
   }
@@ -19,24 +18,16 @@
 // Tooltips
 #{$tooltip} {
   @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
-  animation: fadeIn 0.15s ease-in forwards;
   background: RGB(var(--tooltip-color))!important;
-  border: 1px solid RGB(var(--tooltip-border-color))!important;
-  border-radius: 1px!important;
-  padding: 6px 20px;
+  border: none!important;
+  border-radius: 2px!important;
+  padding: 4px 10px;
   text-align: center;
   z-index: 9999999;
   // Tooltip brand tooltips and tooltip black tooltips
   &#{$tooltipbrand},
   &#{$tooltipblack} {
     &#{$tooltipleft} {
-      &::before {
-        @include absolute(top 50% left 100%);
-        @include triangle(right, RGB(var(--tooltip-border-color)), calc(var(--tooltip-arrow-size) + 2px));
-        border-radius: 0;
-        margin-top: calc(var(--tooltip-arrow-size) * -1 - 2px);
-        pointer-events: none;
-      }
       &::after {
         @include triangle(right, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
         border-radius: 0;
@@ -44,13 +35,6 @@
       }
     }
     &#{$tooltipright} {
-      &::before {
-        @include absolute(top 50% right 100%);
-        @include triangle(left, RGB(var(--tooltip-border-color)), calc(var(--tooltip-arrow-size) + 2px));
-        border-radius: 0;
-        margin-top: calc(var(--tooltip-arrow-size) * -1 - 2px);
-        pointer-events: none;
-      }
       &::after {
         @include triangle(left, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
         border-radius: 0;
@@ -58,13 +42,6 @@
       }
     }
     &#{$tooltiptop} {
-      &::before {
-        @include absolute(top 100% left 50%);
-        @include triangle(bottom, RGB(var(--tooltip-border-color)), calc(var(--tooltip-arrow-size) + 2px));
-        border-radius: 0;
-        margin-left: calc(var(--tooltip-arrow-size) * -1);
-        pointer-events: none;
-      }
       &::after {
         @include triangle(bottom, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
         border-radius: 0;
@@ -72,13 +49,6 @@
       }
     }
     &#{$tooltipbottom} {
-      &::before {
-        @include absolute(bottom 100% left 50%);
-        @include triangle(top, RGB(var(--tooltip-border-color)), calc(var(--tooltip-arrow-size) + 2px));
-        border-radius: 0;
-        margin-left: calc(var(--tooltip-arrow-size) * -1);
-        pointer-events: none;
-      }
       &::after {
         @include triangle(top, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
         border-radius: 0;
@@ -106,15 +76,15 @@
   }
   // Red, danger tooltips
   &#{$tooltipred} {
-    background-color: RGB(var(--notification-color));
+    background-color: var(--fail-color);
     &#{$tooltipright} {
       &::after {
-        border-right-color: RGB(var(--notification-color));
+        border-right-color: var(--fail-color);
       }
     }
     &#{$tooltipleft} {
       &::after {
-        border-left-color: RGB(var(--notification-color));
+        border-left-color: var(--fail-color);
       }
     }
   }

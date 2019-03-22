@@ -24,13 +24,11 @@
 }
 #{$messagebtnoption} {
   background: none;
-	@include mask(var(--horizontal-dots-icon), RGB(var(--tc-tint-6)), 24px, $important: true);
-  background-color: RGB(var(--tc-tint-6));
-  transform: rotate(90deg);
+	@include mask(var(--vertical-dots-icon), RGB(var(--tc-tint-7)), 20px, $important: true);
 }
 #{$messagebtnreaction} {
   background: none;
-	@include mask(var(--emoji-icon), RGB(var(--tc-tint-6)), 18px, $important: true);
+	@include mask(var(--emoji-icon), RGB(var(--tc-tint-7)), 18px, $important: true);
 }
 
 
@@ -88,12 +86,12 @@
     height: 26px !important;
 	}
 	&#{$messagereactionme} {
-		background: RGBA(var(--tc-green-color), 0.2)!important;
+		background: var(--success-color-inner)!important;
 		#{$messagereactioncount} {
 			color: RGB(var(--contrasted-color))!important;
 		}
 		&::before {
-	    box-shadow: inset 0 0 7px RGB(var(--tc-green-color));
+	    box-shadow: inset 0 0 7px var(--success-color);
 	    top: 0;
 	    left: 0;
 	    width: 100%;
@@ -106,11 +104,11 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			box-shadow: 0 0 0 2px RGB(var(--tc-green-color)), 0px 0px 20px RGBA(var(--tc-green-color), 0.3);
+			box-shadow: 0 0 0 2px var(--success-color), 0px 0px 20px var(--success-color-inner);
 		}
 	}
 	#{$messagereactioncount} {
-		@include text(RGB(var(--tc-tint-6)), 11px, 400);
+		@include text(RGB(var(--tc-tint-7)), 11px, 400);
     letter-spacing: 0;
 		margin: 0;
 	}

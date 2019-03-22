@@ -7,7 +7,7 @@
 // Context menu
 #{$contextmenu} {
   background: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-tint-3))!important;
+  border: 1px solid RGB(var(--tc-tint-4))!important;
   border-radius: var(--context-menu-roundness);
   box-shadow: rgba(0, 0, 0, 0.12) 3px 3px 8px!important;
   box-sizing: border-box;
@@ -26,7 +26,7 @@
     &::after {
       content: '';
       @include absolute(top 11px right 16px);
-      @include triangle(right, RGB(var(--tc-tint-9)), 5px);
+      @include triangle(right, RGB(var(--tc-tint-10)), 5px);
     }
   }
   // Context menu inside an left side context menu
@@ -36,7 +36,7 @@
   // Context menu inside a context menu
   @at-root body & & {
     background: RGB(var(--tc-color-2))!important;
-    border: 1px solid RGB(var(--tc-tint-3))!important;
+    border: 1px solid RGB(var(--tc-tint-4))!important;
     margin-left: 188px;
     #{$scroller} {
       overflow-y: auto;
@@ -51,7 +51,7 @@
     //margin-left: 170px;
   }
   #{$contextmenuitem} {
-    @include text(RGB(var(--tc-tint-9)), 14px, 400, 18px);
+    @include text(RGB(var(--tc-tint-10)), 14px, 400, 18px);
     align-items: center;
     border-radius: var(--menu-item-roundness);
     display: flex;
@@ -104,24 +104,24 @@
       &:hover,
       &:active,
       &:hover:active {
-        background: RGB(var(--notification-color))!important;
+        background: var(--fail-color)!important;
         color: #fff!important;
       }
     }
     // Disabled context items
     &#{$contextmenuitemdisabled} {
       background: none!important;
-      color: RGB(var(--tc-tint-9))!important;
+      color: RGB(var(--tc-tint-10))!important;
       cursor: not-allowed;
       opacity: 0.5;
       &::before {
-        background-color: RGB(var(--tc-tint-9))!important;
+        background-color: RGB(var(--tc-tint-10))!important;
         opacity: 0.5;
       }
       &:hover,
       &:active,
       &:hover:active {
-        color: RGB(var(--tc-tint-6));
+        color: RGB(var(--tc-tint-7));
         cursor: not-allowed;
         opacity: 0.5;
       }
@@ -158,7 +158,7 @@
         // Slider grabber
         #{$slidergrabber} {
           @include size(8px, 18px);
-          background: RGB(var(--tc-tint-11));
+          background: RGB(var(--tc-tint-12));
           border: 1px solid RGB(var(--tc-color-2));
           border-radius: 0;
           cursor: -webkit-grab;
@@ -184,20 +184,20 @@
       }
     }
     &#{$contextmenuitembrand} {
-      color: RGB(var(--tc-tint-9))!important;
+      color: RGB(var(--tc-tint-10))!important;
     }
     // Conext menu custom icons
     &#{classes('twitchcord.contextItem')} {
       &#{$contextmenuitemdanger} {
         &::before {
-          background-color: RGB(var(--notification-color));
+          background-color: var(--fail-color);
         }
       }
       // Context item pseudoelement; base for icons
       &::before {
         content: '';
         @include size(20px);
-        background-color: RGB(var(--tc-tint-9));
+        background-color: RGB(var(--tc-tint-10));
         display: inline-block;
         margin-right: 10px;
         -webkit-mask-size: 18px!important;
@@ -502,7 +502,7 @@
       }
     }
     #{$contextmenuhint} {
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
       opacity: 1;
     }
   }
@@ -520,7 +520,7 @@
   }
   // Item group adjustments
   #{$contextmenuitemgroup} {
-    border-color: RGB(var(--tc-tint-3))!important;
+    border-color: RGB(var(--tc-tint-4))!important;
     // Remove any empty item groups, not sure why they exist
     &:empty {
       display: none;

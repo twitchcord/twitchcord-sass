@@ -16,14 +16,14 @@
       color: RGB(var(--contrasted-color))!important;
     }
     #{$nsfwdescription} {
-      color: RGB(var(--tc-tint-7))!important;
+      color: RGB(var(--tc-tint-8))!important;
       font-size: 12px !important;
       line-height: 20px !important;
     }
     // Continue button
-    #{$button}#{$buttonlookfilled} {
-      margin-left: 10px!important;
-    }
+    // #{$button}#{$buttonlookfilled} {
+    //   margin-left: 10px!important;
+    // }
     #{$nsfwseparator} {
       position: relative;
       width: 50%;

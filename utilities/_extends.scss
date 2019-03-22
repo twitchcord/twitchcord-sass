@@ -9,7 +9,7 @@
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %header-24px {
-  @include text(RGB(var(--tc-tint-10))!important, 24px!important, 400!important, 30px!important, none!important);
+  @include text(RGB(var(--tc-tint-11))!important, 24px!important, 400!important, 30px!important, none!important);
 }
 
 
@@ -18,19 +18,20 @@
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %spinner {
-  @include size(var(--spinner-size));
   @include absolute (top 50% left 50%);
+  @include size(var(--spinner-size));
   animation: rotate360 750ms linear infinite;
   background: none;
-  border-color: RGB(var(--tc-color-7)) RGBA(var(--tc-color-7), 0.4) RGBA(var(--tc-color-7), 0.4);
+  border: 2px solid var(--spinner-color);
+  border-left-color: var(--spinner-highlight-color);
   border-radius: var(--spinner-size);
-  border-style: solid;
-  border-width: 2px;
   box-shadow: none;
-  display: block;
-  margin: -20px -15px 0 0;
+  display: inline-flex;
+  // Center it by using negative half margin of its size
+  margin: calc(var(--spinner-size)/-2);
   opacity: 1;
   size: var(--spinner-size);
+  transition-delay: 0.2s;
   z-index: 99;
 }
 
@@ -56,7 +57,7 @@
   transition: var(--transition-none, box-shadow .12s ease-in);
   &::-webkit-input-placeholder,
   &::placeholder {
-    color: RGB(var(--tc-tint-6))!important;
+    color: RGB(var(--tc-tint-7))!important;
   }
   &:focus {
     box-shadow: inset 0 0 0 1px RGB(var(--tc-color-8)), 0 0 6px -2px RGB(var(--tc-color-8));
@@ -72,9 +73,9 @@
 
 %input-text-alternate {
   @include flex-center;
-  @include text(RGB(var(--tc-tint-9))!important, 12px, 400, 20px);
+  @include text(RGB(var(--tc-tint-10))!important, 12px, 400, 20px);
   background-color: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-tint-3))!important;
+  border: 1px solid RGB(var(--tc-tint-4))!important;
   border-radius: 0;
   box-shadow: none!important;
   box-sizing: border-box;
@@ -87,10 +88,10 @@
   transition: var(--transition-none, box-shadow .12s ease-in, color .12s ease-in);
   &::-webkit-input-placeholder,
   &::placeholder {
-    color: RGB(var(--tc-tint-6))!important;
+    color: RGB(var(--tc-tint-7))!important;
   }
   &:focus {
-    border: 1px solid RGB(var(--tc-tint-3))!important;
+    border: 1px solid RGB(var(--tc-tint-4))!important;
     box-shadow: none!important;
     outline: none;
     outline-style: none;
@@ -104,7 +105,7 @@
 
 %members-list-header {
   @include ellipsis;
-  @include text(RGB(var(--tc-tint-6))!important, 12px, 700, $transform: uppercase);
+  @include text(RGB(var(--tc-tint-8))!important, 12px, 700, $transform: uppercase);
   letter-spacing: 0;
 }
 
@@ -115,7 +116,7 @@
 
 %underlined-header {
   @include ellipsis;
-  @include text(RGB(var(--tc-tint-9)), 14px, 400, 15px, capitalize);
+  @include text(RGB(var(--tc-tint-10)), 14px, 400, 15px, capitalize);
   box-shadow: 0 -1px 0 RGB(var(--tc-color-4)) inset;
   width: 100%;
   margin-bottom: 4px;
@@ -129,6 +130,7 @@
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %button-primary {
+  @include button-base;
   background-color: RGB(var(--tc-color-7))!important;
   border: 1px solid RGB(var(--tc-color-7))!important;
   &:hover {
@@ -151,17 +153,18 @@
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %button-hollow {
+  @include button-base;
   background-color: transparent!important;
   border: 1px solid RGB(var(--tc-color-6))!important;
-  color: RGB(var(--tc-tint-10))!important;
+  color: RGB(var(--tc-tint-11))!important;
   &:hover {
-    background-color: RGBA(var(--tc-color-7), 0.2)!important;
-    border: 1px solid RGBA(var(--tc-color-7), 0.4)!important;
+    background-color: var(--empty-hover-color)!important;
+    border: 1px solid RGB(var(--tc-color-7))!important;
     color: #fff!important;
   }
   &:hover:active,
   &:active {
-    background-color: RGBA(var(--tc-color-7), 0.1)!important;
+    background-color: var(--empty-hover-color)!important;
     box-shadow: 0 0 6px 0 RGB(var(--tc-color-8))!important;
     color: #fff!important;
   }
@@ -173,7 +176,8 @@
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %button-hollow-alternate {
-  color: RGB(var(--tc-tint-11))!important;
+  @include button-base;
+  color: RGB(var(--tc-tint-12))!important;
   background-color: RGB(var(--tc-color-2))!important;
   border: 1px solid RGB(var(--tc-color-10))!important;
   &:hover {
@@ -195,7 +199,8 @@
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %button-empty {
-  color: RGB(var(--tc-tint-11))!important;
+  @include button-base;
+  color: RGB(var(--tc-tint-12))!important;
   background-color: transparent!important;
   border: 1px solid transparent!important;
   &:hover {
@@ -218,18 +223,19 @@
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %button-danger {
-  background-color: RGB(var(--tc-red-color))!important;
-  border: 1px solid RGB(var(--tc-red-color))!important;
+  @include button-base;
+  background-color: var(--fail-color)!important;
+  border: 1px solid var(--fail-color)!important;
   color: #fff!important;
   &:hover {
-    background-color: RGB(var(--tc-red-color-hover))!important;
-    border: 1px solid RGB(var(--tc-red-color-hover))!important;
+    background-color: var(--fail-color)!important;
+    border: 1px solid var(--fail-color)!important;
     color: #fff!important;
   }
   &:hover:active,
   &:active {
-    background-color: RGB(var(--tc-red-color))!important;
-    box-shadow: 0 0 6px 0 RGB(var(--tc-red-color-hover))!important;
+    background-color: var(--fail-color)!important;
+    box-shadow: 0 0 6px 0 var(--fail-color)!important;
     color: #fff!important;
   }
 }

@@ -14,7 +14,9 @@
   @at-root body & {
     #{$hljs} {
       &::-webkit-scrollbar-thumb {
-        border: none!important;
+        background: RGB(var(--tc-tint-2))!important;
+        border-top: none!important;
+        border-bottom: none!important;
       }
       &::-webkit-scrollbar {
         width: 8px!important;
@@ -33,12 +35,14 @@
     // Inline and full code blocks
     code.inline,
     pre code {
-      @include text(RGB(var(--tc-tint-9)), 14px, $lh: 1.5!important);
-      background-color: RGB(var(--tc-color-2))!important;
-      border: 1px solid RGB(var(--tc-color-3))!important;
+      @include text(RGB(var(--tc-tint-10)), 14px, $lh: 1.5!important);
+      background-color: var(--embed-color)!important;
+      border: none;
+      box-shadow: var(--elevation-shadow);
     }
     // Inline code only
     code.inline {
+      border: 1px solid RGB(var(--tc-tint-3));
       border-radius: 0;
       display: inline-block;
       font-family: var(--font)!important;
@@ -62,136 +66,146 @@
   // Adjust for code blocks in embeds
   #{$embed} {
     #{$messagemarkup} {
+      a {
+        .inline {
+          color: var(--links-color)!important;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
       code.inline,
       pre code {
-        border: 1px solid RGBA(var(--tc-color-4), 0.7)!important;
+        background: RGB(var(--tc-tint-2))!important;
+        border: 1px solid RGB(var(--tc-tint-3));
+        box-shadow: none!important
       }
     }
   }
 }
 
 //## Codeblocks color theme: Ocean
-// #{$messagegroup} {
-//   #{$hljs} {
-//     &-comment,
-//     &-quote {
-//      color:#65737e
-//     }
-//     &-variable,
-//     &-template-variable,
-//     &-tag,.hljs-name,
-//     &-selector-id,
-//     &-selector-class,
-//     &-regexp,
-//     &-deletion {
-//      color:#bf616a
-//     }
-//     &-number,
-//     &-built_in,
-//     &-builtin-name,
-//     &-literal,
-//     &-type,
-//     &-params,
-//     &-meta,
-//     &-link {
-//      color:#d08770
-//     }
-//     &-attribute {
-//      color:#ebcb8b
-//     }
-//     &-string,
-//     &-symbol,
-//     &-bullet,
-//     &-addition {
-//      color:#a3be8c
-//     }
-//     &-title,
-//     &-section {
-//      color:#8fa1b3
-//     }
-//     &-keyword,
-//     &-selector-tag {
-//      color:#b48ead
-//     }
-//     & {
-//      color:#c0c5ce;
-//     }
-//     &-emphasis {
-//      font-style:italic
-//     }
-//     &-strong {
-//      font-weight:bold
-//     }
-//   }
-// }
-
-//## Codeblocks color theme: Monokai Sublime
 #{$messagegroup} {
   #{$hljs} {
-    &,
-    &-tag,
-    &-subst {
-      color: #f8f8f2;
+    &-comment,
+    &-quote {
+     color:#65737e
     }
-    &-strong,
-    &-emphasis {
-      color: #a8a8a2;
-    }
-    &-bullet,
-    &-quote,
-    &-number,
+    &-variable,
+    &-template-variable,
+    &-tag,.hljs-name,
+    &-selector-id,
+    &-selector-class,
     &-regexp,
-    &-literal,
-    &-link {
-      color: #ae81ff;
+    &-deletion {
+     color:#bf616a
     }
-    &-code,
-    &-title,
-    &-section,
-    &-selector-class {
-      color: #a6e22e;
-    }
-    &-strong {
-      font-weight: bold;
-    }
-    &-emphasis {
-      font-style: italic;
-    }
-    &-keyword,
-    &-selector-tag,
-    &-name {
-      color: #f92672;
-    }
-    &-attr {
-      color: #f92672;
-    }
-    &-symbol,
-    &-attribute {
-      color: #66d9ef;
-    }
-    &-params,
-    &-class &-title {
-      color: teal;
-    }
-    &-string,
-    &-type,
+    &-number,
     &-built_in,
     &-builtin-name,
-    &-selector-id,
-    &-selector-attr,
-    &-selector-pseudo,
-    &-addition,
-    &-variable,
-    &-template-variable {
-      color: #e6db74;
+    &-literal,
+    &-type,
+    &-params,
+    &-meta,
+    &-link {
+     color:#d08770
     }
-    &-comment,
-    &-deletion,
-    &-meta {
-      color: RGB(var(--tc-tint-6));
+    &-attribute {
+     color:#ebcb8b
+    }
+    &-string,
+    &-symbol,
+    &-bullet,
+    &-addition {
+     color:#a3be8c
+    }
+    &-title,
+    &-section {
+     color:#8fa1b3
+    }
+    &-keyword,
+    &-selector-tag {
+     color:#b48ead
+    }
+    & {
+     color:#c0c5ce;
+    }
+    &-emphasis {
+     font-style:italic
+    }
+    &-strong {
+     font-weight:bold
     }
   }
 }
+
+//## Codeblocks color theme: Monokai Sublime
+// #{$messagegroup} {
+//   #{$hljs} {
+//     &,
+//     &-tag,
+//     &-subst {
+//       color: #f8f8f2;
+//     }
+//     &-strong,
+//     &-emphasis {
+//       color: #a8a8a2;
+//     }
+//     &-bullet,
+//     &-quote,
+//     &-number,
+//     &-regexp,
+//     &-literal,
+//     &-link {
+//       color: #ae81ff;
+//     }
+//     &-code,
+//     &-title,
+//     &-section,
+//     &-selector-class {
+//       color: #a6e22e;
+//     }
+//     &-strong {
+//       font-weight: bold;
+//     }
+//     &-emphasis {
+//       font-style: italic;
+//     }
+//     &-keyword,
+//     &-selector-tag,
+//     &-name {
+//       color: #f92672;
+//     }
+//     &-attr {
+//       color: #f92672;
+//     }
+//     &-symbol,
+//     &-attribute {
+//       color: #66d9ef;
+//     }
+//     &-params,
+//     &-class &-title {
+//       color: teal;
+//     }
+//     &-string,
+//     &-type,
+//     &-built_in,
+//     &-builtin-name,
+//     &-selector-id,
+//     &-selector-attr,
+//     &-selector-pseudo,
+//     &-addition,
+//     &-variable,
+//     &-template-variable {
+//       color: #e6db74;
+//     }
+//     &-comment,
+//     &-deletion,
+//     &-meta {
+//       color: RGB(var(--tc-tint-7));
+//     }
+//   }
+// }
 
 #{$messagegroup} {
     #{$hljs} {
@@ -508,7 +522,6 @@
 		@each $name, $n in $codeLanguages {
 			@each $extension, $e in $n {
 				&[class~="#{$extension}"] {
-          border-top: none!important;
           font-family: var(--font-coding)!important;
 					&::before {
             content: "#{$name}";

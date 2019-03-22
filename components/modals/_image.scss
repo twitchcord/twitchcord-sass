@@ -9,8 +9,8 @@
 
 
 .modal-1UGdnR > .inner-1JeGVc > div > .imageWrapper-2p5ogY {
-    background: RGB(var(--tc-color-2));
-    border: 1px solid RGB(var(--tc-color-4));
+    background: RGB(var(--tc-tint-1));
+    border: none;
     width: calc(100vw - 160px)!important;
     height: calc(100vh - 160px)!important;
     padding: 110px 40px 40px;
@@ -35,8 +35,7 @@
     top: 1px;
     height: 70px;
     display: flex;
-    border-bottom: 1px solid RGB(var(--tc-color-4));
-    background: RGB(var(--tc-color-3));
+    background: RGB(var(--tc-tint-2));
     align-items: center;
     left: 1px;
     padding: 0 20px;
@@ -59,7 +58,7 @@
     flex: 1 1 auto;
     #{$grandparent}-imgname {
       @include ellipsis;
-      color: RGB(var(--tc-tint-9));
+      color: RGB(var(--tc-tint-10));
       font-weight: 400;
       font-size: 14px;
       user-select: initial;
@@ -83,7 +82,7 @@
         }
       }
       time {
-        color: RGB(var(--tc-tint-7));
+        color: RGB(var(--tc-tint-8));
         font-size: 12px;
         line-height: 20px;
         margin-left: 7px;
@@ -95,7 +94,7 @@
     flex: 0 0 auto;
     align-items: center;
     #copyImage, #copyImageAddress, #downloadA, #openOriginal, #{$grandparent}-close {
-      background-color: RGB(var(--tc-tint-9))!important;
+      background-color: RGB(var(--tc-tint-10))!important;
       opacity: 1;
       display: flex;
       align-items: center;

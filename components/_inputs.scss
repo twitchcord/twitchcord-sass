@@ -173,7 +173,7 @@
   width: 42px;
   height: 22px;
   .slider-2-A75I {
-    background: linear-gradient(to right, RGB(var(--tc-tint-3)), RGB(var(--tc-tint-4)));
+    background: linear-gradient(to right, RGB(var(--tc-tint-4)), RGB(var(--tc-tint-5)));
     border: none;
     border-radius: 0;
     &::before {
@@ -231,7 +231,7 @@ div[class*="switchDisabled"][class*=valueChecked] {
 
 div[class*="switchEnabled"][class*=valueUnchecked],
 div[class*="switchDisabled"][class*=valueUnchecked] {
-    background: linear-gradient(to right, RGB(var(--tc-tint-3)), RGB(var(--tc-tint-4)));
+    background: linear-gradient(to right, RGB(var(--tc-tint-4)), RGB(var(--tc-tint-5)));
 }
 
 div[class*="switchEnabled"]::after,

@@ -39,10 +39,10 @@
   }
   .tagline-3P0yi2,
   .summary-2fuKmg {
-    @include text(RGB(var(--tc-tint-9)), 16px, 400, 1.5);
+    @include text(RGB(var(--tc-tint-10)), 16px, 400, 1.5);
   }
   .tagline-LsAYEH {
-    @include text(RGB(var(--tc-tint-9)), 14px, 400, 1.5);
+    @include text(RGB(var(--tc-tint-10)), 14px, 400, 1.5);
     margin-top: 10px;
   }
   .muteContainer-dXWpxM {
@@ -177,7 +177,7 @@
       content: 'Games';
       position: relative;
       top: 10px;
-      color: RGB(var(--tc-tint-10));
+      color: RGB(var(--tc-tint-11));
       font-size: 14px;
       font-weight: 400;
       line-height: 10px;
@@ -196,7 +196,7 @@
     &.popout-open {
       .icon-1iRNyO {
         &[name="Clear"] {
-          color: RGB(var(--tc-tint-6));
+          color: RGB(var(--tc-tint-7));
           display: block;
           opacity: 1;
           &:hover {
@@ -211,7 +211,7 @@
       font-size: 12px;
     }
     .icon-1iRNyO {
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
       g,
       path {
         display: block;
@@ -301,7 +301,7 @@
           }
           .arrow-2ZP1wS {
             @include size(40px);
-            background-color: RGB(var(--tc-tint-9));
+            background-color: RGB(var(--tc-tint-10));
           }
         }
         &.prevButtonContainer-Rc83MJ {
@@ -314,7 +314,7 @@
     }
   }
   .premiumSubheader-15Q0Z6 {
-    @include text(RGB(var(--tc-tint-9)), 18px);
+    @include text(RGB(var(--tc-tint-10)), 18px);
   }
   .premiumApplicationsHeader-Zmkm5e {
     border-bottom: 1px solid RGB(var(--tc-color-4));
@@ -323,7 +323,7 @@
   }
   .gridHeader-2bFHRC {
     @include relative(top 10px);
-    @include text(RGB(var(--tc-tint-10)), 14px, 400, 30px);
+    @include text(RGB(var(--tc-tint-11)), 14px, 400, 30px);
   }
   .headerBarDrag-3bf7wG {
     background: RGB(var(--tc-color-2)) !important;
@@ -346,7 +346,7 @@
     border: none;
     position: relative;
     transition: none;
-    color: RGB(var(--tc-tint-9));
+    color: RGB(var(--tc-tint-10));
     opacity: 1;
     font-size: 14px;
     &::after {
@@ -372,7 +372,7 @@
     width: 100%;
   }
   .arrow-2ZP1wS {
-    @include mask(var(--down-arrow-icon), RGBA(var(--tc-tint-6), 0.5));
+    @include mask(var(--down-arrow-icon), RGBA(var(--tc-tint-7), 0.5));
     polygon {
       display: none;
     }
@@ -498,7 +498,7 @@
     @include text(RGB(var(--contrasted-color)), 24px, 400, 30px);
   }
   .emptyStateDescription-2IePen {
-    @include text(RGB(var(--tc-tint-7)), 14px);
+    @include text(RGB(var(--tc-tint-8)), 14px);
   }
   .footer-3oZnEF {
     display: none;
@@ -517,7 +517,7 @@
 .tc-storemediaview {
   margin-left: 20px;
   &-icon {
-    @include mask(var(--movie-reel-icon), RGB(var(--tc-tint-6)));
+    @include mask(var(--movie-reel-icon), RGB(var(--tc-tint-7)));
     @include size(24px);
     cursor: pointer;
     display: block;

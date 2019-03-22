@@ -5,13 +5,13 @@
 
 .messagesPopoutWrap-1MQ1bW {
   background-color: RGB(var(--tc-color-3))!important;
-  color: RGB(var(--tc-tint-10));
+  color: RGB(var(--tc-tint-11));
   box-sizing: border-box;
   min-height: 400px;
   max-height: 70vh !important;
   z-index: 9999999900;
   border-radius: 0 0 1px 1px !important;
-  border: 1px solid RGB(var(--tc-tint-3))!important;
+  border: 1px solid RGB(var(--tc-tint-4))!important;
   box-shadow: none!important;
   margin-right: -10px;
   margin-top: 0;
@@ -20,7 +20,7 @@
   &::after {
     content: '';
     background: transparent;
-    border-color: transparent transparent RGB(var(--tc-tint-3));
+    border-color: transparent transparent RGB(var(--tc-tint-4));
     border-style: solid;
     border-width: 16px;
     color: transparent;
@@ -66,7 +66,7 @@
       align-items: center;
       justify-content: space-between;
       line-height: 40px;
-      color: RGB(var(--tc-tint-6))!important;
+      color: RGB(var(--tc-tint-7))!important;
       font-size: 12px!important;
       text-align: left;
     }
@@ -108,11 +108,11 @@
       line-height: 34px;
       .channelName-3kBz6H {
         font-size: 12px;
-        color: RGB(var(--tc-tint-8))!important;
+        color: RGB(var(--tc-tint-9))!important;
         font-weight: 700;
       }
       .guildName-1Bc3Ta {
-        color: RGB(var(--tc-tint-6))!important;
+        color: RGB(var(--tc-tint-7))!important;
         font-size: 12px;
         margin-left: 5px;
       }
@@ -211,7 +211,7 @@
           margin: -1px 6px 0 55px;
           padding: 0;
           #{$messagemarkup} {
-            color: RGB(var(--tc-tint-10))!important;
+            color: RGB(var(--tc-tint-11))!important;
             font-size: 12px;
             margin-right: 10px;
             pre {
@@ -247,7 +247,7 @@
           }
           .closeButton-17RIVZ {
             background: none!important;
-            background-color: RGB(var(--tc-tint-6))!important;
+            background-color: RGB(var(--tc-tint-7))!important;
             opacity: 1;
             -webkit-mask: var(--close-icon);
             mask: var(--close-icon);
@@ -303,7 +303,7 @@
         width: 100%;
         white-space: pre-wrap;
         font-size: 14px;
-        color: RGB(var(--tc-tint-10));
+        color: RGB(var(--tc-tint-11));
         visibility: visible;
       }
     }

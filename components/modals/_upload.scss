@@ -23,7 +23,7 @@
       &.two-3BBQI9 {
         @include size(110px);
         background: none!important;
-        @include mask(var(--paperclip-icon), RGB(var(--tc-tint-9))!important);
+        @include mask(var(--paperclip-icon), RGB(var(--tc-tint-10))!important);
       }
       &.one-2crnLX,
       &.three-27ScFD {
@@ -35,10 +35,10 @@
       font-size: 12px;
       line-height: 16px;
       margin-top: 4px;
-      color: RGB(var(--tc-tint-7))!important;
+      color: RGB(var(--tc-tint-8))!important;
     }
     .title-2Vtl4y {
-      color: RGB(var(--tc-tint-10))!important;
+      color: RGB(var(--tc-tint-11))!important;
       font-weight: 400!important;
       text-transform: none!important;
       font-size: 24px!important;
@@ -67,7 +67,7 @@
         text-overflow: ellipsis;
         font-weight: 400;
         margin: 20px 0;
-        color: RGB(var(--tc-tint-10));
+        color: RGB(var(--tc-tint-11));
         text-transform: none;
         font-size: 24px;
         line-height: 30px;
@@ -145,7 +145,7 @@
         }
       }
       .filesize-s2nTZM {
-        color: RGB(var(--tc-tint-6));
+        color: RGB(var(--tc-tint-7));
         font-size: 10px;
         margin: 0 0 0 8px;
         opacity: .6;
@@ -154,7 +154,7 @@
     .optional--ezibr {
       font-size: 11px;
       opacity: 1!important;
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
       text-transform: lowercase;
     }
     // Textarea container

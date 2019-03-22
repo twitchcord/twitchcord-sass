@@ -4,8 +4,9 @@
 // https://i.imgur.com/uW2XDOi.png
 
 .wrapper-35wsBm {
-  background: RGB(var(--tc-color-3))!important;
-  border: 1px solid RGB(var(--tc-color-4))!important;
+  background: RGB(var(--tc-tint-1))!important;
+  border: none;
+  box-shadow: var(--elevation-shadow);
   border-radius: 0;
   .content-2U5lSY {
     position: relative;
@@ -13,7 +14,7 @@
   .guildIcon-lQ0uiM {
       background-color: transparent!important;
       border: none!important;
-      border-radius: 0;
+      border-radius: var(--guild-roundness);
       margin-top: -25px;
       margin-right: 15px;
       height: 80px;
@@ -32,7 +33,7 @@
       max-width: 90%;
   }
   .h5-18_1nd {
-      color: RGB(var(--tc-tint-7))!important;
+      color: RGB(var(--tc-tint-8))!important;
       font-weight: 400;
       font-size: 14px!important;
       margin-left: 94px;
@@ -41,7 +42,7 @@
       text-transform: none;
   }
   .guildDetail-1nRKNE {
-      color: RGB(var(--tc-tint-6))!important;
+      color: RGB(var(--tc-tint-7))!important;
       font-weight: 400;
       max-width: 90%;
   }
@@ -62,11 +63,11 @@
       right: 0;
       // Joined button
       &#{$buttonlookoutlined} {
-        background: RGB(var(--tc-green-color))!important;
-        border-color: RGB(var(--tc-green-color))!important;
+        background: var(--success-color)!important;
+        border-color: var(--success-color)!important;
         &:hover {
-          background: RGB(var(--tc-green-color-hover))!important;
-          border-color: RGB(var(--tc-green-color-hover))!important;
+          background: var(--success-color)!important;
+          border-color: var(--success-color)!important;
         }
       }
       .contents-18-Yxp {
@@ -90,7 +91,7 @@
     }
   }
   .guildNameExpired-2Hp80V {
-      color: RGB(var(--notification-color));
+      color: var(--fail-color);
       font-weight: 700;
       font-size: 14px;
       text-decoration: none;

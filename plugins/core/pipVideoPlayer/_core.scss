@@ -105,7 +105,7 @@
     top: -30px;
     #{$grandfather}-button-close {
       @include absolute(top 0 right 0);
-      @include mask(var(--close-icon), RGB(var(--tc-tint-12)), 15px);
+      @include mask(var(--close-icon), #fff, 15px);
       @include size(30px);
       cursor: pointer;
       border-radius: 0!important;
@@ -127,7 +127,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      color: RGB(var(--tc-tint-12))!important;
+      color: #fff!important;
       font-size: 14px;
       height: 100%;
       text-indent: 10px;
@@ -375,7 +375,7 @@
       content: 'Video is currently playing...';
       font-size: 14px;
       line-height: 70px;
-      color: RGB(var(--tc-tint-9));
+      color: RGB(var(--tc-tint-10));
       width: 100%;
       text-align: center;
       white-space: nowrap;

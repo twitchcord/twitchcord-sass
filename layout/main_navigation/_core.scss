@@ -3,6 +3,35 @@
 ///  Main navigation
 ///  ==========================================================================
 
+@keyframes twitchcordSettingsLogoHover {
+  0% {
+    animation-timing-function: cubic-bezier(.34, 0, .2, 1);
+    transform: scale(-1, 1);
+  }
+  50% {
+    animation-timing-function: cubic-bezier(.67, 0, .71, 1);
+    transform: scale(-1.09, 1.09);
+  }
+  100% {
+    transform: scale(-1.08, 1.08);
+  }
+}
+
+@keyframes twitchcordSettingsLogoActive {
+  0% {
+    animation-timing-function: cubic-bezier(.17, .11, .6, .83);
+    transform: scale(1.08, 1.08);
+  }
+
+  33% {
+    animation-timing-function: cubic-bezier(.04, .25, .61, 1.01);
+    transform: scale(.87, .87);
+  }
+  100% {
+    transform: scale(.85, .85);
+  }
+}
+
 // Temporary removal since LFG isn't available
 #{classes('twitchcord.titleWrapper')}-nav-lfg-btn {
   display: none!important;
@@ -29,7 +58,7 @@
 // Twitchcord update bar
 #{classes('twitchcord.updateBar')} {
   @include flex-center;
-  background: RGB(var(--tc-green-color));
+  background: var(--success-color);
   flex: 1 0 30px;
   height: 30px;
   max-height: 0;
@@ -52,7 +81,7 @@
     padding: 0 8px;
     &:hover {
       background: #fff;
-      color: RGB(var(--tc-green-color));
+      color: var(--success-color);
     }
   }
   &-btn-dismiss {
@@ -71,7 +100,7 @@
   display: flex;
   flex: 1 0 50px;
   position: relative;
-  background: RGB(var(--tc-color-5));
+  background: RGB(var(--tc-color-6));
   z-index: 100;
   // Spoofing the top nav bar so users see it while the JS is loading
   // http://i68.tinypic.com/2567pqw.png
@@ -113,23 +142,38 @@
     align-items: center;
     justify-content: flex-start;
     &-logo-settings {
-      @include size(72px, 50px);
+      @include size(var(--guilds-width), var(--main-nav-height));
       @include flex-center;
       align-content: center;
       cursor: pointer;
-      min-width: 72px;
+      min-width: var(--main-nav-height);
       position: relative;
       z-index: 99;
+      &:hover {
+        #{$grandparent}-logo-svg {
+          animation-duration: .2s;
+          animation-name: twitchcordSettingsLogoHover;
+        }
+      }
+      &:active {
+        animation-duration: .1s;
+        animation-name: twitchcordSettingsLogoActive;
+        animation-fill-mode: forwards;
+      }
     }
     &-logo-svg {
-      @include size(36px, 37px);
-      fill: #fff;
-      margin-top: 2px;
+      @include size(30px);
+      color: #fff;
+      fill: currentColor;
+      margin: 3px 0 0 3px;
+      transform: scale(-1, 1);
+      animation-fill-mode: both;
+      transform-origin: center;
     }
     &-view-name {
       @include text(RGB(var(--tc-color-12)), 14px, 400, 20px);
       margin: 0;
-      padding: 0 15px;
+      padding: 0 12px;
       white-space: nowrap;
     }
     &-icon-friends,
@@ -139,8 +183,6 @@
     &-icon-store,
     &-icon-lfg {
       @include size(37px, 50px);
-      display: inline-block;
-      float: left;
       opacity: 0.5;
       display: none;
     }
@@ -168,7 +210,7 @@
         visibility: hidden;
         font-weight: 700;
         font-size: 14px;
-        padding: 0 15px;
+        padding: 0 12px;
       }
       &.disabled #{$grandparent} {
         &-view-name {
@@ -239,7 +281,7 @@
     }
     &-global-search-outer {
       margin-left: 15px;
-      flex: 0 1 350px;
+      flex: 0 1 400px;
       margin-right: 20px;
     }
     &-global-search-inner {
@@ -248,6 +290,7 @@
     &-global-search-input {
       border: 1px solid RGB(var(--tc-color-5));
       background: RGB(var(--tc-color-1));
+      border-radius: var(--button-roundness);
       color: #fff;
       height: 30px;
       display: block;
@@ -261,7 +304,7 @@
       -webkit-appearance: none;
       box-sizing: border-box;
       &::-webkit-input-placeholder {
-        color: RGB(var(--tc-tint-6));
+        color: RGB(var(--tc-tint-7));
       }
       &:focus {
         border-color: RGB(var(--tc-color-8))!important;
@@ -272,19 +315,16 @@
       }
     }
     &-search-bar-icon {
-      width: 14px;
-      height: 14px;
-      position: absolute;
-      left: 9px;
-      top: 8px;
+      @include absolute(top 7px left 7px);
+      @include size(16px);
       opacity: 1;
       z-index: 5;
     }
     .tc-icon.search {
-      opacity: 1;
-      @include size(14px);
-      @include mask(var(--search-icon), RGB(var(--tc-tint-6)));
+      @include size(16px);
+      @include mask(var(--search-icon), RGB(var(--tc-tint-7)));
       display: block;
+      opacity: 1;
     }
     .tc-icon.close {
       @include size(20px);
@@ -313,6 +353,7 @@
       flex-direction: column;
       flex: 0 0 auto;
       width: 30px;
+      margin-right: 5px;
     }
     &-update-outer {
       display: none;
@@ -326,30 +367,23 @@
       height: 20px;
       position: relative;
     }
-    &-mentions-indicator {
-      @include size(4px);
-      @include absolute(top -2px right -2px);
-      background: RGB(var(--notification-color));
-      border: 2px solid RGB(var(--tc-color-5));
-      z-index: 10;
-    }
     &-update {
-      @include size(18px);
-      @include mask(var(--update-icon), RGB(var(--tc-green-color)));
+      @include size(20px);
+      @include mask(var(--update-icon), var(--success-color));
       display: block;
       &.updating {
         animation: rotate360 1s infinite forwards;
       }
     }
     &-mentions {
-      @include size(18px);
+      @include size(20px);
       @include mask(var(--notification-bell-icon), #fff);
       display: block;
       &-new-indicator {
         @include absolute(top -3px right -1px);
-        @include size(11px);
-        background: RGB(var(--tc-red-color));
-        border: 2px solid RGB(var(--tc-color-5));
+        @include size(10px);
+        background: var(--fail-color);
+        border: 2px solid var(--main-nav-color);
         display: none;
         @at-root .newMentions & {
           display: block;

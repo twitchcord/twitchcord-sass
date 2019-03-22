@@ -6,9 +6,10 @@
 
 // Attachment outer container
 #{classes('components.attachments.attachment')} {
-  background-color: RGB(var(--tc-color-2))!important;
+  background-color: var(--embed-color)!important;
   border: none;
   border-radius: 0;
+  box-shadow: var(--elevation-shadow);
   margin: 8px 0;
   max-width: none;
   padding: 10px;
@@ -26,7 +27,7 @@
     @include absolute(top 0 left 0);
     @include ellipsis($display: block);
     @include size(100%, auto);
-    @include text(RGB(var(--tc-tint-9))!important, 14px, 700, 20px);
+    @include text(RGB(var(--tc-tint-10))!important, 14px, 700, 20px);
     min-height: 80px;
     padding: 27px 140px 0 75px;
     text-decoration: none;
@@ -34,7 +35,7 @@
     &::before {
       @include absolute(top 8px);
       @include localize('Shared a file');
-      @include text(RGB(var(--tc-tint-6)), 14px, 400);
+      @include text(RGB(var(--tc-tint-7)), 14px, 400);
     }
     // Attachment download button
     &::after {
@@ -50,11 +51,11 @@
   // Attachment name while attachment is uploading
   #{classes('components.attachments.fileName')} {
     @include ellipsis(100%, block);
-    @include text(RGB(var(--tc-tint-9))!important, 14px, 700, 20px);
+    @include text(RGB(var(--tc-tint-10))!important, 14px, 700, 20px);
     text-decoration: none;
     // Attachment size while attachment is uploading
     + #{classes('components.attachments.progressFileSize')} {
-      @include text(RGB(var(--tc-tint-6))!important, 12px);
+      @include text(RGB(var(--tc-tint-7))!important, 12px);
     }
     &::before {
       display: none;
@@ -64,7 +65,7 @@
   #{classes('components.attachments.icon')} {
     @include size(56px);
     content: var(--transparent-pixel);
-    background: RGB(var(--tc-tint-3)) var(--attachment-file-image) no-repeat 50% / 30px 40px!important;
+    background: RGB(var(--tc-tint-4)) var(--attachment-file-image) no-repeat 50% / 30px 40px!important;
   }
   // Attachment meta data (file size, progress bar)
   #{classes('components.attachments.metaData')}  {
@@ -72,8 +73,9 @@
     &#{classes('components.attachments.progressContainer')} {
       @include absolute(bottom -5px left 0);
       @include size(100%, 5px);
-      background: RGB(var(--tc-color-2))!important;
+      background: var(--embed-color)!important;
       border-radius: 0;
+      box-shadow: var(--elevation-shadow);
       color: transparent;
       margin: 0;
       @at-root #{classes('components.attachments.progress')}  {

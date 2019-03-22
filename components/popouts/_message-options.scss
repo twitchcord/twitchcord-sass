@@ -4,7 +4,7 @@
 
 #{$optionpopout} {
   background: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-tint-3))!important;
+  border: 1px solid RGB(var(--tc-tint-4))!important;
   border-radius: 2px;
   width: 170px;
   box-sizing: border-box;
@@ -41,7 +41,7 @@
         background-color: RGB(var(--tc-color-4))!important;
       }
       #{$buttoncontents} {
-        @include text(RGB(var(--tc-tint-9))!important, 14px, 400, 18px);
+        @include text(RGB(var(--tc-tint-10))!important, 14px, 400, 18px);
       }
     }
     &:hover {

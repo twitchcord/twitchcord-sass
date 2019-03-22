@@ -32,7 +32,7 @@
     &::before {
       content: 'Top Results';
       @include size(100%, 40px);
-      @include text(RGB(var(--tc-tint-9)), 14px, 400, 40px);
+      @include text(RGB(var(--tc-tint-10)), 14px, 400, 40px);
       background: RGB(var(--tc-color-1));
       border: 1px solid RGB(var(--tc-color-3));
       box-sizing: border-box;
@@ -91,7 +91,7 @@
       content: 'Top Results';
       @include absolute(top 0 left 0);
       @include size(100%, 40px);
-      @include text(RGB(var(--tc-tint-9)), 14px, 400, 40px);
+      @include text(RGB(var(--tc-tint-10)), 14px, 400, 40px);
       background: RGB(var(--tc-color-1));
       border: 1px solid RGB(var(--tc-color-3));
       box-sizing: border-box;
@@ -107,7 +107,7 @@
       order: 2;
       &::after {
         content: 'They\'re probably in another castle';
-        @include text(RGB(var(--tc-tint-9)), 12px);
+        @include text(RGB(var(--tc-tint-10)), 12px);
         display: block;
       }
     }
@@ -123,13 +123,13 @@
     @include text(RGB(var(--contrasted-color)), 12px, 400, $transform: none);
     background: RGB(var(--tc-color-1))!important;
     border: none;
-    border-radius: 0;
+    border-radius: var(--button-roundness);
     box-shadow: none!important;
     box-sizing: border-box;
     opacity: 1;
     padding: 5px 30px;
     &::-webkit-input-placeholder {
-      color: RGB(var(--tc-tint-6))!important;
+      color: RGB(var(--tc-tint-7))!important;
     }
   }
   // Just in case it doesn't get move to the top nav for whatever reason,
@@ -162,7 +162,7 @@
       &::before {
         content: 'Top Results';
         @include size(100%, 40px);
-        @include text(RGB(var(--tc-tint-9)), 14px, 400, 40px);
+        @include text(RGB(var(--tc-tint-10)), 14px, 400, 40px);
         background: RGB(var(--tc-color-1));
         border: 1px solid RGB(var(--tc-color-3));
         box-sizing: border-box;
@@ -211,7 +211,7 @@
   #{$quickswitcherchannelicon} {
     opacity: 1!important;
     path {
-      fill: RGB(var(--tc-tint-6));
+      fill: RGB(var(--tc-tint-7));
       opacity: 1;
     }
   }
@@ -238,7 +238,7 @@
   }
   // Quickswitcher user nickname
   #{$quickswitcherusername} {
-    @include text(RGB(var(--tc-tint-6))!important, 12px);
+    @include text(RGB(var(--tc-tint-7))!important, 12px);
     opacity: 1;
   }
   // Quickswitcher server name
@@ -248,7 +248,7 @@
   }
   // Quickswitcher category name
   #{$quickswitchernote} {
-    @include text(RGB(var(--tc-tint-6))!important, 12px, 400, $transform: lowercase);
+    @include text(RGB(var(--tc-tint-7))!important, 12px, 400, $transform: lowercase);
     margin-top: 2px;
   }
   // Quickswitcher results focused

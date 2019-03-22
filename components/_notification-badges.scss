@@ -4,7 +4,7 @@
 
 #{$badgewrapper} {
   @include text(#fff, 10px, 700, 14px);
-  background: RGB(var(--notification-color));
+  background: var(--fail-color);
   border-radius: var(--notification-badge-roundness)!important;
   box-shadow: none;
   display: flex;

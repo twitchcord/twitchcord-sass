@@ -17,7 +17,7 @@
         content: '';
         @include size(16px);
         position: absolute;
-        background: RGB(var(--tc-tint-12));
+        background: #fff;
         animation-name: appMountLoadingSquare2;
         animation-duration: 1.8s;
         animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);

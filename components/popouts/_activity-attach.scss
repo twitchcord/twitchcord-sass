@@ -5,7 +5,7 @@
 
 .attachPopout-1n-ZKM {
   background: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-tint-3))!important;
+  border: 1px solid RGB(var(--tc-tint-4))!important;
   border-radius: 2px;
   box-sizing: border-box;
   padding: 10px 0;
@@ -37,12 +37,12 @@
       flex: 0 0 auto;
       opacity: 1;
       .attachPopoutIconForeground-OohRrL {
-        fill: RGB(var(--tc-tint-9));
+        fill: RGB(var(--tc-tint-10));
       }
     }
     .attachPopoutRowText-1tIocA {
       @include ellipsis;
-      color: RGB(var(--tc-tint-9))!important;
+      color: RGB(var(--tc-tint-10))!important;
     }
     &:hover {
       background: RGB(var(--tc-color-4))!important;

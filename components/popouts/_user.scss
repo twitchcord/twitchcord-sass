@@ -4,28 +4,28 @@
 // Don't forget about Discord default avatars in components/replaceavatars.SCSS
 
 .userPopout-3XzG_A .wrapper-2F3Zv8 {
-  @include size(86px);
-  bottom: -65px;
-  margin: 0px 7px;
+  @include relative(bottom -8px left 10px);
+  @include size(70px);
   z-index: 2;
 }
 
 .userPopout-3XzG_A {
+  background: RGB(var(--tc-tint-1));
   width: var(--user-popout-width);
-  border-radius: 1px;
-  border: 1px solid RGB(var(--tc-tint-3));
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
   position: relative;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.34),0 2px 2px -2px rgba(0,0,0,.26),0 1px 4px 0 rgba(0,0,0,.28)!important;
   opacity: 0;
   animation: fadeIn 0.3s forwards;
   // Fix to move left user popouts further to the left slightly
   #{$popoutleft}#{classes('twitchcord.fixLeftUserPopout')} & {
-    margin-right: 25px;
+    margin-right: 30px;
   }
 }
 
 .userPopout-3XzG_A .header-2BwW8b {
-    background-color: RGB(var(--tc-color-3));
+    background-color: RGB(var(--tc-tint-1));
 }
 
 .userPopout-3XzG_A .headerTop-3C2Zn0 {
@@ -57,7 +57,7 @@
 .userPopout-3XzG_A .avatarWrapper-3H_478 {
     background-color: RGB(var(--tc-color-3));
     border: none;
-    height: 120px;
+    height: 90px;
     width: var(--user-popout-width);
     background-size: cover;
     background-repeat: no-repeat;
@@ -68,8 +68,18 @@
     &::after {
       display: none;
     }
+    &::after {
+      background: rgba(0,0,0,.4)!important;
+      content: '';
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
     &:not([style*="background-image"]) {
-      background-color: RGB(var(--tc-color-7));
+      background-color: RGB(var(--tc-color-8));
       background-image: url(https://i.imgur.com/GKqK6Cy.png);
       background-blend-mode: multiply;
     }
@@ -97,7 +107,7 @@
   // Playing icon
   .headerText-1HLrL7 {
     &::before {
-      @include mask(var(--d-pad-icon), RGB(var(--tc-tint-9)), $size: 12px);
+      @include mask(var(--d-pad-icon), RGB(var(--tc-tint-10)), $size: 12px);
       @include relative(top 1px left -5px);
       @include size(10px);
       content: '';
@@ -129,10 +139,10 @@
   border-radius: 0;
 }
 .userPopout-3XzG_A .bar-3urHkF {
-  background-color: RGB(var(--tc-tint-11));
+  background-color: var(--empty-hover-color);
 }
 .userPopout-3XzG_A .barInner-3NDaY_ {
-  background-color: RGB(var(--tc-color-7));
+  background-color: RGB(var(--tc-color-10));
 }
 .userPopout-3XzG_A .listeningActionsUserPopout-Ga2V_N {
   padding: 5px 15px 15px;
@@ -185,7 +195,7 @@
 }
 
 .userPopout-3XzG_A .image-33JSyf {
-  @include size(86px !important);
+  @include size(70px !important);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -195,10 +205,10 @@
 
 .userPopout-3XzG_A .headerText-2sdzFM {
   width: 100%;
-  height: 40px;
-  background: RGB(var(--tc-color-1));
-  position: relative;
+  height: 60px;
+  position: absolute;
   pointer-events: none;
+  top: 0;
 }
 
 .userPopout-3XzG_A .headerTop-27AvhA {
@@ -207,12 +217,12 @@
 
 .userPopout-3XzG_A .headerTag-2pZJzA {
   font-size: 16px;
-  height: 40px;
-  position: absolute;
+  height: 60px;
   text-align: left;
-  left: 105px;
   display: flex;
   align-items: center;
+  width: 100%;
+  padding-left: 95px;
 }
 
 .userPopout-3XzG_A .activity-11LB_k {
@@ -257,7 +267,7 @@
   font-size: 11px;
   position: relative;
   margin-left: 3px;
-  color: RGB(var(--tc-tint-6));
+  color: RGB(var(--tc-tint-7));
   opacity: 0;
   order: 3;
 }
@@ -273,10 +283,10 @@
     padding: 0 15px;
     margin: 0;
     margin-top: -1px;
-    background: RGB(var(--tc-color-2));
+    background: RGB(var(--tc-color-1));
     font-size: 12px;
     font-weight: 700;
-    color: RGB(var(--tc-tint-9))!important;
+    color: RGB(var(--tc-tint-10))!important;
     text-transform: capitalize;
 }
 
@@ -310,7 +320,7 @@
 
 // Activity popout section container
 .userPopout-3XzG_A .activityUserPopout-2yItg2 {
-    color: RGB(var(--tc-tint-9))!important;
+    color: RGB(var(--tc-tint-10))!important;
 }
 // 1st heading -- game title
 .userPopout-3XzG_A .activityName-1IaRLn {
@@ -322,7 +332,7 @@
     font-size: 12px;
     margin: 0;
     font-weight: 400;
-    color: RGB(var(--tc-tint-9));
+    color: RGB(var(--tc-tint-10));
 }
 
 .userPopout-3XzG_A .activityUserPopout-2yItg2 .textRow-19NEd_ + .textRow-19NEd_ {
@@ -330,7 +340,7 @@
 }
 
 .userPopout-3XzG_A .activityUserPopout-2yItg2 .bodyNormal-2D39hT {
-    background-color: RGB(var(--tc-color-3));
+    background-color: RGB(var(--tc-tint-1));
     align-items: center;
 }
 
@@ -368,7 +378,7 @@
 .userPopout-3XzG_A .headerPlaying-j0WQBV .activityUserPopout-2yItg2 .headerTextNormal-2mGWX3::before,
 .userPopout-3XzG_A .headerSpotify-zpWxgT .activityUserPopout-2yItg2 .headerTextNormal-2mGWX3::before {
   content: '';
-  @include mask(var(--user-icon), RGB(var(--tc-tint-9)));
+  @include mask(var(--user-icon), RGB(var(--tc-tint-10)));
   @include size(10px);
   @include relative(top 1px left -5px);
   margin-right: 1px;
@@ -405,8 +415,8 @@
     color: #fff!important;
     background: repeating-linear-gradient(45deg, RGB(var(--tc-color-7)), RGB(var(--tc-color-7)) 10px, RGB(var(--tc-color-8)) 10px, RGB(var(--tc-color-8)) 20px);
     background-repeat: repeat-x;
-    border-top: 1px solid RGB(var(--tc-tint-3));
-    border-bottom: 1px solid RGB(var(--tc-tint-3));
+    border-top: 1px solid RGB(var(--tc-tint-4));
+    border-bottom: 1px solid RGB(var(--tc-tint-4));
     transition: all 0.2s;
     width: 300%;
     margin-top: 0;
@@ -445,7 +455,7 @@
 }
 
 .userPopout-3XzG_A .body-3iLsc4 {
-  background-color: RGB(var(--tc-color-3))!important;
+  background-color: RGB(var(--tc-tint-1))!important;
   padding: 0;
   margin-top: 0;
 }
@@ -457,7 +467,7 @@
   margin: 0;
   padding: 12px 10px 10px 25px;
   background: transparent;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 18px;
   color: RGB(var(--contrasted-color));
   width: 100%;
@@ -465,13 +475,13 @@
   box-sizing: border-box;
   font-family: var(--font)!important;
   &::-webkit-input-placeholder {
-    color: RGB(var(--tc-tint-6))!important;
+    color: RGB(var(--tc-tint-7))!important;
   }
 }
 
 .userPopout-3XzG_A .footer-1fjuF6 {
-    background-color: RGB(var(--tc-color-2))!important;
-    border-top: 1px solid RGB(var(--tc-tint-3))!important;
+    background-color: RGB(var(--tc-tint-3))!important;
+    border-top: 1px solid var(--border-color)!important;
 }
 
 .userPopout-3XzG_A .footer-1fjuF6 .quickMessage-2XpSaN {

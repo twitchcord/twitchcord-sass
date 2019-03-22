@@ -53,7 +53,7 @@
 //## When an unread pinned message is available
 @keyframes newPinnedMessagePulse {
   0% {
-    box-shadow: 0 0 0 0 RGB(var(--notification-color));
+    box-shadow: 0 0 0 0 var(--fail-color);
   }
   100% {
     box-shadow: 0 0 0 6px transparent;

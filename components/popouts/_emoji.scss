@@ -8,7 +8,7 @@
 .emoji-picker {
     border-radius: 0;
     background: RGB(var(--tc-color-3));
-    border-color: RGB(var(--tc-tint-3))!important;
+    border-color: RGB(var(--tc-tint-4))!important;
     margin-right: -20px;
     margin-bottom: -5px;
     width: 368px;
@@ -191,7 +191,7 @@
 
 .emoji-picker .premium-promo .premium-promo-description {
     font-size: 14px;
-    color: RGB(var(--tc-tint-6));
+    color: RGB(var(--tc-tint-7));
 }
 
 .emoji-picker .premium-promo .premium-promo-close:hover {

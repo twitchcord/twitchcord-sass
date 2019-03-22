@@ -35,9 +35,9 @@
 
 //## Image error "poop"
 .imageError-2OefUi {
-  background: var(--broken-image) no-repeat center!important;
+  @include mask(var(--broken-image), RGB(var(--tc-tint-10)));
+  background-image: none!important;
   height: 60%;
-  transform: scale(-1, 1);
 }
 
 //## User Settings -> Streamer Mode image

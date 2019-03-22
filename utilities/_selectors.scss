@@ -250,6 +250,9 @@ $classes: (
       unread: 'unread-1Dp-OI',
       wrapper: 'wrapper-KpKNwI',
 
+      unreadTop: 'unreadTop-73gZ2_',
+      unreadBottom: 'unreadBottom-3hWQ7c',
+
       categoryAddChannelIcon: 'addButtonIcon-3u-3Hu',
       categoryContainerDefault: 'containerDefault-3GGEv_',
       categoryContainerDragAfter: 'containerDragAfter-3TEhpe',
@@ -402,7 +405,49 @@ $classes: (
       )
     ),
     guilds: (
+      guildsWrapper: 'wrapper-1Rf91z',
 
+      mentionsIndicatorTop: 'unreadMentionsIndicatorTop-gA6RCh',
+      mentionsIndicatorBottom: 'unreadMentionsIndicatorBottom-BXS58x',
+      mentionsIndicatorBarActive: 'active-1SSsBb',
+      mentionsIndicatorBar: 'bar-30k2ka',
+      mentionsIndicatorBarMention: 'mention-1f5kbO',
+
+      scrollerWrap: 'scrollerWrap-2lJEkd',
+      scroller: 'scroller-2TZvBN',
+
+      homeButtonContainer: 'container-1ETFDs',
+      homeButton: 'homeButton-2Cw51C',
+      homeLink: 'homeLink-2NBBKi',
+      homeIcon: 'homeIcon-tEMBK1',
+
+      guildSeparator: 'guildSeparator-3s64Iy',
+
+      badge: 'wrapper-232cHJ',
+
+      friendsOnline: 'friendsOnline-2JkivW',
+
+      dm: 'container-1aNBdK',
+      dmIcon: 'avatar-3f3jk4',
+      dmIconInner: 'inner-1x-wIi',
+
+      guild: 'container-2td-dC',
+      dragFix: 'dragfix-1wSxtO',
+      dragPlaceholder: 'dragPlaceholder-D9-haY',
+      guildWrapper: 'wrapper-2lTRaf',
+      guildIcon: 'guildIcon-VlWW86',
+      noIcon: 'noIcon-1a_FrS',
+      unread: 'unread-2OHH1w',
+      selected: 'selected-nT-gM3',
+
+      guildsError: 'guildsError-b7zR5H',
+      containerGuildsError: 'guildsErrorContainer-2uWYsE',
+      containerServerDiscovery: 'container-11WMXy',
+      circleIconButton: 'circleIconButton-jET_ig',
+      plus: 'plus-3UqSQu',
+
+      audio: 'audio-3sNR7M',
+      video: 'video-3I9W8t'
     ),
     nav: (
 

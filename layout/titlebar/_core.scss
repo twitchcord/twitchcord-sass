@@ -76,22 +76,22 @@
       }
       &.winButtonClose-1HsbF- {
         &:hover {
-          background-color: RGB(var(--notification-color));
+          background-color: var(--fail-color);
         }
       }
   }
   svg[name="TitleBarClose"] {
-      @include mask(var(--app-close-icon), #fff);
-      @include size(10px, 11px);
+      @include mask(var(--app-close-icon), #fff, 12px);
+      @include size(10px);
   }
 
   svg[name="TitleBarMaximize"] {
-      @include mask(var(--app-maximize-icon), #fff);
-      @include size(10px, 11px);
+      @include mask(var(--app-maximize-icon), #fff, 10px);
+      @include size(11px, 12px);
   }
 
   svg[name="TitleBarMinimize"] {
-      @include mask(var(--app-minimize-icon), #fff);
+      @include mask(var(--app-minimize-icon), #fff, 12px);
       @include size(10px, 11px);
   }
 
@@ -103,6 +103,6 @@
 //## ixMaximized - change the maximize icon if the app is maximized or not
 .isMaximized:root {
   svg[name="TitleBarMaximize"] {
-      @include mask(var(--app-restore-icon), #fff);
+      @include mask(var(--app-restore-icon), #fff, 10px);
     }
 }

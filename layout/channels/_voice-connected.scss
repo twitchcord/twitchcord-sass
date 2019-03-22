@@ -14,7 +14,7 @@
   padding: 4px 5px;
   box-sizing: border-box;
   background: RGB(var(--tc-color-3));
-  border: 1px solid RGB(var(--tc-tint-2));
+  border: 1px solid RGB(var(--tc-tint-3));
   width: calc(100% - 20px);
   position: relative;
   height: 50px;
@@ -89,7 +89,7 @@
       cursor: default;
     }
     &-time-connected {
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
       font-weight: 400;
       font-size: 11px;
       cursor: default;
@@ -99,7 +99,7 @@
     &-mute {
       cursor: pointer;
       display: flex;
-      background-color: RGB(var(--tc-tint-9));
+      background-color: RGB(var(--tc-tint-10));
       height: 30px;
       width: 30px;
       &:hover {
@@ -107,9 +107,9 @@
       }
     }
     &-disconnect {
-      @include mask(var(--hang-up-icon), RGB(var(--notification-color)), 28px);
+      @include mask(var(--hang-up-icon), var(--fail-color), 28px);
       &:hover {
-        background-color: RGB(var(--notification-color-hover));
+        background-color: var(--fail-color);
       }
     }
     &-deafen {

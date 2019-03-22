@@ -61,7 +61,7 @@
 
 .channelNotices-41mJbj .channelNotice-1-XFjC .close-relY5R {
   background: none;
-  @include mask(var(--close-icon), RGB(var(--tc-tint-9))!important);
+  @include mask(var(--close-icon), RGB(var(--tc-tint-10))!important);
   min-height: 0;
   min-width: 0;
   opacity: 1;
@@ -75,7 +75,7 @@
 }
 
 .channelNotices-41mJbj .channelNotice-1-XFjC .message-3SOT5P {
-  @include text(RGB(var(--tc-tint-10)), 14px, 400, 20px);
+  @include text(RGB(var(--tc-tint-11)), 14px, 400, 20px);
   margin: 50px 0 0px;
 }
 

@@ -16,12 +16,12 @@
         min-width: 0;
         padding: 0;
         .left-3d-3Co {
-          @include mask(var(--arrow-caret-left-icon), RGB(var(--tc-tint-6)));
+          @include mask(var(--arrow-caret-left-icon), RGB(var(--tc-tint-7)));
           @include size(20px);
           margin: 2px 5px 0 0;
           transform: none;
           &:hover {
-            background-color: RGB(var(--tc-tint-9));
+            background-color: RGB(var(--tc-tint-10));
           }
           polygon {
             display: none;
@@ -51,7 +51,7 @@
       color: RGB(var(--contrasted-color))!important;
     }
     #{$nsfwdescription} {
-      color: RGB(var(--tc-tint-7))!important;
+      color: RGB(var(--tc-tint-8))!important;
       font-size: 12px !important;
       line-height: 20px !important;
     }

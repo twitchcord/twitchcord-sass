@@ -37,16 +37,18 @@
   #{$chatnewmessagesbar} {
     left: 0;
     right: 0;
-    border-radius: 0;
-    background-color: RGB(var(--tc-color-6));
+    border-radius: var(--button-roundness);
+    box-shadow: var(--elevation-shadow);
+    background-color: RGB(var(--tc-color-7));
     opacity: 1;
     // Needs this z-index to be higher than reaction and option message buttons
     z-index: 901;
     padding: 0 !important;
     top: 0;
     margin: 0 25px 0 15px;
+    transition: none;
     &:hover {
-      background-color: RGB(var(--tc-color-6));
+      background-color: RGB(var(--tc-color-8));
       button {
         &:last-child {
           background-color: #fff;
@@ -69,6 +71,7 @@
         color: #fff;
         font-weight: 700;
         border: 1px solid #fff;
+        border-radius: var(--button-roundness);
         box-sizing: border-box;
         padding: 7px 10px;
         height: 10px;
@@ -87,18 +90,19 @@
 //## Rich presence invites (Games, Spotify)
 #{$chat} {
   #{$messagerichpresenceinvite} {
-    background: RGB(var(--tc-color-2));
-    border: 1px solid RGB(var(--tc-color-3));
-    border-radius: 0;
+    background: RGB(var(--tc-tint-1));
+    border: none;
+    border-radius: var(--embed-roundness);
+    box-shadow: var(--elevation-shadow);
     // Music ended image
     .artworkSpotifySessionEnded-11d_If {
       background: none!important;
-      @include mask(var(--deafened-icon), RGB(var(--tc-tint-6)), $important: true);
+      @include mask(var(--deafened-icon), RGB(var(--tc-tint-7)), $important: true);
       border-radius: 0;
     }
     // Album artwork
     .artwork-1vrmJ_ {
-      border-radius: 0;
+      border-radius: var(--image-roundness);
       height: 103px;
       width: 103px;
     }
@@ -109,11 +113,11 @@
     }
     // 'by' text, artist name container
     .state-2dqgON {
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
     }
     // Header text
     .partyStatus-6AjDud {
-      color: RGB(var(--tc-tint-10));
+      color: RGB(var(--tc-tint-11));
     }
     // Empty party member slots
     .partyMemberEmpty-2iyh5g {
@@ -126,7 +130,7 @@
     .header-Hg_qNF {
       text-transform: none;
       font-weight: 400;
-      color: RGB(var(--tc-tint-6));
+      color: RGB(var(--tc-tint-7));
     }
     // Game cover art image container
     .coverImageWrapper-22d5LB {
@@ -169,9 +173,8 @@
 #{$chat} {
   #{$chatjumptopresentbar} {
     @include flex-center;
-    background-color: RGB(var(--tc-color-2));
-    border: 1px solid RGB(var(--tc-tint-3))!important;
-    border-radius: 0;
+    @extend %button-hollow;
+    background: var(--chat-color)!important;
     left: unset;
     right: 27px;
     bottom: 10px;
@@ -211,9 +214,6 @@
           display: inline-block;
         }
       }
-    }
-    &:hover {
-      background: RGB(var(--tc-color-4));
     }
   }
 }

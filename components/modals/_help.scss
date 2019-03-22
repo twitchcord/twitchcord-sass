@@ -11,7 +11,7 @@
     h1 {
       font-weight: 400;
       text-transform: lowercase;
-      color: RGB(var(--tc-tint-10));
+      color: RGB(var(--tc-tint-11));
       font-size: 24px;
       line-height: 30px;
       padding-bottom: 5px;
@@ -74,11 +74,11 @@
 
 .form.deprecated .form-inner {
     background: RGB(var(--tc-color-3));
-    color: RGB(var(--tc-tint-7));
+    color: RGB(var(--tc-tint-8));
 }
 
 .form.deprecated .control-group .help-text {
-  color: RGB(var(--tc-tint-7));
+  color: RGB(var(--tc-tint-8));
   font-size: 12px!important;
   line-height: 18px;
   opacity: 0.7;
@@ -118,7 +118,7 @@
 }
 .modal-content.need-help-modal .form-inner ul li::after{
     font-size:15px;
-    color: RGB(var(--tc-tint-9));
+    color: RGB(var(--tc-tint-10));
     bottom:20px;
     left:0;
     position: absolute;

@@ -13,11 +13,14 @@
 			}
 		}
 	}
+	#{$imagewrapperbackground} {
+		background: var(--embed-color);
+	}
 	#{$imagewrapper} {
 		border-radius: 0;
 		overflow: visible;
 		#{$imagewrapperinner} {
-	    background-color: RGB(var(--tc-color-2));
+	    background-color: var(--embed-color);
 		}
 		img {
 			@include size(100%!important, auto!important);
@@ -43,9 +46,10 @@
 		}
 	}
 	#{$embedinner} {
-    background-color: RGB(var(--tc-color-3))!important;
-    border-color: RGB(var(--tc-color-4))!important;
+    background-color: RGB(var(--tc-tint-1))!important;
+    border: none;
 		border-radius: 0!important;
+		box-shadow: var(--elevation-shadow);
 		overflow: visible;
     padding: 10px 15px!important;
 		&:empty {
@@ -90,7 +94,7 @@
 	}
 	#{$embeddescription},
 	#{$embedfieldvalue} {
-		color: RGB(var(--tc-tint-9))!important;
+		color: RGB(var(--tc-tint-10))!important;
 	}
 	#{$embeddescription} {
 		line-height: 20px!important;
@@ -124,13 +128,11 @@
 	}
 	#{$embedfootertext},
 	.embedFooterSeparator-3klTIQ {
-	  color: RGB(var(--tc-tint-6));
+	  color: RGB(var(--tc-tint-7));
 	}
 	// Video embeds
 	@at-root #{$embedvideo} {
 		border-radius: 0;
-		min-height: 130px;
-		min-width: 150px;
 		// Image thumbnail
 		#{$imagewrapper} {
     	border-radius: 0!important;
@@ -148,6 +150,7 @@
 					background: none!important;
 					// Play button inner container
 					#{$iconwrapperwrapper} {
+						opacity: 0.8;
 						// Open in new window button link
 						+ #{$iconwrapperwrapper} {
 							display: none!important;

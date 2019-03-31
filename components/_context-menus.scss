@@ -6,16 +6,12 @@
 
 // Context menu
 #{$contextmenu} {
-  background: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-tint-4))!important;
+  @include reset;
+  background: var(--context-menu-color)!important;
+  border: 1px solid var(--border-color)!important;
   border-radius: var(--context-menu-roundness);
-  box-shadow: rgba(0, 0, 0, 0.12) 3px 3px 8px!important;
-  box-sizing: border-box;
-  margin: 0 10px;
-  min-width: 180px;
-  max-width: 300px;
-  padding: 10px 0;
-  width: auto;
+  box-shadow: var(--elevation-1)!important;
+  width: 200px;
   z-index: 99999999;
   // Item that shows a new context menu on hover
   #{$contextmenuitemsubmenu} {
@@ -51,16 +47,16 @@
     //margin-left: 170px;
   }
   #{$contextmenuitem} {
-    @include text(RGB(var(--tc-tint-10)), 14px, 400, 18px);
+    @include text(RGB(var(--tc-tint-11)), 12px, 400, 18px);
     align-items: center;
-    border-radius: var(--menu-item-roundness);
+    border-radius: var(--context-item-roundness);
     display: flex;
     list-style-type: none;
-    margin: 0 8px;
+    margin: 0;
     overflow: hidden;
-    padding: 6px 10px;
+    padding: 5px 10px;
     white-space: nowrap;
-    width: calc(100% - 20px);
+    width: 100%;
     &:hover,
     &:hover:active,
     &:active {

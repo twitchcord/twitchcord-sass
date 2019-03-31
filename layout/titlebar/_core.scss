@@ -103,6 +103,6 @@
 //## ixMaximized - change the maximize icon if the app is maximized or not
 .isMaximized:root {
   svg[name="TitleBarMaximize"] {
-      @include mask(var(--app-restore-icon), #fff, 10px);
+      @include mask(var(--app-restore-icon), #fff, 10px 11px);
     }
 }

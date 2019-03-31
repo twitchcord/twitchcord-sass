@@ -5,10 +5,10 @@
 
 .everyonePopout-nEbJY3 {
   width: 490px;
-  background: RGB(var(--tc-color-3))!important;
-  border-radius: 1px;
-  border: 1px solid RGB(var(--tc-color-4));
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,.34),0 2px 2px -2px rgba(0,0,0,.26),0 1px 4px 0 rgba(0,0,0,.28)!important;
+  background: RGB(var(--tc-tint-1))!important;
+  border-radius: var(--autocomplete-roundness);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--elevation-1)!important;
   opacity: 0;
   animation: fadeIn 0.3s forwards, translateBottomToTop 0.3s forwards;
   .body-2iXqIL {
@@ -83,8 +83,8 @@
     }
   }
   .footer-2aTx0s {
-    background: RGB(var(--tc-color-2))!important;
-    border-top: 1px solid RGBA(var(--tc-color-4), 0.7);
+    background: RGB(var(--tc-tint-2))!important;
+    border-top: 1px solid var(--empty-hover-color);
     color: RGB(var(--tc-tint-7));
     .icon-2qOzDL {
       path {

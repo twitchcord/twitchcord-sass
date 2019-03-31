@@ -6,7 +6,7 @@
 .wrapper-35wsBm {
   background: RGB(var(--tc-tint-1))!important;
   border: none;
-  box-shadow: var(--elevation-shadow);
+  box-shadow: var(--elevation-1);
   border-radius: 0;
   .content-2U5lSY {
     position: relative;
@@ -65,6 +65,7 @@
       &#{$buttonlookoutlined} {
         background: var(--success-color)!important;
         border-color: var(--success-color)!important;
+        color: #fff!important;
         &:hover {
           background: var(--success-color)!important;
           border-color: var(--success-color)!important;

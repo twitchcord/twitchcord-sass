@@ -3,14 +3,6 @@
 ///  Chat area
 /// ==========================================================================
 
-// Just in case it isn't margin-left: 0
-// https://i.imgur.com/0wAgpbV.png
-// guildswrapper direct sibling div
-.base-3dtUhz {
-  margin-left: 0!important;
-  border-radius: 0;
-}
-
 #{$messageswrapper} {
   // Links
   @at-root #{$messagemarkup} a,
@@ -28,7 +20,7 @@
     #{$chatdivider} {
       height: 30px;
       padding: 0 60px;
-      margin: 21px 0 12px 10px;
+      margin: 21px 0 12px 4px;
       z-index: 4;
       overflow: hidden;
       align-items: center;
@@ -38,13 +30,13 @@
       top: -9px;
       background: RGB(var(--tc-color-1));
       #{$chatdividerspan} {
-        @include text(RGB(var(--tc-tint-10))!important, 16px);
+        @include text(var(--chat-text-color)!important, 16px);
         background-color: transparent !important;
         padding: 0;
         width: 100%;
         &::before,
         &::after {
-          border-color: RGB(var(--tc-tint-5))!important;
+          border-color: RGB(var(--tc-tint-4))!important;
         }
         &::before {
           margin-right: 30px;
@@ -55,7 +47,7 @@
       }
       &#{$chatdividernew} {
         position: relative;
-        margin: 20px 0 0 12px;
+        margin: 20px 0 0 4px;
         #{$chatdividerspan} {
           @include text(RGB(var(--tc-color-8))!important, 12px!important, 700, $transform: uppercase);
           &::before,
@@ -71,20 +63,19 @@
     }
     // Message group container
     @at-root #{$messagegroup} {
-      margin-left: 28px;
+      margin-left: 20px;
       min-height: calc(var(--chat-avatar-size) + 20px);
       overflow: visible;
       padding: 11px 0 0 0;
       // Local bot message
       &#{$messageislocalbot} {
-        background: RGB(var(--tc-color-2));
+        background: var(--empty-hover-color);
         box-shadow: none;
         margin: 15px 0;
         padding: 15px 12px!important;
-        border-right: 1px solid RGB(var(--tc-color-1));
         border-left: 4px solid RGB(var(--tc-color-7));
         #{$messagelocalbot} {
-          @include text(RGB(var(--tc-tint-7)), 12px, 400);
+          @include text(var(--chat-text-color), 12px, 400);
           margin: 8px 0 0 44px;
           #{$message} {
             h2 {
@@ -121,7 +112,7 @@
           line-height: 33px;
           box-sizing: border-box;
           #{$textarea} {
-            color: RGB(var(--tc-tint-10))!important;
+            color: var(--chat-text-color)!important;
             background-color: transparent;
             border: none;
             font-size: 14px;
@@ -136,8 +127,9 @@
       // Action messages, like "x pinned a message to this channel"
       // This is backup styling in case Twitchcord JS isn't loaded yet
       // for whatever reason
+      // REMOVE LATER
       #{$messagesystem} {
-        @include text(RGB(var(--tc-tint-11)), 12px, 400, 16px);
+        @include text(var(--chat-text-color), 12px, 400, 16px);
         align-items: center;
         background: var(--empty-hover-color);
         border-bottom: 1px solid RGBA(var(--tc-color-4), 0.4);
@@ -193,7 +185,7 @@
           display: none;
         }
         #{$messagesystem} {
-          @include text(RGB(var(--tc-tint-11)), 12px, 700, 16px);
+          @include text(var(--chat-text-color), 12px, 700, 16px);
           border: none;
           border-left: 4px solid RGB(var(--tc-color-7));
           padding: 10px 15px;
@@ -215,7 +207,7 @@
         #{$messagecontent} {
           margin: -1px 6px 0 calc(var(--chat-avatar-size) + var(--chat-avatar-margin));
           #{$messagemarkup} {
-            color: RGB(var(--tc-tint-11));
+            color: var(--chat-text-color);
             line-height: 1.5;
             font-size: 14px;
             font-weight: 400;
@@ -342,19 +334,25 @@
     @at-root #{$messagegroupblocked} {
       border-radius: 0;
       background: RGB(var(--tc-color-1))!important;
-      border: 1px solid RGBA(var(--tc-color-4), 0.8)!important;
-      margin: 15px;
+      border: none!important;
+      box-shadow: var(--elevation-1)!important;
+      margin: 15px 18px 15px 20px;
       display: none;
       &#{$messagegroupblockedrevealed}{
-        border: 1px solid RGB(var(--tc-color-4))!important;
+        border: 1px solid var(--empty-hover-color)!important;
         background: RGB(var(--tc-color-1))!important;
+        box-shadow: none!important;
+        #{$messagegroupblockedbtn} { 
+          background: RGB(var(--tc-tint-2))!important;
+        }
         #{$messagegroup} {
-          padding: 11px 20px;
+          margin-left: 12px;
+          padding: 15px 0 10px;
         }
       }
       #{$messagegroupblockedbtn} {
-        background: RGB(var(--tc-color-2))!important;
-        color: RGB(var(--tc-tint-7))!important;
+        background: RGB(var(--tc-tint-1))!important;
+        color: RGB(var(--tc-tint-9))!important;
         font-size: 11px;
         font-weight: 700;
         border-radius: 0;
@@ -381,7 +379,7 @@
   }
   // Chat area scroller container
   #{$messages} {
-    @include scrollbars;
+    @include scrollbar('alternate', '&');
     padding-bottom: 50px;
     // Set overflow to auto for DM's
     @at-root #{classes('html.routes.private')} & {
@@ -394,7 +392,7 @@
       .base-34jWEe {
         background-image: none;
         @include size(100%, 150px);
-        @include mask(var(--castle-image), RGB(var(--tc-tint-10)));
+        @include mask(var(--castle-image), var(--chat-text-color));
         margin: 0 auto;
         padding: 0;
         opacity: 0.6;
@@ -403,7 +401,7 @@
       }
       .h1-1IDj26 {
         font-weight: 400;
-        color: RGB(var(--tc-tint-10));
+        color: var(--chat-text-color);
         font-size: 12px;
         text-transform: none;
         margin: 20px 0 15px;
@@ -464,7 +462,7 @@
       border: none;
     }
     #{$textarea} {
-      color: RGB(var(--tc-tint-10))!important;
+      color: var(--chat-text-color)!important;
       background-color: transparent;
       border: none;
       letter-spacing: 0;
@@ -474,7 +472,7 @@
       margin-right: 5px;
       padding: 6px 6px 6px 12px;
       &::-webkit-input-placeholder {
-        color: RGB(var(--tc-tint-9))!important;
+        color: RGB(var(--tc-tint-7))!important;
       }
     }
     .textAreaDisabled-2_o-kZ,
@@ -487,17 +485,14 @@
       border-radius: 0;
     }
     #{$textareainner} {
-      background-color: RGB(var(--tc-tint-1))!important;
-      border: 1px solid var(--border-color);
-      border-radius: 0;
-      min-height: 33px;
-      line-height: 33px;
-      box-sizing: border-box;
+      @include input('alternate');
+      height: auto;
       // Attach button container
       > #{$flex} {
-        flex: 0 0 95px!important;
+        align-items: flex-start;
+        flex: 0 0 94px!important;
         order: 2;
-        width: 95px;
+        width: 94px;
       }
     }
   }
@@ -515,20 +510,22 @@
     min-width: 20px!important;
     min-height: 20px!important;
     margin: 0!important;
-    right: -8px;
-    top: 6px;
     padding: 0;
     position: relative;
     opacity: 1;
     overflow: visible;
+    top: 6px;
     transition: none!important;
     filter: none!important;
     .attachButtonInner-1iyZ9F {
       height: 20px;
+      svg {
+        display: none;
+      }
     }
     &:hover {
       transform: none;
-      background-color: RGB(var(--tc-color-11))!important;
+      background-color: RGB(var(--tc-color-12))!important;
       opacity: 1;
     }
   }

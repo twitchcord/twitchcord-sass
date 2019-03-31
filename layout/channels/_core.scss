@@ -21,26 +21,27 @@
   // Unread / mentions indicators
   #{classes('layout.channels.unreadBarContainer')} {
     overflow: visible;
-  }
-  #{classes('layout.channels.unreadBottom')} {
-    #{classes('layout.channels.unreadBar')} {
-      // Unread / mentions indicator active
-      &#{classes('layout.channels.unreadBarActive')} {
-        top: -15px;
-      }
-    }
+    padding: 0;
   }
   // Server channel header dropdown button thing
   #{classes('layout.channels.serverHeaderContainer')} {
     display: none;
   }
   #{classes('layout.channels.scroller')} {
+    // "Fake" scrollbar tomfoolery
+    @include fakeScrollbarFade('channels');
     overflow-x: hidden;
     // Lazy loading bandaid
     padding-bottom: 1000%;
     margin-bottom: -995%;
+    // Fix to make the "fake" scrollbar fade in/out work below
+    z-index: auto;
     // Direct child div of scroller
     > div:first-of-type[style*='width: 100%;'] {
+      
+    }
+    // Temporary fix to get rid of channel headers for Verified servers
+    > div:first-of-type[style*='height: 78px;'] {
       height: 0!important;
     }
     // container-0, container-1, container-2, etc.
@@ -59,24 +60,13 @@
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-track,
     &::-webkit-scrollbar-track-piece {
-      visibility: hidden;
       // Lazy load bandaid
       margin-bottom: 35%;
-    }
-    &::-webkit-scrollbar-track {
-      background: transparent!important;
-    }
-    &:hover {
-      &::-webkit-scrollbar-thumb,
-      &::-webkit-scrollbar,
-      &::-webkit-scrollbar-track,
-      &::-webkit-scrollbar-track-piece {
-        visibility: visible;
-      }
+      visibility: visible;
     }
   }
   #{classes('layout.channels.scrollerWrap')} {
-    padding: 1px 1px 0 0;
+    padding: 2px 2px 0 0;
   }
   // Voice collapsed icon container
   #{classes('layout.channels.voiceCollapsedIconContainer')} {
@@ -167,6 +157,7 @@
       @include size(14px, 16px);
       content: '';
       display: inline-flex;
+      flex: 0 0 auto;
       margin: -2px 7px 0 0;
       order: 2;
       position: relative;
@@ -180,9 +171,10 @@
   #{classes('layout.channels.categoryIconMuted')},
   #{classes('layout.channels.categoryIconTransition')},
   #{classes('layout.channels.categoryIconUnread')} {
-    @include mask(var(--down-arrow-icon), RGB(var(--tc-tint-9)), 13px);
+    @include mask(var(--down-arrow-icon), RGB(var(--tc-tint-9)), 26px 20px);
     @include relative(top -1px left 0);
     @include size(22px!important);
+    flex: 0 0 auto;
     margin: 0;
     order: 1;
     transform: none;
@@ -190,11 +182,6 @@
     path {
       display: none;
     }
-  }
-  // Hovered category collapse icon
-  #{classes('layout.channels.categoryIconHovered')},
-  #{classes('layout.channels.categoryIconHoveredCollapsed')} {
-    background-color: #fff;
   }
   // We had to set transform to none above to prevent a background color
   // flashing issue when the arrows were loaded in
@@ -214,6 +201,7 @@
     order: 3;
     + #{classes('layout.channels.marginResetButton')} {
       @include size(20px);
+      margin: 0;
       order: 4;
       // Create channel button (+)
       #{classes('components.buttons.button')} {
@@ -226,6 +214,7 @@
         padding: 0;
         #{classes('components.buttons.contents')} {
           @include size(20px);
+          padding: 0;
           #{classes('layout.channels.categoryAddChannelIcon')} {
             @include mask(var(--plus-icon), RGB(var(--tc-tint-9)), 15px);
             @include size(20px);
@@ -250,8 +239,8 @@
     height: 26px;
   }
   #{classes('layout.channels.container0')} {
-    margin: 5px 7px 3px 10px!important;
-    padding: 10px 0 0!important;
+    margin: 15px 7px 3px 10px!important;
+    padding: 0!important;
     // Fix for margin on voice channels with no category
     #{classes('layout.channels.voiceListDefault')} {
       margin-left: 17px;
@@ -539,15 +528,15 @@
   #{classes('layout.channels.wrapperLockedVoice')} {
     overflow: visible;
     &::before {
-      @include absolute(top -60px);
-      content: 'You do not have access to this room.';
+      @include absolute(top -38px);
+      @include ellipsis;
+      @include localize('You do not have access to this room');
       border: none!important;
     }
     &::after {
       @include absolute(top 100% left 50%);
       @include triangle(bottom, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
       content: '';
-      animation: fadeIn 0.15s ease-in forwards;
       margin-left: calc(var(--tooltip-arrow-size) * -1 + 2px);
       margin-top: -38px;
       pointer-events: none;

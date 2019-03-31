@@ -9,7 +9,7 @@
 
 
 .modal-1UGdnR > .inner-1JeGVc > div > .imageWrapper-2p5ogY {
-    background: RGB(var(--tc-tint-1));
+    background: RGB(var(--tc-color-1));
     border: none;
     width: calc(100vw - 160px)!important;
     height: calc(100vh - 160px)!important;
@@ -35,7 +35,8 @@
     top: 1px;
     height: 70px;
     display: flex;
-    background: RGB(var(--tc-tint-2));
+    background: RGB(var(--tc-tint-1));
+    border-bottom: 1px solid var(--empty-hover-color);
     align-items: center;
     left: 1px;
     padding: 0 20px;
@@ -152,4 +153,7 @@
   padding-top: 60px;
   z-index: 9;
   opacity: 0.2;
+  height: auto!important;
+  max-width: 100% !important;
+  max-height: 100% !important;
 }

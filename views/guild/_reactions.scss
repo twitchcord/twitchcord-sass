@@ -40,7 +40,7 @@
 	width: 100%;
 	flex: 100%;
 	order: 9999999999;
-  margin: 2px!important;
+  margin: 7px 2px!important;
 	&:hover {
 		#{$messagebtnreaction} {
 			opacity: 0.5!important;
@@ -64,8 +64,8 @@
 	border-radius: 0;
 	position: relative;
   margin: 6px 8px 0 0;
-  background: RGB(var(--tc-color-2))!important;
-	box-shadow: 0 0 0 1px RGB(var(--tc-color-3));
+  background: RGB(var(--tc-tint-1))!important;
+	box-shadow: var(--elevation-1);
 	padding: 0;
   pointer-events: none;
 	&::before,

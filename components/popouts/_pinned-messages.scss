@@ -91,13 +91,6 @@
     background-color: RGB(var(--tc-color-1));
     border-radius: 0;
     padding: 0;
-    &::-webkit-scrollbar-thumb {
-        background: RGB(var(--tc-color-5))!important;
-        border: 1px solid RGB(var(--tc-color-3))!important;
-    }
-    &::-webkit-scrollbar-track-piece {
-        background: RGB(var(--tc-color-3))!important;
-    }
     .channelSeparator-1MxuvT {
       margin: 0;
       background: RGB(var(--tc-color-1));
@@ -217,11 +210,6 @@
             pre {
               max-width: 100%;
               width: 100%;
-              &::-webkit-scrollbar,
-              &::-webkit-scrollbar-track,
-              &::-webkit-scrollbar-thumb {
-                visibility: hidden;
-              }
             }
           }
         }

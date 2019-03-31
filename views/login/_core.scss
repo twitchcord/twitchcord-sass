@@ -9,7 +9,7 @@
   }
   // Background container
   .rightSplit-2US0xy {
-    background: linear-gradient(to top, RGB(var(--tc-color-3)) 0, RGB(var(--tc-color-1)));
+    background: linear-gradient(to top, RGB(var(--tc-color-4)) 0, RGB(var(--tc-color-1)));
     // Actual background img
     &::after {
       content: '';
@@ -53,8 +53,7 @@
     .wrapper-6URcxg {
       right: 0!important;
       justify-content: center!important;
-      border-top: 1px solid RGB(var(--tc-color-10), 0.1);
-      border-bottom: 2px solid RGB(var(--tc-color-1));
+      border-top: 1px solid var(--border-color);
     }
     // Login box outter container
     .authBox-hW6HRx {

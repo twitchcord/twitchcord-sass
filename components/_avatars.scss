@@ -1,7 +1,24 @@
 ///  main: _module.scss
 ///  ==========================================================================
-///  Replacement avatars
+///  Avatars
 ///  ==========================================================================
+
+// Place a generic user background image on the avatar wrapper to
+// show while the real user avatar is loading
+#{classes('components.avatars.wrapper')} {
+  background-image: url(https://client.forgecdn.net/Avatars/UserAvatar.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: var(--user-roundness);
+}
+
+#{classes('components.avatars.inner')} {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: var(--user-roundness);
+}
 
 // Discord default avatars
 #{classes('components.avatars.image')},

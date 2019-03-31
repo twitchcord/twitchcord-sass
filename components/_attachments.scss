@@ -1,3 +1,4 @@
+///  main: _module.scss
 ///  ==========================================================================
 ///  Attachments
 ///  ==========================================================================
@@ -9,7 +10,7 @@
   background-color: var(--embed-color)!important;
   border: none;
   border-radius: 0;
-  box-shadow: var(--elevation-shadow);
+  box-shadow: var(--elevation-1);
   margin: 8px 0;
   max-width: none;
   padding: 10px;
@@ -75,7 +76,7 @@
       @include size(100%, 5px);
       background: var(--embed-color)!important;
       border-radius: 0;
-      box-shadow: var(--elevation-shadow);
+      box-shadow: var(--elevation-1);
       color: transparent;
       margin: 0;
       @at-root #{classes('components.attachments.progress')}  {

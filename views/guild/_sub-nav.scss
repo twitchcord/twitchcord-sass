@@ -48,7 +48,8 @@
       }
       // Pinned messages
       &[name="Pin"] {
-        @include mask(var(--thumbtack-icon), RGB(var(--tc-tint-7)), 14px);
+        @include mask(var(--thumbtack-icon), RGB(var(--tc-tint-7)), 19px);
+        margin-top: -2px;
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
@@ -58,16 +59,16 @@
       }
       // Channel unmuted
       &[name="NotificationBell"] {
-        @include mask(var(--server-muted-icon), RGB(var(--tc-tint-7)), 18px);
+        @include mask(var(--notification-icon), RGB(var(--tc-tint-7)), 22px);
         &:hover {
-          background-color: RGB(var(--contrasted-color));
+          @include mask(var(--notification-off-icon), RGB(var(--contrasted-color)), 22px);
         }
       }
       // Channel muted
       &[name="NotificationBellOff"] {
-        @include mask(var(--server-unmuted-icon), RGB(var(--tc-tint-7)), 18px);
+        @include mask(var(--notification-off-icon), RGB(var(--tc-tint-7)), 22px);
         &:hover {
-          background-color: RGB(var(--contrasted-color));
+          @include mask(var(--notification-icon), RGB(var(--contrasted-color)), 22px);
         }
       }
       // Update/updating
@@ -97,7 +98,7 @@
         }
       }
       &[name="People"] {
-        @include mask(var(--channel-members-icon), RGB(var(--tc-tint-7)), 36px);
+        @include mask(var(--channel-members-icon), RGB(var(--tc-tint-7)), 39px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
@@ -126,16 +127,10 @@
       justify-content: flex-end;
       height: var(--sub-nav-height);
       margin: 0 10px!important;
-      min-width: var(--channel-members-width);
+      min-width: var(--members-width);
       // Help
       > span:last-of-type {
         display: none;
-      }
-      // Mentions
-      > span:nth-last-of-type(2) {
-        @include fixed(top var(--titlebar-height) right calc(var(--account-status-panel-width) + 5px));
-        height: var(--main-nav-height);
-        pointer-events: none;
       }
       // Fix for the video call and voice call buttons on DMs
       @at-root .messagesView & {
@@ -184,6 +179,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 4px;
   width: calc(100% - 50px);
   &-ava-container {
     @include size(calc(var(--sub-nav-guild-icon-size) + 4px));
@@ -213,14 +209,14 @@
     width: 100%;
     box-sizing: border-box;
     padding-right: 100px;
+    flex-wrap: wrap;
   }
   &-topic-contain {
     font-size: 12px;
     font-weight: 400;
     color: RGB(var(--tc-tint-10));
     width: 100%;
-    line-height: 26px;
-    margin: 5px 0 0 10px;
+    line-height: 24px;
   }
   // Hide these when not on DMs
   &-topic-type,
@@ -233,7 +229,7 @@
   &-topic {
     @include ellipsis(100%, inline-block);
     vertical-align: bottom;
-    color: RGB(var(--tc-color-10));
+    color: RGB(var(--tc-tint-10));
     &:empty {
       display: none;
     }

@@ -11,20 +11,8 @@
 //
 //  Created by Baked
 //  First started: 8/29/2017
-//  Version: #{$version}
 //  http://www.twitchcord.com
 //  https://discord.me/twitchcord
-//
-///////////////////////////////////////
-
-///////////////////////////////////////
-//
-//  Dustin Perolio (Baked) retains full rights of this code.
-//
-//  You are not allowed to redistribute this theme or any part of it as your own. That means do not post an edited version of this theme anywhere.
-//  You are allowed to edit the theme for personal use only.
-//
-//  If you enjoy using the theme, help spread the word!
 //
 ///////////////////////////////////////
 */
@@ -32,15 +20,11 @@
 .tc-refreshing {
     animation: rotate360 1s infinite;
   }
-  
-  // Remove app shake from Ctrl+Alt+Shift up/down keybind
-  .app {
-    transform: none!important;
-  }
+
   
   // Early loading BG fix, connection background
   .loading-Ags1CY,
-  .appMount-3VJmYg,
+  .appMount-3lHmkl,
   .app-19_DXt > div[style*="background-color: rgb(47, 49, 54)"] {
     background: RGB(var(--tc-color-4))!important;
     opacity: 1!important;
@@ -85,26 +69,6 @@
   .topic-2QX7LI, .noTopic-2b04lB,
   .titleText-3X-zRE .channelName-3stJzi {
     display: none;
-  }
-  
-  // Mentions indicator container
-  #{$mentionsindicatorbar} {
-    border-radius: 0;
-    width: 100%;
-    background: var(--fail-color)!important;
-    box-shadow: none!important;
-    &:hover {
-      background: var(--fail-color)!important;
-    }
-    // Mentions indicator is active
-    &#{$mentionsindicatorbaractive} {
-      background: var(--fail-color)!important;
-      transition: var(--transition-none, transform 0.3s);
-    }
-    // Down and up arrow icons on unread mentions indicators
-    #{$mentionsindicatorarrowicon} {
-      display: none;
-    }
   }
   
   
@@ -208,60 +172,11 @@
     vertical-align: middle;
     margin: 2px 5px!important;
   }
-  
-  // Place the generic user background image on the avatar wrapper to
-  // show while avatar is loading
-  #{$avatarwrapper} {
-    background-image: url(https://client.forgecdn.net/Avatars/UserAvatar.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    border-radius: var(--user-roundness);
-  }
-  
-  body {
-    @include scrollbars;
-    ::-webkit-scrollbar-thumb {
-      background-clip: content-box;
-    }
-    ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-track-piece {
-      border: none!important;
-    }
-    // Textarea scrollbar adjustments
-    textarea {
-      &::-webkit-scrollbar-thumb {
-        border: 3px solid RGB(var(--tc-color-1))!important;
-      }
-      &::-webkit-scrollbar-track,
-      &::-webkit-scrollbar-track-piece {
-        background: none!important;
-      }
-    }
-  }
+
   
   // ?????????????????????????
   .closed-1D6IW8 {
     transform: rotate(-90deg);
-  }
-  
-  .mention-1f5kbO {
-    box-shadow: none!important;
-  }
-  
-  // Down and up arrow on unread indicators
-  .icon-2aINcz { display: none; }
-  
-  
-  .mention-1f5kbO {
-    transform: translateY(0)!important;
-    transition: transform 0.2s;
-  }
-  
-  .bar-30k2ka {
-    border-radius: var(--button-roundness);
-    font-weight: 700;
-    width: 100%;
   }
   
   // ??????????????????
@@ -308,29 +223,9 @@
       animation-delay: .4s!important;
   }
   
-  .spinner-pulsing-ellipsis .spinner-item {
-      background: RGB(var(--tc-color-8));
-      border-radius: 0;
-  }
-  
-  .pulsingEllipsis-3YiXRF .pulsingEllipsisItem-32hhWL {
-      border-radius: 0;
-  }
-  
   .message-text {
       position: relative;
       margin-top: -2px;
-  }
-  
-  .defaultColor-1_ajX0, .root-SR8cQa .userInfoSection-2acyCx .userInfoSectionHeader-CBvMDh, .root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS::before,
-  .root-SR8cQa .header-QKLPzZ .headerText-1HLrL7, .ui-phone-verification-modal .title,
-  .lfg-3xoFkI .wrapper-33pNYY .title-7_vIlL, .ui-new-terms-modal .title, .titleText-2hobNv {
-      color: RGB(var(--tc-tint-11))!important;
-      font-weight: 400!important;
-      text-transform: none!important;
-      font-size: 24px!important;
-      line-height: 30px!important;
-      padding-bottom: 5px;
   }
   
   .cloneInfo-1OC_Ee strong, .subtitle-3csUrC.primary-jw0I4K {
@@ -462,51 +357,6 @@
       color: #fff!important;
   }
   
-  .ui-quick-select-label {
-      opacity: 1;
-      color: RGB(var(--tc-tint-8));
-  }
-  
-  .ui-standard-sidebar-view .custom-container .custom-header {
-      padding-top: 10px;
-  }
-  
-  .ui-standard-sidebar-view .content-column.default .flexChild-faoVW3[style="flex: 0 1 40px;"] {
-      margin-left: 20px!important;
-  }
-  
-  .ui-standard-sidebar-view .custom-scroller>div {
-      max-width: 100%;
-      margin-right: 57px;
-  }
-  
-  .ui-standard-sidebar-view .custom-column+.tools {
-      margin-right: 0;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 999999999;
-      width: 80px;
-      height: 65px;
-      padding: 0;
-  }
-  
-  .ui-key-recorder .input {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 20px;
-      color: #fff!important;
-  }
-  
-  .description-3_Ncsb.primary-jw0I4K, .labelDescriptor-1PqHgD.primary-jw0I4K {
-      font-weight: 400;
-      display: block;
-      font-size: 14px!important;
-      color: RGB(var(--tc-tint-8))!important;
-      margin-bottom: 10px;
-      line-height: 24px;
-  }
-  
   .separator-6YbWrc {
       box-shadow: none!important
   }
@@ -555,11 +405,6 @@
       box-shadow: none;
       border-radius: 0;
       background: none!important;
-  }
-  
-  .primary-jw0I4K {
-      color: var(--dark-text-tint)!important;
-      font-size: 13px!important;
   }
   
   .primaryButton-2BsGPp {
@@ -806,50 +651,6 @@
       border: 1px solid RGB(var(--tc-color-4))!important;
       background: rgba(0, 0, 0, 0.2) !important;
       padding: 0px 10px;
-  }
-  
-  // Move chat area 2px left so scrollbar isn't flush against edge
-  #{$chatcontent}.flex-horizontal>.flex-spacer {
-    margin-right: 2px;
-  }
-  
-  // Circlular loading thing seen in some places
-  // https://i.imgur.com/kMTdl40.gifv
-  .spinner .path {
-      stroke: var(--button-color-hover)!important;
-  }
-  
-  .Select-option:last-child {
-      border-radius: 0;
-  }
-  
-  .Select-menu-outer .primary-jw0I4K {
-      padding-top: 4px;
-  }
-  
-  .Select .primary-jw0I4K {
-      color: #fff!important;
-  }
-  
-  .Select .primary-jw0I4K.subtitle-2yP_Eh,
-  .Select .icon-JJBzjE {
-      color: RGB(var(--tc-tint-8))!important;
-      opacity: 0.7!important;
-  }
-  
-  .ui-select .Select-menu .Select-option.is-selected .icon-JJBzjE path,
-  .Select-menu .Select-option.is-selected .icon-JJBzjE path {
-      fill: #fff!important;
-  }
-  
-  .Select-control {
-      font-size: 14px;
-      width: calc(100% + 0.5px);
-  }
-  
-  .ui-select .Select-menu .icon-JJBzjE,
-  .Select-menu .icon-JJBzjE  {
-      opacity: 1;
   }
   
   .cardPrimaryOutline-29Ujqw {
@@ -1438,24 +1239,6 @@
       margin-top: 10px;
   }
   
-  .card-3Qj_Yx a {
-      font-weight: 400;
-  }
-  
-  .cardPrimaryOutline-29Ujqw.preview {
-      background: RGB(var(--tc-color-1));
-      border: none!important;
-  }
-  
-  .cardPrimary-1Hv-to {
-      background: RGB(var(--tc-color-1))!important;
-      border-color: RGB(var(--tc-color-5))!important;
-      color: RGB(var(--tc-tint-8));
-      transition: all 0.2s;
-      border-radius: 0;
-      margin: 0 0 10px;
-  }
-  
   .itemDanger-3m3dwx:hover {
     color: #fff;
     background: var(--fail-color)!important;
@@ -1810,20 +1593,9 @@
     }
   }
   
-  .private-channel-recipients-invite .header .title {
-      color: #fff!important;
-      font-size: 12px!important;
-      text-align: left;
-  }
   
   // @import 'addons/module';
   
   .imagePlaceholderOverlay-ETNjpn {
     background: RGB(var(--tc-color-1));
   }
-  
-  // Get rid of toasts and plugin update notices if there are any
-  .toasts, #pluginNotice {
-    display: none!important;
-  }
-  

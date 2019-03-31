@@ -47,7 +47,7 @@
 }
 
 .user-settings-games .game-name-input:focus {
-    background-color: hsla(var(--channels-color), 1)!important;
+    background-color: RGB(var(--tc-color-2))!important;
     border-color: none!important;
     box-shadow: inset 0 0 0 1px RGB(var(--tc-color-8)), 0 0 6px -2px RGB(var(--tc-color-8));
 }

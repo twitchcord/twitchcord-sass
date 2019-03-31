@@ -7,21 +7,19 @@
 // Buttons
 #{classes('components.buttons.button')} {
   @include button-base;
-  flex: none;
-  height: 30px;
-  min-height: 0;
-  min-width: 0;
   // Left margin for buttons with another button as a direct sibling
   & + & {
     margin-left: 10px;
   }
   // Button contents/text
   #{classes('components.buttons.contents')} {
-    @include flex-center;
     // To get rid of Discord's cheeky underline background gradient on some buttons
     background: none!important;
+    display: block;
     height: auto;
-    line-height: 100%;
+    line-height: initial;
+    padding: 4px 12px;
+    text-align: center;
   }
   // When buttons are placed next to each other inside a flex row reverse div,
   // we need to put the margin on the right instead of the left
@@ -48,7 +46,7 @@
 // "Empty" style button (don't look like buttons)
 #{classes('components.buttons.lookBlank')},
 #{classes('components.buttons.lookLink')} {
-  @extend %button-empty;
+  @include button('blank');
 }
 // Normal buttons ("primary")
 #{classes('components.buttons.lookFilled')} {

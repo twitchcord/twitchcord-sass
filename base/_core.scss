@@ -53,7 +53,66 @@ strong {
   font-weight: 700;
 }
 
-// Remove app shake effect from Ctrl+Alt+Shift up/down keybind
-#{classes('base.app.app')} {
-  transform: none!important;
+// Direct child of app container div
+.layer-3QrUeG {
+  padding: 0!important;
+  top: 0!important;
+}
+
+// Used for headings all over Discord, namely settings and modals
+.h2-2gWE-o {
+  @include header('h4');
+  text-transform: capitalize;
+}
+
+// Just in case it isn't margin-left: 0
+// https://i.imgur.com/0wAgpbV.png
+// Guild wrapper direct sibling div
+#{classes('base.base')} {
+  margin-left: 0!important;
+  border-radius: 0;
+}
+
+// Mentions indicator container for guilds and channels
+#{classes('base.unreadBar.bar')} {
+  background: var(--unread-bar-color)!important;
+  border-radius: 0;
+  font-weight: 700;
+  box-shadow: none!important;
+  // Active when the user has an unread mention
+  &#{classes('base.unreadBar.mention')} {
+      background: var(--fail-color)!important;
+      &:hover {
+          background: var(--fail-color)!important;
+      }
+  }
+  &:hover {
+      background: var(--unread-bar-hover-color)!important;
+  }
+  // Down and up arrow icons on unread mentions indicators
+  #{classes('base.unreadBar.icon')} {
+      display: none;
+  }
+}
+
+// Setting the main scrollbar style throughout the app
+body {
+  @include scrollbar('primary');
+  ::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track-piece {
+    border: none!important;
+  }
+  // Textarea scrollbar adjustments
+  textarea {
+    &::-webkit-scrollbar-thumb {
+      border: 3px solid RGB(var(--tc-color-1))!important;
+    }
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-track-piece {
+      background: none!important;
+    }
+  }
 }

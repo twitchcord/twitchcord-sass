@@ -1,0 +1,354 @@
+// main: _module.scss
+
+//** Emoji popout
+
+
+.emoteTypeBtns {
+  width: 100%;
+  cursor: default;
+  display: table;
+  table-layout: fixed;
+  div {
+    text-align: center;
+    display: table-cell;
+    color: RGB(var(--tc-tint-9));
+    font-size: 12px;
+    font-weight: 700;
+    height: 24px;
+    line-height: 24px;
+    padding: 4px 0;
+    text-transform: uppercase;
+    &:not(.selected) {
+      cursor: pointer;
+      background-color: RGB(var(--tc-tint-2));
+      &:hover {
+        background-color: RGB(var(--tc-color-6));
+        color: #fff;
+      }
+    }
+  }
+  #emoteMore,
+  #emoteDefault {
+    &::before {
+      @include size(20px);
+      content: '';
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+  }
+  #emoteMore {
+    &:not(.selected) {
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    &::before {
+      @include mask(var(--twitch-logo), RGB(var(--tc-tint-9)), 18px);
+    }
+  }
+  #emoteDefault {
+    &:not(.selected) {
+      border-left: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    &::before {
+      @include mask(var(--discord-logo), RGB(var(--tc-tint-9)), 18px);
+    }
+  }
+}
+
+
+
+/* Emoji Popup */
+.emojiPicker-3m1S-j {
+  @include size(400px!important);
+  border-radius: var(--autocomplete-roundness);
+  background: var(--autocomplete-color);
+  border-color: var(--border-color)!important;
+  margin: 0 -12px -2px 0;
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track-piece,
+  ::-webkit-scrollbar-thumb {
+      visibility: visible!important;
+  }
+  ::-webkit-scrollbar-thumb {
+    min-height: 50px;
+  }
+  .scroller-2FKFPG {
+    // "Fake" scrollbar tomfoolery
+    @include fakeScrollbarFade('autocomplete');
+    height: auto;
+    padding: 0;
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track {
+      margin-top: 10px;
+    }
+  }
+  .row-3j9Kuo {
+    height: 40px!important;
+    white-space: nowrap;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 15px;
+  }
+  .diversitySelector-tmmMv0 {
+    @include size(31px, 44px);
+    background: var(--autocomplete-color);
+    cursor: pointer;
+    margin: 0;
+    padding: 8px;
+    .item-16cXuq {
+      @include size(28px!important);
+      padding: 0;
+      &:hover {
+        background-color: RGB(var(--tc-color-6), 0.2)!important;
+      }
+    }
+    .popout-2nUePc {
+      background: var(--popout-color);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--elevation-1);
+      // 28px (emoji size) * 6 (number of tones) + 2px (border)
+      height: 170px!important;
+      margin: -1px 0 0 -1px;
+    }
+  }
+  .category-2U57w6 {
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: normal;
+    color: RGB(var(--tc-tint-9));
+    font-size: 12px;
+    background: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-top: 1px solid var(--empty-hover-color);
+    padding: 10px 15px 0;
+    margin: 15px 0 0 10px;
+    align-items: center;
+    display: flex;
+    height: auto;
+  }
+  // Get rid of the sticky header
+  .stickyHeader-1SS0JU {
+    visibility: hidden;
+  }
+  // To hide the border of the first category and fix the margin
+  [style="width: 100%; height: 0px;"] {
+    + .category-2U57w6 {
+      border: none;
+      margin: 0;
+      padding-top: 0;
+    }
+  }
+  .emojiItem-109bjA {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    flex: 0 0 auto;
+    margin: 4.4px!important;
+    position: relative;
+    &.selected-39BZ4S {
+      background-color: RGB(var(--tc-color-6), 0.2)!important;
+      border-radius: 0!important;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 50%;
+    }
+    &.disabled-1H1CfW {
+      cursor: not-allowed;
+      filter: none!important;
+      opacity: 0.3;
+      &::before,
+      &::after {
+        @include absolute(top 18px left 18px);
+        @include size(14px);
+        content: '';
+      }
+      &::before {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 2px;
+      }
+      &::after {
+        @include mask(var(--lock-icon), #fff, 10px);
+      }
+    }
+  }
+  .header-1nkwgG {
+    border: none;
+    padding: 15px;
+    flex: 0 0 60px;
+  }
+  .scrollerWrap-2lJEkd {
+    background: none;
+    border: 0;
+    padding: 1px 1px 0 0;
+  }
+  .searchBar-2pWH0_ {
+    background: var(--autocomplete-color)!important;
+    border-radius: 0!important;
+    box-shadow: none!important;
+    margin: 0;
+    padding: 0!important;
+  }
+  .searchBarInner-1_Tg2R {
+    background: none!important;
+    border-radius: 0!important;
+    border: none!important;
+    padding: 0;
+    // Search input
+    input {
+      @include input('primary');
+      padding: 0 33px;
+    }
+  }
+  #{classes('components.popouts.emojiPicker.searchBarIcon')} {
+    @include flex-center;
+    // Setting width to 100% in order to put the search icon on the left
+    // and close icon on the right of the search input
+    @include size(100%, 30px);
+    pointer-events: none;
+    position: absolute;
+    margin: 0;
+    .icon-3cZ1F_ {
+      cursor: text;
+      opacity: 1!important;
+      // 'Search' icon
+      &.iconSearchBarEyeGlass-2n38zb {
+        @include mask(var(--search-icon), RGB(var(--tc-tint-7)), 20px);
+        background-image: none;
+        cursor: default;
+        left: 8px;
+        transform: none;
+      }
+      // 'Clear' icon
+      &.iconSearchBarClear-2DW-Kr {
+        @include mask(var(--close-icon), RGB(var(--tc-tint-7)), 12px);
+        background-image: none;
+        cursor: pointer;
+        opacity: 0!important;
+        pointer-events: all;
+        right: 8px;
+        &.visible-3V0mGj {
+          opacity: 1!important;
+        }
+        &:hover {
+          background-color: RGB(var(--contrasted-color));
+        }
+      }
+    }
+  }
+  .categories-1feg4n {
+    margin: 0;
+    background: RGB(var(--tc-tint-2));
+    border: none;
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    height: auto;
+    justify-content: center;
+    border-top: 1px solid var(--border-color);
+    .item-16cXuq {
+      @include size(40px!important);
+      background-image: none!important;
+      border: none!important;
+      cursor: pointer!important;
+      margin: 0!important;
+      padding: 10px;
+      position: relative;
+      transition: none!important;
+      display: flex;
+      flex: 1 0 auto;
+      &.recent-rdY7_c {
+        @include mask(var(--clock-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.custom-2TY7UZ {
+        @include mask(var(--video-camera-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.people-2y6eof {
+        @include mask(var(--emoji-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.nature-WkggKK {
+        @include mask(var(--leaf-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.food-3vb4RY {
+        @include mask(var(--apple-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.activity-2oLAbd {
+        @include mask(var(--d-pad-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.travel-2FeozN {
+        @include mask(var(--globe-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.objects-ktZjG4 {
+        @include mask(var(--screen-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.symbols-3xtDtJ {
+        @include mask(var(--heart-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.flags-3peqg9 {
+        @include mask(var(--flag-icon), RGB(var(--tc-tint-10)), 20px);
+      }
+      &.selected-39BZ4S {
+        background-color: RGB(var(--tc-color-8))!important;
+        opacity: 1!important;
+      }
+      &:hover {
+        background-color: #fff;
+        opacity: 1!important;
+      }
+    }
+  }
+}
+.noSearchResultsContainer-3Dee0U {
+  @include flex-center;
+  height: auto!important;
+  flex: 1;
+  padding: 0!important;
+}
+// Inner 'no search results' container
+.wrapper-1GJGVj {
+  color: RGB(var(--tc-tint-10))!important;
+  font-size: 16px;
+}
+.sadImage-2ph8SI {
+  @include mask(var(--emoji-frown-icon), RGB(var(--tc-tint-6)));
+  content: '';
+  background-image: none!important;
+  display: block;
+  margin-top: -40px;
+}
+/* Emoji - Nitro Users Only Popup */
+.premiumPromo-yVfLiA {
+  @include size(400px);
+  background: RGBA(var(--tc-tint-2), 0.95);
+  border-radius: var(--autocomplete-roundness);
+}
+.premiumPromoImage-tGTlKV {
+  content: var(--transparent-pixel);
+  position: relative;
+  top: -20px;
+  left: -52px;
+  margin-bottom: 100px;
+  width: 10px;
+  height: 10px;
+  transform: scale(0.6);
+  box-shadow: 10px 10px transparent,20px 10px transparent,30px 10px transparent,40px 10px transparent,50px 10px transparent,60px 10px transparent,70px 10px transparent,80px 10px #000,90px 10px #000,100px 10px transparent,110px 10px transparent,120px 10px transparent,130px 10px transparent,140px 10px transparent,150px 10px transparent,160px 10px transparent,10px 20px transparent,20px 20px transparent,30px 20px transparent,40px 20px transparent,50px 20px transparent,60px 20px transparent,70px 20px #000,80px 20px #ff0,90px 20px #ff0,100px 20px #000,110px 20px transparent,120px 20px transparent,130px 20px transparent,140px 20px transparent,150px 20px transparent,160px 20px transparent,10px 30px transparent,20px 30px transparent,30px 30px transparent,40px 30px transparent,50px 30px transparent,60px 30px transparent,70px 30px #000,80px 30px #ff0,90px 30px #ff0,100px 30px #000,110px 30px transparent,120px 30px transparent,130px 30px transparent,140px 30px transparent,150px 30px transparent,160px 30px transparent,10px 40px transparent,20px 40px transparent,30px 40px transparent,40px 40px transparent,50px 40px transparent,60px 40px #000,70px 40px #ff0,80px 40px #ff0,90px 40px #ff0,100px 40px #ff0,110px 40px #000,120px 40px transparent,130px 40px transparent,140px 40px transparent,150px 40px transparent,160px 40px transparent,10px 50px #000,20px 50px #000,30px 50px #000,40px 50px #000,50px 50px #000,60px 50px #000,70px 50px #ff0,80px 50px #ff0,90px 50px #ff0,100px 50px #ff0,110px 50px #000,120px 50px #000,130px 50px #000,140px 50px #000,150px 50px #000,160px 50px #000,10px 60px #000,20px 60px #ff0,30px 60px #ff0,40px 60px #ff0,50px 60px #ff0,60px 60px #ff0,70px 60px #ff0,80px 60px #ff0,90px 60px #ff0,100px 60px #ff0,110px 60px #ff0,120px 60px #ff0,130px 60px #ff0,140px 60px #ff0,150px 60px #ff0,160px 60px #000,10px 70px transparent,20px 70px #000,30px 70px #ff0,40px 70px #ff0,50px 70px #ff0,60px 70px #ff0,70px 70px #000,80px 70px #ff0,90px 70px #ff0,100px 70px #000,110px 70px #ff0,120px 70px #ff0,130px 70px #ff0,140px 70px #ff0,150px 70px #000,160px 70px transparent,10px 80px transparent,20px 80px transparent,30px 80px #000,40px 80px #ff0,50px 80px #ff0,60px 80px #ff0,70px 80px #000,80px 80px #ff0,90px 80px #ff0,100px 80px #000,110px 80px #ff0,120px 80px #ff0,130px 80px #ff0,140px 80px #000,150px 80px transparent,160px 80px transparent,10px 90px transparent,20px 90px transparent,30px 90px transparent,40px 90px #000,50px 90px #ff0,60px 90px #ff0,70px 90px #000,80px 90px #ff0,90px 90px #ff0,100px 90px #000,110px 90px #ff0,120px 90px #ff0,130px 90px #000,140px 90px transparent,150px 90px transparent,160px 90px transparent,10px 100px transparent,20px 100px transparent,30px 100px transparent,40px 100px #000,50px 100px #ff0,60px 100px #ff0,70px 100px #ff0,80px 100px #ff0,90px 100px #ff0,100px 100px #ff0,110px 100px #ff0,120px 100px #ff0,130px 100px #000,140px 100px transparent,150px 100px transparent,160px 100px transparent,10px 110px transparent,20px 110px transparent,30px 110px #000,40px 110px #ff0,50px 110px #ff0,60px 110px #ff0,70px 110px #ff0,80px 110px #ff0,90px 110px #ff0,100px 110px #ff0,110px 110px #ff0,120px 110px #ff0,130px 110px #ff0,140px 110px #000,150px 110px transparent,160px 110px transparent,10px 120px transparent,20px 120px transparent,30px 120px #000,40px 120px #ff0,50px 120px #ff0,60px 120px #ff0,70px 120px #ff0,80px 120px #ff0,90px 120px #ff0,100px 120px #ff0,110px 120px #ff0,120px 120px #ff0,130px 120px #ff0,140px 120px #000,150px 120px transparent,160px 120px transparent,10px 130px transparent,20px 130px #000,30px 130px #ff0,40px 130px #ff0,50px 130px #ff0,60px 130px #ff0,70px 130px #ff0,80px 130px #000,90px 130px #000,100px 130px #ff0,110px 130px #ff0,120px 130px #ff0,130px 130px #ff0,140px 130px #ff0,150px 130px #000,160px 130px transparent,10px 140px transparent,20px 140px #000,30px 140px #ff0,40px 140px #ff0,50px 140px #ff0,60px 140px #000,70px 140px #000,80px 140px transparent,90px 140px transparent,100px 140px #000,110px 140px #000,120px 140px #ff0,130px 140px #ff0,140px 140px #ff0,150px 140px #000,160px 140px transparent,10px 150px #000,20px 150px #ff0,30px 150px #ff0,40px 150px #000,50px 150px #000,60px 150px transparent,70px 150px transparent,80px 150px transparent,90px 150px transparent,100px 150px transparent,110px 150px transparent,120px 150px #000,130px 150px #000,140px 150px #ff0,150px 150px #ff0,160px 150px #000,10px 160px #000,20px 160px #000,30px 160px #000,40px 160px transparent,50px 160px transparent,60px 160px transparent,70px 160px transparent,80px 160px transparent,90px 160px transparent,100px 160px transparent,110px 160px transparent,120px 160px transparent,130px 160px transparent,140px 160px #000,150px 160px #000,160px 160px #000;
+}
+.premiumPromoTitle-1SQQfF {
+  color: RGB(var(--contrasted-color));
+}
+.premiumPromoDescription-2Mn515 {
+  font-size: 14px;
+  color: RGB(var(--tc-tint-7));
+}
+.premiumPromoClose-2sqoIR:hover {
+  background-color: RGBA(var(--tc-color-7), 0.2)!important;
+}
+.premiumPromoClose-2sqoIR:active {
+  background-color: RGBA(var(--tc-color-7), 0.1)!important;
+  box-shadow: 0 0 6px 0 RGB(var(--tc-color-8)), inset 0 0 0 1px RGBA(var(--tc-color-7), 0.5)!important;
+}

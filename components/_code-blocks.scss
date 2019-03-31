@@ -5,24 +5,12 @@
 // ==========================================================================
 
 // Aggressive targeting of code elements
-[class*="hljs-"], [class*="cm-"] {
-  font-family: var(--font-coding)!important;
-}
+// [class*="hljs-"], [class*="cm-"] {
+//   font-family: var(--font-coding)!important;
+// }
 
 #{$messagegroup} {
   // Codeblocks scrollbar
-  @at-root body & {
-    #{$hljs} {
-      &::-webkit-scrollbar-thumb {
-        background: RGB(var(--tc-tint-2))!important;
-        border-top: none!important;
-        border-bottom: none!important;
-      }
-      &::-webkit-scrollbar {
-        width: 8px!important;
-      }
-    }
-  }
   #{$messagemarkup} {
     // Code block container
     pre {
@@ -35,10 +23,10 @@
     // Inline and full code blocks
     code.inline,
     pre code {
-      @include text(RGB(var(--tc-tint-10)), 14px, $lh: 1.5!important);
+      @include text(var(--chat-text-color), 14px, $lh: 1.5!important);
       background-color: var(--embed-color)!important;
       border: none;
-      box-shadow: var(--elevation-shadow);
+      box-shadow: var(--elevation-1);
     }
     // Inline code only
     code.inline {
@@ -68,7 +56,7 @@
     #{$messagemarkup} {
       a {
         .inline {
-          color: var(--links-color)!important;
+          color: var(--link-color)!important;
           &:hover {
             text-decoration: underline;
           }
@@ -522,7 +510,7 @@
 		@each $name, $n in $codeLanguages {
 			@each $extension, $e in $n {
 				&[class~="#{$extension}"] {
-          font-family: var(--font-coding)!important;
+          // font-family: var(--font-coding)!important;
 					&::before {
             content: "#{$name}";
 					}

@@ -7,31 +7,30 @@
   // Empty div directly inside scroller
   // https://i.imgur.com/wjaaY2t.png
   #{$scroller} {
-    @include hardware;
-    padding-top: 9px!important;
-    transform: translate3d(0, 0, 0);
-    > div:first-child {
-      margin-top: -20px;
-    }
+
   }
   // 'Direct Messages' header
   header {
-    @extend %members-list-header;
-    align-items: center;
-    cursor: default;
+    @include ellipsis;
     display: flex;
-    height: 25px;
-    margin: 15px 0 5px 0;
+    align-items: center;
+    height: 21px;
+    margin: 15px 0 0 10px;
     opacity: 1;
-    padding: 0;
+    padding: 0 0 10px 0;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: RGB(var(--tc-tint-7));
     &:first-of-type {
-      margin-top: -5px;
+      margin-top: 0;
     }
   }
   // DM convo container
   #{$dmchannel} {
     max-height: 40px!important;
     line-height: 40px;
+    margin: 0 0 0 10px;
     a {
       border-radius: 0;
       height: 40px;
@@ -49,25 +48,31 @@
       }
       a {
         color: RGB(var(--contrasted-color))!important;
-        background-color: RGB(var(--tc-color-4));
+        background-color: RGB(var(--tc-tint-3));
       }
       #{$status} {
-        border-color: RGB(var(--tc-color-4))!important;
+        border-color: RGB(var(--tc-tint-3))!important;
       }
     }
-    // DM convo avatar wrapper and avatar
-    #{$avatarsmallold} {
+    // DM convo avatar
+    .wrapper-2F3Zv8,
+    .inner-1W0Bkn {
       @include size(30px);
       margin: 0 10px 0 0;
       background-color: transparent;
       background-size: 26px 26px!important;
       background-repeat: no-repeat;
+      border-radius: var(--user-roundness);
+    }
+    .inner-1W0Bkn {
+      border: 2px solid transparent;
     }
     // Status
     #{$status} {
-      border-color: RGB(var(--tc-color-2))!important;
-      right: -2px;
-      bottom: -2px;
+      border-color: RGB(var(--tc-tint-1))!important;
+      right: -4px;
+      bottom: -4px;
+      border-radius: var(--status-roundness);
       &#{$statustyping} {
         width: 24px!important;
         right: -3px !important;
@@ -95,6 +100,7 @@
       &#{$flex} {
         margin-top: -1px;
         line-height: 12px;
+        opacity: 1;
       }
       // Actual activity text
       strong {
@@ -134,11 +140,11 @@
     &#{$dmchannelselected}:hover {
       a {
         color: RGB(var(--contrasted-color));
-        background-color: RGB(var(--tc-color-3));
+        background-color: RGB(var(--tc-tint-2));
         border-radius: 0;
       }
       #{$status} {
-        border-color: RGB(var(--tc-color-3))!important;
+        border-color: RGB(var(--tc-tint-2))!important;
       }
     }
   }

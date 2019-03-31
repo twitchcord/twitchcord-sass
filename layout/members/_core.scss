@@ -5,18 +5,18 @@
 
 // Placeholder role headers
 .membersWrap-2h-GB4 .memberGroupsPlaceholder-3mwPub {
-  background: RGB(var(--tc-color-2));
+  background: var(--placeholder-color);
   border-radius: 0;
 }
 // Placeholder avatar image when user is loading
 .membersWrap-2h-GB4 .placeholderAvatar-damqh6 {
-  background-color: RGB(var(--tc-color-2));
+  background-color: var(--placeholder-color);
   border-radius: var(--user-roundness);
 }
 // Placeholder user namne when user is loading
 .membersWrap-2h-GB4 .placeholderUsername-2B_OA9,
 .membersWrap-2h-GB4 .mulitplePlaceholderUsername-pogq9I {
-    background: RGB(var(--tc-color-2));
+    background: var(--placeholder-color);
     border-radius: 0;
 }
 
@@ -29,10 +29,13 @@
 }
 
 .mobileIndicator-329Gd6 {
-  @include mask(var(--mobile-phone-icon), RGB(var(--tc-color-10)), 11px);
+  @include mask(var(--mobile-phone-icon), RGB(var(--tc-tint-7)), 11px);
   @include size(20px);
   margin: 0 0 0 2px;
   order: 2;
+  &:hover {
+    background-color: RGB(var(--tc-tint-9));
+  }
   g {
     display: none;
   }
@@ -64,7 +67,7 @@
 }
 
 .members-1998pB .member-3W1lQa .memberInner-2CPc3V {
-    width: calc(var(--channel-members-width) - 110px);
+    width: calc(var(--members-width) - 110px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,8 +99,10 @@
 }
 
 .membersWrap-2h-GB4 .membersGroup-v9BXpm {
-  @extend %members-list-header;
+  @include ellipsis;
   @include reset;
+  @include text(RGB(var(--tc-tint-7))!important, 12px, 700, $transform: uppercase);
+  letter-spacing: 0;
   cursor: default;
   height: 21px;
 }
@@ -110,12 +115,26 @@
   border: 2px solid RGB(var(--tc-color-1))!important;
 }
 
+.members-1998pB {
+  &.scroller-2FKFPG {
+    // "Fake" scrollbar tomfoolery
+    @include fakeScrollbarFade('members');
+    overflow-x: hidden;
+    // Fix to make the "fake" scrollbade fade in/out work below
+    z-index: auto;
+    // Direct child div of scroller
+    > div:first-of-type[style*='width: 100%;'] {
+
+    }
+  }
+}
+
 .members-1998pB.scroller-2FKFPG::-webkit-scrollbar,
 .members-1998pB.scroller-2FKFPG::-webkit-scrollbar-track,
 .members-1998pB.scroller-2FKFPG::-webkit-scrollbar-track-piece,
 .members-1998pB.scroller-2FKFPG::-webkit-scrollbar-thumb {
   visibility: visible;
-  min-height: 50px!important;
+  min-height: 100px!important;
 }
 
 .membersWrap-2h-GB4 .scrollerWrap-2lJEkd {
@@ -127,11 +146,11 @@
 .members-1998pB {
     background-color: RGB(var(--tc-color-1))!important;
     overflow-y: auto;
-    max-width: var(--channel-members-width);
+    max-width: var(--members-width);
     // Fix for NSFW channel and very few members
     // https://i.imgur.com/4S8LZgP.png
     overflow-y: auto;
-    padding: 0 10px;
+    padding: 0 15px;
 }
 
 .members-1998pB .avatarOffline-3GF27z {
@@ -164,7 +183,7 @@
     min-width: 0;
     position: relative;
     z-index: 100;
-    width: var(--channel-members-width);
+    width: var(--members-width);
 }
 
 .membersWrap-2h-GB4 .membersGroup-v9BXpm ~ .membersGroup-v9BXpm {

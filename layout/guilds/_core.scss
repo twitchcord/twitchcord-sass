@@ -35,24 +35,17 @@
   // Mentions indicators
   #{classes('layout.guilds.mentionsIndicatorTop')},
   #{classes('layout.guilds.mentionsIndicatorBottom')} {
+    padding: 0;
     transform: none!important;
     transition: none;
     overflow: visible;
     z-index: 2;
   }
-  // Top mentions indicator
-  #{classes('layout.guilds.mentionsIndicatorTop')} {
-    // Mentions indicator is active
-    #{classes('layout.guilds.mentionsIndicatorBarMention')} {
-      transform: translate3d(0, 0, 0)!important;
-    }
-  }
   // Bottom mentions indicator
   #{classes('layout.guilds.mentionsIndicatorBottom')} {
     // Mentions indicator is active
-    #{classes('layout.guilds.mentionsIndicatorBarMention')} {
-      transform: translate3d(0, -73px, 0)!important;
-      transform: translate3d(0, calc((var(--guilds-width) * -1) - 3px), 0)!important
+    #{classes('base.unreadBar.mention')} {
+      transform: translate3d(0, calc((var(--guilds-width) * -1) + 3px), 0)!important
     }
   }
   #{classes('layout.guilds.scroller')} {
@@ -92,7 +85,7 @@
           @extend %button-primary;
           @include flex-center;
           @include size(var(--guild-icon-size));
-          @include text(#fff, calc(var(--guild-icon-size) - 2px), 400, var(--guild-icon-size));
+          @include text(#fff, calc(var(--guild-icon-size) - calc(var(--guild-icon-size) / 10)), 400, var(--guild-icon-size));
           background: RGB(var(--tc-color-6))!important;
           border-color: RGB(var(--tc-color-6))!important;
           border-radius: var(--guild-roundness);
@@ -101,7 +94,6 @@
           padding: 0;
           pointer-events: all;
           top: 0;
-          transition: var(--transition-none, background 0.12s ease-in, color 0.12s ease-in, box-shadow 0.12s ease-in);
       }
     }
   }
@@ -117,6 +109,7 @@
   }
   // Show the separator when there is at least one DM
   #{classes('layout.guilds.dm')} {
+    animation: var(--disable-animations, translateLeftToRight 0.5s forwards);
     + #{classes('layout.guilds.guildSeparator')} {
       display: block;
     }
@@ -178,6 +171,40 @@
         overflow: visible;
       }
     }
+    // Guild icon
+    #{classes('layout.guilds.guildIcon')},
+    // DM user avatar
+    #{classes('layout.guilds.dmIconInner')} {
+      @include flex-center;
+      @include size(var(--guild-icon-size));
+      box-sizing: border-box;
+      background: none;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-clip: initial;
+      border-radius: var(--guild-roundness);
+      background-size: var(--guild-icon-size) var(--guild-icon-size);
+      margin: 0;
+      // DM user avatar wrapper div
+      #{$avatarwrapper} & {
+        // Fix for inner DM avatar border messing up
+        border: none;
+      }
+    }
+    // DM user avatar wrapper div
+    #{classes('layout.guilds.dmIcon')} {
+      @include flex-center;
+      @include size(var(--guild-icon-size));
+      background-image: url(https://client.forgecdn.net/Avatars/UserAvatar.png);
+      // DM user avatar
+      #{classes('layout.guilds.dmIconInner')} {
+        border: none;
+      }
+    }
+    // When there is no icon present
+    #{classes('layout.guilds.noIcon')} {
+      background: RGB(var(--tc-tint-3));
+    }
     #{classes('layout.guilds.guildWrapper')},
     #{classes('layout.guilds.guildsError')} {
       @include flex-center;
@@ -190,40 +217,6 @@
         @include size(calc(var(--guild-icon-size) + 4px));
         border: 2px solid transparent;
         border-radius: var(--guild-roundness);
-      }
-      // Guild icon
-      #{classes('layout.guilds.guildIcon')},
-      // DM user avatar
-      #{classes('layout.guilds.dmIconInner')} {
-        @include flex-center;
-        @include size(var(--guild-icon-size));
-        box-sizing: border-box;
-        background: none;
-        background-repeat: no-repeat;
-        background-color: transparent;
-        background-clip: initial;
-        border-radius: var(--guild-roundness);
-        background-size: var(--guild-icon-size) var(--guild-icon-size);
-        margin: 0;
-        // When there is no icon present
-        &#{classes('layout.guilds.noIcon')} {
-          background: RGB(var(--tc-tint-4));
-        }
-        // DM user avatar wrapper div
-        #{$avatarwrapper} & {
-          // Fix for inner DM avatar border messing up
-          border: none;
-        }
-      }
-      // DM user avatar wrapper div
-      #{classes('layout.guilds.dmIcon')} {
-        @include flex-center;
-        @include size(var(--guild-icon-size));
-        background-image: url(https://client.forgecdn.net/Avatars/UserAvatar.png);
-        // DM user avatar
-        #{classes('layout.guilds.dmIconInner')} {
-          border: none;
-        }
       }
     }
     // Guild error / guild unavailable

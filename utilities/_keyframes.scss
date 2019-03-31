@@ -2,19 +2,45 @@
 
 //** Keyframes
 
+//## Not used at the moment
+@keyframes blurFadeIn {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+
 //## "Grow" the height of status picker popout -- hardcoded height
 @keyframes statusPickerGetBigger {
   0% {
     height: 0;
   }
   100% {
-    height: 136px;
+    height: 152px;
   }
 }
 
-//## Vertical DM slide-in
-@keyframes topDownDMSlideIn {
-
+//## Twitch bounce scale in keyframe
+@keyframes bouncePie {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  60% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 //## Bounce in effect used for modals
@@ -37,18 +63,6 @@
   }
 }
 
-//## Gives the Refresh notification bar on LFG a glow pulsing effect
-@keyframes lfgRefreshBarGlow {
-  0% {
-    border-color: RGB(var(--tc-color-7));
-    box-shadow: 0 0 5px RGBA(var(--tc-color-5), 0.2), inset 0 0 5px RGBA(var(--tc-color-5), 0.1);
-  }
-  100% {
-    border-color: RGB(var(--tc-color-9));
-    box-shadow: 0 0 15px RGBA(var(--tc-color-5), 0.6), inset 0 0 10px RGBA(var(--tc-color-5), 0.4);
-  }
-}
-
 
 //## When an unread pinned message is available
 @keyframes newPinnedMessagePulse {
@@ -60,6 +74,7 @@
   }
 }
 
+
 //## When user is mentioned, this is the badge that appears
 //## next to the channel name
 @keyframes mentionBadgePulse {
@@ -70,19 +85,6 @@
   100% { transform: scale(1); }
 }
 
-
-//## The standard circular spinner used
-@keyframes loadingSpinningCircle {
-  50% {
-    box-shadow: 16px 16px 0 0, -16px -16px 0 0, 16px -16px 0 0, -16px 16px 0 0, 0 8px 0 0, 8px 0 0 0, -8px 0 0 0, 0 -8px 0 0;
-  }
-  75% {
-    box-shadow: 16px 16px 0 0, -16px -16px 0 0, 16px -16px 0 0, -16px 16px 0 0, 0 8px 0 0, 8px 0 0 0, -8px 0 0 0, 0 -8px 0 0;
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 @keyframes translateRightToLeft {
   0% { transform: translate3d(200%, 0, 0); }
@@ -101,18 +103,13 @@
   100% { transform: translate3d(0, 0, 0); }
 }
 
+
 //## When you add a reaction to a message
 @keyframes pulseReact {
   0% { transform: scale(1); }
   100% { transform: scale(2); }
 }
 
-//## Used for the indicator that appears when you select a server
-// https://i.imgur.com/IIkrKTU.gifv
-@keyframes guildSelectedIndicator {
-    0% { transform: translateX(-100px); }
-    100% { transform: translateX(0); }
-}
 
 //## The pulsing line indicating new messages are loading in the chat area
 @keyframes chatLoadingMessages {
@@ -126,6 +123,7 @@
     }
 }
 
+
 //## Attempt to "fix" the highlight when you jump to a searched message
 @keyframes searchHighlightFix {
     0% {
@@ -133,10 +131,11 @@
         color: #fff;
     }
     100% {
-        background: transparent !important;
+        background: transparent;
         color: inherit;
     }
 }
+
 
 //## Used to makes things scale in
 @keyframes scaleIn {
@@ -144,17 +143,34 @@
   100% { transform: scale(1); }
 }
 
+
 //## Used to makes things fade in
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
 
+
 //## Used to makes things fade out
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+
+//## Used to make scrollbars fade in ~.2s duration and then out after 2 seconds
+@keyframes scrollbarFade {
+    0% { opacity: 1; }
+    10% { opacity: 0; }
+    90% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes scrollbarForce {
+  0% { opacity: 0; }
+  90% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 @keyframes contentAppear {
   0% {
@@ -167,6 +183,17 @@
   }
 }
 
+//## Animate typing indicator on chat textarea
+@keyframes typingWave {
+  0%, 40%, 100% {
+    transform: initial;
+    background: RGB(var(--contrasted-color), 0.7);
+  }
+  20% {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
 //## Show typing indicator on chat textarea
 @keyframes chatTypingIndicator {
   0% {

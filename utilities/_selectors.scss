@@ -70,12 +70,19 @@ $classes: (
     voiceConnected: 'tc-voiceConnected' // Replaces Discord's normal voice connected box in channels // https://i.imgur.com/fL4taCs.png
   ),
   base: (
+    base: 'base-3dtUhz',
     directionRowReverse: 'directionRowReverse-m8IjIq',
     flex: (
       flex: 'flex-1O1GKY',
       flex2: 'flex-1xMQg5',
       flexCenter: 'flexCenter-3_1bcw',
       flexChild: 'flexChild-faoVW3'
+    ),
+    unreadBar: (
+      active: 'active-1SSsBb',
+      bar: 'bar-30k2ka',
+      mention: 'mention-1f5kbO',
+      icon: 'icon-2aINcz'
     ),
     app: (
       app: 'app-2rEoOp'
@@ -100,6 +107,7 @@ $classes: (
       image: 'image-33JSyf',
       icon: 'icon-3o6xvg',
       wrapper: 'wrapper-2F3Zv8',
+      inner: 'inner-1W0Bkn',
 
       iconActiveLarge: 'iconActiveLarge-2nzn9z',
       iconActiveMedium: 'iconActiveMedium-1UaEIR',
@@ -210,8 +218,37 @@ $classes: (
 
     ),
     popouts: (
-      User: (
+      user: (
         userPopout: 'userPopout-3XzG_A'
+      ),
+      autocomplete: (
+        gif: (
+          container: 'container-3ISnnM',
+          header: 'header-1TOWci',
+          searchBar: 'searchBar-1MOL6S',
+          input: 'input-3Xdcic',
+          searchBarIcon: 'searchBarIcon-18QaPq',
+          controls: 'controls-3xBdO0',
+          icon: 'icon-1S6UIr',
+          eyeGlass: 'eyeGlass-2cMHx7',
+          visible: 'visible-3bFCH-',
+          clear: 'clear--Eywng',
+          content: 'content-ySCtCx',
+          scrollerWrap: 'scrollerWrap-2lJEkd',
+          scroller: 'scroller-2FKFPG',
+          result: 'result-3w1ZcL',
+          focused: 'focused-1En8bG',
+          categoryText: 'categoryText-2-8pri',
+          categoryIcon: 'categoryIcon-21RREB',
+          categoryName: 'categoryName-UvMsNp',
+          categoryFade: 'categoryFade-2ybR1J',
+          categoryFadeBlurple: 'categoryFadeBlurple-1j72_A',
+          gif: 'gif-1TcNIB',
+          placeHolder: 'placeholder-1kJjXI'
+        )
+      ),
+      emojiPicker: (
+        searchBarIcon: 'searchBarIcon-1J6sKG'
       )
     ),
     roles: (
@@ -244,8 +281,11 @@ $classes: (
       marginReset: 'marginReset-3RfdVe',
       marginResetButton: 'marginReset-236NPn',
       name: 'name-3M0b8v',
+
       scroller: 'scroller-2FKFPG',
       scrollerWrap: 'scrollerWrap-2lJEkd',
+      scrolling: 'scrolling-CehiO2',
+
       serverHeaderContainer: 'container-2Rl01u',
       unread: 'unread-1Dp-OI',
       wrapper: 'wrapper-KpKNwI',
@@ -334,8 +374,6 @@ $classes: (
       nameSelectedVoice: 'nameSelectedVoice-1qSph5',
       nameUnreadVoice: 'nameUnreadVoice-EVo-wI',
 
-      unreadBar: 'bar-30k2ka',
-      unreadBarActive: 'mention-1f5kbO',
       unreadBarContainer: 'container-35XQWE',
 
       voiceAvatarContainer: 'avatarContainer-72bSfM',
@@ -409,9 +447,6 @@ $classes: (
 
       mentionsIndicatorTop: 'unreadMentionsIndicatorTop-gA6RCh',
       mentionsIndicatorBottom: 'unreadMentionsIndicatorBottom-BXS58x',
-      mentionsIndicatorBarActive: 'active-1SSsBb',
-      mentionsIndicatorBar: 'bar-30k2ka',
-      mentionsIndicatorBarMention: 'mention-1f5kbO',
 
       scrollerWrap: 'scrollerWrap-2lJEkd',
       scroller: 'scroller-2TZvBN',
@@ -456,14 +491,11 @@ $classes: (
 
     )
   ),
-  routes: (
+  views: (
     activity: (
 
     ),
-    channelSettings: (
-
-    ),
-    chat: (
+    guild: (
       messages: (
         group: 'container-1YxwTf',
 

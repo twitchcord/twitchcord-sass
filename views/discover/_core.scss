@@ -1,0 +1,113 @@
+///  main: _module.scss
+///  ==========================================================================
+///  Server Discovery view
+///  ==========================================================================
+
+// Outer container
+.pageWrapper-1PgVDX {
+  background: var(--discover-color)!important;
+  width: 100%;
+  // Section headers
+  .sectionHeader-1Hee-5 {
+    @include header('h4');
+  }
+  // Top background image
+  .bg-AYqtMd {
+    content: var(--transparent-pixel);
+  }
+  .body-2lagau {
+    max-width: 100%;
+    padding: 0 30px 40px 40px;
+  }
+  // Outer card container
+  .guildCard-2arfcG {
+    @include size(auto!important);
+    background: none;
+    flex: 1 1 300px !important;
+    margin: 10px;
+    min-width: 300px;
+    position: relative;
+  }
+  // Card
+  .card-3DjzTQ {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: flex-end;
+    overflow: hidden;
+    position: relative;
+    transform: none;
+  }
+  // Card hovered
+  .cardHovered-15wbb- {
+
+  }
+  .verifiedIcon-1vpk3S {
+    @include absolute(bottom -4px right -4px);
+    @include mask(var(--verified-icon), RGB(var(--tc-color-10)));
+    g {
+      display: none;
+    }
+  }
+  .splash-3N0nhD {
+    @include relative(top 0 left 0);
+    @include size(100%, 180px);
+    background: var(--placeholder-color);
+    border-radius: var(--image-roundness);
+    display: block;
+    transform: none;
+  }
+  // Fade overlay Discord uses to make the server names more visible
+  .fade-rdt5qH {
+    display: none;
+  }
+  .outer-s4sY2_ {
+    padding: 0!important;
+  }
+  // Direct child container of outer
+  .inner-2O5YO7 {
+    position: relative;
+  }
+  // Scroller wrap
+  .scrollerWrap-2lJEkd {
+    padding: 2px 2px 0 0;
+  }
+  // Guild info container
+  .guildInfo-2wGKIg {
+    margin: 10px 0 30px; 
+  }
+  // Guild name
+  .title-OqQvkN {
+    color: RGB(var(--tc-tint-11));
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    &:hover {
+      color: var(--link-color);
+      text-decoration: var(--link-hover-decoration);
+    }
+  }
+  // Guild online count
+  .memberInfo-3r4FKx {
+    color: RGB(var(--tc-tint-9));
+    font-size: 12px;
+    .dotOnline-8Ag7EB {
+      background: var(--status-online-color);
+      border-radius: var(--status-roundness);
+      margin-right: 5px;
+    }
+  }
+  // Guild icon
+  .guildIcon-3W0pfo {
+    @include size(40px);
+    margin-right: 10px;
+    .image-33JSyf {
+      @include size(40px);
+      border-radius: var(--guild-roundness);
+    }
+  }
+}

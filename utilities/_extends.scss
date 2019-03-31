@@ -66,65 +66,6 @@
   }
 }
 
-
-///  Alternate text input style
-///  https://i.imgur.com/K1P53F6.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%input-text-alternate {
-  @include flex-center;
-  @include text(RGB(var(--tc-tint-10))!important, 12px, 400, 20px);
-  background-color: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-tint-4))!important;
-  border-radius: 0;
-  box-shadow: none!important;
-  box-sizing: border-box;
-  flex: 1 1 auto;
-  flex-direction: row;
-  outline: none;
-  outline-style: none;
-  padding: 0 14px;
-  position: relative;
-  transition: var(--transition-none, box-shadow .12s ease-in, color .12s ease-in);
-  &::-webkit-input-placeholder,
-  &::placeholder {
-    color: RGB(var(--tc-tint-7))!important;
-  }
-  &:focus {
-    border: 1px solid RGB(var(--tc-tint-4))!important;
-    box-shadow: none!important;
-    outline: none;
-    outline-style: none;
-  }
-}
-
-
-///  Main members list header style
-///  https://i.imgur.com/ZR0KHFS.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%members-list-header {
-  @include ellipsis;
-  @include text(RGB(var(--tc-tint-8))!important, 12px, 700, $transform: uppercase);
-  letter-spacing: 0;
-}
-
-
-///  Alternate members list header style
-///  https://i.imgur.com/ZwWcWUl.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%underlined-header {
-  @include ellipsis;
-  @include text(RGB(var(--tc-tint-10)), 14px, 400, 15px, capitalize);
-  box-shadow: 0 -1px 0 RGB(var(--tc-color-4)) inset;
-  width: 100%;
-  margin-bottom: 4px;
-  padding: 0 0 8px;
-  opacity: 1;
-}
-
-
 ///  Main button style
 ///  https://i.imgur.com/4tOtYUC.png
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -189,30 +130,6 @@
   &:active {
     background-color: RGBA(var(--tc-color-7))!important;
     box-shadow: 0 0 6px 0 RGB(var(--tc-color-8))!important;
-    color: #fff!important;
-  }
-}
-
-
-///  Empty button style
-///  https://i.imgur.com/4tOtYUC.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%button-empty {
-  @include button-base;
-  color: RGB(var(--tc-tint-12))!important;
-  background-color: transparent!important;
-  border: 1px solid transparent!important;
-  &:hover {
-    background-color: RGBA(var(--tc-color-7), 0.2)!important;
-    border: 1px solid transparent!important;
-    color: #fff!important;
-  }
-  &:hover:active,
-  &:active {
-    background-color: RGBA(var(--tc-color-7), 0.1)!important;
-    border: 1px solid transparent!important;
-    box-shadow: 0 0 6px 0 RGBA(var(--tc-color-7), 0.5)!important;
     color: #fff!important;
   }
 }

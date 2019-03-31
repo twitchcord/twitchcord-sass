@@ -171,14 +171,14 @@
       transform-origin: center;
     }
     &-view-name {
-      @include text(RGB(var(--tc-color-12)), 14px, 400, 20px);
+      @include text(var(--main-nav-links-color), 14px, 400, 20px);
       margin: 0;
-      padding: 0 12px;
+      padding: 0 10px;
       white-space: nowrap;
     }
     &-icon-friends,
     &-icon-activity,
-    &-icon-messages,
+    &-icon-discover,
     &-icon-library,
     &-icon-store,
     &-icon-lfg {
@@ -188,7 +188,7 @@
     }
     &-friends-btn,
     &-activity-btn,
-    &-messages-btn,
+    &-discover-btn,
     &-library-btn,
     &-store-btn,
     &-lfg-btn {
@@ -210,7 +210,7 @@
         visibility: hidden;
         font-weight: 700;
         font-size: 14px;
-        padding: 0 12px;
+        padding: 0 10px;
       }
       &.disabled #{$grandparent} {
         &-view-name {
@@ -228,7 +228,7 @@
         }
         &-icon-friends,
         &-icon-activity,
-        &-icon-messages,
+        &-icon-discover,
         &-icon-library,
         &-icon-store,
         &-icon-lfg {
@@ -241,7 +241,7 @@
         }
         &-icon-friends,
         &-icon-activity,
-        &-icon-messages,
+        &-icon-discover,
         &-icon-library,
         &-icon-store,
         &-icon-lfg {
@@ -249,8 +249,8 @@
         }
       }
     }
-    &-messages-btn {
-      #{$grandparent}-icon-messages {
+    &-discover-btn {
+      #{$grandparent}-icon-discover {
         @include mask(var(--envelope-icon), RGB(var(--tc-color-12)), 26px);
       }
     }
@@ -280,16 +280,15 @@
       }
     }
     &-global-search-outer {
-      margin-left: 15px;
+      margin: 0 20px;
       flex: 0 1 400px;
-      margin-right: 20px;
     }
     &-global-search-inner {
       position: relative;
     }
     &-global-search-input {
-      border: 1px solid RGB(var(--tc-color-5));
-      background: RGB(var(--tc-color-1));
+      background-color: var(--chat-color);
+      border: 1px solid var(--main-nav-color);
       border-radius: var(--button-roundness);
       color: #fff;
       height: 30px;
@@ -315,13 +314,14 @@
       }
     }
     &-search-bar-icon {
-      @include absolute(top 7px left 7px);
-      @include size(16px);
+      @include absolute(top 0 left 0);
+      @include flex-center;
+      @include size(30px);
       opacity: 1;
       z-index: 5;
     }
     .tc-icon.search {
-      @include size(16px);
+      @include size(20px);
       @include mask(var(--search-icon), RGB(var(--tc-tint-7)));
       display: block;
       opacity: 1;
@@ -344,6 +344,7 @@
     align-items: stretch;
     justify-content: flex-start;
     &-update-outer,
+    &-messages-outer,
     &-mentions-outer {
       @include flex-center;
       cursor: pointer;
@@ -362,6 +363,7 @@
       }
     }
     &-update-inner,
+    &-messages-inner,
     &-mentions-inner {
       @include flex-center;
       height: 20px;
@@ -375,9 +377,21 @@
         animation: rotate360 1s infinite forwards;
       }
     }
+    &-messages {
+      @include size(20px);
+      @include mask(var(--envelope-icon), #fff);
+      display: block;
+      &-new-indicator {
+        @include absolute(top -3px right -1px);
+        @include size(10px);
+        background: var(--fail-color);
+        border: 2px solid var(--main-nav-color);
+        display: none;
+      }
+    }
     &-mentions {
       @include size(20px);
-      @include mask(var(--notification-bell-icon), #fff);
+      @include mask(var(--notification-icon), #fff);
       display: block;
       &-new-indicator {
         @include absolute(top -3px right -1px);
@@ -431,7 +445,7 @@
       display: flex;
       position: relative;
       justify-content: space-between;
-      margin-right: 16px;
+      margin-right: 10px;
       flex: 1 1 0%;
     }
     &-details-inner {
@@ -464,7 +478,7 @@
       flex: 0 0 auto;
       box-sizing: initial;
       &.online {
-        background-color: RGB(var(--status-online));
+        background-color: var(--status-online-color);
         // Cheeky way of referencing .tc-titlewrapper-account
         + #{$grandparent}-activity-container {
           #{$grandparent}-activity {
@@ -477,7 +491,7 @@
         }
       }
       &.idle {
-        background-color: RGB(var(--status-idle));
+        background-color: var(--status-idle-color);
         // Cheeky way of referencing .tc-titlewrapper-account
         + #{$grandparent}-activity-container {
           #{$grandparent}-activity {
@@ -490,7 +504,7 @@
         }
       }
       &.dnd {
-        background-color: RGB(var(--status-dnd));
+        background-color: var(--status-dnd-color);
         // Cheeky way of referencing .tc-titlewrapper-account
         + #{$grandparent}-activity-container {
           #{$grandparent}-activity {
@@ -505,7 +519,7 @@
       &.offline,
       &.invisible,
       &.unknown {
-        background-color: RGB(var(--status-offline));
+        background-color: var(--status-offline-color);
         // Cheeky way of referencing .tc-titlewrapper-account
         + #{$grandparent}-activity-container {
           #{$grandparent}-activity {
@@ -525,10 +539,9 @@
     }
     &-arrow {
       @include mask(var(--down-arrow-icon), #fff);
-      @include size(15px);
-      margin: 1px -1px 0 5px;
+      @include size(20px);
       align-self: center;
-      transition: var(--transition-none, transform 0.25s);
+      transition: var(--disable-transitions, transform 0.25s);
       #{$grandparent}-panel-outer.opened & {
         transform: rotate(180deg);
       }

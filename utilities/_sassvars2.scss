@@ -7,9 +7,6 @@
 ///  Miscellaneous
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// Twitchcord version number
-$version: '2.0.0';
-
 // These are our named breakpoints. You can use them in our breakpoint mixin
 // like this: @include breakpoint(medium) { // Medium and larger styles }
 // Default is size and lower, so think max-width
@@ -38,142 +35,153 @@ $discordImagess: (
   )
 );
 
-// Used for language content replacement
+// Used for automatic language pseudoelement content replacement
+// in conjunction with the localize function and mixin
 $languages: (
   bg: (
-    // 'components/_attachments.scss'
     'Download': 'Изтегли',
-    'Shared a file': 'Споделено файл'
+    'Shared a file': 'Споделено файл',
+    'You do not have access to this room': 'Вие нямате достъп до тази стая'
   ),
   cs: (
-    // 'components/_attachments.scss'
     'Download': 'Stažení',
-    'Shared a file': 'Sdílený soubor'
+    'Shared a file': 'Sdílený soubor',
+    'You do not have access to this room': 'Nemáte přístup do této místnosti'
   ),
   da: (
-    // 'components/_attachments.scss'
     'Download': 'Hent',
-    'Shared a file': 'Delte en fil'
+    'Shared a file': 'Delte en fil',
+    'You do not have access to this room': 'Du har ikke adgang til dette rum'
   ),
   de: (
-    // 'components/_attachments.scss'
     'Download': 'Herunterladen',
-    'Shared a file': 'Gemeinsam genutzte eine Datei'
+    'Shared a file': 'Gemeinsam genutzte eine Datei',
+    'You do not have access to this room': 'Sie haben keinen Zugang zu diesem Raum'
   ),
   el: (
-    // 'components/_attachments.scss'
     'Download': 'Κατεβάστε',
-    'Shared a file': 'Μοιράστηκε ένα αρχείο'
+    'Shared a file': 'Μοιράστηκε ένα αρχείο',
+    'You do not have access to this room': 'Δεν έχετε πρόσβαση σε αυτό το δωμάτιο'
   ),
   en-GB: (
-    // 'components/_attachments.scss'
     'Download': 'Download',
-    'Shared a file': 'Shared a file'
+    'Shared a file': 'Shared a file',
+    'You do not have access to this room': 'You do not have access to this room'
   ),
   en-US: (
-    // 'components/_attachments.scss'
     'Download': 'Download',
-    'Shared a file': 'Shared a file'
+    'Shared a file': 'Shared a file',
+    'You do not have access to this room': 'You do not have access to this room'
   ),
   es-ES: (
-    // 'components/_attachments.scss'
     'Download': 'Descargar',
-    'Shared a file': 'Compartido un archivo'
+    'Shared a file': 'Compartido un archivo',
+    'You do not have access to this room': 'Usted no tiene acceso a esta sala'
   ),
   fi: (
-    // 'components/_attachments.scss'
     'Download': 'ladata',
-    'Shared a file': 'Jaettu tiedosto'
+    'Shared a file': 'Jaettu tiedosto',
+    'You do not have access to this room': 'Sinulla ei ole pääsyä tähän huoneeseen'
   ),
   fr: (
-    // 'components/_attachments.scss'
     'Download': 'Télécharger',
-    'Shared a file': 'Un fichier partagé'
+    'Shared a file': 'Un fichier partagé',
+    'You do not have access to this room': 'Vous n\'avez pas accès à cet endroit'
   ),
   hr: (
-    // 'components/_attachments.scss'
     'Download': 'preuzimanje datoteka',
-    'Shared a file': 'Zajednička datoteku'
+    'Shared a file': 'Zajednička datoteku',
+    'You do not have access to this room': 'Nemate pristup ovoj sobi'
   ),
   hu: (
-    // 'components/_attachments.scss'
     'Download': 'Letöltés',
-    'Shared a file': 'Megosztott egy fájlt'
+    'Shared a file': 'Megosztott egy fájlt',
+    'You do not have access to this room': 'Nem férnek el a szobában'
   ),
   it: (
-    // 'components/_attachments.scss'
     'Download': 'Scaricare',
-    'Shared a file': 'Condiviso un file'
+    'Shared a file': 'Condiviso un file',
+    'You do not have access to this room': 'Non si dispone di accesso a questa stanza'
   ),
   ja: (
-    // 'components/_attachments.scss'
     'Download': 'ダウンロード',
-    'Shared a file': 'ファイルを共有'
+    'Shared a file': 'ファイルを共有',
+    'You do not have access to this room': 'あなたはこの部屋にアクセスすることはできません。'
   ),
   ko: (
-    // 'components/_attachments.scss'
     'Download': '다운로드',
-    'Shared a file': '파일을 공유'
+    'Shared a file': '파일을 공유',
+    'You do not have access to this room': '당신은이 방에 액세스 할 수 없습니다'
   ),
   lt: (
-    // 'components/_attachments.scss'
     'Download': 'parsisiųsti',
-    'Shared a file': 'Pasidalino failą'
+    'Shared a file': 'Pasidalino failą',
+    'You do not have access to this room': 'Jūs neturite prieigos prie šios kambarį'
   ),
   nl: (
-    // 'components/_attachments.scss'
     'Download': 'Download',
-    'Shared a file': 'Gedeelde een bestand'
+    'Shared a file': 'Gedeelde een bestand',
+    'You do not have access to this room': 'Je hebt geen toegang tot deze kamer'
   ),
   no: (
-    // 'components/_attachments.scss'
     'Download': 'nedlasting',
-    'Shared a file': 'Delte en fil'
+    'Shared a file': 'Delte en fil',
+    'You do not have access to this room': 'Du har ikke tilgang til dette rommet'
   ),
   pl: (
-    // 'components/_attachments.scss'
     'Download': 'Ściągnij',
-    'Shared a file': 'Wspólna plik'
+    'Shared a file': 'Wspólna plik',
+    'You do not have access to this room': 'Nie masz dostępu do tego pokoju'
   ),
   pt-BR: (
-    // 'components/_attachments.scss'
     'Download': 'baixar',
-    'Shared a file': 'Compartilhado um arquivo'
+    'Shared a file': 'Compartilhado um arquivo',
+    'You do not have access to this room': 'Você não tem acesso a esta sala'
   ),
   ro: (
-    // 'components/_attachments.scss'
     'Download': 'Descarca',
-    'Shared a file': 'A distribuit un fișier'
+    'Shared a file': 'A distribuit un fișier',
+    'You do not have access to this room': 'Nu aveți acces la această cameră'
   ),
   ru: (
-    // 'components/_attachments.scss'
     'Download': 'Скачать',
-    'Shared a file': 'Общий файл'
+    'Shared a file': 'Общий файл',
+    'You do not have access to this room': 'У вас нет доступа к этой комнате'
   ),
   sv-SE: (
-    // 'components/_attachments.scss'
     'Download': 'Ladda ner',
-    'Shared a file': 'Delade en fil'
+    'Shared a file': 'Delade en fil',
+    'You do not have access to this room': 'Du behöver inte ha tillgång till detta rum'
+  ),
+  th: (
+    'Download': 'ดาวน์โหลด',
+    'Shared a file': 'ที่ใช้ร่วมกันแฟ้ม',
+    'You do not have access to this room': 'คุณไม่ได้เข้าสู่ห้องพัก'
   ),
   tr: (
-    // 'components/_attachments.scss'
     'Download': 'İndir',
-    'Shared a file': 'Bir dosyayı paylaştı'
+    'Shared a file': 'Bir dosyayı paylaştı',
+    'You do not have access to this room': 'Bu odaya giriş izni yok'
   ),
   uk: (
-    // 'components/_attachments.scss'
     'Download': 'скачати',
-    'Shared a file': 'Загальний файл'
+    'Shared a file': 'Загальний файл',
+    'You do not have access to this room': 'У вас немає доступу до цієї кімнаті'
+  ),
+  vi: (
+    'Download': 'Tải về',
+    'Shared a file': 'Chia sẻ một tập tin',
+    'You do not have access to this room': 'Bạn không cần phải truy cập vào phòng này'
   ),
   zh-CN: (
-    // 'components/_attachments.scss'
     'Download': '下载',
-    'Shared a file': '共享的文件'
+    'Shared a file': '共享的文件',
+    'You do not have access to this room': '您没有访问到这个房间'
   ),
   zh-TW: (
-    // 'components/_attachments.scss'
     'Download': '下載',
-    'Shared a file': '共享的文件'
+    'Shared a file': '共享的文件',
+    'You do not have access to this room': '您沒有訪問到這個房間'
   )
 );
 

@@ -2,15 +2,15 @@
 
 //** Friends list core styling
 
-#friends .friends-table .friends-row#{classes('twitchcord.friendPlaceholder')},
-#friends .friends-table .friends-row+.friends-row#{classes('twitchcord.friendPlaceholder')} {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud#{classes('twitchcord.friendPlaceholder')},
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud+.friendsRow-2yicud#{classes('twitchcord.friendPlaceholder')} {
   flex: 1 0 auto;
   border: none!important;
   cursor: default;
   pointer-events: none;
 }
 
-#friends .friends-table .friends-row .friends-column-status .friend-activity-text, #friends .friends-table .friends-row .friends-column-status .status-text {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnStatus-ZH4ho2 .friendActivityText-2lmziy, .container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnStatus-ZH4ho2 .statusText-2F9zIF {
   @include ellipsis(100%, inline-block);
 }
 
@@ -255,40 +255,36 @@
   }
 }
 
-#friends {
+.container-3gCOGc {
     background: RGB(var(--tc-color-1))!important;
 }
 
-#friends .friends-table .friends-table-body > div {
-
-}
-
-#friends .friends-table {
+.container-3gCOGc .friendsTable-133bsv {
   margin-top: 0;
 }
 
-#friends .friends-empty p {
+.container-3gCOGc .friends-empty p {
     margin-top: 50px;
     color: RGB(var(--tc-tint-10))!important;
 }
 
-#friends .friends-table .scroller-wrap {
+.container-3gCOGc .friendsTable-133bsv .scroller-wrap {
     margin: 0 10px 0;
     position: relative;
     overflow-y: auto;
 }
 
-#friends .friends-empty {
+.container-3gCOGc .friends-empty {
     opacity: 0;
     animation: fadeIn .4s ease-in-out forwards;
 }
 
-#friends .friends-table .friends-row .friends-column-status .status.status-unknown {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnStatus-ZH4ho2 .status.status-unknown {
     background: RGB(var(--tc-color-5));
     box-sizing: content-box;
 }
 
-#friends .friends-empty .empty-state-image {
+.container-3gCOGc .friends-empty .empty-state-image {
     background-image: none!important;
     position: relative;
     left: -60%;
@@ -301,7 +297,7 @@
     transform: scale(-2, 2);
 }
 
-#friends .friends-empty .empty-state-image::after {
+.container-3gCOGc .friends-empty .empty-state-image::after {
     content: '';
     display: block;
     position: absolute;
@@ -311,14 +307,14 @@
     animation: mouth 400ms steps(1) infinite;
 }
 
-#friends .friends-empty .empty-state-image+p {
+.container-3gCOGc .friends-empty .empty-state-image+p {
     color: transparent!important;
     margin: 0 auto;
 }
 
 // Hiding this because of the Add Friend button being added to the bottom right corner already
 // https://i.imgur.com/StHFUg2.png
-#friends .friends-empty .btn {
+.container-3gCOGc .friends-empty .btn {
     font-size: 12px;
     padding: 4px 20px;
     height: 35px;
@@ -327,7 +323,7 @@
     display: none;
 }
 
-#friends .friends-empty p::after {
+.container-3gCOGc .friends-empty p::after {
     content: 'Hey, what can I Boo for you? Sorry, there doesn\'t seem to be anything here but me...';
     text-align: center;
     position: relative;
@@ -416,11 +412,11 @@
 }
 
 // Friends tab bar and buttons (Mentions, Help, New Group DM)
-#friends .headerBar-UHpsPw {
+.container-3gCOGc .headerBar-UHpsPw {
   height: calc(var(--friends-sub-nav-height) + var(--friends-options-height));
 }
 
-#friends .tab-bar {
+.container-3gCOGc .tab-bar {
   position: absolute;
   height: var(--friends-sub-nav-height);
   background: RGB(var(--tc-color-2));
@@ -436,13 +432,13 @@
 }
 
 // Mentions, Group DM, Help icons bar
-#friends .headerBarDrag-3bf7wG>.flex-1O1GKY {
+.container-3gCOGc .headerBarDrag-3bf7wG>.flex-1O1GKY {
   max-width: 0;
   min-width: 0;
 }
 
 //use default Compose icon on top nav bar
-#friends .headerBar-UHpsPw svg[name="Compose"] {
+.container-3gCOGc .headerBar-UHpsPw svg[name="Compose"] {
   background-color: RGB(var(--tc-tint-10));
   -webkit-mask: var(--group-dm-icon);
   mask: var(--group-dm-icon);
@@ -458,15 +454,15 @@
   }
 }
 
-#friends .headerBar-UHpsPw svg[name="Compose"] g {
+.container-3gCOGc .headerBar-UHpsPw svg[name="Compose"] g {
     display: none;
 }
 
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-separator {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-separator {
     display: none;
 }
 
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item {
   background-color: transparent;
   color: RGB(var(--tc-tint-10));
   padding: 6px 10px;
@@ -481,12 +477,12 @@
   z-index: 2;
 }
 
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item:hover {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item:hover {
   background: none!important;
   color: RGB(var(--contrasted-color))!important;
 }
 
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item.selected {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item.selected {
     color: RGB(var(--contrasted-color))!important;
     background: RGB(var(--tc-color-1))!important;
     border: 1px solid RGBA(var(--tc-color-4), 0.8);
@@ -494,11 +490,11 @@
 }
 
 // Default Discord 'Add Friend' button
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item.tab-bar-item-primary {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item.tab-bar-item-primary {
   display: none;
 }
 // Friend suggestions badge on 'Add Friend' button
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item.tab-bar-item-primary .badge {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item.tab-bar-item-primary .badge {
     position: absolute;
     top: -3px;
     right: -6px;
@@ -507,11 +503,11 @@
 }
 
 // "Fix" to remove the margin from the first tab bar item ('All')
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item.tab-bar-item-primary+.tab-bar-separator+.tab-bar-item {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item.tab-bar-item-primary+.tab-bar-separator+.tab-bar-item {
   margin: 0;
 }
 
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item .badge {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item .badge {
     background: var(--fail-color)!important;
     color: #fff!important;
     display: inline-block;
@@ -521,15 +517,15 @@
     vertical-align: middle;
 }
 
-#friends .headerBar-UHpsPw .tab-bar .tab-bar-item:hover:not(.selected) .badge {
+.container-3gCOGc .headerBar-UHpsPw .tab-bar .tab-bar-item:hover:not(.selected) .badge {
     color: #fff;
 }
 
-#friends .scroller-2FKFPG [style="width: 100%; height: 0px;"] {
+.container-3gCOGc .scroller-2FKFPG [style="width: 100%; height: 0px;"] {
     display: none;
 }
 
-#friends .friends-table .friends-row .friends-column-guilds .more-mutual-guilds-btn {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnGuilds-2we6jb .moreMutualGuildsBtn-2VwbkO {
     border-radius: 0;
     border: none;
     color: #fff!important;
@@ -537,92 +533,92 @@
     transition: background-color 0.2s;
 }
 
-#friends .friends-table .friends-row .friends-column-guilds .icon-3o6xvg {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnGuilds-2we6jb .icon-3o6xvg {
   background-color: RGB(var(--tc-color-2));
   border-radius: 0;
 }
 
-#friends .friends-table .friends-row .friends-column-guilds .more-mutual-guilds-btn:hover {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnGuilds-2we6jb .moreMutualGuildsBtn-2VwbkO:hover {
   background-color: RGB(var(--tc-color-8));
 }
 
-#friends .friends-table .friends-row .friend-activity-icon {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendActivityIcon-2pYmF7 {
   display: none;
 }
 
-#friends .friends-table .friends-row .friends-column-actions {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M {
     position: absolute;
     top: 0;
     right: 0;
     padding-right: 0;
 }
 
-#friends .friends-table .friends-row:hover .friends-column-actions {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud:hover .friendsColumnActions-1LT3_M {
     padding-right: 0;
     margin: 0;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin-left: 0;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action:nth-of-type(1) {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9:nth-of-type(1) {
     transition: all 0.1s;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action:nth-of-type(2) {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9:nth-of-type(2) {
     transition: all 0.2s;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action:nth-of-type(3) {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9:nth-of-type(3) {
     transition: all 0.3s;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action,
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-accept {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9,
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-accept {
     border-radius: 0;
     transition: background-color 0.2s;
 }
 
-#friends .friends-table .friends-row:hover .friends-column-actions {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud:hover .friendsColumnActions-1LT3_M {
     transition: all 0.5s;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-video-call {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-video-call {
   background: RGB(var(--tc-color-7)) var(--video-camera-light-icon) / 24px;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-voice-call {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-voice-call {
   background: RGB(var(--tc-color-7)) var(--phone-light-icon) / 24px;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-video-call:hover,
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-voice-call:hover {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-video-call:hover,
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-voice-call:hover {
   background-color: RGB(var(--tc-color-8))!important;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-remove,
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-ignore,
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-cancel {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-remove,
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-ignore,
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-cancel {
   background: var(--fail-color) var(--close-light-icon) / 30px;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-remove:hover,
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-ignore:hover,
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-cancel:hover {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-remove:hover,
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-ignore:hover,
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-cancel:hover {
   background: var(--fail-color) var(--close-light-icon) / 30px;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action.friends-action-accept {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9.friendsAction-__WNE9-accept {
   background: var(--success-color) var(--checkmark-icon) no-repeat center / 26px;
 }
 
-#friends .friends-table .friends-row .friends-column-actions .friends-action+div {
+.container-3gCOGc .friendsTable-133bsv .friendsRow-2yicud .friendsColumnActions-1LT3_M .friendsAction-__WNE9+div {
     margin-left: 0;
 }
 
-#friends .scroller {
+.container-3gCOGc .scroller-2FKFPG {
   top: 0;
   bottom: unset;
   left: 0;
@@ -643,32 +639,32 @@
   }
 }
 
-#friends .scroller > div {
+.container-3gCOGc .scroller-2FKFPG > div {
   display: flex;
   flex-wrap: wrap;
   height: 0;
   margin-top: -10px;
 }
 
-#friends .friends-table .friends-table-body::-webkit-scrollbar,
-#friends .friends-table .friends-table-body::-webkit-scrollbar-track,
-#friends .friends-table .friends-table-body::-webkit-scrollbar-track-piece,
-#friends .friends-table .friends-table-body::-webkit-scrollbar-thumb {
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar,
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar-track,
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar-track-piece,
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar-thumb {
   visibility: visible!important;
 }
 
-#friends .friends-table .friends-table-body::-webkit-scrollbar,
-#friends .friends-table .friends-table-body::-webkit-scrollbar-track,
-#friends .friends-table .friends-table-body::-webkit-scrollbar-track-piece {
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar,
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar-track,
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar-track-piece {
   background: RGB(var(--tc-color-2))!important;
 }
 
-#friends .friends-table .friends-table-body::-webkit-scrollbar-thumb {
+.container-3gCOGc .friendsTable-133bsv .friendsTableBody-1ZhKif::-webkit-scrollbar-thumb {
   background: RGB(var(--tc-color-5));
 }
 
 @media (max-width: 1300px) {
-    #friends .friends-table .friends-column-guilds {
+    .container-3gCOGc .friendsTable-133bsv .friendsColumnGuilds-2we6jb {
         display: flex!important;
     }
 }

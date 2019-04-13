@@ -25,6 +25,7 @@
     background: none;
     flex: 1 1 300px !important;
     margin: 10px;
+    max-width: 500px;
     min-width: 300px;
     position: relative;
   }
@@ -48,7 +49,7 @@
   }
   .verifiedIcon-1vpk3S {
     @include absolute(bottom -4px right -4px);
-    @include mask(var(--verified-icon), RGB(var(--tc-color-10)));
+    background: var(--verified-badge);
     g {
       display: none;
     }

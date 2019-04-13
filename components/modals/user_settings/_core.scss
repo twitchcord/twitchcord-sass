@@ -29,7 +29,7 @@
     padding: 1px 1px 0 0;
     // Sidebar category header
     .header-2RyJ0Y {
-      @include header('h7');
+      @include header('h8');
       margin: 20px 10px 10px;
       padding: 0;  
     }
@@ -78,46 +78,63 @@
   // Content
   .contentRegion-3nDuYy {
     background: none;
-    padding: 1px 1px 0 0;
+    .scrollerWrap-2lJEkd {
+      padding: 2px 2px 0 0;
+    }
     // Content scroller
     .scroller-2FKFPG {
-      // @include fakeScrollbarFade('settings');
-      padding: 30px 30px 30px 40px;
-      &::-webkit-scrollbar-track {
-        margin-top: 30px;
+      @include fakeScrollbarFade('settings');
+      flex-direction: column;
+      padding: 0 var(--settings-gutter-size) var(--settings-gutter-size) var(--settings-gutter-size);
+      &::after {
+        @include absolute(top 2px right 2px);
       }
     }
     // Direct child of content scroller
     .contentColumnDefault-1VQkGM {
       max-width: 100%;
+      min-height: 0;
+      min-width: 0;
+      order: 2;
       padding: 0;
+      width: 100%;
     }
   }
   // Close button outer container
   .toolsContainer-1edPuj {
-    @include absolute(top 0 right 0);
     @include reset;
-    @include size(100%, 30px);
+    @include size(100%, 70px);
+    @include sticky(top 0);
     background: var(--settings-color);
-    flex: 0;
+    display: flex;
+    align-items: center;
+    flex: 0 0 100%;
+    margin-bottom: 20px;
+    max-height: 70px;
+    order: 1;
     z-index: 1;
+    &::before {
+      @include header('h3');
+      content: 'Settings';
+      width: 100%;
+    }
   }
   .tools-3-3s-N {
-    @include absolute(top 5px right 6px);
+    position: relative;
   }
   .tools-3-3s-N,
   .container-1sFeqf {
-    @include size(20px);
+    @include size(35px);
     flex: 1;
   }
   .closeButton-1tv5uR {
     @include button-base;
     @include button('blank');
     @include flex-center;
-    @include size(20px);
+    @include size(35px);
     transform: none!important;
     svg {
-      @include mask(var(--close-icon), RGB(var(--tc-tint-11)), 16px);
+      @include mask(var(--close-icon), RGB(var(--tc-tint-11)), 25px);
       g {
         display: none;
       }
@@ -152,4 +169,10 @@
       background-color: var(--fail-color)!important;
       box-shadow: none!important;
     }
+}
+
+.cardPrimary-1Hv-to {
+  background: RGB(var(--tc-tint-1))!important;
+  border: 1px solid var(--border-color)!important;
+  border-radius: var(--panel-roundness);
 }

@@ -2,31 +2,38 @@
 
 //** Voice & Video settings
 
-.user-settings-voice .preview-overlay img {
-    content: image('boo-pixelart.gif');
-    width: 64px;
-    height: 64px;
+.userSettingsVoice-iwdUCU {
+  > #{classes('base.flex.flex')} {
+    > div {
+      background: RGB(var(--tc-tint-1));
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      + div {
+        border-top: none;
+      }
+      &.marginBottom20-32qID7,
+      &.marginBottom40-2vIwTv {
+        margin: 0;
+      }
+      &:last-of-type {
+        display: flex;
+        justify-content: flex-end;
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 30px 0;
+      }
+    }
+  }
 }
 
-.layer-3QrUeG .ui-standard-sidebar-view .scrollerWrap-2lJEkd .user-settings-voice .h3-3PDeKG {
-    color: #fff!important;
-    font-size: 12px!important;
+.micTest-R7grQZ {
+  flex-wrap: wrap;
 }
 
-.user-settings-voice .cardPrimary-1Hv-to {
-    background-color: RGB(var(--tc-color-4))!important;
-    border: 2px solid RGB(var(--tc-color-8))!important;
-}
-
-.user-settings-voice .media-engine-video {
-    border-radius: 0;
-}
-
-.user-settings-voice .preview-overlay {
-    background-color: RGB(var(--tc-color-2))!important;
-    border-color: RGB(var(--tc-color-4))!important;
-}
-
-.theme-dark .user-settings-voice .preview-overlay.dismiss {
-    background-color: transparent!important;
+// To overwrite Discord's inline injecting the width
+// that causes the settings content to stretch out of
+// its normal bounds
+.container-3PXSwK {
+  width: 100%!important;
 }

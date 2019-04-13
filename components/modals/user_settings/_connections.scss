@@ -2,63 +2,86 @@
 
 //** Connections settings
 
-.accountList-33MS45 .primary-jw0I4K {
-    margin-bottom: 20px;
-}
 
-.accountBtn-2Nozo3 .accountBtnInner-sj5jLs {
-  @include button-undo-active;
-  border-radius: 0;
-  background-color: transparent!important;
-  border: none!important;
-  &:hover {
-    background-color: transparent!important;
-    border: none!important;
-  }
-  &:hover:active,
-  &:active {
-    background-color: transparent!important;
-  }
-}
+// **********Need some main container class here {
 
 .connectionIcon-2ElzVe {
-    height: 42px;
-    width: 42px;
-    top: -4px;
-    position: relative;
+  @include size(70px);
+  border-radius: var(--image-roundness);
 }
 
-
 .connection-1fbD7X {
-    box-shadow: none!important;
-    border: 1px solid RGB(var(--tc-color-4))!important;
+    background: RGB(var(--tc-tint-1))!important;
+    border: 1px solid var(--border-color)!important;
+    border-radius: var(--panel-roundness);
     margin-bottom: 15px;
-    border-radius: 0;
 }
 
 .connectionHeader-2MDqhu {
     border-radius: 0;
-    border: none;
     margin-bottom: 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .connectionHeader-2MDqhu .connectionAccountValue-3VdBGs {
     color: #fff!important;
     font-size: 16px!important;
-    margin-bottom: 6px;
-    margin-left: 10px;
-}
-
-.connectionHeader-2MDqhu .connectionAccountLabel-1DiK0A {
-    display: none!important;
-}
-
-.connectionOptionsWrapper-3KIj1Z {
-    padding: 10px 10px;
-    background: RGB(var(--tc-color-2));
-    border: none;
 }
 
 .connectionOptionsWrapper-3KIj1Z .connectionOptions-YE9FAM {
     padding-top: 20px;
+}
+
+.connectionOptionSwitch-3KNn-E + .connectionOptionSwitch-3KNn-E {
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.divider-3573oO {
+  display: none;
+}
+
+.cardPrimary-1Hv-to {
+  + div {
+    background: RGB(var(--tc-tint-1));
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 0 50px;
+    padding: 20px;
+  }
+}
+
+.connectedAccounts-2-XP1G {
+  margin-top: 20px;
+}
+
+.accountBtnInner-sj5jLs {
+  border: none;
+  border-radius: var(--button-roundness);
+  transition: none;
+  @each $type, $url in map-get($discordImages, settingsConnections) {
+    &[style*="#{$url}"] {
+      background: RGB(var(--#{$type}-color)) var(--#{$type}-logo) no-repeat center / 30px!important;
+    }
+  }
+  // We are including these below because they need size adjustments to be consistant with the others
+  &[style*="#{discordImages('settingsConnections.facebook')}"] {
+    background-size: 25px!important;
+  }
+  &[style*="#{discordImages('settingsConnections.spotify')}"] {
+    background-size: 25px!important;
+  }
+  &[style*="#{discordImages('settingsConnections.twitter')}"] {
+    background-size: 25px!important;
+  }
+  &[style*="#{discordImages('settingsConnections.xbox')}"] {
+    background-size: 25px!important;
+  }
+  &[style*="#{discordImages('settingsConnections.youtube')}"] {
+    background-size: 35px!important;
+  }
+  &:hover {
+    filter: brightness(1.2);
+  }
 }

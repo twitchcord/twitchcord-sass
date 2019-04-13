@@ -6,7 +6,7 @@
 // Border-box everywhere!
 * {
   box-sizing: border-box;
-  font-size: 100%;
+  font-size: 62.5%;
   &::before,
   &::after {
     box-sizing: border-box;
@@ -53,17 +53,50 @@ strong {
   font-weight: 700;
 }
 
+  // Image zoom images
+  #{$imagezoom} {
+    border-radius: 0;
+    cursor: zoom-in!important;
+  }
+
 // Direct child of app container div
 .layer-3QrUeG {
   padding: 0!important;
   top: 0!important;
 }
 
-// Used for headings all over Discord, namely settings and modals
-.h2-2gWE-o {
-  @include header('h4');
-  text-transform: capitalize;
+// To immitate Twitch's gray border around the app
+body::after {
+  content: '';
+  @include absolute(top 0 left 0 bottom 0 right 0);
+  border: 1px solid rgba(100, 100, 100, 0.3);
+  z-index: 999999999;
+  pointer-events: none;
 }
+
+
+
+  // Early loading BG fix, connection background
+  .loading-Ags1CY,
+  .appMount-3lHmkl,
+  .app-19_DXt > div[style*="background-color: rgb(47, 49, 54)"] {
+    background: RGB(var(--tc-color-4))!important;
+    opacity: 1!important;
+  }
+  
+
+
+  // Add red flash to replace Ctrl+Alt+Shift up/down shake animation
+  #{classes('base.app2')}[style*="transform: translate3d(2px"]::after,
+  #{classes('base.app2')}[style*="transform: translate3d(-2px"]::after {
+    content: '';
+    @include size(100vw, 100vh);
+    @include fixed(top 0 left 0);
+    display: block;
+    background: RGBA(var(--notification-color), 0.2);
+    z-index: 99999999999;
+    animation: fadeOut 0.5s forwards;
+  }
 
 // Just in case it isn't margin-left: 0
 // https://i.imgur.com/0wAgpbV.png
@@ -73,15 +106,23 @@ strong {
   border-radius: 0;
 }
 
+// guildsWrapper outer container
+.container-2lgZY8 {
+  background: none;
+}
+
 // Mentions indicator container for guilds and channels
 #{classes('base.unreadBar.bar')} {
   background: var(--unread-bar-color)!important;
-  border-radius: 0;
-  font-weight: 700;
+  border-radius: var(--button-roundness);
   box-shadow: none!important;
+  display: none;
+  font-weight: 700;
+  transition: none;
   // Active when the user has an unread mention
   &#{classes('base.unreadBar.mention')} {
       background: var(--fail-color)!important;
+      display: flex;
       &:hover {
           background: var(--fail-color)!important;
       }
@@ -115,4 +156,30 @@ body {
       background: none!important;
     }
   }
+}
+
+
+// Text used throughout the app
+// Settings switch labels
+.title-31JmR4,
+.primary-jw0I4K,
+.h3-3PDeKG {
+  @include header('h7');
+}
+// Minor text descriptions
+.description-3_Ncsb,
+.labelDescriptor-1PqHgD {
+  @include header('h7');
+  color: RGB(var(--tc-tint-7))!important;
+}
+// Used for headings all over Discord, namely settings and modals
+.h2-2gWE-o {
+  @include header('h4');
+  text-transform: capitalize;
+}
+// Used for sub text
+// https://i.imgur.com/VSkLGxy.png
+.h5-18_1nd {
+  @include header('h6');
+  text-transform: capitalize;
 }

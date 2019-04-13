@@ -20,11 +20,11 @@
 }
 
 .menu-Sp6bN1 .item-1GzJrl {
-  color: RGB(var(--tc-tint-10));
+  color: RGB(var(--tc-tint-11));
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 0;
-  padding: 8px 16px;
+  padding: 8px 14px;
 }
 
 .menu-Sp6bN1 .item-1GzJrl:hover {
@@ -40,27 +40,14 @@
 }
 
 .menu-Sp6bN1.alt-3btY0e .item-1GzJrl .status-oxiHuE {
-  width: 6px!important;
-  height: 6px!important;
-  display: flex;
+  @include relative(top 0 right 0 bottom 0 left 0);
+  @include size(6px!important);
   align-self: center;
   border: none!important;
-  margin-right: 16px!important;
+  display: flex;
   flex: 0 0 auto;
-  bottom: 0;
+  margin-right: 14px!important;
   order: initial;
-  &.online-2S838R {
-      background-color: #5acc52;
-  }
-  &.idle-3DEnRT {
-      background-color: #f7cd24;
-  }
-  &.dnd-1_xrcq {
-      background-color: #ff4040;
-  }
-  &.invisible-1kp8Z0 {
-      background-color: #878787;
-  }
 }
 
 .menu-Sp6bN1.alt-3btY0e .item-1GzJrl:hover .helper-2c73HK {

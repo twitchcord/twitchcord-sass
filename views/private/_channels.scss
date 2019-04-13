@@ -14,14 +14,15 @@
     @include ellipsis;
     display: flex;
     align-items: center;
-    height: 21px;
-    margin: 15px 0 0 10px;
     opacity: 1;
-    padding: 0 0 10px 0;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: RGB(var(--tc-tint-7));
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: RGB(var(--tc-tint-9));
+    border-bottom: 1px solid var(--border-color);
+    height: 30px;
+    margin: 10px 0 3px 15px;
+    padding: 9px 4px 20px 0;
     &:first-of-type {
       margin-top: 0;
     }
@@ -47,32 +48,28 @@
         transform: translate3d(-2px, 0, 0);
       }
       a {
-        color: RGB(var(--contrasted-color))!important;
+        color: RGB(var(--tc-tint-11))!important;
         background-color: RGB(var(--tc-tint-3));
       }
       #{$status} {
-        border-color: RGB(var(--tc-tint-3))!important;
+        box-shadow: 0 0 0 2px RGB(var(--tc-tint-3));
       }
     }
     // DM convo avatar
     .wrapper-2F3Zv8,
     .inner-1W0Bkn {
-      @include size(30px);
+      @include size(26px);
       margin: 0 10px 0 0;
       background-color: transparent;
       background-size: 26px 26px!important;
       background-repeat: no-repeat;
       border-radius: var(--user-roundness);
     }
-    .inner-1W0Bkn {
-      border: 2px solid transparent;
-    }
     // Status
     #{$status} {
-      border-color: RGB(var(--tc-tint-1))!important;
-      right: -4px;
-      bottom: -4px;
-      border-radius: var(--status-roundness);
+      @include absolute(right -2px bottom -2px);
+      @include size(6px);
+      box-shadow: 0 0 0 2px var(--channels-color);
       &#{$statustyping} {
         width: 24px!important;
         right: -3px !important;
@@ -80,13 +77,14 @@
     }
     // DM close button
     #{$dmchannelclose} {
-      @extend %button-primary;
+      @include button-base;
+      @include button('primary');
       padding: 11px;
       height: auto;
       display: block;
       opacity: 1!important;
       transform: translate3d(30px, 0, 0);
-      transition: var(--transition-none, all 0.15s ease-in)!important;
+      transition: var(--disable-transitions, transform 0.15s ease-in)!important;
       will-change: transform;
     }
     // User activity text outer container
@@ -98,6 +96,7 @@
       width: 100%;
       // For activities
       &#{$flex} {
+        @include relative(top 1px);
         margin-top: -1px;
         line-height: 12px;
         opacity: 1;
@@ -116,7 +115,7 @@
     // DM convo inner container
     #{$dmchannelname} {
       @include ellipsis;
-      @include text(RGB(var(--tc-tint-10)), 12px, 400, 20px);
+      @include text(RGB(var(--tc-tint-9)), 14px, 400, 20px);
       align-items: center;
       flex-wrap: wrap;
       margin: 0 10px 0 0;
@@ -128,23 +127,23 @@
     &:hover {
       // User activity text outer container
       #{$dmchannelactivity} {
-        color: RGB(var(--tc-tint-10));
+        color: RGB(var(--tc-tint-9));
       }
       // DM convo inner container
       #{$dmchannelname} {
-        color: RGB(var(--contrasted-color));
+        color: RGB(var(--tc-tint-11));
       }
     }
     // DM selected
     &#{$dmchannelselected},
     &#{$dmchannelselected}:hover {
       a {
-        color: RGB(var(--contrasted-color));
+        color: RGB(var(--tc-tint-11));
         background-color: RGB(var(--tc-tint-2));
         border-radius: 0;
       }
       #{$status} {
-        border-color: RGB(var(--tc-tint-2))!important;
+        box-shadow: 0 0 0 2px RGB(var(--tc-tint-2))!important;
       }
     }
   }

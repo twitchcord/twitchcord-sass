@@ -3,18 +3,15 @@
 //** Typing indicator
 
 #{$chat} form .typing-2GQL18 {
+  @include absolute(bottom 100%);
   cursor: default;
   display: flex;
   font-size: 12px;
-  line-height: 40px;
-  height: 40px;
-  position: absolute;
-  bottom: 100%;
-  top: inherit;
-  background-color: RGBA(var(--tc-color-1), 0.9) !important;
-  width: calc(100% - 42px);
+  line-height: 30px;
+  height: 30px;
+  background: var(--chat-typing-background, none)!important;
+  width: 100%;
   animation: chatTypingIndicator 0.15s forwards;
-  margin-left: 18px;
 }
 
 // Rich presence game thing "Fortnite supports game invites"

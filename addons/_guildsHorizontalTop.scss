@@ -4,79 +4,77 @@
 // <html>.guildsHorizontalTop
 //
 
-.guildsHorizontalTop {
+.guildsHorizontalTop,
+.guildsHorizontalBottom {
   &:root {
     --guilds-height: 70px;
     --guilds-width: 100%;
   }
-  #{$layer} {
-    > #{$flex} {
+  .layer-3QrUeG{
+    > .flex-1xMQg5 {
       flex-direction: column;
     }
   }
-  #{$guildswrapper} {
-    border-right: none;
-    border-bottom: 1px solid RGB(var(--tc-color-4));
+  .tc-titleWrapper-nav-logo-settings {
+    width: 60px;
+  }
+  .wrapper-1Rf91z {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
     flex-direction: row;
-  }
-  #{$guildsscrollerwrap} {
-    @include size(var(--guilds-width), calc(var(--guilds-height) + 10px));
-  }
-  #{$guilds} {
-    margin-right: var(--guilds-height);
-    padding: 0;
-    // Needed in order to center guilds horizontally when there are very few
-    &#{$scrollerold} {
+    .scrollerWrap-2lJEkd {
+      @include size(var(--guilds-width), calc(var(--guilds-height) + 10px));
+    }
+    .scroller-2TZvBN {
+      padding: 0 calc(var(--guild-icon-size) + 21px) 0 9px;
+      // Needed in order to center guilds horizontally when there are very few
       overflow-y: hidden;
       overflow-x: scroll;
       flex-direction: row;
     }
     // DMs container
-    #{$dms} {
-      @include size(auto, var(--guilds-height));
-      margin: 0;
-      padding: 0 5px 0 0;
-      border: none;
-      border-right: 1px solid RGB(var(--tc-color-4));
-      border-left: 1px solid RGB(var(--tc-color-4));
-      flex-direction: row;
-      #{$guild} {
-        transform: none!important;
-        animation: translateTopToBottom 0.6s;
-        // First DM margin fix
-        &:first-child,
-        // Last DM margin fix
-        &:last-child {
-          margin: auto 9px;
-        }
-      }
-      // For the first 'real' guild in the guilds list
-      + #{$guildseparator} {
-        + #{$guild} {
-          margin-left: 15px;
-        }
-      }
+    .container-1aNBdK {
+      animation: var(--disable-animations, translateTopToBottom 0.6s);
+      margin: auto 9px;
+      transform: none!important;
+      z-index: 4;
     }
-    // Friends online count
-    #{$friendsonline} {
-      display: none;
+    // For the first 'real' guild in the guilds list
+    .guildSeparator-3s64Iy {
+      height: 100%;
+      width: auto;
+      margin: 0 10px;
+      &::after {
+        @include size(1px, auto);
+        top: 20%;
+        bottom: 20%;
+        left: unset;
+        right: unset;
+      }
     }
     // Guild outer container
-    #{$guild} {
+    .container-2td-dC {
       margin: auto 9px;
+      z-index: 4;
       // Selected guild indicator
-      &, &#{$guildunread}, &#{$guildselected}, &#{$guildunread}#{$guildselected} {
+      &, &.unread-2OHH1w, &.selected-nT-gM3, &.unread-2OHH1w.selected-nT-gM3 {
         &::before {
           @include absolute(top var(--guilds-height)!important left 0!important);
           @include size(var(--guild-icon-size)!important, 5px!important);
           transform: none;
         }
       }
+      &.selected-nT-gM3, &.unread-2OHH1w.selected-nT-gM3 {
+        &::before {
+          top: calc(var(--guilds-height) - 1px)!important;
+        }
+      }
     }
     // Join / Create Server button
-    #{$guildsadd} {
+    .createJoinContainer-2Av064 {
       @include absolute(top 0 right 0 bottom unset left unset, !important);
       @include size(calc(var(--guild-icon-size) + 30px)!important, var(--guilds-height)!important);
+      z-index: 4;
     }
   }
 }

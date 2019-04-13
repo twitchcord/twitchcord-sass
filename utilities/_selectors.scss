@@ -69,8 +69,18 @@ $classes: (
     videoTimebarTooltip: 'tc-videoTimebarTooltip', // Tooltip class specifically for fixed videos' timebar // https://i.imgur.com/OzUTJlt.png
     voiceConnected: 'tc-voiceConnected' // Replaces Discord's normal voice connected box in channels // https://i.imgur.com/fL4taCs.png
   ),
+  addons: (
+    statusBorders: 'statusBorders'
+  ),
   base: (
+    appMount: 'appMount-3lHmkl',
+    app: 'app-19_DXt',
+    app2: 'app-2rEoOp',
     base: 'base-3dtUhz',
+    layers: 'layers-3iHuyZ',
+    layer: 'layer-3QrUeG',
+    container: 'container-2lgZY8',
+
     directionRowReverse: 'directionRowReverse-m8IjIq',
     flex: (
       flex: 'flex-1O1GKY',
@@ -84,9 +94,7 @@ $classes: (
       mention: 'mention-1f5kbO',
       icon: 'icon-2aINcz'
     ),
-    app: (
-      app: 'app-2rEoOp'
-    )
+    stopAnimation: 'stopAnimation-1XE1FK'
   ),
   components: (
     attachments: (
@@ -255,7 +263,21 @@ $classes: (
 
     ),
     spinners: (
-
+      typing: (
+        typing: 'typing-1KJk_j',
+        spinner: 'spinner-2enMB9',
+        pulsingEllipsis: 'pulsingEllipsis-3YiXRF',
+        pulsingEllipsisItem: 'pulsingEllipsisItem-32hhWL'
+      )
+    ),
+    statuses: (
+      status: 'status-oxiHuE',
+      online: 'online-2S838R',
+      idle: 'idle-3DEnRT',
+      dnd: 'dnd-1_xrcq',
+      streaming: 'streaming-2_dnHe',
+      offline: 'cc',
+      invisible: 'xx'
     ),
     tooltips: (
 
@@ -444,7 +466,6 @@ $classes: (
     ),
     guilds: (
       guildsWrapper: 'wrapper-1Rf91z',
-
       mentionsIndicatorTop: 'unreadMentionsIndicatorTop-gA6RCh',
       mentionsIndicatorBottom: 'unreadMentionsIndicatorBottom-BXS58x',
 
@@ -476,8 +497,9 @@ $classes: (
       selected: 'selected-nT-gM3',
 
       guildsError: 'guildsError-b7zR5H',
-      containerGuildsError: 'guildsErrorContainer-2uWYsE',
-      containerServerDiscovery: 'container-11WMXy',
+      guildsErrorContainer: 'guildsErrorContainer-2uWYsE',
+      serverDiscoveryContainer: 'container-11WMXy',
+      createJoinContainer: 'createJoinContainer-2Av064',
       circleIconButton: 'circleIconButton-jET_ig',
       plus: 'plus-3UqSQu',
 

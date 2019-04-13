@@ -120,20 +120,6 @@
     background: RGB(var(--tc-color-2))!important;
 }
 
-//## Text inputs
-.input-cIJ7To, .ui-input-button, .need-help-modal.deprecated .header input[type=text], #instant-invite-modal .clipboard-input-inner input, .copyInputDefault-21sXtF, .copyInputSuccess-XZc7BO,
-.ui-search-bar .input, .bda-slist input[type="text"], .root-SR8cQa .userInfoSection-2acyCx .note textarea, .ui-phone-field .input-field, .form.deprecated .control-group input[type=text] {
-    @extend %input-text;
-}
-
-.input-cIJ7To:focus, .need-help-modal.deprecated .header input[type=text]:focus, .ui-search-bar .input:focus, .bda-slist input[type="text"]:focus, .root-SR8cQa .userInfoSection-2acyCx .note textarea:focus,
-.ui-phone-field .input-field:focus, .form.deprecated .control-group input[type=text]:focus, .quick-message:focus, .search-bar .search-bar-inner input:focus {
-    box-shadow: inset 0 0 0 1px RGB(var(--tc-color-8)), 0 0 6px -2px RGB(var(--tc-color-8));
-    transition: box-shadow .12s ease-in;
-    outline: none;
-    outline-style: none;
-}
-
 // The checkmark icon
 .checkbox .checkbox-inner input[type=checkbox]:checked+span:after {
   @include mask(var(--checkmark-icon), RGB(var(--tc-color-2)));
@@ -238,4 +224,48 @@
       }
     }
   }
+}
+
+
+
+
+///  ==========================================================================
+///  Sliders
+///  ==========================================================================
+
+.bar-2Qqk5Z {
+  border-radius: var(--button-roundness);
+  height: 12px;
+  background: RGB(var(--tc-tint-3))!important;
+}
+
+.barFill-23-gu- {
+  background: RGB(var(--tc-color-9));
+  position: absolute;
+  z-index: 1;
+}
+
+.barFill-23-gu-[style*="background: rgb(105, 196, 154);"] {
+  background: var(--success-color)!important;
+}
+
+.grabber-3mFHz2 {
+  border-radius: var(--button-roundness);
+  box-shadow: var(--elevation-0);
+  border: none;
+  width: 8px;
+  margin-top: -10px;
+  z-index: 1;
+  cursor: move;
+  cursor: -webkit-grab;
+}
+
+
+
+///  ==========================================================================
+///  Text inputs
+///  ==========================================================================
+
+.input-cIJ7To {
+  @include input('primary');
 }

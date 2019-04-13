@@ -40,13 +40,30 @@
     }
     // Attachment download button
     &::after {
-      @extend %button-primary;
       @include button-base;
+      @include button('primary');
       @include absolute(bottom 16px right 10px);
       @include flex-center;
       @include localize('Download');
       height: 30px;
       padding: 0 10px;
+    }
+    &:hover {
+      &::after {
+          background-color: var(--button-primary-hover-color)!important;
+          border: var(--button-primary-hover-border)!important;
+          box-shadow: var(--button-primary-hover-shadow)!important;
+          color: var(--button-primary-hover-text-color)!important;
+      }
+    }
+    &:hover:active,
+    &:active {
+      &::after {
+        background-color: var(--button-primary-active-color)!important;
+        border: var(--button-primary-active-border)!important;
+        box-shadow: var(--button-primary-active-shadow)!important;
+        color: var(--button-primary-active-text-color)!important;
+      }
     }
   }
   // Attachment name while attachment is uploading

@@ -3,14 +3,85 @@
 ///  Titlebar
 ///  ==========================================================================
 
+#{classes('base.layers')},
+#{classes('base.layer')} {
+  background: none!important;
+}
+
+.loading-Ags1CY,
+.appMount-3lHmkl,
+.app-19_DXt>div[style*="background-color: rgb(47, 49, 54)"] {
+  background: var(--app-background)!important;
+  background-attachment: fixed!important;
+  background-position: var(--app-background-position, 0 0)!important;
+  background-repeat: var(--app-background-repeat, no-repeat)!important;
+  background-size: var(--app-background-size, cover)!important;
+  opacity: var(--app-opacity, 1)!important;
+  z-index: 1;
+  &::before {
+    @include fixed(top 0 left 0);
+    @include size(100vw, 100vh);
+    content: var(--transparency-app-content);
+    background: var(--transparency-app-background)!important;
+    background-attachment: fixed!important;
+    background-position: var(--transparency-app-background-position, 0 0)!important;
+    background-repeat: var(--transparency-app-background-repeat, no-repeat)!important;
+    background-size: var(--transparency-app-background-size, cover)!important;
+    filter: blur(var(--transparency-app-background-blur, 0))
+            brightness(var(--transparency-app-background-brightness, 1))
+            contrast(var(--transparency-app-background-contrast, 1))
+            GRAYSCALE(var(--transparency-app-background-grayscale, 0))
+            INVERT(var(--transparency-app-background-invert, 0))
+            saturate(var(--transparency-app-background-saturate, 1));
+    mix-blend-mode: var(--transparency-app-background-blending, normal);
+    opacity: var(--transparency-app-opacity, 1);
+    pointer-events: none;
+    z-index: -1;
+  }
+  &::after {
+    @include fixed(top 0 left 0);
+    @include size(100vw, 100vh);
+    content: '';
+    background: var(--transparency-app-background-overlay, #000);
+    display: block;
+    opacity: var(--transparency-app-background-overlay-opacity, 0);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// main nav
+.tc-titleWrapper,
+// chat area
+.messagesWrapper-3lZDfY,
+// guilds list
+.wrapper-1Rf91z,
+// channels list
+.channels-Ie2l6A,
+// members list
+.membersWrap-2h-GB4,
+// channel header
+.titleWrapper-1l0xT9,
+// chat message input
+.chat-3bRxxu form .inner-zqa7da {
+  backdrop-filter: blur(var(--transparency-layout-background-blur, 0))
+                   brightness(var(--transparency-layout-background-brightness, 1))
+                   contrast(var(--transparency-layout-background-contrast, 1))
+                   GRAYSCALE(var(--transparency-layout-background-grayscale, 0))
+                   saturate(var(--transparency-layout-background-saturate, 1))
+                   OPACITY(var(--transparency-layout-background-opacity, 1));
+}
+
+
+
+
+
 .titleBar-AC4pGV {
   z-index: 99999999;
-  background: RGB(var(--tc-color-4));
+  background: none;
   height: calc(var(--titlebar-height) - 4px);
   margin-top: 4px;
-  -webkit-box-pack: start;
   justify-content: flex-start;
-  -webkit-box-align: stretch;
   align-items: stretch;
   padding: 0;
   width: 100%;
@@ -18,7 +89,7 @@
   .wordmark-2iDDfm {
     opacity: 1;
     width: 100%;
-    background: RGB(var(--tc-color-4));
+    background: var(--titlebar-color);
     margin-top: -4px;
     padding: 0;
     &::before {

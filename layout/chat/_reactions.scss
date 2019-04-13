@@ -86,7 +86,7 @@
     height: 26px !important;
 	}
 	&#{$messagereactionme} {
-		background: var(--success-color-inner)!important;
+		background: var(--success-inner-color)!important;
 		#{$messagereactioncount} {
 			color: RGB(var(--contrasted-color))!important;
 		}
@@ -104,7 +104,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			box-shadow: 0 0 0 2px var(--success-color), 0px 0px 20px var(--success-color-inner);
+			box-shadow: 0 0 0 2px var(--success-color), 0px 0px 20px var(--success-inner-color);
 		}
 	}
 	#{$messagereactioncount} {

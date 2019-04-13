@@ -154,6 +154,7 @@
 			height: auto!important;
 		}
 		@at-root #{$embedvideoactions} {
+      background: rgba(0, 0, 0, 0.5);
 			#{$embedvideoactionsinner} {
 				background: transparent;
 				border-radius: 0;
@@ -161,11 +162,12 @@
 				// Play button outer container
 				@at-root #{$iconwrapper},
 				& #{$iconwrapper} {
-					@include size(70px);
+					@include size(100px);
 					background: none!important;
 					// Play button inner container
 					#{$iconwrapperwrapper} {
-						opacity: 0.8;
+            opacity: 1;
+            transition: none;
 						// Open in new window button link
 						+ #{$iconwrapperwrapper} {
 							display: none!important;
@@ -183,8 +185,8 @@
 						@include absolute(top 0 left 0);
 						@include size(100%);
 						background-color: transparent;
-						background: var(--video-play-circle-image);
-						background-size: 70px 70px;
+						background: var(--video-play-image);
+						background-size: 100px 100px;
 						transition: none;
 						polygon,
 						+ a {

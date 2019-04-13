@@ -1,0 +1,39 @@
+.hybridTwitch {
+  &:root {
+    --sub-nav-guild-icon-size: 50px;
+    --sub-nav-height: 70px;
+    --border-color: RGB(var(--tc-tint-3));
+    --main-nav-links-color: RGB(var(--tc-tint-10));
+  }
+  // Chat area container
+  #{$chat} {
+    // Chat area scroller container
+    #{$messages} {
+      @include scrollbar('alternate', '&');
+    }
+  }
+  .membersWrap-2h-GB4 {
+    border: none;
+  }
+  .titleWrapper-1l0xT9 {
+    background: var(--chat-color)!important;
+    border: none;
+  }
+  .tc-channelInfo-name-and-topic-container {
+    flex-wrap: wrap;
+  }
+  .tc-channelInfo-topic-contain {
+    line-height: 20px;
+  }
+  .tc-channelInfo-topic {
+    margin: 0;
+  }
+  .messagesWrapper-3lZDfY .messages-3amgkR .divider-3gKybi:not(.dividerRed-MKoLlr) {
+    position: sticky;
+    top: 0;
+    background: var(--chat-color);
+  }
+  .members-1998pB.scroller-2FKFPG::after {
+    right: 3px;
+  }
+}

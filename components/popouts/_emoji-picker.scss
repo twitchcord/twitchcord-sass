@@ -84,6 +84,10 @@
     &::-webkit-scrollbar-track {
       margin-top: 10px;
     }
+    // Fake scrollbar, adjust to compensate for padding
+    &::after {
+      @include absolute(top 10px right 1px);
+    }
   }
   .row-3j9Kuo {
     height: 40px!important;
@@ -184,6 +188,7 @@
   .scrollerWrap-2lJEkd {
     background: none;
     border: 0;
+    margin: 0 0 10px 0;
     padding: 1px 1px 0 0;
   }
   .searchBar-2pWH0_ {
@@ -250,10 +255,11 @@
     flex: 0 0 auto;
     height: auto;
     justify-content: center;
-    border-top: 1px solid var(--border-color);
     .item-16cXuq {
       @include size(40px!important);
-      background-image: none!important;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 18px;
       border: none!important;
       cursor: pointer!important;
       margin: 0!important;
@@ -262,42 +268,55 @@
       transition: none!important;
       display: flex;
       flex: 1 0 auto;
+      opacity: 0.6;
       &.recent-rdY7_c {
-        @include mask(var(--clock-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--clock-icon)!important;
+        background-size: 20px;
       }
       &.custom-2TY7UZ {
-        @include mask(var(--video-camera-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--video-camera-icon)!important;
+        background-size: 20px;
       }
       &.people-2y6eof {
-        @include mask(var(--emoji-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--emoji-icon)!important;
       }
       &.nature-WkggKK {
-        @include mask(var(--leaf-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--leaf-icon)!important;
+        background-size: 16px;
       }
       &.food-3vb4RY {
-        @include mask(var(--apple-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--apple-icon)!important;
+        background-size: 16px;
       }
       &.activity-2oLAbd {
-        @include mask(var(--d-pad-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--d-pad-icon)!important;
       }
       &.travel-2FeozN {
-        @include mask(var(--globe-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--globe-icon)!important;
+        background-size: 19px;
       }
       &.objects-ktZjG4 {
-        @include mask(var(--screen-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--screen-icon)!important;
       }
       &.symbols-3xtDtJ {
-        @include mask(var(--heart-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--heart-icon)!important;
+        background-size: 19px;
       }
       &.flags-3peqg9 {
-        @include mask(var(--flag-icon), RGB(var(--tc-tint-10)), 20px);
+        background-image: var(--flag-icon)!important;
       }
       &.selected-39BZ4S {
-        background-color: RGB(var(--tc-color-8))!important;
+        background-color: transparent!important;
         opacity: 1!important;
+        &::after {
+          @include absolute(top 0 left 0);
+          @include size(100%, 3px);
+          content: '';
+          background: var(--button-primary-color);
+        }
       }
       &:hover {
-        background-color: #fff;
+        background-color: RGB(var(--tc-color-8))!important;
         opacity: 1!important;
       }
     }

@@ -96,44 +96,16 @@
 
 // Twitchcord top nav bar
 #{classes('twitchcord.titleWrapper')} {
-  width: 100%;
+  background: var(--main-nav-color, none);
+  border: var(--main-nav-border, var(--layout-border, 0));
+  border-radius: var(--main-nav-roundness, var(--layout-roundness, 0));
+  width: calc(100% - calc(var(--layout-gutter-size, 0) * 2));
+  margin: var(--layout-gutter-size, 0);
   display: flex;
-  flex: 1 0 50px;
+  flex: 1 0 var(--main-nav-height);
+  overflow: hidden;
   position: relative;
-  background: RGB(var(--tc-color-6));
   z-index: 100;
-  // Spoofing the top nav bar so users see it while the JS is loading
-  // http://i68.tinypic.com/2567pqw.png
-  // @at-root #{$channels} {
-  //   &::before {
-  //     content: '';
-  //     @include size(100%, var(--main-nav-height));
-  //     @include fixed(top var(--titlebar-height) left 0);
-  //     background: RGB(var(--tc-color-5));
-  //     border-bottom: 2px solid RGB(var(--tc-color-2));
-  //     pointer-events: none;
-  //     z-index: 10;
-  //   }
-  // }
-  // Spoofing the top nav bar so users see it while the JS is loading
-  // http://i68.tinypic.com/2567pqw.png
-  // @at-root #{$guildswrapper} {
-  //   &::before {
-  //     content: '';
-  //     @include size(var(--guilds-width), var(--main-nav-height));
-  //     @include fixed(top var(--titlebar-height) left 0);
-  //     background: RGB(var(--tc-color-5));
-  //     z-index: 3;
-  //     pointer-events: none;
-  //   }
-  // }
-  // Remove spoof bars once Javascript loads top nav bar
-  ~ #{$flex} #{$channels},
-  ~ #{$flex} #{$guildswrapper} {
-    &::before {
-      display: none;
-    }
-  }
   &-nav {
     $grandparent: &;
     display: flex;
@@ -287,8 +259,9 @@
       position: relative;
     }
     &-global-search-input {
-      background-color: var(--chat-color);
-      border: 1px solid var(--main-nav-color);
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #faf9fa;
       border-radius: var(--button-roundness);
       color: #fff;
       height: 30px;
@@ -303,7 +276,7 @@
       -webkit-appearance: none;
       box-sizing: border-box;
       &::-webkit-input-placeholder {
-        color: RGB(var(--tc-tint-7));
+        color: RGB(var(--tc-tint-11));
       }
       &:focus {
         border-color: RGB(var(--tc-color-8))!important;
@@ -398,6 +371,7 @@
         @include size(10px);
         background: var(--fail-color);
         border: 2px solid var(--main-nav-color);
+        border-radius: 50%;
         display: none;
         @at-root .newMentions & {
           display: block;
@@ -412,7 +386,7 @@
       width: 240px;
       cursor: pointer;
       position: relative;
-      margin-left: 5px;
+      padding: 0 0 0 10px;
     }
     &-panel-inner {
       display: flex;
@@ -539,6 +513,7 @@
     }
     &-arrow {
       @include mask(var(--down-arrow-icon), #fff);
+      @include relative(left -2px);
       @include size(20px);
       align-self: center;
       transition: var(--disable-transitions, transform 0.25s);
@@ -551,8 +526,11 @@
 
 
 .input-2VB9rf:focus + #{classes('twitchcord.titleWrapper')}-nav-global-search-input {
-  border: 1px solid RGB(var(--tc-color-8))!important;
-  box-shadow: 0 0 6px -2px RGB(var(--tc-color-8))!important;
+  border: var(--input-primary-border-focus);
+  box-shadow: var(--input-primary-shadow-focus)!important;
+  &::placeholder {
+    color: RGB(var(--tc-tint-7));
+  }
   &~.tc-search-bar-icon {
       opacity: 1;
   }

@@ -8,7 +8,7 @@
     @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
     background: RGB(var(--tooltip-color))!important;
     border: none!important;
-    border-radius: 2px!important;
+    border-radius: var(--tooltip-roundness)!important;
     padding: 4px 10px;
     text-align: center;
     z-index: 9999999;
@@ -18,9 +18,10 @@
 // Tooltips
 #{$tooltip} {
   @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
+  animation: fadeIn 0.3s forwards;
   background: RGB(var(--tooltip-color))!important;
   border: none!important;
-  border-radius: 2px!important;
+  border-radius: var(--tooltip-roundness)!important;
   padding: 4px 10px;
   text-align: center;
   z-index: 9999999;
@@ -95,7 +96,7 @@
   @include size(80px, auto);
   @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
   background: RGB(var(--tooltip-color))!important;
-  border-radius: 1px!important;
+  border-radius: var(--tooltip-roundness)!important;
   left: -35px;
   padding: 6px 20px;
   text-align: center;

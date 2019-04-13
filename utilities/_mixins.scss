@@ -132,20 +132,20 @@ $default-style-type: 'primary';
 
   -webkit-appearance: none;
   appearance: none;
-  border: var(--input-#{$type}-border);
-  border-radius: var(--input-#{$type}-roundness);
-  box-shadow: var(--input-#{$type}-shadow);
-  background: var(--input-#{$type}-color);
-  color: var(--input-#{$type}-text-color);
-  font-size: 12px;
-  font-weight: 400;
-  height: var(--input-#{$type}-size);
-  line-height: 1.5;
+  border: var(--input-#{$type}-border)!important;
+  border-radius: var(--input-#{$type}-roundness)!important;
+  box-shadow: var(--input-#{$type}-shadow)!important;
+  background: var(--input-#{$type}-color)!important;
+  color: var(--input-#{$type}-text-color)!important;
+  font-size: 12px!important;
+  font-weight: 400!important;
+  height: var(--input-#{$type}-size)!important;
+  line-height: 1.5!important;
   outline: 0;
-  transition: var(--disable-transitions, box-shadow .1s ease-in,border .1s ease-in);
+  transition: var(--disable-transitions, box-shadow .1s ease-in, border .1s ease-in);
   &:focus {
-    border: var(--input-#{$type}-border-focus);
-    box-shadow: var(--input-#{$type}-shadow-focus);
+    border: var(--input-#{$type}-border-focus)!important;
+    box-shadow: var(--input-#{$type}-shadow-focus)!important;
   }
   &::placeholder {
     color: var(--input-#{$type}-placeholder-color)!important;
@@ -192,8 +192,14 @@ $default-style-type: 'primary';
 @mixin button($type: $default-style-type) {
   // Check if 'alternate' or 'primary' is specified, if not throw an error
   // This can be removed if you want to allow more types to be used
-  @if ($type != 'primary') and ($type != 'hollow') and ($type != 'hollow-alternate') and ($type != 'blank') and ($type != 'success') and ($type != 'danger') {
-    @error "Unrecognized argument of 'button' mixin.";
+  @if ($type != 'primary') and
+      ($type != 'hollow') and
+      ($type != 'hollow-alternate') and
+      ($type != 'blank') and
+      ($type != 'success') and
+      ($type != 'danger') and
+      ($type != 'disabled') {
+        @error "Unrecognized argument of 'button' mixin.";
   }
 
   background-color: var(--button-#{$type}-color)!important;
@@ -216,20 +222,40 @@ $default-style-type: 'primary';
 }
 
 
+
+///  Alert helper mixin
+///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+@mixin alert($type: $default-style-type) {
+  // Check if 'notice' or 'success' or 'warn' or 'fail' is specified, if not throw an error
+  // This can be removed if you want to allow more types to be used
+  @if ($type != 'notice') and ($type != 'success') and ($type != 'warn') and ($type != 'fail') {
+    @error "Unrecognized argument of 'alert' mixin.";
+  }
+  
+  @include size(auto);
+  background: var(--#{$type}-inner-color)!important;
+  border: 2px solid var(--#{$type}-color)!important;
+  border-radius: var(--button-roundness)!important;
+  padding: 5px!important;
+}
+
+
+
 ///  Header helper mixin
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 @mixin header($type: null) {
   // Check if 'alternate' or 'primary' is specified, if not throw an error
   // This can be removed if you want to allow more types to be used
-  @if ($type != 'h1') and ($type != 'h2') and ($type != 'h3') and ($type != 'h4') and ($type != 'h5') and ($type != 'h6') and ($type != 'h7') {
+  @if ($type != 'h1') and ($type != 'h2') and ($type != 'h3') and ($type != 'h4') and ($type != 'h5') and ($type != 'h6') and ($type != 'h7') and ($type != 'h8') {
     @error "Unrecognized argument of 'header' mixin.";
   }
 
   color: var(--header-#{$type}-text-color)!important;
   font-weight: var(--header-#{$type}-weight)!important;
   font-size: var(--header-#{$type}-size)!important;
-  line-height: var(--header-#{$type}-height)!important;
+  line-height: var(--header-#{$type}-line-height)!important;
 }
 
 
@@ -239,19 +265,19 @@ $default-style-type: 'primary';
 @mixin fakeScrollbarFade($element: null) {
   &::after {
     @include absolute(top 0 right 0);
-    @include size(calc(var(--scrollbar-primary-size) + 2 * var(--scrollbar-primary-border-size))!important, 100%!important);
+    @include size(var(--scrollbar-primary-size)!important, 100%!important);
     content: '';
     background: var(--#{$element}-color);
     opacity: 1!important;
     pointer-events: none;
     transition: opacity 0.2s linear;
-    transition-delay: 2s;
+    transition-delay: 1.3s;
     visibility: visible!important;
     will-change: opacity;
   }
   &:hover {
     &::after {
-      animation: scrollbarFade 2.2s linear;
+      animation: scrollbarFade 1.5s linear;
     }
   }
   &.scrolling-CehiO2 {

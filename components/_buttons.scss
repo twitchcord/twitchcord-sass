@@ -9,7 +9,12 @@
   @include button-base;
   // Left margin for buttons with another button as a direct sibling
   & + & {
-    margin-left: 10px;
+    margin-left: 10px!important;
+  }
+  // Disabled buttons
+  &:disabled {
+    @include button('disabled');
+    opacity: 1;
   }
   // Button contents/text
   #{classes('components.buttons.contents')} {
@@ -42,17 +47,37 @@
 #{classes('components.buttons.lookInverted')},
 #{classes('components.buttons.lookOutlined')} {
   @extend %button-hollow;
+  // Disabled buttons
+  &.disabled {
+    @include button('disabled');
+    opacity: 1;
+  }
 }
 // "Empty" style button (don't look like buttons)
 #{classes('components.buttons.lookBlank')},
 #{classes('components.buttons.lookLink')} {
   @include button('blank');
+  // Disabled buttons
+  &.disabled {
+    @include button('disabled');
+    opacity: 1;
+  }
 }
 // Normal buttons ("primary")
 #{classes('components.buttons.lookFilled')} {
   @extend %button-primary;
+  // Disabled buttons
+  &.disabled {
+    @include button('disabled');
+    opacity: 1;
+  }
 }
 // "Danger" style buttons
 #{classes('components.buttons.colorRed')} {
   @extend %button-danger;
+  // Disabled buttons
+  &.disabled {
+    @include button('disabled');
+    opacity: 1;
+  }
 }

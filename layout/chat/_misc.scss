@@ -28,40 +28,41 @@
 
 #{$chat} {
   .spoilerText-3p6IlD {
-    background: RGB(var(--tc-tint-3));
+    background: none;
     border-radius: 0;
     padding: 2px 5px;
     transition: none;
     &.hidden-HHr2R9 {
-      background: RGB(var(--tc-tint-3));
+      background: RGB(var(--tc-color-1)) var(--white-diag-image) repeat center / 20%;
+      background-blend-mode: overlay;
+      opacity: 0.5;
       &:hover {
-        background: RGB(var(--tc-tint-4));
+        background: RGB(var(--tc-color-1)) var(--white-diag-image) repeat center / 20%;
+        opacity: 0.7;
       }
     }
     &:hover {
-      background: RGB(var(--tc-tint-3));
+      background: none;
+    }
+    &:active {
+      outline: none;
     }
   }
 }
 
 #{$chat} {
   #{$chatnewmessagesbar} {
-    height: 28px;
+    @include reset;
+    height: 30px;
     left: 0;
     right: 0;
     border-radius: 0;
-    box-shadow: var(--elevation-1);
-    background-color: RGB(var(--tc-color-7));
+    background: none;
     opacity: 1;
     // Needs this z-index to be higher than reaction and option message buttons
     z-index: 901;
-    padding: 0 !important;
     top: 0;
-    margin: 0 32px 0 20px;
     transition: none;
-    &:hover {
-      background-color: RGB(var(--tc-color-8));
-    }
     button {
       text-align: center;
       background: none;
@@ -69,7 +70,17 @@
       line-height: 0;
       font-family: var(--font)!important;
       &:first-child {
-        @include text(#fff, 12px, 400);
+        @include button-base;
+        @include button('primary');
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        &::before {
+          @include mask(var(--warning-icon), #fff, 16px);
+          @include size(28px);
+          content: '';
+          margin: 0 3px 0 0;
+        }
       }
       &:last-child {
         @include absolute(right 0);
@@ -82,7 +93,7 @@
         box-sizing: border-box;
         padding: 7px 10px;
         height: 10px;
-        margin: 6px 12px;
+        margin: 7px 30px;
         background-color: transparent;
         transition: none;
         &:hover {
@@ -183,7 +194,7 @@
     @extend %button-hollow;
     background: var(--chat-color)!important;
     left: unset;
-    right: 27px;
+    right: var(--chat-gutter-size);
     bottom: 10px;
     box-sizing: border-box;
     height: 35px;
@@ -224,3 +235,19 @@
     }
   }
 }
+
+
+// Countdown timer that appears when you join a server that requires you to
+  // be a member for so long before sending messages.
+  .countdown-1t3uBk .number-3ceIrJ {
+    @include text(RGB(var(--contrasted-color))!important, 24px, 700);
+    background: none!important;
+    border: none!important;
+    border-radius: 0;
+    margin: 10px 0;
+    padding: 0;
+  }
+  // The dots in the countdown timer
+  .countdown-1t3uBk {
+    @include text(RGB(var(--contrasted-color))!important, 24px, 700);
+  }

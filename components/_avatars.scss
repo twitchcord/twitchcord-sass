@@ -43,7 +43,7 @@
   }
   // Clyde bot avatar
   &[style*="#{discordImages('avatars.clyde')}"] {
-    background: image('twitchcord-bot.png') no-repeat 50%!important;
+    background: RGB(var(--tc-tint-5)) url('https://i.imgur.com/QVyMXH9.png') no-repeat 50%!important;
     background-size: contain!important;
   }
 
@@ -75,24 +75,22 @@
 }
 
 
-// Twitchcord Bot avatar replacing Clyde name / avatar
-#{$messagegroup} {
-  &#{$messageislocalbot} {
-    #{$message} {
-      h2 {
-        // Clyde username
-        #{$messageusername} {
-          color: transparent;
-          margin-right: -35px;
-          visibility: hidden;
-          // Change it to 'Twitchcord Bot'
-          &::before {
-            content: 'Twitchcord Bot';
-            color: #fff;
-            visibility: visible;
-          }
-        }
-      }
-    }
+
+  // Targeting all or most avatars. Placeholder avatar.
+  .image-33JSyf {
+    background-clip: border-box;
+    border-radius: var(--user-roundness)!important;
+    position: relative;
   }
-}
+  
+  .mask-3OgeRz {
+      border-radius: var(--user-roundness);
+      -webkit-mask: none;
+      mask: none;
+  }
+  
+  .avatarMasked-3y6o4j {
+      border-radius: var(--user-roundness);
+      -webkit-mask: none;
+      mask: none;
+  }

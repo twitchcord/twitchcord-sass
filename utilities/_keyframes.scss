@@ -14,6 +14,25 @@
   }
 }
 
+// Used on empty pinned messages popout
+@keyframes linkAnimation {
+  0%{ background-position: -720px 0px;}
+  7%{ background-position: -1440px 0px;}
+  14%{ background-position: -960px 0px;}
+  21%{ background-position: -1200px 0px;}
+  28%{ background-position: -720px 0px;}
+  35%{ background-position: -1440px 0px;}
+  42%{ background-position: -960px 0px;}
+  49%{ background-position: -1200px 0px;}
+  56%{ background-position: -720px 0px;}
+  63%{ background-position: -1440px 0px;}
+  70%{ background-position: -960px 0px;}
+  77%{ background-position: -1200px 0px;}
+  84%{ background-position: 0px 0px;}
+  91%{ background-position: -240px 0px;}
+  100%{ background-position: -480px 0px;}
+}
+
 
 //## "Grow" the height of status picker popout -- hardcoded height
 @keyframes statusPickerGetBigger {
@@ -201,8 +220,8 @@
     line-height: 0;
   }
   100% {
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
   }
 }
 
@@ -210,10 +229,10 @@
 // User Popouts
 @keyframes userPopoutNicknameHide {
   0% {
-    height: 40px;
+    height: 30px;
   }
   90% {
-    height: 40px;
+    height: 30px;
   }
   100% {
     height: 0;

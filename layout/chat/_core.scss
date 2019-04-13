@@ -18,20 +18,16 @@
   #{$messages} {
     // Dividers
     #{$chatdivider} {
-      height: 30px;
-      padding: 0 60px;
-      margin: 21px 0 12px 4px;
+      @include flex-center;
+      height: 20px;
+      padding: 0 calc(var(--chat-avatar-size) + var(--chat-avatar-margin) + var(--chat-gutter-size));
+      margin: 20px 0;
       z-index: 4;
       overflow: hidden;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      position: sticky;
-      top: -9px;
-      background: RGB(var(--tc-color-1));
+      position: relative;
       #{$chatdividerspan} {
         @include text(var(--chat-text-color)!important, 16px);
-        background-color: transparent !important;
+        background: none!important;
         padding: 0;
         width: 100%;
         &::before,
@@ -46,8 +42,6 @@
         }
       }
       &#{$chatdividernew} {
-        position: relative;
-        margin: 20px 0 0 4px;
         #{$chatdividerspan} {
           @include text(RGB(var(--tc-color-8))!important, 12px!important, 700, $transform: uppercase);
           &::before,
@@ -63,20 +57,19 @@
     }
     // Message group container
     @at-root #{$messagegroup} {
-      margin-left: 20px;
       min-height: calc(var(--chat-avatar-size) + 20px);
       overflow: visible;
-      padding: 11px 0 0 0;
+      padding: 8px var(--chat-gutter-size);
       // Local bot message
       &#{$messageislocalbot} {
         background: var(--empty-hover-color);
         box-shadow: none;
-        margin: 15px 0;
-        padding: 15px 12px!important;
+        margin: 20px 0!important;
+        padding: 15px var(--chat-gutter-size)!important;
         border-left: 4px solid RGB(var(--tc-color-7));
         #{$messagelocalbot} {
-          @include text(var(--chat-text-color), 12px, 400);
-          margin: 8px 0 0 44px;
+          @include text(RGB(var(--tc-tint-7)), 12px, 400);
+          margin: 8px 0 0 calc(var(--chat-avatar-size) + var(--chat-avatar-margin));
           #{$message} {
             h2 {
               // Clyde username
@@ -102,12 +95,11 @@
       }
       // Message edit textarea
       #{$textareawrapall} {
-        margin-top: 4px;
-        margin-left: -3px;
+        margin: 0 -1px 0 0;
         #{$textareainner} {
           background-color: RGB(var(--tc-tint-1))!important;
           border: 1px solid var(--border-color);
-          border-radius: 0;
+          border-radius: var(--button-roundness);
           min-height: 33px;
           line-height: 33px;
           box-sizing: border-box;
@@ -205,7 +197,7 @@
           }
         }
         #{$messagecontent} {
-          margin: -1px 6px 0 calc(var(--chat-avatar-size) + var(--chat-avatar-margin));
+          margin: 0 0 0 calc(var(--chat-avatar-size) + var(--chat-avatar-margin));
           #{$messagemarkup} {
             color: var(--chat-text-color);
             line-height: 1.5;
@@ -253,10 +245,10 @@
         #{$avatarwrapper} {
           @include size(var(--chat-avatar-size));
           border: none;
-          margin: 2px 14px 0 0;
+          margin: 4px var(--chat-avatar-margin) 0 0;
           background-repeat: no-repeat;
           background-position: center center;
-          background-size: calc(var(--chat-avatar-size) - 4px) calc(var(--chat-avatar-size) - 4px)!important;
+          background-size: var(--chat-avatar-size)!important;
           border-radius: var(--user-roundness);
           &:hover {
             opacity: 1;
@@ -264,15 +256,13 @@
           // Avatar image
           #{$avatarimage} {
             @include size(var(--chat-avatar-size));
-            border: 2px solid transparent;
             background-color: transparent;
             margin: 0;
-            background-size: calc(var(--chat-avatar-size) - 4px) calc(var(--chat-avatar-size) - 4px)!important;
+            background-size: var(--chat-avatar-size)!important;
             background-repeat: no-repeat;
-            box-sizing: border-box;
             &:hover {
               opacity: 1;
-              border-color: RGB(var(--tc-color-10));
+              box-shadow: inset 0 0 0 2px RGB(var(--tc-color-10));
             }
           }
         }
@@ -364,48 +354,55 @@
 
 // Chat area container
 #{$chat} {
-  background: RGB(var(--tc-color-1))!important;
+  background: none!important;
+  // Scroller
+  .scroller-2FKFPG {
+    padding-bottom: 40px;
+  }
   // Chat area outer container
   #{$chatcontent} {
     background: none!important;
+    > #{$flex} {
+      background: var(--chat-color);
+      margin: var(--layout-gutter-size, 0);
+    }
   }
   // Chat area inner container
   #{$messageswrapper} {
-    background: none!important;
-    padding-right: 2px;
+    background: var(--chat-inner-color);
+    border-radius: var(--layout-roundness, 0);
   }
   #{$chatscrollerwrap} {
-    padding: 0 2px 0 0;
+    padding: 1px 1px 0 0;
   }
   // Chat area scroller container
   #{$messages} {
-    @include scrollbar('alternate', '&');
-    padding-bottom: 50px;
-    // Set overflow to auto for DM's
-    @at-root #{classes('html.routes.private')} & {
-      overflow-y: auto;
-    }
+    // @include fakeScrollbarFade('chat');
+    // &::after {
+    //   @include absolute(top 1px right 1px);
+    // }
     // "Welcome to your server"
     .welcomeMessage-3_Mcht {
-      padding: 20px;
-      margin: 0 16px 16px;
+      @include alert('notice');
+      background: RGB(var(--tc-tint-2));
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin: 20px calc(var(--chat-gutter-size) - 10px) 20px var(--chat-gutter-size);
       .base-34jWEe {
+        @include mask(var(--castle-image), #fff, 40px);
+        @include size(50px);
         background-image: none;
-        @include size(100%, 150px);
-        @include mask(var(--castle-image), var(--chat-text-color));
-        margin: 0 auto;
-        padding: 0;
-        opacity: 0.6;
-        order: 1;
         border: none;
+        margin: 0 10px 0;
+        padding: 0;
       }
       .h1-1IDj26 {
+        color: RGB(var(--tc-tint-12));
+        font-size: 14px;
         font-weight: 400;
-        color: var(--chat-text-color);
-        font-size: 12px;
-        text-transform: none;
-        margin: 20px 0 15px;
+        margin: 0;
         order: 2;
+        text-transform: none;
       }
       .itemContainer-WiE19S {
         display: none;
@@ -414,6 +411,9 @@
   }
 }
 
+.headerCozy-2N9HOL {
+  height: 20px;
+}
 
 // Changes to the upload textarea
 .channelTextArea-1LDbYG.channelTextAreaUpload-3t7EIx {
@@ -451,74 +451,65 @@
 //## Message textarea
 #{$chat} {
   form {
+    padding: 0;
+    margin: 0 var(--chat-gutter-size) 10px;
     border-top: none!important;
     background: none!important;
     box-shadow: none!important;
-    padding: 0 27px 0 15px;
-    margin: 0;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    > #{$flex} {
+      order: 2;
+    }
     #{$textareawrapall} {
-      margin: 0 0 10px;
-      padding: 0;
+      @include reset;
       border: none;
     }
     #{$textarea} {
-      color: var(--chat-text-color)!important;
+      @include reset;
+      color: var(--message-input-text-color)!important;
       background-color: transparent;
       border: none;
       letter-spacing: 0;
+      line-height: 20px;
       font-size: 14px;
       max-height: 400px!important;
-      margin: 0;
-      margin-right: 5px;
-      padding: 6px 6px 6px 12px;
       &::-webkit-input-placeholder {
         color: RGB(var(--tc-tint-7))!important;
       }
     }
-    .textAreaDisabled-2_o-kZ,
-    .textAreaEdit-bNLDk3,
-    .textAreaEnabledNoAttach-1WxUwj,
-    .textAreaForm-18s4EO {
-      padding: 6px 70px 6px 12px;
-    }
-    #{$textareainnernoautocomplete} {
-      border-radius: 0;
-    }
     #{$textareainner} {
       @include input('alternate');
-      height: auto;
+      background: var(--chat-message-input-background)!important;
+      border-radius: var(--layout-roundness, 0)!important;
+      height: auto!important;
+      margin: 0;
+      overflow: hidden;
+      padding: var(--chat-message-input-padding);
+      z-index: 0;
       // Attach button container
       > #{$flex} {
         align-items: flex-start;
-        flex: 0 0 94px!important;
         order: 2;
-        width: 94px;
+        margin-right: 4px;
       }
-    }
-  }
-  // Buttons container (Gift, GIF, Emojis)
-  .buttons-205you {
-    // Gift button
-    > .buttonWrapper-1ZmCpA:first-of-type {
-      display: none;
     }
   }
   .attachButton-1UjEWA,
   .attachButton-1UjEWA.button-38aScr.lookBlank-3eh9lL {
-    @include mask(var(--paperclip-icon), RGB(var(--tc-color-10))!important);
+    @include mask(var(--paperclip-icon), RGB(var(--tc-color-10))!important, 20px!important);
     @include size(20px!important);
+    border: none!important;
+    box-shadow: none!important;
     min-width: 20px!important;
     min-height: 20px!important;
-    margin: 0!important;
-    padding: 0;
-    position: relative;
     opacity: 1;
     overflow: visible;
-    top: 6px;
     transition: none!important;
     filter: none!important;
     .attachButtonInner-1iyZ9F {
       height: 20px;
+      padding: 0;
       svg {
         display: none;
       }
@@ -546,22 +537,21 @@
 //## Channel loading new messages line
 #{$chat} {
   #{$chatloadingmessage} {
-    height: 50px;
-    #{$spinnerold} {
+    position: relative;
+    height: 30px;
+    background: none;
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 90%;
-      height: 1px;
-      background: linear-gradient(to right, RGBA(var(--tc-color-1), 0) 0%, RGB(var(--tc-color-10)) 40%, RGB(var(--tc-color-10)) 60%, RGBA(var(--tc-color-1), 0) 100%);
-      top: 35px;
+      background: linear-gradient(to right, RGBA(var(--tc-color-10), 0) 0%, RGB(var(--tc-color-10)) 40%, RGB(var(--tc-color-10)) 60%, RGBA(var(--tc-color-10), 0) 100%);
       animation: chatLoadingMessages 1s infinite;
-      &::after {
-        display: none;
-      }
-      #{$spinnerinnerold} {
-        display: none;
-      }
+    }
+    .spinner-2enMB9 {
+      display: none;
     }
   }
 }

@@ -4,21 +4,22 @@
 // Don't forget about Discord default avatars in components/replaceavatars.SCSS
 
 .userPopout-3XzG_A .wrapper-2F3Zv8 {
-  @include relative(bottom -8px left 10px);
   @include size(70px);
+  margin: 60px 0 0 10px;
   z-index: 2;
 }
 
 .userPopout-3XzG_A {
+  animation: var(--disable-animations, var(--disable-popout-animations, fadeIn 0.3s forwards));
   background: RGB(var(--tc-tint-1));
   width: var(--user-popout-width);
-  border-radius: 2px;
+  border-radius: var(--popout-roundness);
   border: 1px solid var(--border-color);
   position: relative;
   box-shadow: var(--elevation-1)!important;
   // Fix to move left user popouts further to the left slightly
   #{$popoutleft}#{classes('twitchcord.fixLeftUserPopout')} & {
-    margin-right: 30px;
+    margin-right: 26px;
   }
 }
 
@@ -27,6 +28,7 @@
 }
 
 .userPopout-3XzG_A .headerTop-3C2Zn0 {
+  background: RGB(var(--tc-tint-1));  
   padding: 0;
 }
 
@@ -55,7 +57,7 @@
 .userPopout-3XzG_A .avatarWrapper-3H_478 {
     background-color: RGB(var(--tc-color-3));
     border: none;
-    height: 90px;
+    height: 100px;
     width: var(--user-popout-width);
     background-size: cover;
     background-repeat: no-repeat;
@@ -65,16 +67,6 @@
     &::before,
     &::after {
       display: none;
-    }
-    &::after {
-      background: rgba(0,0,0,.4)!important;
-      content: '';
-      height: 100%;
-      width: 100%;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
     &:not([style*="background-image"]) {
       background-color: RGB(var(--tc-color-8));
@@ -89,7 +81,7 @@
 }
 
 .userPopout-3XzG_A .root-3-B5F3 {
-    padding: 8px 10px;
+    padding: 7px 10px 10px;
     margin: 0;
     max-height: 160px;
     overflow-y: auto;
@@ -98,6 +90,14 @@
 .userPopout-3XzG_A .root-3-B5F3:empty {
   margin-top: 2px;
   padding: 0;
+}
+
+.userPopout-3XzG_A .listeningActionsUserPopout-Ga2V_N .iconButtonSize-U9SCYe {
+  flex: 0 1 20%!important;
+  height: auto;
+  max-width: none;
+  min-height: 0;
+  min-width: 0;
 }
 
 //## Xbox specific fixes
@@ -158,13 +158,6 @@
   min-width: 40px;
 }
 
-.userPopout-3XzG_A .headerStreaming-2FjmGz .actionsUserPopout-2xcO1O button {
-  width: auto;
-  margin: 0 10px 10px!important;
-  display: flex;
-  flex: 1 0 auto;
-}
-
 .userPopout-3XzG_A .footer-1fjuF6 .protip-YaFfgO {
   display: none;
 }
@@ -182,14 +175,10 @@
 
 // Status circle
 .userPopout-3XzG_A .status-oxiHuE {
-  position: absolute;
-  height: 12px;
-  width: 12px;
-  box-shadow: none;
-  border: 2px solid RGB(var(--tc-color-1));
-  box-sizing: border-box;
-  bottom: -1px;
-  right: -1px;
+  @include absolute(right -2px bottom -2px);
+  @include size(8px);
+  border: none;
+  box-shadow: 0 0 0 2px RGB(var(--tc-tint-1));
 }
 
 .userPopout-3XzG_A .image-33JSyf {
@@ -197,30 +186,29 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 3px solid RGB(var(--tc-color-1));
+  box-shadow: 0 0 0 2px RGB(var(--tc-tint-1));
   background-color: transparent;
 }
 
 .userPopout-3XzG_A .headerText-2sdzFM {
   width: 100%;
-  height: 60px;
-  position: absolute;
+  height: 40px;
+  position: relative;
   pointer-events: none;
   top: 0;
 }
 
-.userPopout-3XzG_A .headerTop-27AvhA {
-    padding: 0;
-}
-
 .userPopout-3XzG_A .headerTag-2pZJzA {
   font-size: 16px;
-  height: 60px;
+  height: 40px;
   text-align: left;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   padding-left: 95px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .userPopout-3XzG_A .activity-11LB_k {
@@ -229,27 +217,39 @@
 }
 
 .userPopout-3XzG_A .headerName-fajvi9 {
+  @include absolute(bottom 40px left 0);
   @include ellipsis;
-  width: 100%;
-  background: RGBA(var(--tc-color-1), 0.5);
-  font-size: 20px;
-  font-weight: 700;
-  box-sizing: border-box;
-  bottom: 40px;
-  position: absolute;
-  z-index: 1;
-  margin: 0;
-  text-align: left;
-  padding-left: 108px;
-  padding-right: 10px;
-  line-height: 40px;
-  height: 0;
-  transition: height 0.15s;
+  @include size(100%, 0);
+  align-items: center;
   animation: userPopoutNicknameHide 2s;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0 10px 0 95px;
+  text-align: left;
+  transition: height 0.15s;
+  z-index: 1;
+  &::before {
+    content: 'AKA';
+    background: RGB(var(--tc-color-8));
+    border: 1px solid var(--border-color);
+    border-radius: var(--button-roundness);
+    font-size: 10px;
+    line-height: 12px;
+    margin: 0 7px 0 0;
+    padding: 1px 3px;
+  }
+}
+
+.userPopout-3XzG_A .mobileIndicator-29f8Xh {
+  @include absolute(top 12px right 10px);
+  color: RGB(var(--tc-tint-7));
 }
 
 .userPopout-3XzG_A:hover .headerName-fajvi9 {
-    height: 40px;
+    height: 30px;
   }
 
 .userPopout-3XzG_A .headerTag-2pZJzA > .username {
@@ -286,6 +286,7 @@
     font-weight: 700;
     color: RGB(var(--tc-tint-10))!important;
     text-transform: capitalize;
+    cursor: default;
 }
 
 .userPopout-3XzG_A .headerStreaming-2FjmGz .activityUserPopout-2yItg2 .headerText-1HLrL7::before {
@@ -340,7 +341,6 @@
 .userPopout-3XzG_A .activityUserPopout-2yItg2 .bodyNormal-2D39hT {
     background-color: RGB(var(--tc-tint-1));
     align-items: center;
-    min-height: 50px;
 }
 
 .userPopout-3XzG_A .activity-3NviKQ {
@@ -423,30 +423,25 @@
 }
 
 .userPopout-3XzG_A .actionsUserPopout-2xcO1O {
-    margin: 0 15px;
+    padding: 5px 0;
+    margin: 0 15px 10px;
     display: flex;
     justify-content: space-between;
 }
 
 .userPopout-3XzG_A .button-38aScr.lookOutlined-3sRXeN {
-  @extend %button-primary;
-  color: #fff!important;
+  @include button('primary');
+  flex: 1;
   padding: 0;
+  &:disabled {
+    @include button('disabled');
+  }
   #{$buttoncontents} {
+    padding: 0;
     > #{$flex} {
-      color: #fff;
       justify-content: center;
     }
   }
-}
-
-.userPopout-3XzG_A .headerStreaming-2FjmGz .actionsUserPopout-2xcO1O {
-  margin: 0 5px;
-}
-
-.userPopout-3XzG_A .actionsUserPopout-2xcO1O button {
-    margin: 0 0 10px!important;
-    flex: 1 1 auto!important;
 }
 
 .userPopout-3XzG_A .actionsUserPopout-2xcO1O button:nth-of-type(n+2) {
@@ -484,10 +479,14 @@
 }
 
 .userPopout-3XzG_A .footer-1fjuF6 .quickMessage-2XpSaN {
-    @include input('primary');
-    width: 100%;
-    padding: 8px 10px;
-    resize: none;
+  @include input('primary');
+  padding: 8px 10px;
+  resize: none;
+  width: 100%;
+  &:focus {
+    border: var(--input-primary-border) !important;
+    box-shadow: var(--input-primary-shadow) !important;
+  }
 }
 
 .userPopout-3XzG_A .bodyAlignCenter-1KzvJk {
@@ -504,7 +503,7 @@
 }
 
 .userPopout-3XzG_A .contentNoImagesUserPopout-PCCPyZ:empty {
-    margin-top: -27px;
+    margin-top: -28px;
 }
 
 // Game icons and Spotify cover arts

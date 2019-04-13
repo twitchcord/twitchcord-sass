@@ -34,7 +34,7 @@
     margin: 3px 3px 0;
     min-width: 24px;
     padding: 0;
-    opacity: 0.5;
+    color: RGB(var(--tc-tint-7));
     // Add role button svg
     @at-root #{$userpopoutroleaddbuttonsvg} {
       @include size(10px);
@@ -42,7 +42,6 @@
     }
     &:hover {
       color: var(--contrasted-color)!important;
-      opacity: 0.8;
     }
   }
   // Remove role button

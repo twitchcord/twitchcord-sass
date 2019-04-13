@@ -34,7 +34,7 @@
   }
   .h5-18_1nd {
       color: RGB(var(--tc-tint-8))!important;
-      font-weight: 400;
+      font-weight: 400!important;
       font-size: 14px!important;
       margin-left: 94px;
       top: 6px;
@@ -47,36 +47,27 @@
       max-width: 90%;
   }
   .guildInfo-1STtYi {
-    max-width: 198px;
+    max-width: 100%;
     span {
       @include ellipsis(100%, inline-block);
     }
     &+.button-38aScr {
-      @extend %button-primary;
       padding: 0 !important;
       width: auto;
       min-width: 60px !important;
       height: 30px !important;
       min-height: 0;
       margin-top: 2px!important;
-      position: absolute;
-      right: 0;
       // Joined button
       &#{$buttonlookoutlined} {
-        background: var(--success-color)!important;
-        border-color: var(--success-color)!important;
-        color: #fff!important;
+        @include button('success');
         &:hover {
-          background: var(--success-color)!important;
-          border-color: var(--success-color)!important;
+          filter: brightness(1.1);
         }
       }
       .contents-18-Yxp {
-        align-items: center;
-        align-content: center;
-        margin: 0;
-        width: 100%;
-        justify-content: center;
+        @include flex-center;
+        padding: 0;
         .buttonContent-18Mz6_ {
           margin: 0 7px;
         }
@@ -98,11 +89,10 @@
       text-decoration: none;
   }
   .guildIconExpired-2Qcq05 {
-      background-image: image('join-server3.png')!important;
-      background-size: 100%;
+    background: var(--fail-color) var(--fat-close-icon) no-repeat center / 75%!important;
   }
   .status-2L8Zc7 {
-      border-radius: 0;
+      border-radius: var(--status-roundness);
   }
 }
 

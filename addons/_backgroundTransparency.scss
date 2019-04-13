@@ -1,0 +1,71 @@
+// Background transparency mode enabled
+
+.backgroundTransparency {
+  &:root {
+    --titlebar-color: rgba(0, 0, 0, 0.6);
+
+    --app-background: url('https://images8.alphacoders.com/944/944311.jpg');
+    --app-background-position: 0 0;
+    --app-background-size: cover;
+    --app-background-repeat: no-repeat;
+    --app-background-opacity: 1;
+
+    --transparency-app-background-overlay: #000;
+    --transparency-app-background-overlay-opacity: 0;
+
+    --transparency-app-content: '';
+    --transparency-app-background: var(--app-background);
+    --transparency-app-background-position: var(--app-background-position);
+    --transparency-app-background-repeat: var(--app-background-repeat);
+    --transparency-app-background-size: var(--app-background-size);
+    --transparency-app-background-opacity: 1;
+    --transparency-app-background-blur: 0;
+    --transparency-app-background-brightness: 1;
+    --transparency-app-background-contrast: 1;
+    --transparency-app-background-grayscale: 0;
+    --transparency-app-background-invert: 0;
+    --transparency-app-background-saturate: 1;
+    --transparency-app-background-blending: overlay;
+
+    --transparency-layout-background-opacity: 0.9;
+    --transparency-layout-background-blur: 15px;
+    --transparency-layout-background-brightness: 1;
+    --transparency-layout-background-contrast: 1;
+    --transparency-layout-background-grayscale: 0;
+    --transparency-layout-background-invert: 0;
+    --transparency-layout-background-saturate: 1;
+
+    --layout-gutter-size: 10px;
+    // --layout-padding-size: 0;
+    --layout-roundness: 10px;
+    --layout-border: none;
+    --layout-background: none;
+
+    --main-nav-roundness: unset;
+    --main-nav-border: unset;
+    --main-nav-gutter: unset;
+
+    --main-nav-color: var(--layout-background);
+    --guilds-background: var(--layout-background);
+    --sub-nav-color: var(--layout-background);
+    --channels-color: var(--layout-background);
+    --chat-color: var(--layout-background);
+    --chat-message-input-background: var(--layout-background);
+    --chat-typing-background: none;
+    --members-color: var(--layout-background);
+
+    --chat-message-input-padding: 10px;
+    --chat-message-input-background: var(--chat-color);
+    --chat-message-input-text-color: var(--chat-text-color);
+    --chat-message-input-gutter-size: 0;
+
+    --chat-message-background:  none;
+    --chat-message-gutter: var(--layout-gutter-size) 0;
+    --chat-message-padding: 20px;
+    --chat-message-roundness: var(--layount-roundness);
+  }
+
+  .messagesWrapper-3lZDfY .messages-3amgkR .divider-3gKybi {
+    padding: 0;
+  }
+}

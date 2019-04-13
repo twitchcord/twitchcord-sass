@@ -29,6 +29,7 @@
 
 #{classes('twitchcord.imageTopbar')} {
   $grandparent: &;
+  border: 1px solid var(--modal-border-color);
   &-container {
     width: calc(100% - 2px);
     position: absolute;

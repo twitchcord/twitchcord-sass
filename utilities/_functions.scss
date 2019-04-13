@@ -29,7 +29,7 @@
 }
 // Discord Images function
 @function discordImages($path) {
-    @return "#{DotNotation($discordImagess, $path)}";
+    @return "#{DotNotation($discordImages, $path)}";
 }
 // Class function
 @function classes($path) {

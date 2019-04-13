@@ -5,13 +5,20 @@
 // Channel header outer container
 #{$channelheadertitlewrapper} {
   height: var(--sub-nav-height);
-  background: none !important;
+  background: var(--sub-nav-color)!important;
+  border: var(--layout-border, none);
+  border-radius: var(--layout-roundness, 0);
   z-index: 8;
+  margin: var(--layout-gutter-size, 0);
+  overflow: hidden;
   position: relative;
   left: 0;
   padding: 0;
   box-sizing: border-box;
   flex: 0 0 auto;
+  .icon-1R19_H {
+    @include size(30px);
+  }
   // Channel header inner container
   @at-root #{$channelheaderheaderbardrag} {
     @include reset;
@@ -48,8 +55,7 @@
       }
       // Pinned messages
       &[name="Pin"] {
-        @include mask(var(--thumbtack-icon), RGB(var(--tc-tint-7)), 19px);
-        margin-top: -2px;
+        @include mask(var(--thumbtack-icon), RGB(var(--tc-tint-7)), 20px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
@@ -98,7 +104,7 @@
         }
       }
       &[name="People"] {
-        @include mask(var(--channel-members-icon), RGB(var(--tc-tint-7)), 39px);
+        @include mask(var(--channel-members-icon), RGB(var(--tc-tint-7)), 20px);
         &:hover {
           background-color: RGB(var(--contrasted-color));
         }
@@ -142,16 +148,15 @@
   }
   // Search icon
   @at-root #{$channelheadersearch} {
-    .search {
       display: none;
-    }
   }
   // Channel header icons
   @at-root #{$channelheadericonmargin} {
     @include flex-center;
-    @include size(34px);
+    @include size(30px);
     align-content: center;
-    box-sizing: border-box;
+    background: none;
+    border-radius: var(--button-roundness);
     margin: 0;
     opacity: 1;
     // Make sure the icons are full opacity
@@ -179,7 +184,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 4px;
   width: calc(100% - 50px);
   &-ava-container {
     @include size(calc(var(--sub-nav-guild-icon-size) + 4px));
@@ -198,25 +202,26 @@
     @include size(var(--sub-nav-guild-icon-size));
     background-size: var(--sub-nav-guild-icon-size) var(--sub-nav-guild-icon-size);
     background-color: transparent;
-    border-radius: 0;
     cursor: default;
     pointer-events: none;
     margin: 0;
+    &:not([style*="background"]) {
+      background: RGB(var(--tc-tint-3)) var(--guild-icon) no-repeat center / 75%;
+    }
   }
   &-name-and-topic-container {
     display: flex;
     align-items: center;
     width: 100%;
-    box-sizing: border-box;
-    padding-right: 100px;
-    flex-wrap: wrap;
+    padding-right: 10px;
   }
   &-topic-contain {
+    @include ellipsis;
     font-size: 12px;
     font-weight: 400;
     color: RGB(var(--tc-tint-10));
     width: 100%;
-    line-height: 24px;
+    line-height: 28px;
   }
   // Hide these when not on DMs
   &-topic-type,
@@ -227,24 +232,29 @@
     display: none;
   }
   &-topic {
-    @include ellipsis(100%, inline-block);
-    vertical-align: bottom;
-    color: RGB(var(--tc-tint-10));
+    @include relative(top 1px); // To make the bottom of the text match with the bottom of the channel and server names
+    vertical-align: middle;
+    color: RGB(var(--tc-color-10));
+    margin: 7px;
     &:empty {
       display: none;
     }
   }
   &-header {
-    height: 20px;
-    line-height: 24px;
+    align-items: center;
     color: RGB(var(--contrasted-color));
+    display: flex;
+    height: 22px;
+    line-height: 28px;
   }
   &-name {
+    font-size: 14px;
     font-weight: 700;
   }
   &-name-sub {
-    font-size: 16px;
-    margin-left: 3px;
+    font-size: 14px;
+    margin-left: 7px;
+    color: RGB(var(--tc-tint-11));
     &:empty {
       display: none;
     }
@@ -253,3 +263,10 @@
     }
   }
 }
+
+
+  // Hide the default Discord channel name and topic
+  .topic-2QX7LI, .noTopic-2b04lB,
+  .titleText-3X-zRE .channelName-3stJzi {
+    display: none;
+  }

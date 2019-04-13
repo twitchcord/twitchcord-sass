@@ -4,10 +4,10 @@
 //  Codeblocks
 // ==========================================================================
 
-// Aggressive targeting of code elements
-// [class*="hljs-"], [class*="cm-"] {
-//   font-family: var(--font-coding)!important;
-// }
+Aggressive targeting of code elements
+[class*="hljs-"], [class*="cm-"] {
+  font-family: var(--font-coding)!important;
+}
 
 #{$messagegroup} {
   // Codeblocks scrollbar
@@ -19,6 +19,7 @@
       border-radius: 0;
       max-width: 90%;
       margin: 0;
+      outline: none;
     }
     // Inline and full code blocks
     code.inline,
@@ -46,6 +47,7 @@
       padding: 10px 15px!important;
       font-family: var(--font)!important;
       max-height: 500px;
+      outline: none;
       overflow-x: hidden;
       position: relative;
       white-space: pre-wrap!important;
@@ -510,7 +512,7 @@
 		@each $name, $n in $codeLanguages {
 			@each $extension, $e in $n {
 				&[class~="#{$extension}"] {
-          // font-family: var(--font-coding)!important;
+          font-family: var(--font-coding)!important;
 					&::before {
             content: "#{$name}";
 					}

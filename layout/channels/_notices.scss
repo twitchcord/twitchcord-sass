@@ -3,12 +3,9 @@
 //** Channel notices at the top of the voice/text channel
 
 .channelNotices-41mJbj .channelNotice-1-XFjC .message-3SOT5P .btn-11C5_u {
-  @extend %button-primary;
-  @include text(#fff, 12px, 400, 28px);
-  border-radius: var(--button-roundness);
+  @include button-base;
+  @include button('primary');
   margin-top: 20px;
-  padding: 0;
-  transition: var(--transition-none, background 0.12s ease-in, color 0.12s ease-in, box-shadow 0.12s ease-in);
 }
 
 .channelNotices-41mJbj .channelNotice-1-XFjC,
@@ -43,10 +40,10 @@
 
 
 .channelNotices-41mJbj {
-  background: RGB(var(--tc-color-2));
-  border-bottom: 1px solid RGB(var(--tc-color-4))!important;
+  background: var(--channels-color);
+  border-bottom: 1px solid var(--border-color)!important;
   position: relative;
-  z-index: 2; // To put it above the unread indicator bars
+  z-index: 3; // To put it above the unread indicator bars
   &::before {
     @include absolute(top 0 left 0);
     @include size(100%);
@@ -80,5 +77,7 @@
 }
 
 /*
+// Right before positionedContainer
+<div class="channelNotices-41mJbj"><div class="channelNotice-1-XFjC quickswitcher-35bYg4"><button type="button" class="close-relY5R button-38aScr lookBlank-3eh9lL colorBrand-3pXr91 grow-q77ONN"><div class="contents-18-Yxp"></div></button><div class="message-3SOT5P"><div>Use Quick Switcher to get around Discord quickly. Just press:</div><button class="btn-11C5_u">ctrl + k</button></div></div></div>
 <div class="channelNotices-41mJbj"><div class="channelNotice-1-XFjC invite-OjTXrW"><button type="button" class="close-relY5R button-38aScr lookBlank-3eh9lL colorBrand-3pXr91 grow-q77ONN"><div class="contents-18-Yxp"></div></button><div class="message-3SOT5P"><div>An adventure begins.</div><div>Let's add some party members!</div><button class="btn-11C5_u">Invite People</button></div></div></div>
 */

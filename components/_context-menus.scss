@@ -6,7 +6,8 @@
 
 // Context menu
 #{$contextmenu} {
-  @include reset;
+  margin: 0;
+  padding: 8px 0;
   background: var(--context-menu-color)!important;
   border: 1px solid var(--border-color)!important;
   border-radius: var(--context-menu-roundness);
@@ -27,16 +28,16 @@
   }
   // Context menu inside an left side context menu
   &#{$contextmenuinvertchildx} & {
-    //margin-left: -210px;
+    margin-left: -200px;
   }
+
   // Context menu inside a context menu
-  @at-root body & & {
-    background: RGB(var(--tc-color-2))!important;
-    border: 1px solid RGB(var(--tc-tint-4))!important;
-    margin-left: 188px;
-    #{$scroller} {
-      overflow-y: auto;
-    }
+  & & {
+    margin-left: 198px;
+  }
+
+  #{$scroller} {
+    overflow-y: auto;
   }
   // Context menu inside a context menu inside a context menu
   & & & {
@@ -47,44 +48,46 @@
     //margin-left: 170px;
   }
   #{$contextmenuitem} {
-    @include text(RGB(var(--tc-tint-11)), 12px, 400, 18px);
+    @include text(RGB(var(--tc-tint-11)), 12px, 400, 24px);
     align-items: center;
     border-radius: var(--context-item-roundness);
     display: flex;
     list-style-type: none;
     margin: 0;
     overflow: hidden;
-    padding: 5px 10px;
+    padding: 5px 14px;
     white-space: nowrap;
     width: 100%;
     &:hover,
     &:hover:active,
     &:active {
+      background: RGB(var(--tc-color-6))!important;
+      color: RGB(var(--contrasted-color))!important;
       #{$contextmenuhint} {
         color: RGB(var(--contrasted-color));
       }
     }
     // Normal context items
-    &:not([style*="color: rgb"]) {
-      &:hover,
-      &:hover:active,
-      &:active {
-        background: RGB(var(--tc-color-4))!important;
-        color: #fff!important;
-      }
-    }
+    // &:not([style*="color: rgb"]) {
+    //   &:hover,
+    //   &:hover:active,
+    //   &:active {
+    //     background: RGB(var(--tc-color-6))!important;
+    //     color: RGB(var(--contrasted-color))!important;
+    //   }
+    // }
     // Role context items
-    &[style*="color: rgb"] {
-      &:hover,
-      &:hover:active,
-      &:active {
-        background: currentColor!important;
-        > span,
-        > #{$contextmenulabel} {
-          filter: grayscale(1) brightness(5);
-        }
-      }
-    }
+    // &[style*="color: rgb"] {
+    //   &:hover,
+    //   &:hover:active,
+    //   &:active {
+    //     background: currentColor!important;
+    //     > span,
+    //     > #{$contextmenulabel} {
+    //       filter: grayscale(1) brightness(5);
+    //     }
+    //   }
+    // }
     span {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -97,6 +100,7 @@
     }
     // Kick, ban, leave server, etc. Red items.
     &#{$contextmenuitemdanger} {
+      color: var(--fail-color)!important;
       &:hover,
       &:active,
       &:hover:active {
@@ -107,29 +111,41 @@
     // Disabled context items
     &#{$contextmenuitemdisabled} {
       background: none!important;
-      color: RGB(var(--tc-tint-10))!important;
+      color: RGB(var(--tc-tint-7))!important;
       cursor: not-allowed;
       opacity: 0.5;
       &::before {
-        background-color: RGB(var(--tc-tint-10))!important;
+        background-color: RGB(var(--tc-tint-7))!important;
         opacity: 0.5;
       }
       &:hover,
       &:active,
       &:hover:active {
-        color: RGB(var(--tc-tint-7));
+        background: none!important;
+        color: RGB(var(--tc-tint-7))!important;
         cursor: not-allowed;
-        opacity: 0.5;
+        &::before {
+          background-color: RGB(var(--tc-tint-7))!important;
+          opacity: 0.5;
+        }
       }
     }
     // Volume slider item
     &#{$contextmenuitemslider} {
       flex-wrap: wrap;
       overflow: visible;
-      &:hover,
-      &:hover:active,
-      &:active {
-        background: RGB(var(--tc-color-2))!important;
+      // Needed for specificity reasons
+      &,
+      &.tc-contextItem {
+        &:hover,
+        &:hover:active,
+        &:active {
+          background: var(--context-menu-color)!important;
+          color: RGB(var(--tc-tint-11))!important;
+          &::before {
+            background-color: RGB(var(--tc-tint-11))!important;
+          }
+        }
       }
       // Volume slider outer container
       #{$slider} {
@@ -148,7 +164,7 @@
         }
         // Filled portion of the slider
         #{$sliderbarfill} {
-          background: RGB(var(--tc-color-7));
+          background: RGB(var(--tc-color-10));
           cursor: default!important;
         }
         // Slider grabber
@@ -180,10 +196,24 @@
       }
     }
     &#{$contextmenuitembrand} {
-      color: RGB(var(--tc-tint-10))!important;
+      color: RGB(var(--contrasted-color))!important;
     }
     // Conext menu custom icons
     &#{classes('twitchcord.contextItem')} {
+      // Disabled context items
+      // Needed for specificity reasons
+      &#{$contextmenuitemdisabled} {
+        &::before {
+          background-color: RGB(var(--tc-tint-7))!important;
+        }
+        &:hover,
+        &:hover:active,
+        &:active {
+          &::before {
+            background-color: RGB(var(--tc-tint-7))!important;
+          }
+        }
+      }
       &#{$contextmenuitemdanger} {
         &::before {
           background-color: var(--fail-color);
@@ -193,11 +223,9 @@
       &::before {
         content: '';
         @include size(20px);
-        background-color: RGB(var(--tc-tint-10));
+        background-color: RGB(var(--tc-tint-11));
         display: inline-block;
-        margin-right: 10px;
-        -webkit-mask-size: 18px!important;
-        mask-size: 18px!important;
+        margin-right: 14px;
         min-width: 20px;
       }
       // Context item hover
@@ -404,7 +432,7 @@
         &-delete-category,
         &-delete-message {
           &::before {
-            @include mask(var(--garbage-icon), $size: 20px, $important: true);
+            @include mask(var(--garbage-icon), $size: 22px, $important: true);
           }
         }
         &-collapse-category {
@@ -414,7 +442,7 @@
         }
         &-close-dm {
           &::before {
-            @include mask(var(--close-icon));
+            @include mask(var(--fat-close-icon), $size: 22px, $important: true);
           }
         }
         &-call {
@@ -437,13 +465,13 @@
         }
         &-pin-message {
           &::before {
-            @include mask(var(--thumbtack-icon), $size: 13px, $important: true);
+            @include mask(var(--thumbtack-icon), $important: true);
           }
         }
         &-add-reaction,
         &-reactions {
           &::before {
-            @include mask(var(--emoji-icon), $size: 16px, $important: true);
+            @include mask(var(--emoji-icon), $important: true);
           }
         }
         &-remove-all-reactions {
@@ -466,6 +494,7 @@
             @include mask(var(--user-id-icon));
           }
         }
+        &-copy-message-link,
         &-copy-link {
           &::before {
             @include mask(var(--link-icon));
@@ -516,7 +545,7 @@
   }
   // Item group adjustments
   #{$contextmenuitemgroup} {
-    border-color: RGB(var(--tc-tint-4))!important;
+    border-color: var(--border-color)!important;
     // Remove any empty item groups, not sure why they exist
     &:empty {
       display: none;
@@ -545,20 +574,7 @@
     }
   }
   // Scrollbar
-  #{$scroller} {
-    &::-webkit-scrollbar {
-      width: 14px!important;
-    }
-    &::-webkit-scrollbar-thumb {
-      border-width: 6px 6px 6px 0!important;
-    }
-    &::-webkit-scrollbar-thumb,
-    &::-webkit-scrollbar-track {
-      margin: -6px 0;
-    }
-    &::-webkit-scrollbar-track,
-    &::-webkit-scrollbar-track-piece {
-      background: none!important;
-    }
+  #{$scrollerwrap} {
+    padding: 1px 1px 0 0;
   }
 }

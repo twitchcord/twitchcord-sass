@@ -1,0 +1,46 @@
+// main: _module.scss
+
+//** Statuses
+
+// Status squares
+#{classes('components.statuses.status')} {
+  @include absolute(right -4px bottom -4px);
+  @include size(10px);
+  border: none!important;
+  // Remove color blind icons
+  background-image: none!important;
+  border-radius: var(--status-roundness)!important;
+  &#{classes('components.statuses.online')} {
+    background: var(--status-online-color);
+  }
+  &#{classes('components.statuses.dnd')} {
+    background: var(--status-dnd-color);
+  }
+  &#{classes('components.statuses.idle')} {
+    background: var(--status-idle-color);
+  }
+  &#{classes('components.statuses.streaming')} {
+    background: var(--status-streaming-color);
+  }
+  &#{classes('components.statuses.offline')},
+  &#{classes('components.statuses.invisible')} {
+    background: var(--status-offline-color);
+  }
+}
+
+  // Typing status on avatars (DM convos and server members list)
+  .status-oxiHuE.typing-1KJk_j {
+    @include size(20px!important, 6px!important);
+    right: -2px !important;
+    .spinner-2enMB9 {
+      margin-left: 1px;
+      width: 19px;
+      .pulsingEllipsis-3YiXRF {
+        width: 20px!important;
+        .pulsingEllipsisItem-32hhWL {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  

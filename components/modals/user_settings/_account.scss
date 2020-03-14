@@ -6,9 +6,9 @@
 // 'My Account' section
 .userInfoViewing-16kqK3,
 .userInfoEditing-1CEzdT {
-  background: RGB(var(--tc-tint-1))!important;
-  border: 1px solid var(--empty-hover-color)!important;
-  border-radius: var(--button-roundness);
+  background: color('tint-1') !important;
+  border: 1px solid color('white', .05) !important;
+  border-radius: var(--button-border-radius);
   // User avatar
   #{classes('components.avatars.wrapper')},
   #{classes('components.avatars.inner')} {
@@ -17,9 +17,9 @@
   // Container div
   #{classes('base.flex.flex')} {
     > #{classes('base.flex.flexChild')}:nth-of-type(2) {
-      align-content: center;
       display: flex;
       flex-wrap: wrap;
+      align-content: center;
       > div {
         display: block;
         width: 100%;

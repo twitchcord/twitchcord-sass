@@ -3,77 +3,100 @@
 ///  Attachments
 ///  ==========================================================================
 
+:root {
+  --attachment-width: 41rem;
+  --attachment-background: var(--component-background);
+  --attachment-border-color: var(--component-border-color);
+  --attachment-border-style: var(--component-border-style);
+  --attachment-border-width: var(--component-border-width);
+  --attachment-border-radius: var(--component-border-radius);
+  --attachment-box-shadow: var(--component-box-shadow);
+  
+  --attachment-icon-size: 5.6rem;
+  --attachment-icon-border-radius: var(--attachment-border-radius);
+  --attachment-icon-background-color: #{color('tint-3')};
+  --attachment-icon-background-image: #{icon('file-attachment')};
+  --attachment-icon-background-size: 50%;
 
+  --attachment-progress-bar-width: 100%;
+  // Must be less than or equal to attachment's bottom margin
+  // or there are overflow issues
+  --attachment-progress-bar-height: 0.5rem;
+  --attachment-progress-bar-background: #{color('white')};
+  --attachment-progress-bar-fill-background: var(--button-primary-hover-background-color);
+  --attachment-progress-bar-border-radius: var(--attachment-border-radius);
+}
 
 // Attachment outer container
 #{classes('components.attachments.attachment')} {
-  background-color: var(--embed-color)!important;
-  border: none;
-  border-radius: 0;
-  box-shadow: var(--elevation-1);
-  margin: 8px 0;
-  max-width: none;
-  padding: 10px;
   position: relative;
-  width: 410px;
+  width: var(--attachment-width);
+  max-width: none;
+  margin: 0.8rem 0;
+  padding: 1rem;
+  background: var(--attachment-background) !important;
+  border-color: var(--attachment-border-color);
+  border-style: var(--attachment-border-style);
+  border-width: var(--attachment-border-width);
+  border-radius: var(--attachment-border-radius);
+  box-shadow: var(--attachment-box-shadow);
   // Attachment inner container
   #{classes('components.attachments.attachmentInner')} {
-    // Discord download button
-    + a {
-      display: none;
+    // Give space between long file names and the Download button
+    margin: 0 2rem 0 0;
+    // Attachment download button
+    + #{classes('base.anchor')} {
+      @include component('button', 'primary', 'base');
+      margin: 2.3rem 0 0 0 !important;
+      text-decoration: none;
+      &::before {
+        @include localize('Download');
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
+  }
+  // Download button svg
+  #{classes('components.attachments.downloadButton')} {
+    display: none;
   }
   // Attachment file name
   #{classes('components.attachments.fileNameLink')} {
-    @include absolute(top 0 left 0);
     @include ellipsis($display: block);
     @include size(100%, auto);
-    @include text(RGB(var(--tc-tint-10))!important, 14px, 700, 20px);
-    min-height: 80px;
-    padding: 27px 140px 0 75px;
+    margin: 0 2rem 0 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2rem;
+    color: color('tint-10') !important;
     text-decoration: none;
     // 'Shared a file' text
     &::before {
-      @include absolute(top 8px);
       @include localize('Shared a file');
-      @include text(RGB(var(--tc-tint-7)), 14px, 400);
-    }
-    // Attachment download button
-    &::after {
-      @include button-base;
-      @include button('primary');
-      @include absolute(bottom 16px right 10px);
-      @include flex-center;
-      @include localize('Download');
-      height: 30px;
-      padding: 0 10px;
-    }
-    &:hover {
-      &::after {
-          background-color: var(--button-primary-hover-color)!important;
-          border: var(--button-primary-hover-border)!important;
-          box-shadow: var(--button-primary-hover-shadow)!important;
-          color: var(--button-primary-hover-text-color)!important;
-      }
-    }
-    &:hover:active,
-    &:active {
-      &::after {
-        background-color: var(--button-primary-active-color)!important;
-        border: var(--button-primary-active-border)!important;
-        box-shadow: var(--button-primary-active-shadow)!important;
-        color: var(--button-primary-active-text-color)!important;
-      }
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: color('tint-7');
     }
   }
   // Attachment name while attachment is uploading
   #{classes('components.attachments.fileName')} {
     @include ellipsis(100%, block);
-    @include text(RGB(var(--tc-tint-10))!important, 14px, 700, 20px);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2rem;
+    color: color('tint-10') !important;
     text-decoration: none;
     // Attachment size while attachment is uploading
     + #{classes('components.attachments.progressFileSize')} {
-      @include text(RGB(var(--tc-tint-7))!important, 12px);
+      font-size: 1.2rem;
+      color: color('tint-7') !important;
     }
     &::before {
       display: none;
@@ -81,37 +104,44 @@
   }
   // Attachment icon
   #{classes('components.attachments.icon')} {
-    @include size(56px);
-    content: var(--transparent-pixel);
-    background: RGB(var(--tc-tint-4)) var(--attachment-file-image) no-repeat 50% / 30px 40px!important;
+    @include remove-img;
+    @include size(var(--attachment-icon-size));
+    margin: 0 0.8rem 0 0;
+    background: var(--attachment-icon-background-color) var(--attachment-icon-background-image) no-repeat center / var(--attachment-icon-background-size) !important;
+    border-radius: var(--attachment-icon-border-radius);
   }
-  // Attachment meta data (file size, progress bar)
+  // Attachment meta data (file size)
   #{classes('components.attachments.metaData')}  {
-    margin: 35px 0 0 0;
-    &#{classes('components.attachments.progressContainer')} {
-      @include absolute(bottom -5px left 0);
-      @include size(100%, 5px);
-      background: var(--embed-color)!important;
-      border-radius: 0;
-      box-shadow: var(--elevation-1);
-      color: transparent;
-      margin: 0;
-      @at-root #{classes('components.attachments.progress')}  {
-        background: RGB(var(--contrasted-color))!important;
-        height: 5px;
-        @at-root #{classes('components.attachments.progressBar')}  {
-          background: RGB(var(--tc-color-8))!important;
-          border-radius: 0!important;
-        }
-      }
-    }
+    color: color('tint-7');
+  }
+  // Attachment progress bar outer container
+  #{classes('components.attachments.progressContainer')} {
+    @include size(var(--attachment-progress-bar-width), var(--attachment-progress-bar-height));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: var(--attachment-progress-bar-height) 0 0;
+    overflow: hidden;
+    color: transparent;
+    background: var(--attachment-background) !important;
+    border-radius: var(--attachment-progress-bar-border-radius);
+  }
+  #{classes('components.attachments.progress')}  {
+    height: var(--attachment-progress-bar-height);
+    background: var(--attachment-progress-bar-background) !important;
+    border-radius: var(--attachment-progress-bar-border-radius);
+  }
+  #{classes('components.attachments.progressBar')}  {
+    height: var(--attachment-progress-bar-height);
+    background: var(--attachment-progress-bar-fill-background) !important;
+    border-radius: var(--attachment-progress-bar-border-radius) !important;
   }
   // Cancel upload button
   #{classes('components.attachments.cancelButton')}  {
+    @include mask(icon('close'), color('tint-9'));
     background: none;
-    @include mask(var(--close-icon), RGB(var(--tc-hint-9)));
     &:hover {
-      background-color: RGB(var(--contrasted-color));
+      background-color: color('contrasted');
     }
     g {
       display: none;

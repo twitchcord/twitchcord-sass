@@ -7,74 +7,46 @@
 .guildsHorizontalTop,
 .guildsHorizontalBottom {
   &:root {
-    --guilds-height: 70px;
+    --guilds-height: calc(var(--guild-size) + var(--guild-size) / 2 + var(--guild-size) / 6);
     --guilds-width: 100%;
+    --guilds-flex-direction: row;
+
+    --guild-separator-width: 0.1rem;
+    --guild-separator-height: var(--guild-size);
+
+    --guild-selected-indicator-height-backup: var(--guild-separator-height);
+    --guild-selected-indicator-width-backup: var(--guild-separator-width);
+    --guild-selected-indicator-height: var(--guild-separator-width-backup);
+    --guild-selected-indicator-width: var(--guild-separator-height-backup);
+
+    --guilds-scroller-flex-direction: row;
+    --guilds-scroller-overflow: scroll hidden;
+
+    --guilds-border-width: 0 0 0.1rem 0;
   }
-  .layer-3QrUeG{
-    > .flex-1xMQg5 {
-      flex-direction: column;
-    }
-  }
-  .tc-titleWrapper-nav-logo-settings {
-    width: 60px;
+  .container-2lgZY8 {
+    flex-direction: column;
   }
   .wrapper-1Rf91z {
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    flex-direction: row;
-    .scrollerWrap-2lJEkd {
-      @include size(var(--guilds-width), calc(var(--guilds-height) + 10px));
-    }
-    .scroller-2TZvBN {
-      padding: 0 calc(var(--guild-icon-size) + 21px) 0 9px;
-      // Needed in order to center guilds horizontally when there are very few
-      overflow-y: hidden;
-      overflow-x: scroll;
-      flex-direction: row;
-    }
-    // DMs container
-    .container-1aNBdK {
-      animation: var(--disable-animations, translateTopToBottom 0.6s);
-      margin: auto 9px;
-      transform: none!important;
-      z-index: 4;
-    }
-    // For the first 'real' guild in the guilds list
-    .guildSeparator-3s64Iy {
-      height: 100%;
-      width: auto;
-      margin: 0 10px;
-      &::after {
-        @include size(1px, auto);
-        top: 20%;
-        bottom: 20%;
-        left: unset;
-        right: unset;
-      }
+    #{classes('layout.guilds.scroller')} {
+      margin: 0 calc(var(--guild-size) + var(--guilds-scroller-margin) * 2 + var(--guild-margin) * 2) 0 var(--guilds-scroller-margin);
     }
     // Guild outer container
-    .container-2td-dC {
-      margin: auto 9px;
-      z-index: 4;
-      // Selected guild indicator
-      &, &.unread-2OHH1w, &.selected-nT-gM3, &.unread-2OHH1w.selected-nT-gM3 {
-        &::before {
-          @include absolute(top var(--guilds-height)!important left 0!important);
-          @include size(var(--guild-icon-size)!important, 5px!important);
-          transform: none;
-        }
-      }
-      &.selected-nT-gM3, &.unread-2OHH1w.selected-nT-gM3 {
-        &::before {
-          top: calc(var(--guilds-height) - 1px)!important;
-        }
-      }
+    #{classes('layout.guilds.guild')} {
+      margin: auto var(--guild-margin);
+    }
+    // Placeholder shown when dragging a guild
+    #{classes('layout.guilds.dragPlaceholder')} {
+      margin: auto var(--guild-margin);
+    }
+    // separator
+    #{classes('layout.guilds.guildSeparator')} {
+      margin: 0 var(--guild-margin);
     }
     // Join / Create Server button
-    .createJoinContainer-2Av064 {
-      @include absolute(top 0 right 0 bottom unset left unset, !important);
-      @include size(calc(var(--guild-icon-size) + 30px)!important, var(--guilds-height)!important);
-      z-index: 4;
-    }
+    // #{classes('layout.guilds.createJoinContainer')} {
+    //   @include absolute(top 0 right 0 bottom unset left unset, !important);
+    //   @include size(calc(var(--guild-size) + var(--guilds-scroller-margin) * 2 + var(--guild-margin) * 2)!important, var(--guilds-width)!important);
+    // }
   }
 }

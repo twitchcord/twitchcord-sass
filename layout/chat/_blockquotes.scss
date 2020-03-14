@@ -1,0 +1,47 @@
+.blockquoteContainer-U5TVEi {
+  position: relative;
+  display: table;
+  margin: 8px 0 8px 35px;
+  padding: 10px 10px 10px 0;
+  background: var(--embed-background);
+  border-radius: var(--embed-border-radius);
+  box-shadow: var(--embed-box-shadow);
+  &::before {
+    @include size(0);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    border-top: 10px solid var(--embed-background);
+    border-left: 15px solid transparent;
+  }
+  .blockquoteDivider-2hH8H6 {
+    @include size(26px);
+    position: absolute;
+    top: 10px;
+    left: -35px;
+    overflow: hidden;
+    background: color('tint-2');
+    border-radius: 50%;
+    &::after {
+      @include size(100%);
+      @include mask(icon('user'), color('tint-5'), 110%, no-repeat center top 2px);
+      content: '';
+      display: block;
+    }
+  }
+  blockquote {
+    max-width: 100%;
+    padding: 0 15px;
+    * {
+      margin-bottom: 0 !important;
+    }
+    // This is needed due to specificity issues
+    @at-root .message-2qnXI6 .markup-2BOw-j & {
+      pre code,
+      code.inline {
+        background: color('primary-1') !important;
+      }
+    }
+  }
+}

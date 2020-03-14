@@ -11,21 +11,21 @@
 }
 
 .connection-1fbD7X {
-    background: RGB(var(--tc-tint-1))!important;
-    border: 1px solid var(--border-color)!important;
-    border-radius: var(--panel-roundness);
     margin-bottom: 15px;
+    background: color('tint-1') !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--panel-roundness);
 }
 
 .connectionHeader-2MDqhu {
-    border-radius: 0;
     margin-bottom: 0;
     border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
 }
 
 .connectionHeader-2MDqhu .connectionAccountValue-3VdBGs {
-    color: #fff!important;
-    font-size: 16px!important;
+    font-size: 16px !important;
+    color: #fff !important;
 }
 
 .connectionOptionsWrapper-3KIj1Z .connectionOptions-YE9FAM {
@@ -33,8 +33,8 @@
 }
 
 .connectionOptionSwitch-3KNn-E + .connectionOptionSwitch-3KNn-E {
-  border-top: 1px solid var(--border-color);
   padding-top: 20px;
+  border-top: 1px solid var(--border-color);
 }
 
 .divider-3573oO {
@@ -43,12 +43,12 @@
 
 .cardPrimary-1Hv-to {
   + div {
-    background: RGB(var(--tc-tint-1));
-    border-right: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
     margin: 0 0 50px;
     padding: 20px;
+    background: color('tint-1');
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
   }
 }
 
@@ -58,28 +58,28 @@
 
 .accountBtnInner-sj5jLs {
   border: none;
-  border-radius: var(--button-roundness);
+  border-radius: var(--button-border-radius);
   transition: none;
   @each $type, $url in map-get($discordImages, settingsConnections) {
-    &[style*="#{$url}"] {
-      background: RGB(var(--#{$type}-color)) var(--#{$type}-logo) no-repeat center / 30px!important;
+    &[style*='#{$url}'] {
+      background: color(#{$type}) logo(#{$type}) no-repeat center / 3rem !important;
     }
   }
   // We are including these below because they need size adjustments to be consistant with the others
   &[style*="#{discordImages('settingsConnections.facebook')}"] {
-    background-size: 25px!important;
+    background-size: 25px !important;
   }
   &[style*="#{discordImages('settingsConnections.spotify')}"] {
-    background-size: 25px!important;
+    background-size: 25px !important;
   }
   &[style*="#{discordImages('settingsConnections.twitter')}"] {
-    background-size: 25px!important;
+    background-size: 25px !important;
   }
   &[style*="#{discordImages('settingsConnections.xbox')}"] {
-    background-size: 25px!important;
+    background-size: 25px !important;
   }
   &[style*="#{discordImages('settingsConnections.youtube')}"] {
-    background-size: 35px!important;
+    background-size: 35px !important;
   }
   &:hover {
     filter: brightness(1.2);

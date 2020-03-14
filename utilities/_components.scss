@@ -1,0 +1,451 @@
+///  main: _module.scss
+///  ==========================================================================
+///  Components
+///  ==========================================================================
+///  A map of reuseable components that can be quickly referenced/extended to
+///  various classes.
+
+// Defining a list of pseudo-classes
+$pseudo-classes: hover, active, focus-within, focus, checked;
+// Defining a list of pseudo-elements
+$pseudo-elements: placeholder;
+
+// This is a map of components meant to be used for component style collections
+// that will likely be reused more than once
+$components: (
+  'component': (
+    background: color('tint-1'),
+    border-color: transparent,
+    border-style: none,
+    border-width: 0rem,
+    border-radius: .4rem,
+    box-shadow: var('elevation-1'),
+    'secondary': (
+      background: color('primary-1'),
+      border-color: var('component-border-color'),
+      border-style: var('component-border-style'),
+      border-width: var('component-border-width'),
+      border-radius: var('component-border-radius'),
+      box-shadow: var('component-box-shadow')
+    )
+  ),
+  'placeholder': (
+    background-color: var('white', .05),
+    'game-boxart': (
+      background: '#{image('placeholder-game-boxart')} no-repeat center / 140%,
+                  radial-gradient(circle at center, #{color('primary-8')}, #{color('primary-7')})',
+      background-color: color('tint-2'),
+      background-repeat: no-repeat,
+      background-size: 100% 100%,
+      border-radius: var('component-border-radius')
+    ),
+    'game-splash': (
+      background-blend-mode: overlay,
+      background-color: color('tint-1'),
+      background-image: image('placeholder-game-splash'),
+      background-position: center center,
+      background-repeat: no-repeat,
+      background-size: cover
+    ),
+    'user-profile-banner': (
+      background-blend-mode: multiply,
+      background-color: color('primary-7'),
+      background-image: image('placeholder-user-profile-banner'),
+      background-position: center center,
+      background-repeat: no-repeat,
+      background-size: cover
+    )
+  ),
+  'link': (
+    color: color('primary-10'),
+    text-decoration: none,
+    font-size: 1.4rem,
+    font-weight: 400,
+    'hover': (
+      color: var('link-color'),
+      text-decoration: underline,
+      font-size: var('link-font-size'),
+      font-weight: var('link-font-weight')
+    )
+  ),
+  'header': (
+    'h1': (
+      color: color('tint-11'),
+      font-size: 4rem,
+      font-weight: 400,
+      line-height: 1.2
+    ),
+    'h2': (
+      color: color('tint-11'),
+      font-size: 2.8rem,
+      font-weight: 700,
+      line-height: var('header-h1-line-height')
+    ),
+    'h3': (
+      color: color('tint-11'),
+      font-size: 2.2rem,
+      font-weight: 400,
+      line-height: var('header-h1-line-height')
+    ),
+    'h4': (
+      color: color('tint-11'),
+      font-size: 1.6rem,
+      font-weight: 700,
+      line-height: 1.5
+    ),
+    'h5': (
+      color: color('tint-9'),
+      font-size: 1.4rem,
+      font-weight: 400,
+      line-height: var('header-h4-line-height')
+    ),
+    'h6': (
+      color: color('tint-12'),
+      font-size: 1.4rem,
+      font-weight: 700,
+      line-height: var('header-h4-line-height')
+    ),
+    'h7': (
+      color: color('tint-9'),
+      font-size: 1.2rem,
+      font-weight: 400,
+      line-height: var('header-h4-line-height')
+    ),
+    'h8': (
+      color: color('white'),
+      font-size: 1.2rem,
+      font-weight: 700,
+      line-height: var('header-h4-line-height')
+    ),
+    'h9': (
+      color: color('tint-10'),
+      font-size: 1.1rem,
+      font-weight: 700,
+      line-height: var('header-h4-line-height')
+    ),
+    'h10': (
+      color: color('tint-8'),
+      font-size: 1.1rem,
+      font-weight: 400,
+      line-height: var('header-h4-line-height')
+    ),
+    'h11': (
+      color: color('tint-11'),
+      font-size: 1.1rem,
+      font-weight: 400,
+      line-height: var('header-h4-line-height')
+    )
+  ),
+  'scrollbar': (
+    background-color: transparent,
+    border-radius: .7rem,
+    width: .8rem,
+    'thumb': (
+      background-color: color('primary-3', .7),
+      border-color: color('white', .125),
+      border-style: solid,
+      border-width: .1rem,
+      border-radius: var('scrollbar-border-radius'),
+      box-shadow: none
+    ),
+    'track': (
+      background-color: transparent,
+      border-color: transparent,
+      border-style: none,
+      border-width: 0rem,
+      border-radius: var('scrollbar-border-radius')
+    ),
+    'track-piece': (
+      background-color: var('scrollbar-track-background-color'),
+      border-color: var('scrollbar-track-border-color'),
+      border-style: var('scrollbar-track-border-style'),
+      border-width: var('scrollbar-track-border-width'),
+      border-radius: var('scrollbar-track-border-radius')
+    )
+  ),
+  'button': (
+    background-clip: padding-box,
+    border-color: transparent,
+    border-style: solid,
+    border-width: .1rem,
+    border-radius: .4rem,
+    cursor: pointer,
+    display: inline-block,
+    flex: none,
+    font-size: 1.2rem,
+    font-weight: 400,
+    height: 3rem,
+    line-height: calc(#{var('button-height')} - #{var('button-border-width')}),
+    margin: 0,
+    min-height: 0,
+    min-width: 0,
+    padding: '0 1rem',
+    transition: var('disable-transitions', var('disable-button-transition', none)),
+    'primary': (
+      background-color: color('primary-7'),
+      border-color: var('button-primary-background-color'),
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('white'),
+      'hover': (
+        background-color: color('primary-8'),
+        border-color: var('button-primary-hover-background-color'),
+        border-style: var('button-primary-border-style'),
+        border-width: var('button-primary-border-width'),
+        box-shadow: none,
+        color: color('white')
+      ),
+      'active': (
+        background-color: var('button-primary-hover-background-color'),
+        border-color: color('primary-9'),
+        border-style: var('button-primary-border-style'),
+        border-width: var('button-primary-border-width'),
+        box-shadow: 0 0 .6rem 0 var('button-primary-hover-background-color'),
+        color: color('white')
+      )
+    ),
+    'secondary': (
+      background-color: color('contrasted', .1),
+      border-color: var('button-secondary-background-color'),
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('tint-12'),
+      'hover': (
+        background-color:color('contrasted', .15),
+        border-color: var('button-secondary-hover-background-color'),
+        border-style: var('button-secondary-border-style'),
+        border-width: var('button-secondary-border-width'),
+        box-shadow: none,
+        color: var('button-secondary-color')
+      ),
+      'active': (
+        background-color: color('contrasted', .2),
+        border-color: var('button-secondary-active-background-color'),
+        border-style: var('button-secondary-border-style'),
+        border-width: var('button-secondary-border-width'),
+        box-shadow: var('button-primary-active-box-shadow'),
+        color: var('button-secondary-color')
+      )
+    ),
+    'hollow': (
+      background-color: transparent,
+      border-color: color('primary-6'),
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('tint-11'),
+      'hover': (
+        background-color: color('white', .05),
+        border-color: var('button-primary-background-color'),
+        border-style: var('button-hollow-border-style'),
+        border-width: var('button-hollow-border-width'),
+        box-shadow: none,
+        color: color('tint-12')
+      ),
+      'active': (
+        background-color: var('button-hollow-hover-background-color'),
+        border-color: var('button-hollow-hover-border-color'),
+        border-style: var('button-hollow-border-style'),
+        border-width: var('button-hollow-border-width'),
+        box-shadow: 0 0 .6rem 0 var('button-primary-background-color'),
+        color: color('tint-12')
+      )
+    ),
+    'blank': (
+      background-color: transparent,
+      border-color: transparent,
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('tint-11'),
+      text-decoration: none,
+      'hover': (
+        background-color: color('white', .05),
+        border-color: var('button-blank-hover-background-color'),
+        border-style: var('button-blank-border-style'),
+        border-width: var('button-blank-border-width'),
+        box-shadow: none,
+        color: color('tint-12')
+      ),
+      'active': (
+        background-color: var('button-blank-hover-background-color'),
+        border-color: var('button-blank-active-background-color'),
+        border-style: var('button-blank-border-style'),
+        border-width: var('button-blank-border-width'),
+        box-shadow: var('button-hollow-active-box-shadow'),
+        color: color('tint-12')
+      )
+    ),
+    'danger': (
+      background-color: color('danger'),
+      border-color: color('danger'),
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('white'),
+      'hover': (
+        background-color: var('button-danger-background-color'),
+        border-color: var('button-danger-border-color'),
+        border-style: var('button-danger-border-style'),
+        border-width: var('button-danger-border-width'),
+        box-shadow: var('button-danger-box-shadow'),
+        color: var('button-danger-color'),
+        filter: brightness(1.1)
+      ),
+      'active': (
+        background-color: var('button-danger-background-color'),
+        border-color: var('button-danger-border-color'),
+        border-style: var('button-danger-border-style'),
+        border-width: var('button-danger-border-width'),
+        box-shadow: 0 0 .6rem 0 var('button-danger-background-color'),
+        color: var('button-danger-color'),
+        filter: none
+      )
+    ),
+    'success': (
+      background-color: color('success'),
+      border-color: color('success'),
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('white'),
+      'hover': (
+        background-color: var('button-success-background-color'),
+        border-color: var('button-success-border-color'),
+        border-style: var('button-success-border-style'),
+        border-width: var('button-success-border-width'),
+        box-shadow: var('button-success-box-shadow'),
+        color: var('button-success-color'),
+        filter: brightness(1.1)
+      ),
+      'active': (
+        background-color: var('button-success-background-color'),
+        border-color: var('button-success-border-color'),
+        border-style: var('button-success-border-style'),
+        border-width: var('button-success-border-width'),
+        box-shadow: 0 0 .6rem 0 var('button-success-background-color'),
+        color: var('button-success-color'),
+        filter: none
+      )
+    ),
+    'disabled': (
+      background-color: color('white', .05),
+      border-color: var('button-disabled-background-color'),
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('white', .2),
+      'hover': (
+        background-color: var('button-disabled-background-color'),
+        border-color: var('button-disabled-border-color'),
+        border-style: var('button-disabled-border-style'),
+        border-width: var('button-disabled-border-width'),
+        box-shadow: var('button-disabled-box-shadow'),
+        color: var('button-disabled-color')
+      ),
+      'active': (
+        background-color: var('button-disabled-background-color'),
+        border-color: var('button-disabled-border-color'),
+        border-style: var('button-disabled-border-style'),
+        border-width: var('button-disabled-border-width'),
+        box-shadow: var('button-disabled-box-shadow'),
+        color: var('button-disabled-color')
+      )
+    )
+  ),
+  'notification-badge': (
+    align-items: center,
+    animation: var('disable-animations', var('disable-notification-badge-animation', '.5s mentionBadgePulse')),
+    background: color('red'),
+    border-radius: calc(#{var('component-border-radius')} * 1000),
+    color: color('white'),
+    display: flex,
+    font-size: 1rem,
+    justify-content: center,
+    line-height: 1,
+    padding: '.2rem .4rem',
+    width: auto
+  ),
+  'alert': (
+    border-style: solid,
+    border-width: .2rem,
+    border-radius: var('component-border-radius'),
+    box-shadow: none,
+    color: color('white'),
+    padding: .5rem,
+    'danger': (
+      background: color('danger', .2),
+      border-color: color('danger')
+    ),
+    'info': (
+      background: color('info', .2),
+      border-color: color('info')
+    ),
+    'success': (
+      background: color('success', .2),
+      border-color: color('success')
+    ),
+    'warning': (
+      background: color('warning', .2),
+      border-color: color('warning')
+    )
+  ),
+  'input': (
+    -webkit-appearance: var('input-appearance'),
+    appearance: none,
+    border-radius: var('component-border-radius'),
+    outline: 0,
+    'text': (
+      background: color('primary-1'),
+      border-color: color('primary-5'),
+      border-style: solid,
+      border-width: .1rem,
+      box-shadow: none,
+      color: color('white'),
+      font-size: 1.2rem,
+      font-weight: 400,
+      height: var('button-height'),
+      line-height: 1.5,
+      padding: 0.5rem 1rem,
+      transition:  var('disable-transitions', var('disable-input-text-transition', 'box-shadow .1s ease-in, border .1s ease-in')),
+      'focus-within': (
+        border-color: color('primary-8'),
+        border-style: var('input-text-border-style'),
+        border-width: var('input-text-border-width'),
+        box-shadow: 0 0 .6rem -.2rem color('primary-8')
+      ),
+      'placeholder': (
+        color: color('tint-7'),
+        font-size: var('input-text-font-size'),
+        font-weight: var('input-text-font-weight'),
+        line-height: var('input-text-line-height')
+      )
+    )
+  ),
+  //
+  // Move somewhere else. Not needed as a reuseable component.
+  //
+  'unread-bar': (
+    border-color: transparent,
+    border-style: none,
+    border-width: 0rem,
+    border-radius: calc(#{var('component-border-radius')} * 1000),
+    box-shadow: var('elevation-1'),
+    font-size: 1.1rem,
+    font-weight: 700,
+    height: 2rem,
+    line-height: 2rem,
+    transition: none,
+    'mentions': (
+      background: color('red')
+    ),
+    'messages': (
+      background: color('tint-4')
+    )
+  )
+);
+
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($components); }

@@ -5,47 +5,46 @@
 #{classes('twitchcord.userBadge')} {
   // Badge container
   &-container {
-    display: inline-block;
     position: relative;
+    display: flex;
   }
   // Badge base
   &-badge {
-    @include reset;
     @include size(var(--user-badge-size));
-    border-radius: var(--user-badge-roundness);
-    background-position: center center;
-    background-repeat: no-repeat!important;
-    background-size: var(--user-badge-size) var(--user-badge-size)!important;
-    cursor: default;
     display: inline-block;
-    float: left;
-    margin-right: 3px;
+    margin: 0 3px 0 0;
+    padding: 0;
+    cursor: default;
+    background-repeat: no-repeat !important;
+    background-position: center center;
+    background-size: var(--user-badge-size) var(--user-badge-size) !important;
+    border-radius: var(--user-badge-roundness);
     &.staff {
-      background: var(--staff-badge);
+      background: badge('staff') no-repeat center;
     }
     &.admin {
-      background: var(--admin-badge);
+      background: badge('admin') no-repeat center;
     }
     &.developer {
-      background: var(--developer-badge);
+      background: badge('developer') no-repeat center;
     }
     &.verified {
-      background: var(--verified-badge);
+      background: badge('verified') no-repeat center;
     }
     &.contributor {
-      background: var(--beta-badge);
+      background: badge('contributor') no-repeat center;
     }
     &.turbo {
-      background: var(--turbo-badge);
+      background: badge('turbo') no-repeat center;
     }
     &.donor {
-      background: var(--donor-badge);
+      background: badge('donor') no-repeat center;
     }
     &.beta {
-      background: var(--beta-badge);
+      background: badge('beta') no-repeat center;
     }
     &.nitro {
-      background: var(--nitro-badge);
+      background: badge('nitro') no-repeat center;
     }
   }
   // Bot badge base
@@ -53,25 +52,27 @@
   #{$bottagregular},
   #{$bottaginvert},
   #{$bottagold} {
-    @include relative(top 0 bottom 0);
-    @include reset;
     @include size(var(--user-badge-size));
-    background: var(--bot-badge);
-    background-color: transparent !important;
-    background-position: center center;
-    background-repeat: no-repeat!important;
-    background-size: var(--user-badge-size) var(--user-badge-size)!important;
-    border-radius: var(--user-badge-roundness);
-    cursor: default;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: inline-block;
-    float: left;
-    font-size: 0;
-    margin-right: 3px;
     order: 1;
+    margin: 0 .4rem .2rem 0;
+    padding: 0;
+    font-size: 0;
+    cursor: default;
+    background: badge('bot') no-repeat center;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-position: center center;
+    background-size: var(--user-badge-size) var(--user-badge-size) !important;
+    border-radius: var(--user-badge-roundness);
     // Bot badges on members lists
     @at-root #{$memberswrap} & {
-      @include size(12px);
-      background-size: 12px 12px!important;
+      @include size(1.4rem);
+      background-size: 100% 100% !important;
     }
   }
 }

@@ -1,36 +1,38 @@
-///  main: _module.scss
+/*/  ==========================================================================
+///  BUTTONS
 ///  ==========================================================================
-///  Buttons
-///  ==========================================================================
+///  General core button styling for the most common occuring buttons throughout
+///  the app.
+/*/
 
 
 // Buttons
 #{classes('components.buttons.button')} {
-  @include button-base;
+  @include component('button');
   // Left margin for buttons with another button as a direct sibling
   & + & {
-    margin-left: 10px!important;
+    margin-left: 10px !important;
   }
   // Disabled buttons
   &:disabled {
-    @include button('disabled');
+    @include component('button', 'disabled');
     opacity: 1;
   }
   // Button contents/text
   #{classes('components.buttons.contents')} {
-    // To get rid of Discord's cheeky underline background gradient on some buttons
-    background: none!important;
     display: block;
     height: auto;
+    padding: 0;
     line-height: initial;
-    padding: 4px 12px;
     text-align: center;
+    // To get rid of Discord's cheeky underline background gradient on some buttons
+    background: none !important;
   }
   // When buttons are placed next to each other inside a flex row reverse div,
   // we need to put the margin on the right instead of the left
   @at-root #{classes('base.directionRowReverse')} > & + & {
-    margin-left: 0;
-    margin-right: 10px;
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
   }
   // Shine animation on some buttons
   #{classes('components.buttons.shine')} {
@@ -45,39 +47,45 @@
 // "Hollow" style buttons
 #{classes('components.buttons.lookGhost')},
 #{classes('components.buttons.lookInverted')},
-#{classes('components.buttons.lookOutlined')} {
-  @extend %button-hollow;
+#{classes('components.buttons.lookOutlined')},
+#{classes('components.buttons.secondary')} {
+  @include component('button', 'secondary');
   // Disabled buttons
   &.disabled {
-    @include button('disabled');
+    @include component('button', 'disabled');
     opacity: 1;
   }
 }
 // "Empty" style button (don't look like buttons)
 #{classes('components.buttons.lookBlank')},
 #{classes('components.buttons.lookLink')} {
-  @include button('blank');
+  @include component('button', 'blank');
   // Disabled buttons
   &.disabled {
-    @include button('disabled');
+    @include component('button', 'disabled');
     opacity: 1;
   }
 }
 // Normal buttons ("primary")
+#{classes('components.buttons.primary')},
 #{classes('components.buttons.lookFilled')} {
-  @extend %button-primary;
+  @include component('button', 'primary');
+  // Override the above styles
+  &#{classes('components.buttons.secondary')} {
+    @include component('button', 'secondary');
+  }
   // Disabled buttons
   &.disabled {
-    @include button('disabled');
+    @include component('button', 'disabled');
     opacity: 1;
   }
 }
 // "Danger" style buttons
 #{classes('components.buttons.colorRed')} {
-  @extend %button-danger;
+  @include component('button', 'danger');
   // Disabled buttons
   &.disabled {
-    @include button('disabled');
+    @include component('button', 'disabled');
     opacity: 1;
   }
 }

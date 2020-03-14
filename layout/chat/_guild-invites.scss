@@ -3,93 +3,125 @@
 //** Guild invite embeds
 // https://i.imgur.com/uW2XDOi.png
 
+
+:root {
+  --guild-invite-background: var(--component-background);
+  --guild-invite-border-color: var(--component-border-color);
+  --guild-invite-border-style: var(--component-border-style);
+  --guild-invite-border-width: var(--component-border-width);
+  --guild-invite-border-radius: var(--component-border-radius);
+  --guild-invite-box-shadow: var(--component-box-shadow);
+
+  --guild-invite-icon-border-radius: var(--guild-border-radius);
+  --guild-invite-icon-size: 8rem;
+  --guild-invite-icon-border-color: transparent;
+  --guild-invite-icon-border-size: none;
+  --guild-invite-icon-border-width: 0.1rem;
+  --guild-invite-icon-background: transparent;
+  --guild-invite-icon-empty-background: var(--placeholder-background);
+  --guild-invite-icon-expired-background: #{color('danger')} #{icon('close-thick')};
+
+}
+
 .wrapper-35wsBm {
-  background: RGB(var(--tc-tint-1))!important;
-  border: none;
-  box-shadow: var(--elevation-1);
-  border-radius: 0;
+  position: relative;
+  background: var(--guild-invite-background) !important;
+  border-color: var(--guild-invite-border-color) !important;
+  border-style: var(--guild-invite-border-style) !important;
+  border-width: var(--guild-invite-border-width) !important;
+  border-radius: var(--guild-invite-border-radius) !important;
+  box-shadow: var(--guild-invite-box-shadow) !important;
   .content-2U5lSY {
     position: relative;
   }
   .guildIcon-lQ0uiM {
-      background-color: transparent!important;
-      border: none!important;
-      border-radius: var(--guild-roundness);
-      margin-top: -25px;
-      margin-right: 15px;
-      height: 80px;
-      width: 80px;
-      font-size: 16px!important;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: image('server-bg.png');
+    @include size(var(--guild-invite-icon-size));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1.5rem 0 0;
+    background-color: var(--guild-invite-icon-background) !important;
+    border-color: var(--guild-invite-icon-border-color) !important;
+    border-style: var(--guild-invite-icon-border-size) !important;
+    border-width: var(--guild-invite-icon-border-width) !important;
+    border-radius: var(--guild-invite-icon-border-radius) !important;
+    &[style*='background-image: none'] {
+      background-color: var(--guild-invite-icon-empty-background) !important;
+    }
   }
   .guildName-2hvnt_ {
-      color: #fff!important;
-      font-weight: 700;
-      font-size: 14px;
       max-width: 90%;
+      font-size: 14px;
+      font-weight: 700;
+      color: color('contrasted') !important;
   }
   .h5-18_1nd {
-      color: RGB(var(--tc-tint-8))!important;
-      font-weight: 400!important;
-      font-size: 14px!important;
-      margin-left: 94px;
-      top: 6px;
-      position: relative;
-      text-transform: none;
+    position: absolute;
+    top: 15px;
+    left: 105px;
+    margin: 0;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: color('tint-8') !important;
+    text-transform: none;
+    letter-spacing: 0;
   }
   .guildDetail-1nRKNE {
-      color: RGB(var(--tc-tint-7))!important;
-      font-weight: 400;
       max-width: 90%;
+      font-weight: 400;
+      color: color('tint-7') !important;
   }
   .guildInfo-1STtYi {
+    justify-content: flex-end;
+    width: 0;
     max-width: 100%;
+    padding: 5px 0;
     span {
       @include ellipsis(100%, inline-block);
     }
-    &+.button-38aScr {
-      padding: 0 !important;
-      width: auto;
+    + .button-38aScr {
       min-width: 60px !important;
       height: 30px !important;
       min-height: 0;
-      margin-top: 2px!important;
+      margin-top: 40px !important;
+      padding: 0 !important;
       // Joined button
       &#{$buttonlookoutlined} {
-        @include button('success');
+        @include component('button', 'success');
         &:hover {
           filter: brightness(1.1);
         }
       }
       .contents-18-Yxp {
-        @include flex-center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         padding: 0;
         .buttonContent-18Mz6_ {
           margin: 0 7px;
         }
         .buttonIcon-1pYT18 {
-          height: 28px;
-          background: rgba(0, 0, 0, 0.25);
-          box-sizing: border-box;
           width: 28px;
-          padding: 5px;
+          height: 28px;
           margin: 0;
+          padding: 5px;
+          background: color('black', .25);
+          border-radius: 0 4px 4px 0;
         }
       }
     }
   }
   .guildNameExpired-2Hp80V {
-      color: var(--fail-color);
-      font-weight: 700;
       font-size: 14px;
+      font-weight: 700;
+      color: color('danger');
       text-decoration: none;
   }
   .guildIconExpired-2Qcq05 {
-    background: var(--fail-color) var(--fat-close-icon) no-repeat center / 75%!important;
+    background: var(--guild-invite-icon-expired-background) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 75% !important;
   }
   .status-2L8Zc7 {
       border-radius: var(--status-roundness);

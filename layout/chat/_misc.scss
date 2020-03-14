@@ -1,5 +1,52 @@
 // main: _module.scss
 
+#{$messagegroup} {
+  > #{$messagecontent} {
+    #{$messagebuttoncontainerouter} {
+      display: none;
+    }
+    #{$messagesystem} {
+      align-items: center;
+      width: calc(100% + var(--chat-gutter-size) * 3);
+      margin: 0 calc(var(--chat-gutter-size) * -1) 0;
+      padding: 1rem 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--chat-text-color);
+      background: color('white', .05);
+      border-left: 4px solid color('primary-7');
+      #{$messagesystemicon} {
+        @include size(1.6rem);
+        position: relative;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6rem;
+      }
+      #{$messagesystemcontent} {
+        margin-left: 5px;
+        overflow: hidden;
+        font-weight: 400;
+        line-height: 1.6rem;
+      }
+      // User's name link
+      #{$anchor} {
+        font-weight: 700;
+        color: color('primary-10') !important;
+        // Any other links
+        &:nth-of-type(2) {
+          font-weight: 400;
+          color: color('primary-10') !important;
+        }
+      }
+      #{$messagesystemtimestamp} {
+        font-size: 1.1rem;
+        color: color('tint-7') !important;
+      }
+    }
+  }
+}
+
 //## Dividers
 
 //## Has more button
@@ -7,16 +54,16 @@
   #{$chathasmore} {
     display: none;
     button {
-      background: RGB(var(--tc-color-2))!important;
-      border: 1px solid RGBA(var(--tc-color-4), 0.5)!important;
-      color: #fff!important;
-      border-radius: 0!important;
       height: 30px;
+      margin: 6px 13px 6px 15px;
       font-size: 10px;
       font-weight: 700;
-      margin: 6px 13px 6px 15px;
+      color: #fff !important;
+      background: color('primary-2') !important;
+      border: 1px solid color('primary-4', .5) !important;
+      border-radius: 0 !important;
       &:hover {
-        box-shadow: none!important;
+        box-shadow: none !important;
       }
     }
   }
@@ -26,80 +73,53 @@
   }
 }
 
-#{$chat} {
-  .spoilerText-3p6IlD {
-    background: none;
-    border-radius: 0;
-    padding: 2px 5px;
-    transition: none;
-    &.hidden-HHr2R9 {
-      background: RGB(var(--tc-color-1)) var(--white-diag-image) repeat center / 20%;
-      background-blend-mode: overlay;
-      opacity: 0.5;
-      &:hover {
-        background: RGB(var(--tc-color-1)) var(--white-diag-image) repeat center / 20%;
-        opacity: 0.7;
-      }
-    }
-    &:hover {
-      background: none;
-    }
-    &:active {
-      outline: none;
-    }
-  }
-}
 
 #{$chat} {
   #{$chatnewmessagesbar} {
-    @include reset;
-    height: 30px;
-    left: 0;
+    position: relative;
+    top: 0;
     right: 0;
-    border-radius: 0;
-    background: none;
-    opacity: 1;
+    bottom: 0;
+    left: 0;
     // Needs this z-index to be higher than reaction and option message buttons
     z-index: 901;
-    top: 0;
+    box-sizing: content-box;
+    height: var(--chat-new-messages-bar-height);
+    margin: 0;
+    padding: 1rem var(--chat-gutter-size);
+    background: none;
+    border-radius: 0;
+    opacity: 1;
     transition: none;
-    button {
-      text-align: center;
-      background: none;
-      color: #fff;
-      line-height: 0;
-      font-family: var(--font)!important;
-      &:first-child {
-        @include button-base;
-        @include button('primary');
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        &::before {
-          @include mask(var(--warning-icon), #fff, 16px);
-          @include size(28px);
-          content: '';
-          margin: 0 3px 0 0;
-        }
+    .barButtonMain-1giYuj {
+      @include component('button', 'primary', 'base');
+      display: flex !important;
+      justify-content: center;
+      width: 100%;
+      box-shadow: var(--elevation-1) !important;
+      &::before {
+        @include mask(icon('warning'), color('white'), 1.6rem);
+        @include size(2.8rem);
+        content: '';
+        margin: 0 0.3rem 0 0;
       }
-      &:last-child {
-        @include absolute(right 0);
-        text-transform: uppercase;
-        font-size: 9px;
-        color: #fff;
-        font-weight: 700;
-        border: 1px solid #fff;
-        border-radius: 0;
-        box-sizing: border-box;
-        padding: 7px 10px;
-        height: 10px;
-        margin: 7px 30px;
-        background-color: transparent;
-        transition: none;
-        &:hover {
-          background-color: #fff;
-          color: RGB(var(--tc-color-8));
-        }
+    }
+    .barButtonAlt-3gIkIj {
+      position: absolute;
+      right: 0;
+      height: 1.4rem;
+      margin: 0 30px;
+      padding: 7px 10px;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 0;
+      color: color('primary-8');
+      text-transform: uppercase;
+      background-color: color('white');
+      border-radius: var(--button-border-radius);
+      transition: none;
+      .barButtonIcon-3FGqPD {
+        display: none;
       }
     }
   }
@@ -108,21 +128,23 @@
 //## Rich presence invites (Games, Spotify)
 #{$chat} {
   #{$messagerichpresenceinvite} {
-    background: RGB(var(--tc-tint-1));
+    @include size(40rem, 14.5rem);
+    padding: 1.5rem;
+    background: color('tint-1');
     border: none;
-    border-radius: var(--embed-roundness);
+    border-radius: var(--component-border-radius);
     box-shadow: var(--elevation-1);
     // Music ended image
     .artworkSpotifySessionEnded-11d_If {
-      background: none!important;
-      @include mask(var(--deafened-icon), RGB(var(--tc-tint-7)), $important: true);
+      @include mask(icon('headphones-off'), color('tint-7'), $important: true);
+      background-image: none !important;
       border-radius: 0;
     }
     // Album artwork
     .artwork-1vrmJ_ {
-      border-radius: var(--image-roundness);
-      height: 103px;
-      width: 103px;
+      // Component height - (component padding * 2)
+      @include size(calc(14.5rem - (1.5rem * 2)));
+      border-radius: var(--component-border-radius);
     }
     // Song name and artist
     .details-3NqflA,
@@ -131,29 +153,29 @@
     }
     // 'by' text, artist name container
     .state-2dqgON {
-      color: RGB(var(--tc-tint-7));
+      color: color('tint-10');
     }
     // Header text
     .partyStatus-6AjDud {
-      color: RGB(var(--tc-tint-11));
+      color: color('tint-10');
     }
     // Empty party member slots
     .partyMemberEmpty-2iyh5g {
-      background: RGB(var(--tc-color-1));
       margin-left: 8px;
-      border-radius: var(--user-roundness);
-      border: 1px solid RGB(var(--tc-color-3));
+      background: color('primary-1');
+      border: 1px solid color('primary-3');
+      border-radius: var('avatar-border-radius');
     }
     // Filler text... 'Invite to Join Group', 'Invite to Listen Along on Spotify'
     .header-Hg_qNF {
-      text-transform: none;
+      @include component('header', 'h7');
       font-weight: 400;
-      color: RGB(var(--tc-tint-7));
+      text-transform: none;
     }
     // Game cover art image container
     .coverImageWrapper-22d5LB {
-      opacity: 1;
       border-radius: 0;
+      opacity: 1;
     }
     // Game/music cover art image
     .coverImage-3cjWkd {
@@ -161,24 +183,24 @@
     }
     // Game covert art image
     .coverImageNotActionable-1MP2Mx {
-      height: 80%;
+      position: absolute;
       top: 15px;
       right: 15px;
       width: 90px;
+      height: 80%;
       filter: none;
+      background-size: contain !important;
+      opacity: 1;
       -webkit-mask: none;
       mask: none;
-      position: absolute;
-      opacity: 1;
-      background-size: contain!important;
     }
     // Music album blurred
     .coverImageActionable-1TMryE.blurred-UUeCTs {
-      mask: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2) 100%);
+      mask: linear-gradient(90deg, transparent, color('white', .2) 100%);
     }
     // Help ? icon
     .helpIcon-2EyVTp {
-      display: none!important;
+      display: none !important;
     }
     // Game name
     .name-GG2Mcs {
@@ -188,49 +210,43 @@
 }
 
 //** Jump to present "bar"
-#{$chat} {
-  #{$chatjumptopresentbar} {
-    @include flex-center;
-    @extend %button-hollow;
-    background: var(--chat-color)!important;
-    left: unset;
-    right: var(--chat-gutter-size);
-    bottom: 10px;
-    box-sizing: border-box;
-    height: 35px;
-    width: auto;
-    margin: 0!important;
-    padding: 0 15px;
-    z-index: 900;
-    button {
-      @include button-undo-active;
-      border: none!important;
-      box-shadow: none!important;
-      &:first-child {
-        @include text(#fff, 12px);
-        flex: none;
-        padding: 0;
-        &::after {
-          content: '.';
-          margin-right: 4px;
-        }
+#{$chatjumptopresentbar} {
+  @include component('button', 'secondary', 'base');
+  @include size(auto, 3.5rem);
+  position: absolute;
+  top: 2rem;
+  right: var(--chat-gutter-size);
+  left: unset;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: translateTopToBottom 1s forwards;
+  button {
+    padding: 0;
+    font-size: 1.2rem !important;
+    color: var(--button-secondary-color) !important;
+    transition: var(--button-transition);
+    &:hover {
+      color: var(--button-secondary-hover-color) !important;
+    }
+    &:first-child {
+      &::after {
+        content: '.';
+        margin-right: .4rem;
       }
-      &:last-child {
-        text-transform: lowercase;
-        font-size: 12px;
-        color: #fff;
-        padding: 0;
-        &::first-letter {
-          text-transform: uppercase;
-        }
-        &::after {
-          content: '.';
-          @include size(24px, 14px);
-          background: var(--forward-arrow-icon);
-          background-position: center left 10px;
-          background-repeat: no-repeat;
-          display: inline-block;
-        }
+    }
+    &:last-child {
+      text-transform: lowercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+      &::after {
+        @include mask(icon('reply'), var(--button-hollow-color), $extras: no-repeat center left 1rem);
+        @include size(2.4rem, 1.4rem);
+        content: '';
+        display: inline-block;
+        vertical-align: bottom;
       }
     }
   }
@@ -238,16 +254,20 @@
 
 
 // Countdown timer that appears when you join a server that requires you to
-  // be a member for so long before sending messages.
-  .countdown-1t3uBk .number-3ceIrJ {
-    @include text(RGB(var(--contrasted-color))!important, 24px, 700);
-    background: none!important;
-    border: none!important;
-    border-radius: 0;
-    margin: 10px 0;
-    padding: 0;
-  }
-  // The dots in the countdown timer
-  .countdown-1t3uBk {
-    @include text(RGB(var(--contrasted-color))!important, 24px, 700);
-  }
+// be a member for so long before sending messages.
+.countdown-1t3uBk .number-3ceIrJ {
+  margin: 10px 0;
+  padding: 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: color('contrasted') !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0;
+}
+// The colons in the countdown timer
+.countdown-1t3uBk {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: color('contrasted') !important;
+}

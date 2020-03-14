@@ -1,0 +1,14 @@
+{
+  "git.ignoreLimitWarning": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [{
+        "scope": [
+            "entity.other.attribute-name",
+        ],                
+        "settings":{
+            "fontStyle": ""
+        }
+    }]
+  },
+  "search.usePCRE2": true
+}

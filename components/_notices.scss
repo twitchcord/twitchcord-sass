@@ -1,71 +1,204 @@
-// main: _module.scss
+///  main: _module.scss
+///  ==========================================================================
+///  Notices
+///  ==========================================================================
 
-//** Notices
+:root {
+  --notice-width: 100%;
+  --notice-height: 3.6rem;
+  --notice-border-color: #{color('white', .05)};
+  --notice-border-style: solid;
+  --notice-border-width: 0 0 .1rem 0;
+  --notice-border-radius: 0;
+  --notice-box-shadow: none;
+  --notice-color: #{color('white')};
+  --notice-font-size: 1.2rem;
+  --notice-z-index: 101;
 
-  
-// Close button for notices
-// https://i.imgur.com/VOIHRbt.png
-.dismiss-SCAH9H {
-  opacity: 0.7;
-  right: 35px;
+  --notice-default-background: #{color('orange')};
+  --notice-brand-background: #{color('discord')};
+  --notice-danger-background: #{color('danger')};
+  --notice-facebook-background: #{color('facebook')};
+  --notice-info-background: #{color('tint-3')};
+  --notice-premium-background: #{color('primary-4')};
+  --notice-premium-grandfathered-background: #{color('primary-4')};
+  --notice-spotify-background: #{color('spotify')};
+  --notice-streamer-mode-background: #{color('purple')};
+  --notice-success-background: #{color('success')};
+  --notice-survey-background: #{color('tint-3')};
+
+  --notice-button-border-color: #{color('white', .7)};
+  --notice-button-border-style: solid;
+  --notice-button-border-width: 0.1rem;
+  --notice-button-border-radius: var(--button-border-radius);
+  --notice-button-box-shadow: none;
+  --notice-button-color: var(--notice-color);
+  --notice-button-font-size: var(--notice-font-size);
+  --notice-button-height: 2.4rem;
+
+  --notice-dismiss-icon-size: 2.4rem;
 }
 
-.notice .platform-icon {
-    margin-right: 5px;
-    margin-top: 0;
-    transform: scale(0.75);
-}
 
+// Notice container
 .notice-2FJMB4 {
-  width: 100%;
-  border-radius: 0;
-  z-index: 9999;
-}
-
-.noticePremium-12Zvj9 {
-    background-color: mediumpurple;
-}
-
-.notice-2FJMB4 .button-1MICoQ {
-  border-radius: 0;
-  text-decoration: none;
-  color: #fff;
-}
-
-.notice-2FJMB4 .textLink-3eOiS- {
-  color: #fff!important;
-}
-
-.notice .notice-dismiss {
-    position: fixed;
-    right: 4px;
-    top: 79px;
-}
-
-#pluginNotice {
-    -webkit-app-region: no-drag!important;
-}
-
-.notice .btn {
-    color: #fff!important;
-}
-
-.notice.notice-facebook .btn:hover {
-    color: #355089!important;
-}
-
-.notice.notice-info .btn:hover {
-    color: #4a90e2!important;
-}
-
-.notice.notice-danger .btn:hover {
-    color: #f04747!important;
-}
-
-.notice.notice-streamer-mode .btn:hover {
-    color: #593695!important;
-}
-
-.notice.notice-spotify .btn:hover {
-    color: #1db954!important;
+  @include size(var(--notice-width), var(--notice-height));
+  z-index: var(--notice-z-index);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: var(--notice-font-size);
+  color: var(--notice-color) !important;
+  border-color: var(--notice-border-color);
+  border-style: var(--notice-border-style);
+  border-width: var(--notice-border-width);
+  border-radius: var(--notice-border-radius);
+  box-shadow: var(--notice-box-shadow);
+  // Default notice
+  // Unobserved; report if you see this
+  &.noticeDefault-362Ko2 {
+    background: var(--notice-default-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-default-background) !important;
+      }
+    }
+  }
+  // Brand notice
+  // Unobserved; report if you see this
+  &.noticeBrand-3nQBC_ {
+    background: var(--notice-brand-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-brand-background) !important;
+      }
+    }
+  }
+  // Danger notice
+  // `Well, it looks like Discord is not detecting any input from your mic. Let's fix that!`
+  &.noticeDanger-7u-yT9 {
+    background: var(--notice-danger-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-danger-background) !important;
+      }
+    }
+  }
+  // Facebook notice
+  // Unobserved; report if you see this
+  &.noticeFacebook-3equ5g {
+    background: var(--notice-facebook-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-facebook-background) !important;
+      }
+    }
+  }
+  // Info notice
+  // Unobserved; report if you see this
+  &.noticeInfo-3_iTE1 {
+    background: var(--notice-info-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-info-background) !important;
+      }
+    }
+  }
+  // Premium notice
+  // Unobserved; report if you see this
+  &.noticePremium-12Zvj9 {
+    background: var(--notice-premium-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-premium-background) !important;
+      }
+    }
+  }
+  // Premium grandfathered notice
+  // Unobserved; report if you see this
+  &.noticePremiumGrandfathered-ollUxF {
+    background: var(--notice-premium-grandfathered-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-premium-grandfathered-background) !important;
+      }
+    }
+  }
+  // Spotify notice
+  // Unobserved; report if you see this
+  &.noticeSpotify-27dhr0 {
+    background: var(--notice-spotify-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-spotify-background) !important;
+      }
+    }
+  }
+  // Streamer mode enabled notice
+  // Unobserved; report if you see this
+  &.noticeStreamerMode-2TSQpg {
+    background: var(--notice-streamer-mode-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-streamer-mode-background) !important;
+      }
+    }
+  }
+  // Success notice
+  // Unobserved; report if you see this
+  &.noticeSuccess-3Y62ob {
+    background: var(--notice-success-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-success-background) !important;
+      }
+    }
+  }
+  // Survey notice
+  // Unobserved; report if you see this
+  &.noticeSurvey-1XW9Ln {
+    background: var(--notice-survey-background);
+    .button-1MICoQ {
+      &:hover {
+        color: var(--notice-survey-background) !important;
+      }
+    }
+  }
+  // Ghost button
+  .button-1MICoQ {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: var(--notice-button-height);
+    padding: var(--button-padding);
+    font-size: var(--notice-button-font-size);
+    line-height: calc(var(--notice-button-height) - (2 * var(--notice-button-border-width)));
+    color: var(--notice-button-color) !important;
+    text-decoration: none;
+    border-color: var(--notice-button-border-color) !important;
+    border-style: var(--notice-button-border-style) !important;
+    border-width: var(--notice-button-border-width) !important;
+    border-radius: var(--notice-button-border-radius) !important;
+    transition: var(--button-transition);
+  }
+  // Dismiss button
+  .dismiss-SCAH9H {
+    @include component('button', 'blank', 'base');
+    @include size(var(--notice-dismiss-icon-size)!important);
+    position: absolute;
+    top: calc((var(--notice-height) - var(--notice-dismiss-icon-size)) / 2);
+    right: 1rem;
+    background: var(--button-blank-background-color) icon('close-thick') no-repeat center / 75% !important;
+    opacity: 1;
+    &:hover {
+      background: var(--button-blank-hover-background-color) icon('close-thick') no-repeat center / 75% !important;
+    }
+    &:active {
+      background: var(--button-blank-active-background-color) icon('close-thick') no-repeat center / 75% !important;
+    }
+  }
 }

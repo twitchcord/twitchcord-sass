@@ -6,9 +6,9 @@
 
 .guildsVerticalRight {
   #{$guildswrapper} {
-    border-right: none;
-    border-left: 1px solid RGB(var(--tc-color-4));
     order: 2;
+    border-right: none;
+    border-left: 1px solid color('primary-4');
   }
   #{$guilds} {
     // Guild outer container
@@ -16,7 +16,8 @@
       // Selected guild indicator
       &, &#{$guildunread}, &#{$guildselected}, &#{$guildunread}#{$guildselected} {
         &::before {
-          @include absolute(left 50px!important);
+          position: absolute;
+          left: 5rem !important;
         }
       }
     }

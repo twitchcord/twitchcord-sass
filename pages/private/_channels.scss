@@ -1,0 +1,210 @@
+// main: _module.scss
+
+//** Private channels list section
+
+:root {
+  --dm-channel-height: 4rem;
+  --dm-channel-border-radius: var(--channel-border-radius);
+
+  --dm-header-text-transform: var(--category-text-transform);
+  --dm-header-font-size: var(--category-font-size);
+  --dm-header-color: var(--category-color);
+  --dm-header-font-weight: var(--category-font-weight);
+  --dm-header-height: var(--category-height);
+  --dm-header-border-color: var(--category-border-color);;
+  --dm-header-border-style: var(--category-border-style);;
+  --dm-header-border-width: var(--category-border-width);
+  --dm-header-border-radius: var(--category-border-radius);
+  --dm-header-box-shadow: var(--category-box-shadow);
+  
+  --dm-header-icon: #{icon('mail')};
+  --dm-header-icon-size: 2rem;
+  --dm-header-icon-background-color: var(--category-icon-background-color);
+}
+
+// DM channel container
+#{$dmchannels} {
+  --status-stroke: #{var('channels-color')};
+  background: none;
+  // Empty div directly inside scroller
+  // https://i.imgur.com/wjaaY2t.png
+  #{$scroller} {
+    background: none;
+  }
+  // 'Direct Messages' header
+  header {
+    @include ellipsis;
+    display: flex;
+    align-items: center;
+    height: var(--dm-header-height);
+    margin: 1.5rem .5rem .5rem 1.5rem;
+    padding: 0;
+    font-size: var(--dm-header-font-size);
+    font-weight: var(--dm-header-font-weight);
+    color: var(--dm-header-color) !important;
+    text-transform: var(--dm-header-text-transform);
+    border-color: var(--dm-header-border-color);
+    border-style: var(--dm-header-border-style);
+    border-width: var(--dm-header-border-width);
+    border-radius: var(--dm-header-border-radius);
+    box-shadow: var(--dm-header-box-shadow);
+    opacity: 1 !important;
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+    &::before {
+      @include mask(var(--dm-header-icon), var(--dm-header-icon-background-color), 1.6rem);
+      @include size(var(--dm-header-icon-size));
+      content: '';
+      position: relative;
+      display: inline-flex;
+      flex: 0 0 auto;
+      margin: 0 .4rem 0 .4rem;
+    }
+  }
+  // Create Group DM plus icon
+  .icon-22AiRD {
+    color: var(--dm-header-icon-background-color);
+  }
+  // DM convo container
+  #{$dmchannel} {
+    height: var(--dm-channel-height);
+    max-height: var(--dm-channel-height) !important;
+    margin: 0 0.5rem 0 1.5rem;
+    padding: 0;
+    line-height: var(--dm-channel-height);
+    border-radius: var(--dm-channel-border-radius);
+    // Activity, LFG, Friends buttons
+    &[href='/channels/@me'],
+    &[href*='/store'],
+    &[href*='/library'],
+    &[href*='/activity'] {
+      display: none;
+    }
+    &:hover {
+      // DM close button container
+      .children-gzQq2t {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    // DM convo avatar
+    .avatar-3uk_u9,
+    .wrapper-3t9DeA {
+      @include size(26px!important);
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 26px 26px !important;
+      border-radius: var('avatar-border-radius');
+    }
+    .avatar-3uk_u9 {
+      margin: 0 1rem 0 0;
+    }
+    // DM close button container
+    .children-gzQq2t {
+      display: flex;
+      margin: 0;
+      transition: var(--disable-transitions, transform 0.15s ease-in);
+      transform: translate3d(200%, 0, 0);
+      // Discord close icon
+      svg {
+        display: none;
+      }
+    }
+    // DM close button
+    #{$dmchannelclose} {
+      @include component('button', 'primary', 'base');
+      @include size(2.2rem!important);
+      padding: 0 !important;
+      line-height: 2.2rem !important;
+      background: var(--button-primary-background-color) icon('close-thick') no-repeat center / 60% !important;
+      opacity: 1 !important;
+      &:hover {
+        background: var(--button-primary-hover-background-color) icon('close-thick') no-repeat center / 60% !important;
+      }
+      &:active {
+        background: var(--button-primary-active-background-color) icon('close-thick') no-repeat center / 60% !important;
+      }
+    }
+    // User activity text outer container
+    // This first bit is specifically targetting/fixing 'activity' for group
+    // DMs. The next flex part is for all other activities
+    #{$dmchannelactivity} {
+      width: 100%;
+      margin-top: -4px;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.9rem;
+      color: color('tint-7');
+      opacity: 1;
+      // For activities
+      &#{$flex} {
+        position: relative;
+        top: .1rem;
+        margin-top: -1px;
+        line-height: 12px;
+        opacity: 1;
+      }
+      // Actual activity text
+      strong {
+        @include ellipsis(140px, inline-block);
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: inherit;
+      }
+    }
+    // User activity text inner container
+    #{$dmchannelactivitytext} {
+      height: 16px;
+      font-size: 0;
+      // Fix for when Discord sometimes shows an empty status
+      &:empty {
+        display: none;
+      }
+    }
+    // DM convo inner container
+    #{$dmchannelname} {
+      @include ellipsis;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 0 0.4rem 0 0;
+      padding: 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 2rem;
+      color: color('tint-9');
+      opacity: 1;
+    }
+    // DM selected / hovered
+    &:hover {
+      .layout-2DM8Md {
+        --status-stroke: #{color('tint-3')};
+        color: color('tint-11') !important;
+        background-color: color('tint-3');
+      }
+      // User activity text outer container
+      #{$dmchannelactivity} {
+        color: color('tint-9') !important;
+      }
+      // DM convo inner container
+      #{$dmchannelname} {
+        color: color('tint-11') !important;
+      }
+    }
+    // DM selected
+    &#{$dmchannelselected},
+    &#{$dmchannelselected}:hover {
+      .layout-2DM8Md {
+        --status-stroke: #{color('tint-2')};
+        color: color('tint-11');
+        background-color: color('tint-2');
+      }
+    }
+  }
+  // Default Discord quickswitcher search bar container and search bar
+  #{$dmchannelsearchbarcontainer},
+  #{$dmchannelsearchbar},
+  // Rich presence icon
+  #{$dmchannelactivityicon} {
+    display: none;
+  }
+}

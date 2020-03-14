@@ -4,175 +4,26 @@
 ///  ==========================================================================
 
 
-///  Header, 24px
-///  https://i.imgur.com/wSJItwI.gifv
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%header-24px {
-  @include text(RGB(var(--tc-tint-11))!important, 24px!important, 400!important, 30px!important, none!important);
-}
-
-
 ///  Round spinner
 ///  https://i.imgur.com/wSJItwI.gifv
 ///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %spinner {
-  @include absolute (top 50% left 50%);
-  @include size(var(--spinner-size));
-  animation: rotate360 750ms linear infinite;
-  background: none;
-  border: 2px solid var(--spinner-color);
-  border-left-color: var(--spinner-highlight-color);
-  border-radius: var(--spinner-size);
-  box-shadow: none;
+  @include size(var('spinner-size'));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var('spinner-z-index');
   display: inline-flex;
   // Center it by using negative half margin of its size
-  margin: calc(var(--spinner-size)/-2);
+  margin: calc(#{var('spinner-size')} / -2);
+  background: none;
+  border: var('spinner-width') solid var('spinner-color');
+  border-left-color: var('spinner-fill-color');
+  border-radius: var('spinner-border-radius');
+  box-shadow: none;
   opacity: 1;
-  size: var(--spinner-size);
   transition-delay: 0.2s;
-  z-index: 99;
-}
-
-
-///  Main text input style
-///  https://i.imgur.com/zsPWUzG.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%input-text {
-  @include flex-center;
-  @include text(RGB(var(--contrasted-color))!important, 12px, 700, 20px);
-  background-color: RGB(var(--tc-color-1))!important;
-  border: none!important;
-  border-radius: 0;
-  box-shadow: inset 0 0 0 1px RGB(var(--tc-color-5)), 0 0 0 transparent;
-  box-sizing: border-box;
-  flex: 1 1 auto;
-  flex-direction: row;
-  outline: none;
-  outline-style: none;
-  padding: 0 14px;
-  position: relative;
-  transition: var(--transition-none, box-shadow .12s ease-in);
-  &::-webkit-input-placeholder,
-  &::placeholder {
-    color: RGB(var(--tc-tint-7))!important;
-  }
-  &:focus {
-    box-shadow: inset 0 0 0 1px RGB(var(--tc-color-8)), 0 0 6px -2px RGB(var(--tc-color-8));
-    outline: none;
-    outline-style: none;
-  }
-}
-
-///  Main button style
-///  https://i.imgur.com/4tOtYUC.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%button-primary {
-  @include button-base;
-  background-color: RGB(var(--tc-color-7))!important;
-  border: 1px solid RGB(var(--tc-color-7))!important;
-  &:hover {
-    background-color: RGB(var(--tc-color-8))!important;
-    border: 1px solid RGB(var(--tc-color-8))!important;
-    color: #fff!important;
-  }
-  &:hover:active,
-  &:active {
-    background-color: RGB(var(--tc-color-7))!important;
-    border: 1px solid RGB(var(--tc-color-8))!important;
-    box-shadow: 0 0 6px 0 RGB(var(--tc-color-8))!important;
-    color: #fff!important;
-  }
-}
-
-
-///  Hollow button style
-///  https://i.imgur.com/4tOtYUC.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%button-hollow {
-  @include button-base;
-  background-color: transparent!important;
-  border: 1px solid RGB(var(--tc-color-6))!important;
-  color: RGB(var(--tc-tint-11))!important;
-  &:hover {
-    background-color: var(--empty-hover-color)!important;
-    border: 1px solid RGB(var(--tc-color-7))!important;
-    color: #fff!important;
-  }
-  &:hover:active,
-  &:active {
-    background-color: var(--empty-hover-color)!important;
-    box-shadow: 0 0 6px 0 RGB(var(--tc-color-8))!important;
-    color: #fff!important;
-  }
-}
-
-
-///  Hollow button alternate style
-///  https://i.imgur.com/4tOtYUC.png
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%button-hollow-alternate {
-  @include button-base;
-  color: RGB(var(--tc-tint-12))!important;
-  background-color: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-color-10))!important;
-  &:hover {
-    background-color: RGB(var(--tc-color-8))!important;
-    border: 1px solid RGB(var(--tc-color-8))!important;
-    color: #fff!important;
-  }
-  &:hover:active,
-  &:active {
-    background-color: RGBA(var(--tc-color-7))!important;
-    box-shadow: 0 0 6px 0 RGB(var(--tc-color-8))!important;
-    color: #fff!important;
-  }
-}
-
-
-///  Danger button style
-///
-///  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%button-danger {
-  @include button-base;
-  background-color: var(--fail-color)!important;
-  border: 1px solid var(--fail-color)!important;
-  color: #fff!important;
-  &:hover {
-    background-color: var(--fail-color)!important;
-    border: 1px solid var(--fail-color)!important;
-    color: #fff!important;
-  }
-  &:hover:active,
-  &:active {
-    background-color: var(--fail-color)!important;
-    box-shadow: 0 0 6px 0 var(--fail-color)!important;
-    color: #fff!important;
-  }
-}
-
-
-///  Status text placeholders
-/// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-%status-online {
-  content: 'Online';
-}
-%status-offline {
-  content: 'Offline';
-}
-%status-dnd {
-  content: 'Do not disturb';
-}
-%status-idle {
-  content: 'Idle';
-}
-%status-invisible {
-  content: 'Invisible';
+  animation: var('spinner-animation');
+  size: var('spinner-size');
 }

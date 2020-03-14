@@ -3,48 +3,64 @@
 //** Typing indicator
 
 #{$chat} form .typing-2GQL18 {
-  @include absolute(bottom 100%);
-  cursor: default;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 99;
   display: flex;
-  font-size: 12px;
-  line-height: 30px;
-  height: 30px;
-  background: var(--chat-typing-background, none)!important;
   width: 100%;
+  height: 40px;
+  font-size: 1.2rem;
+  line-height: 40px;
+  cursor: default;
+  background: var(--chat-typing-background, none) !important;
   animation: chatTypingIndicator 0.15s forwards;
 }
 
 // Rich presence game thing "Fortnite supports game invites"
 // https://i.imgur.com/BmfoSGa.png
 #{$chat} form .typing-2GQL18 .activityInviteEducationArrow-3DEpKU {
-  margin: 0 5px 0 9px;
   top: 2px;
+  margin: 0 5px 0 9px;
 }
 
 #{$chat} form .typing-2GQL18 .text-1y-e8- {
-    color: RGB(var(--tc-tint-9))!important;
+    color: color('tint-7') !important;
 }
 
 #{$chat} form .typing-2GQL18 .text-1y-e8- strong {
-    color: RGB(var(--contrasted-color))!important;
-    font-weight: 400;
+    font-weight: 700;
+    color: color('tint-10') !important;
 }
 
 #{$chat} form .typing-2GQL18 .ellipsis-19qdx6 {
-    margin: 0px 4px 0 3px;
     display: inline-block;
+    margin: 0px 4px 0 3px;
 }
 
+// `Slowdown is enabled` container
+.cooldownWrapper-3joyFc {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: color('tint-7') !important;
+  // Stopwatch svg
+  .slowModeIcon-1BPDC_ {
+    @include size(2rem);
+    position: relative;
+    bottom: 0;
+  }
+}
 
 .typing-2GQL18 .pulsingEllipsisItem-32hhWL,
 .typing-2GQL18 .stop-animation .pulsingEllipsisItem-32hhWL {
   @include size(6px);
   display:inline-block;
-  border-radius: 50%;
   margin-right: 3px;
-  background: RGB(var(--contrasted-color), 0.7);
-  animation: typingWave 1s linear infinite;
+  background: color('contrasted', .7);
+  border-radius: 50%;
   opacity: 1;
+  animation: typingWave 1s linear infinite;
   &:nth-child(2) {
     animation-delay: -0.8s;
   }

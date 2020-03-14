@@ -3,50 +3,51 @@
 //** Instant invite modal
 
 .wrapper-O5i5-0 {
-  height: 510px;
   width: 600px;
+  height: 510px;
   .modal-3HD5ck {
-    padding: 0!important;
-    height: 500px;
     width: 600px;
+    height: 500px;
     max-height: none;
+    padding: 0 !important;
   }
   .header-2Pz98J {
     display: flex;
     padding: 20px;
   }
   .h2-2gWE-o {
-    font-size: 16px!important;
+    font-size: 16px !important;
   }
   .header-1R_AjF {
-    @include reset;
-    border-bottom: 1px solid RGB(var(--tc-color-2));
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid color('primary-2');
   }
   .search-bar {
     order: 1;
     width: 100%;
-    margin: 0 auto;
     height: 34px;
+    margin: 0 auto;
   }
   // Border
   .content-3CCvMx:before {
     display: none;
   }
   .footer-2yfCgX {
-    margin: 0!important;
+    margin: 0 !important;
   }
   #{$scroller} {
+    box-sizing: border-box;
     min-height: 50%;
     max-height: 100%;
     padding: 0 20px;
-    box-sizing: border-box;
     > .flexChild-faoVW3 {
       > .title-2BxgL2 {
         font-size: 14px;
         text-transform: none;
         &::after {
-          content: '';
           @extend %spinner;
+          content: '';
           margin-top: -10px;
         }
       }
@@ -60,10 +61,11 @@
     line-height: 20px;
   }
   .inviteRow-2L02ae {
-    @include reset;
+    margin: 0;
+    padding: 0;
     border-radius: 0;
     &:hover {
-      background: none!important;
+      background: none !important;
     }
   }
   #{$scrollerwrap} {
@@ -71,7 +73,7 @@
     justify-content: center;
   }
   .input-cIJ7To {
-    border: none!important;
     padding: 0;
+    border: none !important;
   }
 }

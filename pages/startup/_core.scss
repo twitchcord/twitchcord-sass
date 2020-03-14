@@ -1,0 +1,89 @@
+// main: _module.scss
+
+//** Discord app loading screen
+
+// Loading div
+.container-16j22k {
+  background: color('primary-4') !important;
+  // Twitch loading squares
+  @at-root #{classes('twitchcord.appLoading')} {
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+    &-square {
+      position: relative;
+      &::before {
+        @include size(16px);
+        content: '';
+        position: absolute;
+        background: color('white');
+        transform: translateX(32px);
+        animation-name: appMountLoadingSquare2;
+        animation-duration: 1.8s;
+        animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+        animation-iteration-count: infinite;
+      }
+      &::after {
+        @include size(16px);
+        content: '';
+        position: absolute;
+        background: color('primary-8');
+        animation-name: appMountLoadingSquare1;
+        animation-duration: 1.8s;
+        animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+        animation-iteration-count: infinite;
+      }
+      &#{classes('twitchcord.appLoading')}-square-1 {
+        top: -10.66667px;
+        left: 10.66667px;
+        transform: rotate(-90deg);
+        &::before {
+          animation-delay: -0.45s;
+        }
+        &::after {
+          animation-delay: -0.19286s;
+        }
+      }
+      &#{classes('twitchcord.appLoading')}-square-2 {
+        top: -10.66667px;
+        left: -10.66667px;
+        transform: rotate(-180deg);
+        &::before {
+          animation-delay: -0.9s;
+        }
+        &::after {
+          animation-delay: -0.64286s;
+        }
+      }
+      &#{classes('twitchcord.appLoading')}-square-3 {
+        top: 10.66667px;
+        left: -10.66667px;
+        transform: rotate(-270deg);
+        &::before {
+          animation-delay: -1.35s;
+        }
+        &::after {
+          animation-delay: -1.09286s;
+        }
+      }
+      &#{classes('twitchcord.appLoading')}-square-4 {
+        top: 10.66667px;
+        left: 10.66667px;
+        transform: rotate(-360deg);
+        &::before {
+          animation-delay: -1.8s;
+        }
+        &::after {
+          animation-delay: -1.54286s;
+        }
+      }
+    }
+  }
+  // Discord loading logo video and quote
+  .content-1-zrf2 {
+    display: none;
+  }
+}

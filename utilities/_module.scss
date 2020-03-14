@@ -1,12 +1,13 @@
 // main: ../main.scss
 
-@import 'fonts';
-@import 'sass-vars';
-@import 'functions';
-@import 'sassvars2';
-@import 'selectors';
-@import 'mixins';
-@import 'extends';
-@import 'css-vars';
-@import 'image-vars';
-@import 'keyframes';
+@import
+  'sass-vars',
+  'functions',
+  'mixins',
+  'constants',
+  'selectors',
+  'extends',
+  'config',
+  'animations',
+  'components',
+  'fonts';

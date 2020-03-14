@@ -3,123 +3,129 @@
 ///  Text/voice channels list section
 ///  ==========================================================================
 
+:root {
+  --category-border-color: transparent;
+  --category-border-style: none;
+  --category-border-width: 0rem;
+  --category-border-radius: var(--channel-border-radius);
+  --category-height: var(--channel-height);
+  --category-font-size: 1.2rem;
+  --category-font-weight: 700;
+  --category-text-transform: uppercase;
+  --category-color: var(--channel-color);
+  --category-hover-color: var(--channel-hover-color);
+
+  --category-icon-background-color: #{color('tint-7')};
+  --category-icon-hover-background-color: #{color('tint-9')};
+  --category-icon: #{icon('folder-opened')};
+  --category-icon-size: 1.8rem;
+
+  --category-collapsed-icon: #{icon('folder-closed')};
+
+  --channel-border-radius: var(--component-border-radius);
+  --channel-height: 2.8rem;
+  --channel-color: #{color('tint-8')};
+  --channel-hover-color: #{color('tint-10')};
+  --channel-icon-color: #{color('tint-8')};
+  --channel-icon-hover-color: #{color('tint-10')};
+
+}
 
 // Channels outer container
 #{classes('layout.channels.channels')} {
-  background: var(--channels-color, none);
-  border-radius: var(--layout-roundness, 0);
-  border-right: 1px solid var(--border-color);
-  margin: var(--layout-gutter-size, 0);
-  overflow: hidden;
-  width: var(--channels-width);
   z-index: 0;
+  width: var(--channels-width);
+  margin: var(--layout-gutter-size, 0);
+  overflow: hidden !important;
+  background: var(--channels-color, none);
+  border-right: 1px solid var(--border-color);
+  border-radius: 0 !important;
   // Account panel bottom left
   #{classes('layout.channels.accountPanel.container')} {
     display: none;
   }
   // Channels inner container
-  #{classes('layout.channels.innerContainer')} {
+  #{classes('layout.channels.channelsInnerContainer')} {
     background: none;
   }
-  // Unread / mentions indicators
+  // Unread mentions/messages bar container
   #{classes('layout.channels.unreadBarContainer')} {
-    overflow: visible;
-    padding: 0;
+    height: calc(var(--unread-bar-height) * 1.2) !important;
+    padding: 0 1rem;
+    // Top unread mentions/messages
+    &#{classes('layout.channels.unreadBarTop')} {
+      top: 1rem;
+    }
+    // Bottom unread mentions/messages
+    &#{classes('layout.channels.unreadBarBottom')} {
+      bottom: 1rem;
+    }
+  }
+  // Unread mentions/messages bar
+  #{classes('layout.channels.unreadBar')} {
+    display: flex;
+    height: calc(var(--unread-bar-height) * 1.2) !important;
   }
   // Server channel header dropdown button thing
   #{classes('layout.channels.serverHeaderContainer')} {
     display: none;
   }
   #{classes('layout.channels.scroller')} {
-    // "Fake" scrollbar tomfoolery
-    @include fakeScrollbarFade('channels');
     overflow-x: hidden;
-    // Fix to make the "fake" scrollbar fade in/out work below
-    z-index: auto;
-    // Fake scrollbar, adjust to compensate for padding
-    &::after {
-      @include absolute(top 1px right 1px);
-    }
-    // Direct child div of scroller
-    > div:first-of-type[style*='width: 100%;'] {
-      // Target first container div
-      + [class|='container'] {
-        margin-top: -10px;
-      }
-    }
     // Temporary fix to get rid of channel headers for Verified servers
     > div:first-of-type[style*='height: 78px;'] {
-      height: 0!important;
+      height: 0 !important;
     }
     // container-0, container-1, container-2, etc.
     > [class|='container'] {
       margin: 0;
       // Seems to sometimes exist in 'container-0' when there is no category
       > div[style*='height: 16px;'] {
-        height: 0!important;
+        height: 0 !important;
       }
-    }
-    &::-webkit-scrollbar-thumb,
-    &::-webkit-scrollbar,
-    &::-webkit-scrollbar-track,
-    &::-webkit-scrollbar-track-piece {
-      visibility: visible;
     }
   }
   #{classes('layout.channels.scrollerWrap')} {
     padding: 1px 1px 0 0;
   }
-  // Voice collapsed icon container
-  #{classes('layout.channels.voiceCollapsedIconContainer')} {
-    @include mask(var(--speaker-icon), RGB(var(--tc-tint-7)), 12px);
-    @include size(19px, 18px);
-    margin: -1px 0 0 -2px;
+  // Unread channel indicator
+  #{classes('layout.channels.channelUnreadIndicator')} {
+    display: none;
+  }
+  // Channel # and speaker icons
+  #{classes('layout.channels.channelIcon')} {
+    @include size(1.4rem);
+    margin: 0 0.3rem 0 0;
+    color: color('tint-7') !important;
   }
   // Category container
   #{classes('layout.channels.categoryContainerDefault')},
-  #{classes('layout.channels.categoryContainerDragAfter')},
-  #{classes('layout.channels.categoryContainerDragBefore')},
-  #{classes('layout.channels.categoryContainerUserOver')} {
-    border-bottom: 1px solid var(--border-color);
-    height: 45px;
-    margin: 15px 0 3px 13px;
-    padding: 10px 4px 5px 0;
-  }
-  // Show 'Create Channel' '+' button on category hover
-  #{classes('layout.channels.categoryContainerDefault')} {
+  #{classes('layout.channels.channelContainerDragAfter')},
+  #{classes('layout.channels.channelContainerDragBefore')} {
+    height: var(--category-height);
+    // To do when I get here:
+    // the .5rem is 1.5rem (the left margin) minus (the scrollbar width + scrollerWrap padding)
+    margin: 1.5rem .5rem 0 1.5rem;
+    padding: 0;
+    border-color: var(--category-border-color);
+    border-style: var(--category-border-style);
+    border-width: var(--category-border-width);
+    box-shadow: var(--category-box-shadow);
     &:hover {
-      #{classes('components.buttons.button')} {
-        #{classes('components.buttons.contents')} {
-          #{classes('layout.channels.categoryAddChannelIcon')} {
-            visibility: visible!important;
-          }
-        }
+      // Show the create channel button on category hover
+      #{classes('layout.channels.categoryChildren')} {
+        visibility: visible;
       }
     }
   }
   // Channel not category container
-  #{classes('layout.channels.channelContainerDefault')},
+  #{classes('layout.channels.channelContainer')},
   #{classes('layout.channels.channelContainerDragAfter')},
-  #{classes('layout.channels.channelContainerDragBefore')},
-  #{classes('layout.channels.channelContainerUserOver')} {
-    margin: 0;
-    padding: 0 0 0 13px;
-    #{classes('layout.channels.voiceDeafenedIcon')},
-    #{classes('layout.channels.voiceMutedIcon')} {
-      fill: RGB(var(--tc-tint-7));
-      opacity: 1;
-      path {
-        fill: RGB(var(--tc-tint-7));
-        opacity: 1;
-      }
-    }
+  #{classes('layout.channels.channelContainerDragBefore')} {
+    margin: 0 .5rem 0 1.5rem;
     // Voice avatar container
     #{classes('layout.channels.voiceAvatarContainer')} {
-      margin: 0!important;
-    }
-    // Muted / defeaned icons container
-    #{classes('layout.channels.marginResetButton')} {
-      margin: 0 8px 0 0;
+      margin: 0 !important;
     }
     // Muted / defeaned icons
     #{classes('layout.channels.voiceIconSpacing')} {
@@ -129,125 +135,93 @@
       }
     }
   }
-  #{classes('layout.channels.channelContainerDragAfter')},
-  #{classes('layout.channels.channelContainerDragBefore')} {
-    &::before {
-      @include absolute(right 0 left 0);
-      background-color: var(--success-color);
-      border-radius: 0;
-    }
-    #{classes('layout.channels.content')} {
-      padding-left: 22px;
-    }
-  }
   // Category wrapper
-  #{classes('layout.channels.categoryWrapperCollapsed')},
-  #{classes('layout.channels.categoryWrapperDefault')},
-  #{classes('layout.channels.categoryWrapperHovered')},
-  #{classes('layout.channels.categoryWrapperHoveredCollapsed')},
-  #{classes('layout.channels.categoryWrapperMuted')},
-  #{classes('layout.channels.categoryWrapperUnread')} {
-    @include reset;
+  #{classes('layout.channels.categoryWrapper')} {
     align-items: center;
+    height: var(--channel-height);
+    margin: 0;
+    padding: 0 0.5rem 0 0;
+    border-radius: var(--category-border-radius);
     box-shadow: none;
-    height: 28px;
-    &:hover {
-      background: none;
-    }
     // Category folder icon
     &::before {
-      @include mask(var(--folder-icon), RGB(var(--tc-tint-9)));
-      @include size(14px, 16px);
+      @include mask(var(--category-icon), var(--category-icon-background-color));
+      @include size(var(--category-icon-size));
       content: '';
+      position: relative;
       display: inline-flex;
       flex: 0 0 auto;
-      margin: -2px 7px 0 0;
       order: 2;
-      position: relative;
-      display: none;
+      margin: 0 .4rem 0 .6rem;
+    }
+    &:hover {
+      background: color('tint-3');
+      #{classes('layout.channels.categoryName')} {
+        color: var(--category-hover-color) !important;
+      }
+       // Category folder icon
+      &::before {
+        background-color: var(--category-icon-hover-background-color);
+      }
+      // Category arrow icon
+      #{classes('layout.channels.categoryArrowIcon')} {
+        background-color: var(--category-icon-hover-background-color);
+      }
     }
   }
   // Category arrow icon
-  #{classes('layout.channels.categoryIconCollapsed')},
-  #{classes('layout.channels.categoryIconDefault')},
-  #{classes('layout.channels.categoryIconHovered')},
-  #{classes('layout.channels.categoryIconHoveredCollapsed')},
-  #{classes('layout.channels.categoryIconMuted')},
-  #{classes('layout.channels.categoryIconTransition')},
-  #{classes('layout.channels.categoryIconUnread')} {
-    @include mask(var(--down-arrow-icon), RGB(var(--tc-tint-9)), 26px 20px);
-    @include relative(top -1px left 0);
-    @include size(22px!important);
-    flex: 0 0 auto;
-    margin: 0;
-    order: 1;
-    transform: none;
-    transition: transform 0.2s;
+  #{classes('layout.channels.categoryArrowIcon')} {
+    @include mask(icon('caret-down'), var(--category-icon-background-color), var(--category-icon-size));
+    @include size(2rem!important);
+    position: relative;
+    top: 0;
+    left: 0;
     display: none;
+    flex: 0 0 auto;
+    order: 1;
+    margin: 0;
+    transition: transform 0.2s;
+    transform: none;
     path {
       display: none;
     }
   }
   // We had to set transform to none above to prevent a background color
   // flashing issue when the arrows were loaded in
-  #{classes('layout.channels.categoryIconCollapsed')},
-  #{classes('layout.channels.categoryIconHoveredCollapsed')} {
-    transform: rotate3d(0, 0, -1, 90deg);
-  }
-  // Category name text
-  #{classes('layout.channels.categoryNameCollapsed')},
-  #{classes('layout.channels.categoryNameDefault')},
-  #{classes('layout.channels.categoryNameHovered')},
-  #{classes('layout.channels.categoryNameHoveredCollapsed')},
-  #{classes('layout.channels.categoryNameMuted')},
-  #{classes('layout.channels.categoryNameUnread')} {
-    @include ellipsis(100%, inline-block);
-    @include text(RGB(var(--tc-tint-9))!important, 14px, 400, $transform: capitalize);
-    order: 3;
-    + #{classes('layout.channels.marginResetButton')} {
-      @include size(20px);
-      margin: 0;
-      order: 4;
-      // Create channel button (+)
-      #{classes('components.buttons.button')} {
-        @include button-undo-active;
-        @include size(20px);
-        background: none!important;
-        border: none!important;
-        min-height: 0;
-        min-width: 0;
-        padding: 0;
-        #{classes('components.buttons.contents')} {
-          @include size(20px);
-          padding: 0;
-          #{classes('layout.channels.categoryAddChannelIcon')} {
-            @include mask(var(--plus-icon), RGB(var(--tc-tint-9)), 15px);
-            @include size(20px);
-            opacity: 1;
-            visibility: hidden;
-            polygon {
-              display: none;
-            }
-            &:hover {
-              background-color: #fff;
-            }
-            &:hover:active,
-            &:active {
-              transform: none;
-            }
-          }
-        }
-      }
+  #{classes('layout.channels.categoryCollapsed')} {
+    // Category folder icon
+    &::before {
+      @include mask(var(--category-collapsed-icon), var(--category-icon-background-color));
+    }
+    // Category arrow icon
+    #{classes('layout.channels.categoryArrowIcon')} {
+      transform: rotate3d(0, 0, -1, 90deg);
     }
   }
-  #{classes('layout.channels.wrapper')} {
-    height: 28px;
+  // Category name text
+  #{classes('layout.channels.categoryName')} {
+    @include ellipsis(100%, inline-block);
+    order: 3;
+    font-size: var(--category-font-size);
+    font-weight: var(--category-font-weight);
+    color: var(--category-color) !important;
+    text-transform: var(--category-text-transform);
   }
+  #{classes('layout.channels.wrapper')} {
+    height: var(--channel-height);
+  }
+  #{classes('layout.channels.voiceList')} {
+    padding: 5px 0 0 24px;
+  }
+  // Container with no category
   #{classes('layout.channels.container0')} {
-    margin: 15px 0 0!important;
-    padding: 0!important;
+    margin: 15px 0 0 !important;
+    padding: 0 !important;
+    #{classes('layout.channels.channelContent')} {
+      padding: 0 1rem 0 0.5rem;
+    }
     // Fix for margin on voice channels with no category
-    #{classes('layout.channels.voiceListDefault')} {
+    #{classes('layout.channels.voiceList')} {
       margin-left: 17px;
     }
     // Fix for spacing of voice chat users in voice channels with no category
@@ -255,377 +229,262 @@
       margin-left: 6px;
     }
   }
+  // Edit channel, Create instant invite buttons container
+  #{classes('layout.channels.channelChildren')} {
+    margin: 0 -0.4rem 0 0.4rem;
+  }
   // Edit channel, Create instant invite buttons
-  #{classes('layout.channels.iconSpacing')} {
-    margin: 0;
-    #{classes('layout.channels.actionIcon')} {
-      opacity: 1;
-      &:active {
-        transform: none;
-      }
-    }
-    svg[name="Invite"] {
-      @include mask(var(--add-user-icon), RGB(var(--tc-tint-7)), 19px);
-      opacity: 1;
-      &:hover {
-        background-color: RGB(var(--tc-tint-10));
-        opacity: 1;
-      }
-      path {
-        display: none!important;
-      }
-    }
-    svg[name="Gear"] {
-      @include mask(var(--gear-icon), RGB(var(--tc-tint-7)), 18px);
-      opacity: 1;
-      &:hover {
-        background-color: RGB(var(--tc-tint-10));
-        opacity: 1;
-      }
-      path {
-        display: none!important;
-      }
+  #{classes('layout.channels.channelActionIcon')} {
+    opacity: 1;
+    &:active {
+      transform: none;
     }
   }
-  // Channel content contain
-  // https://i.imgur.com/N3ZHZKS.png
-  #{classes('layout.channels.content')} {
-    @include hardware;
-    @include size(100%, 28px);
-    border-radius: 0;
-    margin: 0;
-    padding: 3px 8px 3px 4px;
-    // Was meant for unread badge counts
-    // #{classes('layout.channels.contentMutedText')}  {
-    //   .unread-count-channel-badge {
-    //     display: none;
-    //   }
-    // }
-    > div:last-of-type {
-      flex: 1 1 auto!important;
-      display: flex;
-      justify-content: flex-end;
-      margin: 0 -4px 0 4px;
-      pointer-events: none;
-      // Was meant for unread badge counts
-      // > #{classes('layout.channels.iconSpacing')}  {
-      //   #{classes('layout.channels.badge')}  {
-      //     background: RGB(var(--purple-color));
-      //     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-      //     text-shadow: 1px 1px #000;
-      //   }
-      // }
-      #{classes('layout.channels.voiceIconSpacing')},
-      #{classes('layout.channels.iconSpacing')} {
-        pointer-events: all;
+  // Create instant invite svg
+  svg[name='Invite'] {
+    @include mask(icon('user-add'), var('channel-icon-color'), 1.9rem);
+    opacity: 1;
+    &:hover {
+      background-color: color('white');
+      opacity: 1;
+    }
+    path {
+      display: none !important;
+    }
+  }
+  // Channel settings svg
+  svg[name='Gear'] {
+    @include mask(icon('gear'), var('channel-icon-color'), 1.8rem);
+    opacity: 1;
+    &:hover {
+      background-color: color('white');
+      opacity: 1;
+    }
+    path {
+      display: none !important;
+    }
+  }
+  // Create channel button container
+  #{classes('layout.channels.categoryChildren')} {
+    order: 3;
+    visibility: hidden;
+  }
+  // Create channel button
+  #{classes('layout.channels.categoryAddButton')} {
+    &#{classes('components.buttons.button')} {
+      @include size(auto);
+      line-height: 1;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      #{classes('components.buttons.contents')} {
+        padding: 0;
       }
     }
     &:hover {
-      > div:last-of-type {
-        visibility: visible;
-      }
-    }
-    // Normal opacity for everything but locked and muted channels
-    &#{classes('layout.channels.contentDefaultText')},
-    &#{classes('layout.channels.contentDefaultVoice')} {
-      opacity: 1;
-    }
-    // Lowered opacity for locked and muted channels
-    &#{classes('layout.channels.contentLockedText')},
-    &#{classes('layout.channels.contentMutedText')},
-    &#{classes('layout.channels.contentLockedVoice')},
-    &#{classes('layout.channels.contentMutedVoice')} {
-      opacity: 0.4;
-    }
-    // Selected channels
-    &#{classes('layout.channels.contentConnectedText')},
-    &#{classes('layout.channels.contentSelectedText')},
-    &#{classes('layout.channels.contentConnectedVoice')},
-    &#{classes('layout.channels.contentSelectedVoice')} {
-      background: RGB(var(--tc-tint-2));
-      svg[name="Invite"],
-      svg[name="Gear"] {
-        background-color: #fff;
-        opacity: 0.8;
-        &:hover {
-          opacity: 1;
-        }
-      }
-      // Selected text and voice channels, make the icon white
-      #{classes('layout.channels.colorConnectedVoice')},
-      #{classes('layout.channels.colorDefaultVoice')},
-      #{classes('layout.channels.colorHoveredVoice')},
-      #{classes('layout.channels.colorLockedVoice')},
-      #{classes('layout.channels.colorMutedVoice')},
-      #{classes('layout.channels.colorSelectedVoice')},
-      #{classes('layout.channels.colorUnreadVoice')} {
-        background-color: #fff!important;
-        opacity: 1;
-      }
-      // Default Discord # icons
-      #{classes('layout.channels.colorConnectedText')},
-      #{classes('layout.channels.colorDefaultText')},
-      #{classes('layout.channels.colorHoveredText')},
-      #{classes('layout.channels.colorLockedText')},
-      #{classes('layout.channels.colorMutedText')},
-      #{classes('layout.channels.colorSelectedText')},
-      #{classes('layout.channels.colorUnreadText')} {
-        display: none;
-      }
-    }
-    // Hovered channels
-    &#{classes('layout.channels.contentHoveredText')},
-    &#{classes('layout.channels.contentHoveredVoice')},
-    &#{classes('layout.channels.contentHoveredVoice')}:active,
-    &#{classes('layout.channels.contentSelectedVoice')}:active {
-      background: RGB(var(--tc-tint-3));
-      // Twitch-like # for text channels instead of default Discord's
-      > #{classes('layout.channels.marginReset')} {
-        &:first-of-type {
-          &::before {
-            color: RGB(var(--tc-tint-9));
-          }
-        }
-      }
-      #{classes('layout.channels.name')} {
-        color: RGB(var(--tc-tint-11));
-      }
-      // Edit channel, Create instant invite buttons
-      #{classes('layout.channels.iconSpacing')} {
-        opacity: 1;
-        svg[name="Invite"],
-        svg[name="Gear"] {
-          background-color: RGB(var(--tc-tint-9));
-          &:hover {
-            background-color: #fff;
-          }
-        }
-      }
-    }
-    // Add lock icon to locked voice/text channels
-    &#{classes('layout.channels.contentLockedText')},
-    &#{classes('layout.channels.contentLockedVoice')} {
-      &::before {
-        @include absolute(top 5px right 7px);
-        @include mask(var(--lock-icon), RGB(var(--tc-tint-9)), 18px);
-        @include size(14px);
-        content: '';
-        display: block;
+      #{classes('layout.channels.categoryAddButtonIcon')} {
+        background-color: color('white');
       }
     }
   }
-  // Speaker icons
-  #{classes('layout.channels.colorConnectedVoice')},
-  #{classes('layout.channels.colorDefaultVoice')},
-  #{classes('layout.channels.colorHoveredVoice')},
-  #{classes('layout.channels.colorLockedVoice')},
-  #{classes('layout.channels.colorMutedVoice')},
-  #{classes('layout.channels.colorSelectedVoice')},
-  #{classes('layout.channels.colorUnreadVoice')} {
-    @include mask(var(--speaker-icon), RGB(var(--tc-tint-7)), 12px);
-    @include size(19px, 18px);
-    margin: -1px 0 0 -2px;
-  }
-  // Hovered speaker icons only
-  #{classes('layout.channels.colorHoveredVoice')} {
-    background-color: RGB(var(--tc-tint-9));
-  }
-  #{classes('layout.channels.contentConnectedText')},
-  #{classes('layout.channels.contentDefaultText')},
-  #{classes('layout.channels.contentHoveredText')},
-  #{classes('layout.channels.contentLockedText')},
-  #{classes('layout.channels.contentMutedText')},
-  #{classes('layout.channels.contentSelectedText')},
-  #{classes('layout.channels.contentUnreadText')} {
-    > #{classes('layout.channels.marginReset')} {
-      // Fix for the # channel symbols
-      &:first-of-type {
-        @include size(13px, 17px);
-        // Twitch-like # for text channels instead of default Discord's
-        &::before {
-          @include text(RGB(var(--tc-tint-7)), 14px, 400);
-          content: '#';
-          margin: 0 0 0 3px;
-        }
-      }
-    }
-  }
-  // Hovered, selected, unread, connected #
-  #{classes('layout.channels.contentConnectedText')},
-  #{classes('layout.channels.contentHoveredText')},
-  #{classes('layout.channels.contentSelectedText')},
-  #{classes('layout.channels.contentUnreadText')} {
-    > #{classes('layout.channels.marginReset')} {
-      &:first-of-type {
-        &::before {
-          opacity: 1;
-        }
-      }
-    }
-  }
-  // Selected and connected #
-  #{classes('layout.channels.contentConnectedText')},
-  // This is a 'fix' so that it doesn't change already read hovered channels
-  #{classes('layout.channels.unread')} + #{classes('layout.channels.contentHoveredText')},
-  #{classes('layout.channels.contentSelectedText')},
-  #{classes('layout.channels.contentUnreadText')} {
-    > #{classes('layout.channels.marginReset')} {
-      &:first-of-type {
-        &::before {
-          color: #fff;
-        }
-      }
-    }
-  }
-  // Default Discord # and speaker icons
-  #{classes('layout.channels.foreground')},
-  #{classes('layout.channels.background')} {
-    display: none;
-  }
-  // Voice channel names
-  #{classes('layout.channels.nameConnectedVoice')},
-  #{classes('layout.channels.nameDefaultVoice')},
-  #{classes('layout.channels.nameHoveredVoice')},
-  #{classes('layout.channels.nameLockedVoice')},
-  #{classes('layout.channels.nameMutedVoice')},
-  #{classes('layout.channels.nameSelectedVoice')},
-  #{classes('layout.channels.nameUnreadVoice')} {
-    margin: 0 0 0 -2px;
-  }
-  // Channel names (text and voice)
-  #{classes('layout.channels.name')} {
-    @include text(RGB(var(--tc-tint-9)), 14px, 400, 28px);
-    flex: 0 1 auto!important;
-    > #{classes('layout.channels.iconSpacing')} {
-      display: inline-block;
-      vertical-align: text-bottom;
-    }
-  }
-  // Selected & connected text and voice channel names
-  #{classes('layout.channels.nameConnectedText')},
-  #{classes('layout.channels.nameSelectedText')},
-  #{classes('layout.channels.nameUnreadText')},
-  #{classes('layout.channels.nameConnectedVoice')},
-  #{classes('layout.channels.nameSelectedVoice')} {
-    color: #fff!important;
+  // Create channel button icon
+  #{classes('layout.channels.categoryAddButtonIcon')} {
+    @include mask(icon('plus'), var(--category-icon-hover-background-color), 1.4rem);
     opacity: 1;
-  }
-  // Make room for lock icon
-  #{classes('layout.channels.nameLockedText')},
-  #{classes('layout.channels.nameLockedVoice')} {
-    margin-right: 20px;
-  }
-  #{classes('layout.channels.voiceListDefault')} {
-      padding: 0;
-      margin: 0 -2px 8px 16px;
-  }
-  #{classes('layout.channels.voiceListCollapse')} {
-    padding: 0;
-    margin: 0 0 8px 16px;
-  }
-  // Lower opacity of users in locked voice chat
-  #{classes('layout.channels.wrapperLockedVoice')} {
-    overflow: visible;
-    &::before {
-      @include absolute(top -33px);
-      @include ellipsis;
-      @include localize('You do not have access to this room');
-      border: none!important;
-      max-width: 100%;
-    }
-    &::after {
-      @include absolute(top 100% left 50%);
-      @include triangle(bottom, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
-      content: '';
-      margin-left: calc(var(--tooltip-arrow-size) * -1 + 2px);
-      margin-top: -35px;
-      pointer-events: none;
-    }
-    &::before,
-    &::after {
+    polygon {
       display: none;
     }
-    &:hover {
-      &::before,
-      &::after {
-        display: block;
+  }
+  // Channel content container
+  #{classes('layout.channels.channelContent')} {
+    @include size(100%, var(--channel-height));
+    margin: 0;
+    padding: 0 1rem 0 0.6rem;
+    border-radius: var(--channel-border-radius);
+  }
+  // Channel names (text and voice)
+  #{classes('layout.channels.channelName')} {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: var(--channel-height);
+    color: var(--channel-color) !important;
+  }
+  #{classes('layout.channels.channelWrapper')} {
+    height: var(--channel-height);
+    &:active {
+      #{classes('layout.channels.channelContent')} {
+        background: color('primary-3');
       }
     }
-    + #{classes('layout.channels.voiceListCollapse')},
-    + #{classes('layout.channels.voiceListDefault')} {
-      opacity: 0.4;
-    }
-  }
-  // Voice chat users container inner
-  #{classes('layout.channels.voiceUserContainer')} {
-    margin-left: 2px;
-  }
-  #{classes('layout.channels.voiceUserHovered')} {
-    &:active {
-      border-radius: 0;
-      background: none;
-    }
     &:hover {
-      #{classes('layout.channels.voiceAvatarDefault')} {
-        border-color: RGB(var(--tc-color-10));
+      #{classes('layout.channels.channelContent')} {
+        background: color('tint-3');
+      }
+    }
+    &:not(#{classes('layout.channels.channelUnread')}):not(#{classes('layout.channels.channelSelected')}) {
+      &:hover {
+        #{classes('layout.channels.channelName')} {
+          color: var(--channel-hover-color) !important;
+        }
+        #{classes('layout.channels.channelIcon')} {
+          color: var(--channel-icon-hover-color) !important;
+        }
+      }
+    }
+    // Selected channel
+    &#{classes('layout.channels.channelSelected')} {
+      #{classes('layout.channels.channelName')},
+      #{classes('layout.channels.channelIcon')} {
+        color: color('white') !important;
+      }
+      &:hover {
+        #{classes('layout.channels.channelContent')} {
+          background: color('tint-2');
+        }
+      }
+      #{classes('layout.channels.channelContent')} {
+        background: color('tint-2');
+      }
+    }
+    // Unread channel
+    &#{classes('layout.channels.channelUnread')} {
+      #{classes('layout.channels.channelName')},
+      #{classes('layout.channels.channelIcon')} {
+        color: color('white') !important;
+      }
+    }
+    // Lowered opacity for locked and muted channels
+    &#{classes('layout.channels.channelMuted')} {
+      opacity: 0.5;
+    }
+    &#{classes('layout.channels.channelLocked')} {
+      overflow: visible;
+      &::before {
+        @include ellipsis(100%);
+        @include localize('You do not have access to this room');
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin-top: calc((var(--channel-height) + var(--tooltip-arrow-size)) * -1);
+        padding: var(--tooltip-padding);
+        font-size: var(--tooltip-font-size);
+        font-weight: var(--tooltip-font-weight);
+        line-height: 1.5;
+        color: var(--tooltip-color);
+        text-align: center;
+        background: var(--tooltip-background);
+        border: var(--tooltip-border);
+        border-radius: var(--tooltip-roundness);
+        box-shadow: var(--tooltip-shadow);
+      }
+      &::after {
+        @include triangle(bottom, var(--tooltip-background), var(--tooltip-arrow-size));
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin: calc((var(--channel-height) + var(--tooltip-arrow-size) + 0.2rem) * -1) 0 0 calc(var(--tooltip-arrow-size) * -1);
+      }
+      &::before,
+      &::after {
+        z-index: var(--tooltip-z-index);
+        display: none;
+        pointer-events: none;
+        animation: var(--disable-animations, var(--disable-tooltip-animation, var(--tooltip-animation)));
+      }
+      &:hover {
+        &::before,
+        &::after {
+          display: block;
+        }
       }
     }
   }
   // Voice chat avatars
-  #{classes('layout.channels.voiceAvatarDefault')},
+  #{classes('layout.channels.voiceAvatar')},
   #{classes('layout.channels.voiceAvatarSpeaking')} {
-    border-radius: var(--user-roundness);
     margin-left: 0;
+    border-radius: var('avatar-border-radius');
   }
-  #{classes('layout.channels.voiceAvatarDefault')} {
+  #{classes('layout.channels.voiceAvatar')} {
+    position: relative;
     background-color: transparent;
     border: 2px solid transparent;
     box-shadow: none;
-    position: relative;
   }
   #{classes('layout.channels.voiceAvatarSpeaking')} {
-    animation: avatarSpeakingGlowGreen 800ms ease-out infinite alternate;
-    border: 2px solid #393!important;
-    box-shadow: none;
-    outline: none;
     z-index: 2;
+    border: 2px solid #393 !important;
+    outline: none;
+    box-shadow: none;
+    animation: avatarSpeakingGlowGreen 800ms ease-out infinite alternate;
   }
   // Voice chat names
-  #{classes('layout.channels.voiceNameDefault')},
-  #{classes('layout.channels.voiceNameHovered')},
-  #{classes('layout.channels.voiceNameSpeaking')} {
-    @include text(RGB(var(--tc-tint-9)), 12px);
+  #{classes('layout.channels.voiceUsername')},
+  #{classes('layout.channels.voiceUsernameSpeaking')} {
     padding: 0 8px 0 5px;
-  }
-  // Hover user name
-  #{classes('layout.channels.voiceUserHovered')} {
-    #{classes('layout.channels.voiceNameHovered')},
-    #{classes('layout.channels.voiceNameSpeaking')} {
-      color: RGB(var(--tc-color-10));
+    font-size: 1.2rem;
+    color: var(--channel-color);
+    &:hover {
+      color: color('primary-10');
     }
   }
   // Mentions badge
   #{classes('layout.channels.badge')} {
-    margin: 0 2px 0 4px;
     min-width: 15px;
-  }
-  // Default Discord unread indicator
-  #{classes('layout.channels.unread')} {
-    @include absolute(top 10px right 10px left unset);
-    @include size(8px);
-    background: var(--fail-color);
-    border-radius: 50%;
-    margin-top: 0;
-    display: none;
+    margin: 0 2px 0 4px;
   }
   // Voice channel count indication
   // https://i.imgur.com/HlGCRyb.png
   #{classes('layout.channels.voiceLimitWrapper')} {
-    @include text(RGB(var(--tc-tint-9)), 11px);
-    background-color: RGB(var(--tc-tint-2));
-    border: 1px solid var(--border-color);
-    border-radius: 0;
+    height: auto;
     margin-right: -4px;
     padding: 0 5px;
+    font-size: 1.1rem;
+    color: var(--channel-color);
+    background-color: color('tint-2');
+    border: 1px solid var(--border-color);
+    border-radius: var(--component-border-radius);
+  }
+  #{classes('layout.channels.voiceLimitUsers')} {
+    width: auto;
+    padding: 0;
+    line-height: 1.5;
+    background: none !important;
+    &::after {
+      content: '/';
+      display: inline-block;
+      padding: 0 0.3rem 0;
+      line-height: 1.5;
+    }
+  }
+  #{classes('layout.channels.voiceLimitTotal')} {
+    width: auto;
+    padding: 0;
+    line-height: 1.5;
+    background: none !important;
+    &::after {
+      display: none;
+    }
+  }
+  #{classes('layout.channels.channelContainerDragAfter')},
+  #{classes('layout.channels.channelContainerDragBefore')} {
+    // @include size(100%, var(--channel-height));
+    // #{classes('layout.channels.channelContent')} {
+    //   background: color('black', .2);
+    //   border: color('white', .1) var(--guild-placeholder-border-style) var(--guild-placeholder-border-width);
+    // }
+    &::before,
+    &::after {
+      @include size(100%, var(--channel-height));
+      position: relative;
+      right: 0;
+      left: 0;
+      display: block;
+      background: color('black', .2);
+      border: color('white', .1) var(--guild-placeholder-border-style) var(--guild-placeholder-border-width);
+    }
+  }
+  .panels-j1Uci_ {
+    background: none;
   }
 }

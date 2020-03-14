@@ -3,34 +3,34 @@
 //** Add roles popout
 
 #autocomplete-popout header {
-    border-radius: 0;
-    height: 34px;
-    background-color: RGB(var(--tc-color-1));
     z-index: 1;
+    height: 34px;
+    background-color: color('primary-1');
+    border-radius: 0;
 }
 
 #autocomplete-popout .autocomplete-header-background {
-  background: none!important;
-  border-radius: 0!important;
+  background: none !important;
+  border-radius: 0 !important;
 }
 
 .popoutTop-3uu9vG #autocomplete-popout header {
-  border-top: 1px solid RGB(var(--tc-color-3));
+  border-top: 1px solid color('primary-3');
 }
 
 .popoutBottom-1YbShG #autocomplete-popout header {
-  border-bottom: 1px solid RGB(var(--tc-color-3));
+  border-bottom: 1px solid color('primary-3');
 }
 
 #autocomplete-popout .row.selected a span, #autocomplete-popout .row:hover a span {
-    color: RGB(var(--contrasted-color))!important;
+    color: color('contrasted') !important;
 }
 #autocomplete-popout .scroller-2FKFPG {
   height: auto;
   max-height: 240px;
   margin: 0;
-  padding-bottom: 100%;
   margin-bottom: -100%;
+  padding-bottom: 100%;
   overflow-y: auto;
       pointer-events: none;
 }
@@ -40,40 +40,40 @@
 }
 
 #autocomplete-popout section {
-  background: none!important;
+  background: none !important;
   border-radius: 0;
 }
 #autocomplete-popout {
+  background: color('primary-3');
+  border: 1px solid color('tint-4');
   border-radius: 2px;
-  background: RGB(var(--tc-color-3));
-  border: 1px solid RGB(var(--tc-tint-4));
 }
 
 #autocomplete-popout .autocomplete-shadow {
-  box-shadow: none!important;
   border-radius: 2px;
+  box-shadow: none !important;
 }
 
 #autocomplete-popout .scrollerWrap-2lJEkd {
-  box-shadow: none!important;
-  border: none!important;
-  border-radius: 0;
   padding: 0;
-  background: none;
   padding: 10px 3px 10px 10px;
-  > div[style="width: 100%; height: 0px;"] {
-    height: 5px!important;
+  background: none;
+  border: none !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  > div[style='width: 100%; height: 0px;'] {
+    height: 5px !important;
   }
 }
 
 #autocomplete-popout .empty p {
-  font-size: 12px;
   margin: -15px 0 20px;
-  color: RGB(var(--tc-tint-8))!important;
+  font-size: 12px;
+  color: color('tint-8') !important;
 }
 
 #autocomplete-popout .scroller-2FKFPG::-webkit-scrollbar {
-    width: 6px!important;
+    width: 6px !important;
 }
 
 #autocomplete-popout .scroller-2FKFPG div:last-of-type {
@@ -89,17 +89,17 @@
 #autocomplete-popout .scroller-2FKFPG::-webkit-scrollbar-thumb,
 #autocomplete-popout .scroller-2FKFPG::-webkit-scrollbar-track,
 #autocomplete-popout .scroller-2FKFPG::-webkit-scrollbar-track-piece {
-    visibility: visible!important;
+    visibility: visible !important;
 }
 
 #autocomplete-popout .row.selected, #autocomplete-popout .row:hover {
-    background: none!important;
+    background: none !important;
 }
 
 .theme-dark #autocomplete-popout .empty h4 {
-  color: RGB(var(--tc-tint-11));
   font-size: 16px;
   font-weight: 400;
+  color: color('tint-11');
 }
 
 #autocomplete-popout .row,
@@ -112,41 +112,41 @@
 
 // The actual role names container
 #autocomplete-popout .row > span > span {
-  border: 2px solid currentColor;
-  width: calc(100% - 1px);
   box-sizing: border-box;
-  border-radius: 3px;
-  margin: 3px;
-  line-height: 16px;
-  opacity: 0.8;
-  font-size: 11px;
-  text-transform: uppercase;
-  font-weight: 700;
+  width: calc(100% - 1px);
   height: auto;
+  margin: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
   text-align: center;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  opacity: 0.8;
   &:hover {
     opacity: 1;
   }
 }
 
 #autocomplete-popout .row {
-  padding: 0!important;
+  padding: 0 !important;
   pointer-events: all;
 }
 
 #autocomplete-popout h3 {
-  color: RGB(var(--tc-tint-10))!important;
   font-size: 12px;
+  color: color('tint-10') !important;
 }
 
 #autocomplete-popout input[type=text]::-webkit-input-placeholder {
-  color: RGB(var(--tc-tint-7))!important;
+  color: color('tint-7') !important;
 }
 
 #autocomplete-popout input[type=text] {
-  color: RGB(var(--contrasted-color));
-  font-size: 12px;
   margin-bottom: 0;
+  font-size: 12px;
+  color: color('contrasted');
 }
 
 #autocomplete-popout .autocomplete-arrow-wrapper {

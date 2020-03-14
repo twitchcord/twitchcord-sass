@@ -1,0 +1,28 @@
+<svg fill="#fff" xmlns="http://www.w3.org/2000/svg" class="pulse-svg" viewBox="0 0 50 50">
+  <style>
+    @keyframes pulse-me {
+      0% {
+        transform: scale(0.2);
+        opacity: 0;
+      }
+      50% { opacity: 1; }
+      70% { opacity: 0.4; }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+    .pulse-svg {
+      overflow:visible;
+    }
+    .first-circle {
+      fill: #fff;
+      transform: scale(0.5);
+      transform-origin: center center;
+      animation: pulse-me 3s linear infinite;
+    }
+  </style>
+  <circle class="first-circle" style="opacity: 0.2" cx="25" cy="25" r="20"/>
+  <circle cx="25" cy="25" r="15"/>
+  <circle class="first-circle" cx="25" cy="25" r="25"/>
+</svg>

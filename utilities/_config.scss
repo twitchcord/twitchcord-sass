@@ -1,0 +1,789 @@
+/*/ ==========================================================================
+///  CONFIG
+///  ==========================================================================
+///  Used for generating the base configuration CSS variables.
+///  Everything used in the maps below is output to :root CSS variables
+///  in the form of var(--key-key-key-key)
+///  i.e. var(--color-primary-1) and var(--color-tint-1) below.
+/*/
+
+
+:root {
+  --frosted-glass-background: #{color('white', .15)};
+}
+
+// TODO: Replace `@include button` entries
+// TODO: Change `guild-icon` instances to `guild-avatar` to avoid confusion with our `icon()` function
+
+$brand-abbreviation: 'tc';
+
+/*/  Aspect ratios
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  Aspect ratios used for various things, usually for calculating height
+/*/
+
+$aspect-ratios: (
+  'aspect-ratio': (
+    '4-3': '3 / 4', // Standard
+    '16-9': '9 / 16', // Widescreen videos //// Game splash backgrounds
+    'user-profile-banner': '5 / 16', // User profile banners
+    'game-boxart': '4 / 3' // Game boxarts
+  )
+);
+
+
+/*/
+///  Colors
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  Base color palette used throughout the app, in HSL form
+/*/
+
+$colors: (
+  'color': (
+    // Primary colors
+    'primary': (
+      // By default, changing the primary
+      // `h`, `s`, or `l` values will change 
+      // `primary`, `tint`, and `complement` colors
+      'hue': 260,
+      'saturation': 0%,
+      'lightness': 0%,
+      // ----
+      '1': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 10%), calc(#{var('color-primary-lightness')} + 6%)', // #0f0e11 // rgb(15, 14, 17)
+      '2': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 22%), calc(#{var('color-primary-lightness')} + 10%)', // #18141f // rgb(24, 20, 31)
+      '3': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 21%), calc(#{var('color-primary-lightness')} + 14%)', // #211c2b // rgb(33, 28, 43)
+      '4': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 27%), calc(#{var('color-primary-lightness')} + 20%)', // #2e2541 // rgb(46, 37, 65)
+      '5': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 33%), calc(#{var('color-primary-lightness')} + 27%)', // #3d2e5c // rgb(61, 46, 92)
+      '6': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 43%), calc(#{var('color-primary-lightness')} + 35%)', // #4c3380 // rgb(76, 51, 128)
+      '7': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 43%), calc(#{var('color-primary-lightness')} + 45%)', // #6241a4 // rgb(98, 65, 164)
+      '8': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 43%), calc(#{var('color-primary-lightness')} + 55%)', // #7c5bbe // rgb(124, 91, 190)
+      '9': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 43%), calc(#{var('color-primary-lightness')} + 65%)', // #997fcc // rgb(153, 127, 204)
+      '10': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 43%), calc(#{var('color-primary-lightness')} + 73%)', // #b09dd8 // rgb(176, 157, 216)
+      '11': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 43%), calc(#{var('color-primary-lightness')} + 80%)', // #c5b6e2 // rgb(197, 182, 226)
+      '12': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 44%), calc(#{var('color-primary-lightness')} + 86%)', // #d6cceb // rgb(214, 204, 235)
+      '13': '#{var('color-primary-hue')}, calc(#{var('color-primary-saturation')} + 100%), calc(#{var('color-primary-lightness')} + 73%)' // #a575ff // rgb(165, 117, 255)
+    ),
+    // Tint (Secondary) colors
+    'tint': (
+      'hue': var('color-primary-hue'),
+      'saturation': calc(#{var('color-primary-saturation')} + 8%),
+      'lightness': var('color-primary-lightness'),
+      // ----
+      '1': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 10%)', // #18151e // rgb(24, 21, 30)
+      '2': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 14%)', // #221d2a // rgb(34, 29, 42)
+      '3': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 20%)', // #302a3c // rgb(48, 42, 60)
+      '4': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 27%)', // #413851 // rgb(65, 56, 81)
+      '5': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 35%)', // #544969 // rgb(84, 73, 105)
+      '6': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 44%)', // #695c84 // rgb(105, 92, 132)
+      '7': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 55%)', // #8578a1 // rgb(133, 120, 161)
+      '8': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 65%)', // #a096b6 // rgb(160, 150, 182)
+      '9': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 73%)', // #b6aec7 // rgb(182, 174, 199)
+      '10': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 80%)', // #c9c3d5 // rgb(201, 195, 213)
+      '11': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 86%)', // #d9d5e2 // rgb(217, 213, 226)
+      '12': '#{var('color-tint-hue')}, #{var('color-tint-saturation')}, calc(#{var('color-tint-lightness')} + 90%)' // #e4e1ea // rgb(228, 225, 234)
+    ),
+    // Complement colors
+    // NOTE:
+    // ----
+    // These are not actually used in default Twitchcord,
+    // but are still calculated/generated here for theme
+    // developers to potentially use.
+    'complement': (
+      'hue': calc(#{var('color-primary-hue')} + 270),
+      'saturation': var('color-primary-saturation'),
+      'lightness': var('color-primary-lightness'),
+      // ----
+      '1': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 10%), calc(#{var('color-complement-lightness')} + 6%)',
+      '2': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 22%), calc(#{var('color-complement-lightness')} + 10%)',
+      '3': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 21%), calc(#{var('color-complement-lightness')} + 14%)',
+      '4': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 27%), calc(#{var('color-complement-lightness')} + 20%)',
+      '5': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 33%), calc(#{var('color-complement-lightness')} + 27%)',
+      '6': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 43%), calc(#{var('color-complement-lightness')} + 35%)',
+      '7': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 43%), calc(#{var('color-complement-lightness')} + 45%)',
+      '8': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 43%), calc(#{var('color-complement-lightness')} + 55%)',
+      '9': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 43%), calc(#{var('color-complement-lightness')} + 65%)',
+      '10': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 43%), calc(#{var('color-complement-lightness')} + 73%)',
+      '11': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 43%), calc(#{var('color-complement-lightness')} + 80%)',
+      '12': '#{var('color-complement-hue')}, calc(#{var('color-complement-saturation')} + 44%), calc(#{var('color-complement-lightness')} + 86%)'
+    ),
+    // Constant colors
+    'black': '0, 0%, 0%', // #000 // rgb(0, 0, 0)
+    'blue': '210, 100%, 54%', // #00aeff // rgb(20, 136, 255)
+    'gold': '42, 100%, 50%', // #ffb300 // rgb(255, 179, 0)
+    'gray': '0, 0%, 55%', // #8c8c8c // rgb(140, 140, 140)
+    'green': '150, 80%, 40%', // #14b866 // rgb(20, 184, 102)
+    'orange': '14, 100%, 57%', // #ff5724 // rgb(255, 87, 36)
+    'purple': '261, 100%, 73%', // #a373ff // rgb(163, 115, 255)
+    'red': '0, 85%, 50%', // #ec1313 // rgb(236, 19, 19)
+    'white': '0, 0%, 100%', // #fff // rgb(255, 255, 255)
+    'yellow': '55, 100%, 50%', // #ffea00 // rgb(255, 234, 0)
+    // Contrasted color - should be light on dark theme
+    // and light on dark theme
+    'contrasted': var('color-white'),
+    // Helper colors
+    'danger': var('color-red'),
+    'info': var('color-purple'),
+    'success': var('color-green'),
+    'warn': var('color-gold'),
+    // Status colors
+    'status': (
+      'online': var('color-green'),
+      'dnd': var('color-red'),
+      'idle': var('color-gold'),
+      'streaming': var('color-purple'),
+      'offline': var('color-gray')
+    ),
+    // External brand colors
+    'battle-net': '200, 100%, 40%', // #008ace // rgb(0, 138, 206)
+    'discord': '227, 58%, 65%', // #7289da // rgb(114, 137, 218)
+    'facebook': '221, 44%, 41%', // #3b5998 // rgb(59, 89, 152)
+    'github': '210, 12%, 16%', // #24292e // rgb(36, 41, 46)
+    'league-of-legends': '181, 90%, 36%', // #09abae // rgb(9, 171, 174)
+    'reddit': '16, 100%, 50%', // #ff4500 // rgb(255, 69, 0)
+    'skype': '196, 100%, 47%', // #00aff0 // rgb(0, 175, 240)
+    'spotify': '141, 73%, 42%', // #1db954 // rgb(29, 185, 84)
+    'steam': '20, 3%, 23%', // #3b3938 // rgb(59, 57, 56)
+    'twitch': '261, 43%, 45%', // #6441a5 // rgb(100, 65, 165)
+    'twitter': '203, 89%, 53%', // #1da1f2 // rgb(29, 161, 242)
+    'xbox': '112, 45%, 48%', // #52b043 // rgb(82, 176, 67)
+    'youtube': '0, 74%, 46%' // #cd201f // rgb(205, 32, 31)
+  )
+); 
+
+
+
+/*/
+///  Elevations
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  Various box-shadow styles to give a raised appearance
+/*/
+
+$elevations: (
+  'elevation': (
+    '1':
+      '0 .2rem .4rem -.1rem #{color('black', .34)},' +
+      '0 .2rem .2rem -.2rem #{color('black', .26)},' +
+      '0 .1rem .4rem 0 #{color('black', .28)}',
+    '2':
+      '0 .4rem .6rem -.2rem #{color('black', .34)},' +
+      '0 .3rem .4rem -.2rem #{color('black', .26)},' +
+      '0 .1rem .8rem 0 #{color('black', .28)}',
+    '3':
+      '0 .6rem 1rem 0 #{color('black', .34)},' +
+      '0 .1rem .8rem -.3rem #{color('black', .26)},' +
+      '0 .2rem 1.6rem 0 #{color('black', .28)}',
+    '4': 
+      '0 1rem 1.4rem .4rem #{color('black', .34)},' +
+      '0 .6rem 1.4rem -.6rem #{color('black', .26)},' +
+      '0 .4rem 2.4rem 0 #{color('black', .28)}',
+    '5':
+      '0 1.4rem 2rem .8rem #{color('black', .34)},' +
+      '0 1rem 2.2rem -.8rem #{color('black', .26)},' +
+      '0 .8rem 3.8rem 0 #{color('black', .28)};'
+  )
+);
+
+
+/*/
+///  Fonts
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  All fonts used through the app
+/*/
+
+$fonts: (
+  'font': (
+    'base': 'Roobert, Arial, \'Helvetica Neue\', Helvetica, sans-serif',
+    'coding': 'Inconsolata, monospace'
+  )
+);
+
+
+
+/*/
+///  Disables
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  Options for disabling/enabling animations on various things
+///  [none] -- Change value to `none` to disable a particular animation
+///  [unset] -- Change value to `unset` to enable a particular animation value preset
+///  [custom value] -- Change value to something you would use in an `animation`
+///                    such as `scaleIn 0.5s forwards`
+/*/ 
+
+$disables: (
+  'disable': (
+    'animations': 'unset',
+    'transitions': 'unset',
+    'guild': (
+      'unread': (
+        'animation': 'unset'
+      ),
+      'selected': (
+        'animation': 'unset'
+      )
+    ),
+    'input': (
+      'text': (
+        'animation': 'unset'
+      )
+    ),
+    'modal': (
+      'animation': 'unset'
+    ),
+    'notification-badge': (
+      'animation': 'unset'
+    ),
+    'popout': (
+      'animation': 'none'
+    ),
+    'tooltip': (
+      'animation': 'none'
+    )
+  )
+);
+
+
+
+/*/
+///  Icons [SVG]
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  All SVG icons used throughout the app.
+///  The names are added to the list below,
+///  and the actual SVG is placed in an `svg`
+///  folder directory with the same name. Then we
+///  create a map with this info and encode the SVG
+///  data using the `node-sass-svg` package and then
+///  store them in CSS variables.
+/*/
+
+// SVG icon list
+$icon-list: (
+  // A
+  'account-switch',
+  'app-close',
+  'app-maximize',
+  'app-minimize',
+  'app-restore',
+  'app-hamburger',
+  'app-forward',
+  'app-back',
+  'app-reload',
+  'apple',
+  'arrow-right',
+  // B
+  'birthday',
+  'block',
+  'bomb',
+  'book-closed',
+  'book-opened',
+  'booster-level-1',
+  'booster-level-2',
+  'booster-level-3',
+  'booster-level-4',
+  'bug',
+  // C
+  'calendar',
+  'camera',
+  'caret-down',
+  'caret-left',
+  'caret-right',
+  'caret-up',
+  'caret-up-down',
+  'castle',
+  'channels',
+  'chat',
+  'checkmark',
+  'circle-double',
+  'circle-pulsing',
+  'clip',
+  'clock',
+  'clone',
+  'close',
+  'close-thick',
+  'cloud-upload',
+  'code',
+  'compass',
+  'copy',
+  'cut',
+  // D
+  'dpad',
+  'dots-horizontal',
+  'dots-vertical',
+  'download',
+  'drag',
+  // E
+  'early-supporter',
+  'edit',
+  'emoji',
+  'emoji-frown',
+  'equalizer',
+  'exclamation-circle',
+  'experiment',
+  'export',
+  'extension',
+  'eye-closed',
+  'eye-opened',
+  // F
+  'file-attachment',
+  'filter',
+  'filter-secondary',
+  'flag',
+  'folder-closed',
+  'folder-opened',
+  'fullscreen',
+  'fullscreen-deactivate',
+  // G
+  'game-controller',
+  'garbage',
+  'gear',
+  'ghost',
+  'gif',
+  'gift',
+  'globe',
+  'guild',
+  'guild-secondary',
+  'guilds-bottom',
+  'guilds-left',
+  'guilds-right',
+  'guilds-top',
+  // H
+  'hammer',
+  'handshake',
+  'hashtag',
+  'headphones',
+  'headphones-off',
+  'heart',
+  'highlight',
+  'hypesquad-balance',
+  'hypesquad-bravery',
+  'hypesquad-brilliance',
+  'hypesquad-events',
+  // I
+  'info',
+  // K
+  'kick',
+  // L
+  'language',
+  'language-secondary',
+  'leaf',
+  'lightbulb-off',
+  'lightbulb-on',
+  'link',
+  'list',
+  'list-secondary',
+  'list-add',
+  'lock',
+  'logout',
+  // M
+  'mail',
+  'mention',
+  'microphone',
+  'microphone-off',
+  'mobile-phone',
+  'moon',
+  'music-note',
+  'music-record',
+  'music-record-secondary',
+  // N
+  'nitro',
+  'notification',
+  'notification-off',
+  // O
+  'open-new-window',
+  'overlay-off',
+  //P
+  'pacman',
+  'paperclip',
+  'partner',
+  'paste',
+  'paste-secondary',
+  'pause',
+  'phone',
+  'phone-hangup',
+  'play',
+  'play-circle',
+  'plus',
+  'prime',
+  'profile',
+  'pulse',
+  // Q
+  'question',
+  // R
+  'refresh',
+  'replay',
+  'reply',
+  'rocket',
+  // S
+  'screen',
+  'search',
+  'search-thick',
+  'share',
+  'share-secondary',
+  'sparkle',
+  'staff',
+  'star-hollow',
+  'star-solid',
+  'streaming',
+  'sword',
+  'swords-crossed',
+  // T
+  'theater-mode',
+  'theater-mode-deactivate',
+  'thumbtack',
+  'tiles-1x1',
+  'tiles-2x2',
+  'tiles-3x3',
+  'tools',
+  'tree',
+  'turbo',
+  'twitchcord-dead',
+  // U
+  'unheart',
+  'unlock',
+  'update',
+  'upload-profile-image',
+  'user',
+  'user-add',
+  'user-id',
+  'users',
+  // V
+  'video-camera',
+  'volume',
+  'volume-mute',
+  // W
+  'warning',
+  'wrench',
+  // Y
+  'ying-yang'
+);
+
+// In the same process we use for badges and logos,
+// let's make a list and make a map out of it, and then
+// set its key-value pairs, so we can merge it below with the other
+// maps to generate CSS variables out of it
+
+$icons: ();
+
+@each $icon in $icon-list {
+  $icons: non-destructive-map-merge(
+    $icons,
+    (
+      'icon': (
+        '#{$icon}': '#{svg('icon', '#{$icon}\.svg')}'
+      )
+    )
+  );
+}
+
+
+
+/*/
+///  Misc [SVG]
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  All SVG misc images used throughout the app.
+///  The names are added to the list below,
+///  and the actual SVG is placed in an `svg`
+///  folder directory with the same name. Then we
+///  create a map with this info and encode the SVG
+///  data using the `node-sass-svg` package and then
+///  store them in CSS variables.
+/*/
+
+// SVG misc list
+$misc-list: (
+  'game-boxart-placeholder',
+  'question-block',
+  'speech-bubble'
+);
+
+// In the same process we use for badges and logos,
+// let's make a list and make a map out of it, and then
+// set its key-value pairs, so we can merge it below with the other
+// maps to generate CSS variables out of it
+
+$miscs: ();
+
+@each $misc in $misc-list {
+  $miscs: non-destructive-map-merge(
+    $miscs,
+    (
+      'misc': (
+        '#{$misc}': '#{svg('misc', '#{$misc}\.svg')}'
+      )
+    )
+  );
+}
+
+
+
+// Images
+$images: (
+  'image': (
+    'diagonal-lines': (
+      'black': url('https://i.imgur.com/Bm4JIey.png'),
+      'white': url('https://i.imgur.com/75uYDPQ.png')
+    ),
+    'empty': url('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='),
+    'placeholder': (
+      'game-boxart': svg('misc', 'game-boxart-placeholder.svg'),
+      'game-splash': asset-image('misc/grayscale/game-splash.jpg'),
+      'question-block': asset-image('misc/grayscale/question-block.png'),
+      'user-avatar': url('https://client.forgecdn.net/Avatars/UserAvatar.png'),
+      'user-profile-banner': asset-image('misc/grayscale/user-profile-banner.png')
+    )
+  )
+);
+
+
+
+/*/
+///  Logos [SVG]
+///  ~~~~~~~~~~~~~~~~~~~~~~
+///  All SVG logos used throughout the app.
+///  The names are added to the list below,
+///  and the actual SVG is placed in an `svg`
+///  folder directory with the same name. Then we
+///  create a map with this info and encode the SVG
+///  data using the `node-sass-svg` package and then
+///  store them in CSS variables.
+/*/
+
+// Brand logos list
+$logo-list: (
+  'battle-net',
+  'discord',
+  'discord-secondary',
+  'facebook',
+  'facebook-secondary',
+  'github',
+  'google',
+  'league-of-legends',
+  'reddit',
+  'skype',
+  'spotify',
+  'steam',
+  'twitch',
+  'twitchcord',
+  'twitter',
+  'xbox',
+  'youtube'
+);
+
+// In the same process we use for badges and icons,
+// let's make a list and make a map out of it, and then
+// set its key-value pairs, so we can merge it below with the other
+// maps to generate CSS variables out of it
+
+$logos: ();
+
+@each $logo in $logo-list {
+  $logos: non-destructive-map-merge(
+    $logos,
+    (
+      'logo': (
+        '#{$logo}': '#{svg('logo', '#{$logo}\.svg')}'
+      )
+    )
+  );
+}
+
+
+
+// Badge list
+$badge-list: (
+  'admin',
+  'beta',
+  'beta-v2',
+  'booster-level-1',
+  'booster-level-2',
+  'booster-level-3',
+  'booster-level-4',
+  'bot',
+  'contributor',
+  'developer',
+  'donor',
+  'nitro',
+  'server-owner',
+  'staff',
+  'turbo',
+  'verified'
+);
+
+// In the same process we use for icons and logos,
+// let's make a list and make a map out of it, and then
+// set its key-value pairs, so we can merge it below with the other
+// maps to generate CSS variables out of it
+
+$badges: ();
+
+@each $badge in $badge-list {
+  $badges: non-destructive-map-merge(
+    $badges,
+    (
+      'badge': (
+        '#{$badge}': '#{asset-badge('#{$badge}\.png')}'
+      )
+    )
+  );
+}
+
+
+
+$z-indexes: (
+  'z-index': (
+    'app': 99999999,
+  )
+);
+
+
+
+// Generating CSS variables from maps . . .
+:root {
+  @include generate-css-vars(map-merge-all(
+    $aspect-ratios,
+    $badges,
+    $colors,
+    $disables,
+    $elevations,
+    $fonts,
+    $icons,
+    $images,
+    $logos,
+    $miscs,
+    $z-indexes
+  ));
+}
+
+
+
+:root {
+
+  --settings-sidebar-width: 200px;
+  --settings-color: var(--chat-background);
+
+  --unread-bar-color: #{color('tint-4')};
+  --unread-bar-hover-color: #{color('tint-5')};
+
+  --members-color: var(--chat-background);
+  --members-width: 230px;
+  --members-padding: 15px;
+
+  --chat-message-input-padding: 5px 4px 5px 1rem;
+  --chat-message-input-background: var(--channels-color);
+  --chat-message-input-gutter-size: 0 var(--chat-gutter-size) 10px;
+
+  --chat-text-color: #{color('tint-11')};
+
+  --channels-color: #{color('tint-1')};
+  --chat-inner-color: none;
+  --chat-background: #{color('primary-1')};
+  --embed-color: #{color('tint-1')};
+  --context-menu-color: #{color('tint-1')};
+  --popout-color: #{color('tint-1')};
+  --autocomplete-color: #{color('tint-1')};
+
+  --chat-typing-background: var(--chat-background);
+
+
+  --border-color: #{color('white', .05)};
+  
+  --textarea-height: 32px;
+  --spinner-color: #{color('contrasted', .15)};
+  --spinner-highlight-color: #{color('tint-11')};
+  --placeholder-background: #{color('white', .05)};
+  
+  --main-nav-links-color: #{color('primary-10')};
+
+  --chat-avatar-margin: 14px;
+  --chat-gutter-size: 20px;
+
+  --settings-gutter-size: 30px;
+
+  --game-icon-border-radius: var(--image-border-radius);
+
+  --sub-nav-guild-icon-size: 4rem;
+  --chat-avatar-size: 2.8rem;
+  --members-list-avatar-size: 2.8rem;
+  --user-popout-avatar-size: 80px;
+  --user-profile-avatar-size: 100px;
+  --friends-list-avatar-size: 84px;
+
+  --user-badge-size: 1.6rem;
+  --spinner-size: 28px;
+
+  --main-nav-color: #{color('primary-6')};
+  --main-nav-height: 50px;
+  --sub-nav-height: 6rem;
+  --sub-nav-color: #{color('tint-1')};
+
+  --friends-sub-nav-height: 103px;
+  --friends-options-height: 61px;
+
+  --main-nav-friends-sub-nav-height: calc(var(--main-nav-height) + var(--friends-sub-nav-height));
+  --titlebar-main-nav-height: calc(var(--titlebar-height) + var(--main-nav-height));
+  --main-nav-sub-nav-height: calc(var(--main-nav-height) + var(--sub-nav-height));
+
+
+  --alert-border-style: solid;
+  --alert-border-width: 0.2rem;
+
+  --chat-new-messages-bar-height: 3rem;
+
+  --channels-width: 240px;
+  --user-popout-width: 320px;
+  --account-status-panel-width: 240px;
+
+
+  --image-border-radius: 0.4rem;
+  --image-roundness: 2px;
+  
+  // For settings 'modules' and such
+  --panel-roundness: 2px;
+
+  --popout-roundness: 2px;
+  --context-menu-roundness: 2px;
+  --context-item-roundness: 0;
+  --menu-item-roundness: 2px;
+  --autocomplete-roundness: var(--popout-roundness);
+  
+  --status-roundness: 50%;
+  --user-badge-roundness: .2rem;
+  --role-roundness: 2px;
+
+  --members-activity-playing-roundness: 2px;
+  --members-activity-playing-size: 2rem;
+}
+
+
+//## Icons
+// :root {
+//     --unblock-icon: #{svg-url('<svg viewBox="0 0 20 20"><path fill="none" d="M5 9v2h4.78l-2-2H5z"/><path d="M16.94 15.72L12.22 11l-2-2-5.94-5.94L1.22 0 0 1.22l3.06 3.06a9 9 0 0 0 12.66 12.66L18.78 20 20 18.78zM5 11V9h2.78l2 2zm5-10a9 9 0 0 0-4.26 1.08L12.66 9H15v2h-.34l3.26 3.26A9 9 0 0 0 10 1z"/></svg>')};
+// }
+
+//## Images
+:root {
+    // Placeholder background for boxarts
+    // --game-boxart-placeholder: #{svg('misc', 'game-boxart-placeholder.svg')};
+
+    // Placeholder for user avatars
+    // --user-avatar-placeholder: url('https://client.forgecdn.net/Avatars/UserAvatar.png');
+}
+
+// .themeLight {
+//   &:root {
+//     --elevation-1: 0 .2rem .4rem -.1rem color('black', .1),
+//                    0 .2rem .2rem -.2rem color('black', .02),
+//                    0 .1rem .4rem 0 color('black', .04);
+//     --elevation-2: 0 .4rem .6rem -.2rem color('black', .1),
+//                    0 .3rem .4rem -.2rem color('black', .02),
+//                    0 .1rem .8rem 0 color('black', .04);
+//     --elevation-3: 0 .6rem 1rem 0 color('black', .1),
+//                    0 .1rem .8rem -.3rem color('black', .02),
+//                    0 .2rem 1.6rem 0 color('black', .04);
+//     --elevation-4: 0 1rem 1.4rem .4rem color('black', .1),
+//                    0 .6rem 1.4rem -.6rem color('black', .02),
+//                    0 .4rem 2.4rem 0 color('black', .04);
+//     --elevation-5: 0 1.4rem 2rem .8rem color('black', .1),
+//                    0 1rem 2.2rem -.8rem color('black', .02),
+//                    0 .8rem 3.8rem 0 color('black', .04);
+//   }
+// }

@@ -1,172 +1,272 @@
-// main: _module.scss
+///  ==========================================================================
+///  Join or Create a Server modal
+///  ==========================================================================
 
-//** Join or create a server modal
 
-.create-guild-container.deprecated {
-  background: RGB(var(--tc-color-3));
-  border: 1px solid RGB(var(--tc-color-4));
-  border-radius: 0;
-  height: 430px;
-  h5 {
-    color: RGB(var(--tc-tint-11))!important;
-    font-weight: 400!important;
-    text-transform: none!important;
-    font-size: 24px!important;
-    line-height: 30px!important;
-    margin-bottom: 5px;
+$module: (
+  'modal': (
+    'join-create-server': (
+      width: 100%,
+      max-width: 60rem,
+      height: 44rem,
+      background: var('modal-background'),
+      border-color: var('modal-border-color'),
+      border-style: var('modal-border-style'),
+      border-width: var('modal-border-width'),
+      border-radius: var('modal-border-radius'),
+      box-shadow: var('modal-box-shadow')
+    )
+  )
+);
+
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
+
+
+
+.wrapper-2ZbzR9 {
+  @include get-props($module, 'modal', 'join-create-server');
+  // Main slideBody
+  // Discord logo background image
+  .slideBody-2nMrnU,
+  // 'Create Your Server' slideBody
+  .slideBody-35BNbg {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0 calc(3rem - var(--scrollbar-width)) 0 3rem;
+    background: none !important;
   }
-  p {
-    line-height: 18px;
-    font-size: 12px;
-    color: RGB(var(--tc-tint-8));
-  }
-  .create-guild .guild-form li:first-child {
-    margin-left: 20px;
-  }
-  .join-server {
-    .btn-primary {
-      width: auto;
-    }
-    .sample-link {
-        color: RGB(var(--tc-color-10));
-    }
-    .link-container {
-      label {
-        color: RGB(var(--tc-tint-7))!important;
-        margin: 10px 0;
+  // The outer container where the sliding animation is implemented
+  .item-5R5nmE {
+    position: relative;
+    height: 100%;
+    // Get rid of the sliding animation
+    background: none !important;
+    transform: none !important;
+    + .item-5R5nmE {
+      #{$modalsub} {
+        box-shadow: none !important;
       }
+
     }
   }
-  .form.deprecated {
-    .form-inner {
-      padding: 20px 20px 0;
-      margin-bottom: 20px;
-      background: none;
-    }
+  .description-QF3836 {
+    @include component('header', 'h7');
+    @include size(100%, null);
+    margin: 0;
   }
-  .form-actions {
-    padding-left: 20px;
-    .btn-primary {
-      @extend %button-primary;
-      margin: 0 20px 0 0;
-      padding: 5px 20px;
-    }
-    .btn-default {
-      @extend %button-hollow;
-      padding: 5px 20px;
-      margin: 0 20px;
-      &:before {
-        display: none;
-      }
-    }
+  .sampleLink-KPFu3I {
+      color: color('primary-10');
   }
-  .create-or-join header {
-    color: RGB(var(--tc-tint-11))!important;
-    font-weight: 400!important;
-    text-transform: none!important;
-    font-size: 24px!important;
-    line-height: 30px!important;
-    margin-bottom: 25px;
+  .inputLabel-vJ2Z0B {
+    margin: 1rem 0;
+    color: color('tint-7') !important;
+  }
+  #{$modalsub} {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  #{$scrollerwrap} {
+    border-radius: 0;
+  }
+  // 'Oh, Another Server Huh?' header
+  .header-3ZP1MY,
+  // 'Create Your Server' header
+  .title-2Dc-Cb,
+  // 'Join a Server' header
+  .title-2CFvp_ {
+    @include component('header', 'h3');
+    width: 100%;
+    margin: 1rem 0 0;
+    text-transform: capitalize;
   }
   // Create and Join server modal button containers
   // https://i.imgur.com/f6Bsx72.png
-  .action {
-    border: 1px solid RGB(var(--tc-color-4));
-    border-radius: 0;
-    background-color: RGB(var(--tc-color-2));
+  .action-1lSjCi {
     width: 50%;
     padding: 0;
+    background-color: color('tint-2');
+    border: 1px solid var(--border-color);
+    border-radius: var(--component-border-radius);
     box-shadow: none !important;
-    transition: box-shadow 0.15s ease-in;
-    &:hover {
-      background-color: RGB(var(--tc-color-1));
-      .action-icon {
-        background-color: #fff!important;
-      }
-      &.join .btn,
-      &.create .btn {
-        @extend %button-primary;
-      }
-    }
+    transition: var(--disable-transitions, 'transform 0.3s, box-shadow 0.3s, background-color 0.3s');
     // Normal body text
     // https://i.imgur.com/OeDDAIs.png
-    .action-body {
-        color: RGB(var(--tc-tint-8));
-        font-size: 12px;
-        line-height: 18px;
+    .body-3AJVSA {
+      @include component('header', 'h7');
+      margin: 1.5rem 0;
+      padding: 0 1.5rem;
+      transition: var(--disable-transitions, color 0.3s);
     }
     // Create and Join server modal buttons
     // https://i.imgur.com/Q7MjewL.png
-    .btn {
-      @extend %button-primary;
-      @include size(calc(100% - 50px), 36px);
-      line-height: 1.5;
-      margin: 0 10px 20px;
-      padding: 0 20px;
+    .actionButton-2PeQbJ {
+      @include component('button', 'primary', 'base');
+      @include size(calc(100% - 5rem)!important, 4rem!important);
+      margin-bottom: 2rem !important;
+      transition: var(--disable-transitions, all 0.3s) !important;
     }
     // 'Create' and 'Join' header texts
-    // https://i.imgur.com/QeNOy3r.png
-    .action-header {
-      font-size: 12px;
-      color: RGB(var(--contrasted-color))!important;
-      font-weight: 700;
+    .actionHeader-2CT5c7 {
+      @include component('header', 'h6');
+      margin-top: 2rem;
+      text-transform: capitalize;
     }
     // Create icon
-    .action-icon {
-      height: 130px!important;
-      margin: 20px 0;
+    .actionIcon-2IISM_ {
+      height: 13rem !important;
+      margin: 2rem 0;
     }
-    &.create {
-      .action-icon {
+    &.create-3jownz {
+      .actionIcon-2IISM_ {
+        @include mask(icon('tools'), color('contrasted')!important, 10rem);
         background: none;
-        @include mask(var(--discord-staff-badge), RGB(var(--tc-tint-10)), 100px);
       }
     }
-    &.join {
-      .action-icon {
+    &.join-33Tr-7 {
+      .actionIcon-2IISM_ {
+        @include mask(icon('handshake'), color('contrasted')!important);
         background: none;
-        @include mask(var(--handshake-icon), RGB(var(--tc-tint-10)));
       }
+    }
+    &:hover {
+      background-color: color('primary-7');
+      box-shadow: var(--elevation-3) !important;
+      transform: translate3d(0, -10px, 0);
+      .actionButton-2PeQbJ {
+        background: color('primary-8') !important;
+        border-color: color('primary-8') !important;
+      }
+      .body-3AJVSA {
+        color: color('white') !important;
+      }
+    }
+    + .action-1lSjCi {
+      margin-left: 2rem;
     }
   }
-  .or {
-    background: none;
-    line-height: 0;
-    padding: 0;
-    font-size: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-    visibility: hidden;
+  .or-3THJsp {
+    display: none;
+  }
+  .cancelButton-RGXhAE {
+    @include component('button', 'secondary', 'base');
+    padding: var(--button-padding);
+    text-transform: capitalize;
+    &::before {
+      display: none;
+    }
+  }
+  .regionSelect-3lf4eE {
+    @include component('input', 'text', 'base');
     display: flex;
     align-items: center;
-    justify-content: center;
-    align-content: center;
-    display: none;
-    &::after {
-      content: 'or';
-      color: RGB(var(--tc-tint-7));
-      background: RGB(var(--tc-color-3));
-      height: 50px;
-      width: 50px;
-      visibility: visible;
-      border-radius: 50%;
-      position: absolute;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 400;
-      margin-left: -25px;
+    height: 4rem !important;
+    padding: .5rem !important;
+    .regionSelectInner-24f4Ce {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+    }
+    .regionSelectName-2-2FWh {
+      font-size: var(--input-primary-font-size);
+      font-weight: var(--input-primary-font-weight);
+      color: var(--input-primary-text-color);
+    }
+    .regionSelectFlag-3uwFtG {
+      @include size(4.4rem, 3rem);
+      margin: 0 1rem 0 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 4.4rem 3rem;
+      border-radius: var(--component-border-radius);
+      clip-path: inset(var(--component-border-radius));
+    }
+    button {
+      @include component('button', 'primary', 'base');
     }
   }
-}
-
-.form.deprecated .control-group label {
-  font-size: 12px;
-  color: RGB(var(--contrasted-color))!important;
-}
-
-.form.deprecated .form-inner:first-child {
-    border-radius: 0;
+  .helpText-h3r3wC {
+    @include component('header', 'h10');
+    a {
+      font-weight: 400;
+    }
+  }
+  .formWrapper-3fFVPj {
+    .flexChild-faoVW3:last-of-type {
+      flex: 0 !important;
+    }
+  }
+  .avatarUploader-3XDtmn {
+    .avatarUploaderInner-3UNxY3,
+    .avatarUploaderAcronym-3SioMc {
+      border-radius: var(--guild-border-radius);
+      box-shadow: none;
+      transition: none;
+    }
+    .avatarUploaderInner-3UNxY3 {
+      @include size(14rem);
+      margin: 3rem 0 1rem 3rem;
+      background-color: color('tint-2');
+      border: var(--guild-placeholder-border-width) var(--guild-placeholder-border-style) var(--guild-placeholder-border-color);
+      &::after {
+        @include size(100%);
+        content: '';
+        display: block;
+        pointer-events: none;
+        background-color: color('black', .6);
+        border-radius: inherit;
+        opacity: 0;
+      }
+      &[style*='background-image'] {
+        background-color: transparent !important;
+        border: none;
+        &:hover {
+          &::after {
+            opacity: 1;
+          }
+          .avatarUploaderHint-3SN212 {
+            @include mask(icon('edit'), color('white'), 50%);
+          }
+        }
+      }
+    }
+    .avatarUploaderAcronym-3SioMc {
+      @include ellipsis;
+      display: block;
+      padding: 0 1rem;
+      line-height: 14rem;
+      &:empty {
+        &::after {
+          @include size(100%);
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+        }
+      }
+    }
+    .avatarUploaderAcronym-3SioMc:empty::after,
+    .avatarUploaderHint-3SN212 {
+      @include mask(icon('plus'), var(--guild-placeholder-border-color), 50%);
+      color: transparent;
+      text-indent: -99999px;
+    }
+    .sizeInfo-SKMPPw,
+    .removeButton-1hcZyG {
+      @include component('header', 'h10');
+      margin-left: 3rem;
+    }
+  }
+  #{$modalfooter} {
+    #{classes('base.flex.flex')} {
+      flex: 0 !important;
+      margin-right: 1rem;
+    }
+  }
 }

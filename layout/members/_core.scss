@@ -3,192 +3,219 @@
 ///  Members list
 ///  ==========================================================================
 
+
+.membersWrap-2h-GB4 .scrollerWrap-2lJEkd {
+  width: 100%;
+  padding: 2px 2px 0 0;
+}
+
 // Placeholder role headers
 .membersWrap-2h-GB4 .memberGroupsPlaceholder-3mwPub {
-  background: var(--placeholder-color);
-  border-radius: 0;
+  background: var(--placeholder-background);
+  border-radius: var(--component-border-radius);
 }
 // Placeholder avatar image when user is loading
 .membersWrap-2h-GB4 .placeholderAvatar-damqh6 {
-  background-color: var(--placeholder-color);
-  border-radius: var(--user-roundness);
+  background-color: var(--placeholder-background);
+  border-radius: var('avatar-border-radius');
 }
 // Placeholder user namne when user is loading
 .membersWrap-2h-GB4 .placeholderUsername-2B_OA9,
 .membersWrap-2h-GB4 .mulitplePlaceholderUsername-pogq9I {
-    background: var(--placeholder-color);
-    border-radius: 0;
+    background: var(--placeholder-background);
+    border-radius: var(--component-border-radius);
 }
 
 // Twitchcord member list activity playing images
 #{classes('twitchcord.activityPlaying')} {
-  @include flex-center;
-  border-radius: 2px;
-  margin-left: 2px;
-  overflow: hidden;
+  position: absolute;
+  right: 0;
+  height: 2rem;
+  border-radius: var(--members-activity-playing-roundness);
+  @at-root .members-1998pB & + .layout-2DM8Md {
+    padding-right: calc(20px + 20px); /* activity image size + decent margin */
+  }
 }
 
 .mobileIndicator-329Gd6 {
-  color: RGB(var(--tc-tint-7))!important;
   order: 2;
+  color: color('tint-7') !important;
 }
 
 #{$memberswrap} {
   background: var(--members-color);
 }
 
-.members-1998pB .member-3W1lQa.popout-open .content-OzHfo4,
-.members-1998pB .member-3W1lQa:hover .content-OzHfo4 {
-    background: none!important;
+.members-1998pB .member-3-YXUe.popout-open .content-3QAtGj,
+.members-1998pB .member-3-YXUe:hover .content-3QAtGj {
+    background: none !important;
 }
 
-.members-1998pB .member-3W1lQa:hover .image-33JSyf,
-.members-1998pB .member-3W1lQa.popout-open .image-33JSyf {
-    box-shadow: inset 0 0 0 2px RGB(var(--tc-color-10));
+.members-1998pB .member-3-YXUe:hover .image-33JSyf,
+.members-1998pB .member-3-YXUe.popout-open .image-33JSyf {
+    box-shadow: inset 0 0 0 2px color('primary-10');
 }
 
-.members-1998pB .member-3W1lQa .username-1cB_5E {
-  @include ellipsis(calc(100% - 14px), inline-block);
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: 400;
-    margin-top: 0;
+.members-1998pB .member-3-YXUe {
+  .name-uJV0GL {
+    @include ellipsis(100%, inline-block);
     order: 2;
-    filter: var(--soften-role-colors)!important;
-}
-
-.members-1998pB .member-3W1lQa .memberInner-2CPc3V {
-    width: calc(var(--members-width) - 110px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 20px;
-}
-
-.members-1998pB .member-3W1lQa:hover .username-1cB_5E,
-.members-1998pB .member-3W1lQa.popout-open .username-1cB_5E {
-    color: RGB(var(--tc-color-10))!important;
-}
-
-#{$memberswrap} #{$avatarwrapper} {
-  @include size(var(--members-list-avatar-size));
-  background-size: var(--members-list-avatar-size)!important;
-}
-
-#{$memberswrap} #{$avatarimage} {
-  @include size(var(--members-list-avatar-size));
-  margin-right: 9px;
-  background-color: transparent;
-  background-size: var(--members-list-avatar-size)!important;
-  box-sizing: border-box;
-}
-
-.member-3W1lQa .status-oxiHuE.status-typing {
-    width: 20px!important;
-    right: -4px !important;
-}
-
-.membersWrap-2h-GB4 .membersGroup-v9BXpm {
-  @include ellipsis;
-  @include text(RGB(var(--tc-tint-7))!important, 12px, 700, $transform: uppercase);
-  cursor: default;
-  height: 21px;
-  letter-spacing: 0;
-  margin: 20px 0 0 0;
-  padding: 0;
-}
-
-.membersWrap-2h-GB4 .status-oxiHuE {
-  @include absolute(right -2px bottom -2px);
-  @include size(6px);
-  border: none;
-  box-shadow: 0 0 0 2px var(--members-color);
-}
-
-.members-1998pB {
-  &.scroller-2FKFPG {
-    // "Fake" scrollbar tomfoolery
-    @include fakeScrollbarFade('members');
-    overflow-x: hidden;
-    // Fix to make the "fake" scrollbade fade in/out work below
-    z-index: auto;
-    // Fake scrollbar, adjust to compensate for padding
-    &::after {
-      @include absolute(top 1px right 2px);
-    }
-    // Direct child div of scroller
-    > div:first-of-type[style*='width: 100%;'] {
-
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  &:hover,
+  &.selected-aXhQR6 {
+    .roleColor-rz2vM0 {
+      color: color('primary-10') !important;
     }
   }
 }
 
-.members-1998pB.scroller-2FKFPG::-webkit-scrollbar,
-.members-1998pB.scroller-2FKFPG::-webkit-scrollbar-track,
-.members-1998pB.scroller-2FKFPG::-webkit-scrollbar-track-piece,
-.members-1998pB.scroller-2FKFPG::-webkit-scrollbar-thumb {
-  visibility: visible;
-  min-height: 100px!important;
+.members-1998pB .member-3-YXUe .memberInner-2CPc3V {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  // TODO: Change 2rem to activity icon size var
+  margin-right: calc(2rem + 1rem);
+  overflow: hidden;
+}
+
+.members-1998pB .nameTag-3p0yK- {
+  order: 2;
+  width: 100%;
+  overflow: visible;
+}
+
+.members-1998pB .member-3-YXUe:hover .name-uJV0GL,
+.members-1998pB .member-3-YXUe.popout-open .name-uJV0GL {
+    color: color('primary-10') !important;
+}
+
+#{$memberswrap} .avatar-3uk_u9 {
+  @include size(var(--members-list-avatar-size));
+  margin-right: 1rem;
+  background-size: var(--members-list-avatar-size) !important;
+}
+
+#{$memberswrap} .wrapper-3t9DeA {
+  @include size(var(--members-list-avatar-size)!important);
+  box-sizing: border-box;
+  background-color: transparent;
+  background-size: var(--members-list-avatar-size) !important;
+}
+
+.member-3-YXUe .status-oxiHuE.status-typing {
+    right: -4px !important;
+    width: 20px !important;
+}
+
+.membersWrap-2h-GB4 .membersGroup-v9BXpm {
+  @include ellipsis;
+  height: 2rem;
+  margin: 2rem .8rem 0 .8rem;
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: color('tint-7') !important;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  cursor: default;
+}
+
+.membersWrap-2h-GB4 .status-oxiHuE {
+  --status-box-shadow-color: #{var('members-color')};
 }
 
 .members-1998pB {
-    background: none!important;
-    overflow-y: scroll;
-    max-width: var(--members-width);
-    padding: 0 var(--members-padding);
+  --status-stroke: #{var('members-color')};
+  width: 100%;
+  max-width: none;
+  padding: 0 calc(var(--members-padding) - var(--scrollbar-width)) 0 calc(var(--members-padding) - 8px);
+  overflow-y: scroll;
+  background: none !important;
+  &.scroller-2FKFPG {
+    overflow-x: hidden;
+  }
+  &::-webkit-scrollbar {
+    &,
+    &-thumb,
+    &-track {
+      min-height: 10rem;
+      visibility: hidden;
+    }
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      &,
+      &-thumb,
+      &-track {
+        visibility: visible;
+      }
+    }
+  }
 }
 
 .members-1998pB .avatarOffline-3GF27z {
-  filter: grayscale(0)!important;
+  filter: grayscale(0) !important;
 }
 
-.members-1998pB .member-3W1lQa .activity-1IYsbk {
-  line-height: 0;
-  font-size: 0;
-  color: RGB(var(--tc-tint-7));
-  opacity: 1;
+.members-1998pB .member-3-YXUe .activity-2Gy-9S {
   height: 14px;
+  font-size: 0;
+  line-height: 0;
+  color: color('tint-7');
+  opacity: 1;
 }
 
-.members-1998pB .member-3W1lQa .activityIcon-S3CciC,
-.private-channels .channel .channel-activity-icon {
+.members-1998pB .member-3-YXUe .icon-15YQ1T {
   display: none;
 }
 
+.members-1998pB .layout-2DM8Md {
+  @include size(100%);
+  padding: 0 .8rem;
+  border-radius: .4rem;
+}
+
+.members-1998pB .selected-aXhQR6 .layout-2DM8Md {
+  background: none;
+}
 
 .membersWrap-2h-GB4 {
-  border-left: 1px solid var(--border-color);
-  border-radius: var(--layout-roundness, 0);
-  min-width: 0;
   position: relative;
+  z-index: 0;
   width: var(--members-width);
+  min-width: 0;
   margin: var(--layout-gutter-size, 0);
   overflow: hidden;
-  z-index: 0;
+  border-left: 1px solid var(--border-color);
+  border-radius: var(--layout-roundness, 0);
 }
 
-.membersWrap-2h-GB4 .content-OzHfo4 {
-  padding: 0;
+.membersWrap-2h-GB4 .content-3QAtGj {
+  flex: 1 0 100%;
+  width: 100%;
+  padding: 0 30px 0 0;
 }
 
-.membersWrap-2h-GB4 .content-OzHfo4 .avatarWrapper-3B0ndJ {
-  margin-right: 10px;
-}
-
-.membersWrap-2h-GB4 .member-3W1lQa {
-    padding: 0!important;
-    margin: 2px 0;
-    color: RGB(var(--tc-tint-10))!important;
-    height: 38px;
-    line-height: 34px;
-    border-radius: 0;
-    overflow: visible;
-}
-.membersWrap-2h-GB4 .member-3W1lQa
-.membersWrap-2h-GB4 .member-3W1lQa .activityText-sLG0UL {
-  font-size: 0;
+.membersWrap-2h-GB4 .member-3-YXUe {
+  position: relative;
   display: flex;
   align-items: center;
+  height: 4rem;
+  min-height: 4.2rem;
+  margin: 0;
+  padding: 0 !important;
+  overflow: visible;
+  color: color('tint-10') !important;
+  border-radius: 0;
+  &:hover {
+    .layout-2DM8Md {
+      background: none;
+      }
+    }
 }
 
 .membersWrap-2h-GB4 .avatar-small .status {
@@ -196,21 +223,32 @@
   bottom: -4px !important;
 }
 
-.membersWrap-2h-GB4 .member-3W1lQa .activity-1IYsbk strong {
+// Get rid of those damn custom status emojis
+.activityEmoji-2GDGtF {
+  display: none;
+}
+
+.activityText-yGKsKm {
+  // We're just unsetting it here so that it cascades
+  // from higher up
+  color: unset !important;
+}
+
+.membersWrap-2h-GB4 .member-3-YXUe .activity-2Gy-9S strong {
   @include ellipsis(100%, inline-block);
   margin-top: 2px;
-  font-weight: 400;
   font-size: 12px;
-  height: 16px;
+  font-weight: 400;
   line-height: 12px;
 }
 
-.members-1998pB .member-3W1lQa .ownerIcon-uZ6mE7 {
-  height: 12px;
-  margin-left: 4px;
-  position: relative;
-  top: -3px;
-  width: 18px;
-  overflow: visible;
-  display: none;
+.members-1998pB .member-3-YXUe .ownerIcon-2NH9FM {
+  @include size(1.4rem);
+  order: 1;
+  margin: 0 .4rem 0 0;
+  background: badge('server-owner') no-repeat center / 100%;
+  border-radius: .2rem;
+  path {
+    display: none;
+  }
 }

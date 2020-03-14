@@ -1,8 +1,7 @@
 // Background transparency mode enabled
-
-.backgroundTransparency {
+#{option('background-transparency')} {
   &:root {
-    --titlebar-color: rgba(0, 0, 0, 0.6);
+    --titlebar-background: #{color('black', .6)};
 
     --app-background: url('https://images8.alphacoders.com/944/944311.jpg');
     --app-background-position: 0 0;
@@ -10,7 +9,7 @@
     --app-background-repeat: no-repeat;
     --app-background-opacity: 1;
 
-    --transparency-app-background-overlay: #000;
+    --transparency-app-background-overlay: #{color('black')};
     --transparency-app-background-overlay-opacity: 0;
 
     --transparency-app-content: '';
@@ -27,7 +26,7 @@
     --transparency-app-background-saturate: 1;
     --transparency-app-background-blending: overlay;
 
-    --transparency-layout-background-opacity: 0.9;
+    --transparency-layout-background-opacity: 1;
     --transparency-layout-background-blur: 15px;
     --transparency-layout-background-brightness: 1;
     --transparency-layout-background-contrast: 1;
@@ -37,7 +36,7 @@
 
     --layout-gutter-size: 10px;
     // --layout-padding-size: 0;
-    --layout-roundness: 10px;
+    --layout-roundness: 0;
     --layout-border: none;
     --layout-background: none;
 
@@ -47,15 +46,19 @@
 
     --main-nav-color: var(--layout-background);
     --guilds-background: var(--layout-background);
+    --discover-background: var(--layout-background);
     --sub-nav-color: var(--layout-background);
     --channels-color: var(--layout-background);
-    --chat-color: var(--layout-background);
+    --chat-background: var(--layout-background);
     --chat-message-input-background: var(--layout-background);
     --chat-typing-background: none;
     --members-color: var(--layout-background);
 
+    --embed-background: #{color('white', .2)};
+    --embed-box-shadow: none;
+
     --chat-message-input-padding: 10px;
-    --chat-message-input-background: var(--chat-color);
+    --chat-message-input-background: var(--chat-background);
     --chat-message-input-text-color: var(--chat-text-color);
     --chat-message-input-gutter-size: 0;
 
@@ -67,5 +70,9 @@
 
   .messagesWrapper-3lZDfY .messages-3amgkR .divider-3gKybi {
     padding: 0;
+  }
+  .membersWrap-2h-GB4 .member-3-YXUe {
+    margin: 5px 0;
+    border-radius: 10px;
   }
 }

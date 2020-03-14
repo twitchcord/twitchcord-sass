@@ -1,0 +1,156 @@
+// main: _module.scss
+
+//** Direct message core elements
+
+
+// Empty space holder before "This is the beginning of your direct message history with..."
+.placeholder-3PlVv6 { display: none; }
+
+// "This is the beginning of your direct message history with..." section
+.container-Vw8GSP {
+  @include component('alert', 'info', 'base');
+  display: grid;
+  margin: 2rem;
+  padding: 2rem !important;
+  grid-template-rows: 4rem 4rem; // half the avatar size
+  grid-template-columns: 8rem 100%;
+  grid-template-areas:
+    'avatar title'
+    'avatar description';
+  grid-column-gap: 2rem;
+  #{$avatarwrapper} {
+    overflow: hidden;
+    background: color('primary-2');
+    border-radius: var('avatar-border-radius');
+    box-shadow:
+      0 0 4rem color('info', .2);
+    grid-area: avatar;
+  }
+  .header-20hgvr {
+    margin: .5rem 0;
+  }
+  .description-3Zsz2U {
+    height: auto;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    color: color('tint-10');
+    grid-area: description;
+  }
+  strong {
+    color: color('white');
+  }
+  
+}
+
+
+// Fixes for group DMs
+.private {
+  .titleText-3X-zRE {
+    &.groupDM-3qU0Ks {
+      #{classes('twitchcord.channelInfo')} {
+        &-header {
+          display: none;
+        }
+      }
+      .channelName-3stJzi {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        &::before {
+          display: none;
+        }
+      }
+      .input-autosize-inner {
+        max-width: 100%;
+      }
+      .input-autosize-input {
+        @include ellipsis(100%, inline-block);
+        font-size: 16px;
+        background: none;
+        border-radius: 0px;
+      }
+    }
+  }
+}
+
+#{$messages} {
+  // "This is the beginning of your direct message history with..." container
+  .default-1VPH9n {
+    &.base-34jWEe {
+      @include component('alert', 'info', 'base');
+      height: auto;
+      margin: 20px calc(var(--chat-gutter-size) - 10px) 20px var(--chat-gutter-size);
+      h1 {
+        margin: 0;
+        font-size: 12px;
+        font-weight: 400;
+        color: color('tint-12');
+        &::before {
+          @include mask(icon('sparkle'), color('white'), 4rem);
+          @include size(50px);
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+        }
+        // User's name
+        strong {
+          color: color('contrasted');
+        }
+      }
+    }
+    + #{$chatdivider}#{$chatdividernew} {
+      margin-top: 30px;
+    }
+  }
+}
+
+#{classes('twitchcord.channelInfo')} {
+  $grandparent: &;
+  @at-root #{classes('html.routes.private')} & {
+    &-topic {
+      color: color('contrasted');
+    }
+    &-topic-type,
+    &-listening-song,
+    &-listening-by,
+    &-listening-artist,
+    &-listening-on {
+      display: inline-block;
+      &:empty {
+        display: none;
+      }
+    }
+    // Fix to make sure the song fields aren't displayed if user goes offline
+    &-topic-type:empty {
+      ~ #{$grandparent} {
+        &-listening-song,
+        &-listening-by,
+        &-listening-artist,
+        &-listening-on {
+          display: none;
+        }
+      }
+    }
+    &-listening-song,
+    &-listening-artist {
+      color: color('contrasted');
+    }
+    &-listening-song {
+      &:empty {
+        + #{$grandparent}-listening-by {
+          display: none;
+        }
+      }
+    }
+    &-listening-artist {
+      &:empty {
+        + #{$grandparent}-listening-on {
+          display: none;
+        }
+      }
+    }
+  }
+}

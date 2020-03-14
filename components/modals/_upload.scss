@@ -1,29 +1,44 @@
-// main: _module.scss
+// TODO: Upload modal file type icons
 
-//** Upload modal
+$module: (
+  'modal': (
+    'upload': (
+      background: var('modal-background'),
+      border-color: var('modal-border-color'),
+      border-style: var('modal-border-style'),
+      border-width: var('modal-border-width'),
+      border-radius: var('modal-border-radius'),
+      box-shadow: var('modal-box-shadow')
+    )
+  )
+);
+
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
+
 
 //## Upload drag and drop
 .uploadDropModal-2kTwbc {
+  @include get-props($module, 'modal', 'upload');
   border-radius: 0;
-  background: RGB(var(--tc-color-3));
   .bgScale-1otPtc {
-    background: none!important;
-    border: none!important;
+    background: none !important;
+    border: none !important;
     border-radius: 0;
   }
   .inner-3nWsbo {
-    border: 3px dashed RGB(var(--tc-color-4))!important;
-    background: none!important;
+    background: none !important;
+    border: 3px dashed color('primary-4') !important;
     border-radius: 0;
     .icons-1w691d {
-      position: absolute!important;
+      position: absolute !important;
       top: -40px;
     }
     .icon-kyxXVr {
       &.two-3BBQI9 {
         @include size(110px);
-        background: none!important;
-        @include mask(var(--paperclip-icon), RGB(var(--tc-tint-10))!important);
+        @include mask(icon('paperclip'), color('tint-10')!important);
+        background: none !important;
       }
       &.one-2crnLX,
       &.three-27ScFD {
@@ -31,46 +46,45 @@
       }
     }
     .instructions-2Du9gG {
-      text-align: center;
+      margin-top: 4px;
       font-size: 12px;
       line-height: 16px;
-      margin-top: 4px;
-      color: RGB(var(--tc-tint-8))!important;
+      color: color('tint-8') !important;
+      text-align: center;
     }
     .title-2Vtl4y {
-      color: RGB(var(--tc-tint-11))!important;
-      font-weight: 400!important;
-      text-transform: none!important;
-      font-size: 24px!important;
-      line-height: 30px!important;
       padding-bottom: 5px;
+      font-size: 24px !important;
+      font-weight: 400 !important;
+      line-height: 30px !important;
+      color: color('tint-11') !important;
+      text-transform: none !important;
     }
   }
   //## Upload files too powerful
   &.error-kKl9o2 {
-    border-radius: 0;
-    background: RGB(var(--tc-color-3));
-    border: 1px solid RGB(var(--tc-color-4));
-    max-width: 600px;
     width: 600px;
+    max-width: 600px;
     padding: 30px;
+    background: color('primary-3');
+    border: 1px solid color('primary-4');
+    border-radius: 0;
     a {
-      @extend %button-primary;
-      padding: 10px;
+      @include component('button', 'primary', 'base');
     }
     .inner-3nWsbo {
       border-radius: 0;
       .title-2Vtl4y {
         margin: 0px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-weight: 400;
         margin: 20px 0;
-        color: RGB(var(--tc-tint-11));
-        text-transform: none;
+        overflow: hidden;
         font-size: 24px;
+        font-weight: 400;
         line-height: 30px;
+        color: color('tint-11');
+        text-overflow: ellipsis;
+        text-transform: none;
+        white-space: nowrap;
       }
     }
   }
@@ -78,27 +92,93 @@
 
 //## Normal upload modal
 .uploadModal-2ifh8j {
-  background: RGB(var(--tc-color-3));
-  border-radius: 2px;
-  border: 1px solid RGB(var(--tc-color-4));
+  @include get-props($module, 'modal', 'upload');
   min-height: 200px;
-  .channelTextArea-1LDbYG .autocomplete-1vr {
+  overflow: hidden;
+  .scrollableContainer-2NUZem {
+    @include component('input', 'text', 'base');
+    height: auto !important;
+    padding-right: 0 !important;
+  }
+  .label-3aiqT2 {
+    @include component('header', 'h6');
+    text-transform: none !important;
+  }
+  .input-3ITkQf {
+    ~ .label-cywgfr {
+      flex: 0 auto;
+      width: auto;
+      .primary-jw0I4K {
+        width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: width .3s;
+      }
+    }
+    .checkboxWrapper-SkhIWG {
+      flex: 0 auto;
+    }
+    // Spoiler checkmark box
+    + .checkbox-1ix_J3 {
+      @include mask(icon('eye-opened'), color('tint-7')!important);
+      border: none !important;
+      &.checked-3_4uQ9 {
+        @include mask(icon('eye-closed'), color('white')!important);
+      }
+    }
+    &:hover {
+      + .checkbox-1ix_J3:not(.checked-3_4uQ9) {
+        @include mask(icon('eye-closed'), color('primary-8')!important);
+      }
+      ~ .label-cywgfr {
+        .primary-jw0I4K {
+          width: 100%;
+        }
+      }
+    }
+  }
+  // 'Cancel' button
+  #{classes('components.buttons.button')} {
+    // 'Upload' button container
+    + div {
+      margin-left: 10px;
+    }
+  }
+  .textArea-12jD-V {
+    height: auto !important;
+    min-height: 0;
+  }
+  .slateTextArea-1Mkdgw {
+    height: auto;
+    min-height: 0px;
+    padding: 0;
+    font-size: var(--input-text-font-size);
+    font-weight: var(--input-text-font-weight);
+    line-height: var(--input-text-line-height);
+    color: var(--input-text-color);
+  }
+  .channelTextArea-2VhZ6z .autocomplete-1vr {
     max-width: calc(100% - 4px);
     margin: 6px 0;
   }
   .inner-3nWsbo {
-    border: none;
-    margin: 0;
-    border-radius: 0;
     display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+    padding: var('modal-padding');
+    border: none;
+    border-radius: 0;
     .file-34mY5K {
-      height: auto;
       position: static;
+      width: 100%;
+      height: auto;
+      margin: 0 !important;
+      padding: 20px 0 !important;
       .icon-kyxXVr {
         position: relative;
-        margin: 70px 0 0 20px!important;
-        height: 110px!important;
-        width: 110px!important;
+        width: 100% !important;
+        height: 200px !important;
+        margin: 30px 0 0 !important;
         &.video-27RLEH,
         &.acrobat-3K1PC6,
         &.ae-1Y5Jq3,
@@ -113,64 +193,102 @@
         &.webcode-22GGLX,
         &.audio-14DQXq,
         &.unknown-3TPTMr {
-          background-image: image('file2.png')!important;
+          display: none;
+          + .description-2ug5H_ {
+            &::after {
+              content: 'SVG';
+              position: absolute;
+              right: 20px;
+              padding: 0 7px;
+              font-size: 12px;
+              font-weight: 700;
+              line-height: 20px;
+              color: color('primary-5');
+              background: color('white');
+              border-radius: 4px;
+            }
+          }
+        }
+        &.video-27RLEH {
+          + .description-2ug5H_ {
+            &::after {
+              @include size(30px);
+              @include mask(icon('video-camera'), color('white'));
+              content: '';
+            }
+          }
         }
         &.image-2yrs5j {
-          border: 3px solid RGB(var(--tc-color-1));
-          box-shadow: none;
-          border-radius: 0;
-          background-color: RGB(var(--tc-color-1));
+          margin: 30px 0 10px !important;
+          background-color: color('primary-1');
+          border-radius: 0var('embed-border-radius');
+          box-shadow: var('embed-box-shadow');
+          &:hover {
+            background-size: contain;
+          }
+          + .description-2ug5H_ {
+            &::after {
+              @include size(20px);
+              @include mask(icon('camera'), color('white'));
+              content: '';
+              position: absolute;
+              right: 20px;
+            }
+          }
         }
       }
       .description-2ug5H_ {
-        line-height: 50px;
-        height: 50px;
-        padding: 0;
         position: absolute;
-        background: rgba(0, 0, 0, 0.5);
-        width: 100%;
         top: 0;
         left: 0;
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
         align-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        padding: 0;
         padding-left: 20px;
+        line-height: 50px;
+        background: color('primary-5');
         .filename-ovv3c5 {
-          height: auto;
           display: block;
           max-width: 100%;
-          font-weight: 400;
+          height: auto;
           font-size: 16px;
+          font-weight: 700;
         }
       }
       .filesize-s2nTZM {
-        color: RGB(var(--tc-tint-7));
-        font-size: 10px;
         margin: 0 0 0 8px;
+        font-size: 10px;
+        color: color('tint-7');
         opacity: .6;
       }
     }
     .optional--ezibr {
-      font-size: 11px;
-      opacity: 1!important;
-      color: RGB(var(--tc-tint-7));
+      font-size: 12px;
+      color: color('tint-7') !important;
       text-transform: lowercase;
+      opacity: 1 !important;
     }
     // Textarea container
     .comment-4IWttf {
-      margin: 70px 20px 40px;
       flex: 1 0 auto;
+      margin: 10px 0;
     }
   }
   // Footer buttons
   .footer-3mqk7D {
-    margin: -20px 20px 20px;
-    padding: 0;
-    border-radius: 0;
-    background: none;
+    padding: 10px 20px !important;
+    background: var(--modal-footer-background) !important;
+    border-color: var(--modal-footer-border-color) !important;
+    border-style: var(--modal-footer-border-style) !important;
+    border-width: var(--modal-footer-border-width) !important;
+    border-radius: var(--modal-footer-border-radius) !important;
+    box-shadow: var(--modal-footer-box-shadow) !important;
     .button {
-      @include button('blank');
+      @include component('button', 'blank');
       text-decoration: none;
       opacity: 1;
       &:hover {
@@ -182,7 +300,7 @@
       margin-left: 10px;
     }
     .button.button-primary {
-      @extend %button-primary;
+      @include component('button', 'primary', 'base');
       &:hover {
         opacity: 1;
       }

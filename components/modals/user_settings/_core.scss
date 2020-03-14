@@ -3,41 +3,41 @@
 //** User Settings
 
 // User settings outer contain div
-.layer-3QrUeG[aria-label="USER_SETTINGS"],
-.layer-3QrUeG[aria-label="GUILD_SETTINGS"],
-.layer-3QrUeG[aria-label="CHANNEL_SETTINGS"] {
-  background: var(--settings-color)!important;
+.layer-3QrUeG[aria-label='USER_SETTINGS'],
+.layer-3QrUeG[aria-label='GUILD_SETTINGS'],
+.layer-3QrUeG[aria-label='CHANNEL_SETTINGS'] {
   z-index: 999;
+  background: var(--settings-color) !important;
   // When you open / close the settings modal
   &.animating-rRxada {
-    will-change: auto!important;
-    padding-top: 0!important;
-    top: 0!important;
+    top: 0 !important;
     // We want it to "close" as soon as the close button is clicked
     display: none;
+    padding-top: 0 !important;
+    will-change: auto !important;
   }
   // Get rid of the settings background
   .standardSidebarView-3F1I7i {
-    background: none!important;
     top: 0;
+    background: none !important;
   }
   // Sidebar
   .sidebarRegion-VFTUkN {
-    background: none;
-    border-right: 1px solid var(--empty-hover-color);
     flex: 0 0 var(--settings-sidebar-width);
     padding: 1px 1px 0 0;
+    background: none;
+    border-right: 1px solid color('white', .05);
     // Sidebar category header
     .header-2RyJ0Y {
-      @include header('h8');
+      @include component('header', 'h9');
       margin: 20px 10px 10px;
       padding: 0;  
     }
     // Direct child of sidebar scroller
     .sidebar-CFHs9e {
+      width: 100%;
       margin: 10px 0 10px 10px;
       padding: 0;
-      width: 100%;
     }
     // Sidebar separators
     .separator-gCa7yv {
@@ -45,27 +45,27 @@
     }
     // Sidebar scroller
     .scroller-2FKFPG {
-      @include fakeScrollbarFade('settings');
+
     }
     // Sidebar items
     .side-8zPYf6 {
       .item-PXvHYJ {
-        background: none;
-        border-radius: var(--button-roundness);
-        color: RGB(var(--tc-tint-11))!important;
-        font-size: 14px;
-        font-weight: 400;
         margin: 0;
         padding: 5px 10px;
+        font-size: 14px;
+        font-weight: 400;
+        color: color('tint-11') !important;
+        background: none;
+        border-radius: var(--button-border-radius);
         &:hover {
-          background: RGB(var(--tc-color-6))!important;
-          color: #fff!important;
+          color: #fff !important;
+          background: color('primary-6') !important;
         }
         // Selected settings item
         &.selected-3s45Ha {
-          background: RGB(var(--tc-color-5))!important;
-          color: RGB(var(--tc-tint-11))!important;
+          color: color('tint-11') !important;
           pointer-events: none;
+          background: color('primary-5') !important;
         }
         &.settings-user-settings-my-account {
           &::before {
@@ -83,38 +83,35 @@
     }
     // Content scroller
     .scroller-2FKFPG {
-      @include fakeScrollbarFade('settings');
       flex-direction: column;
       padding: 0 var(--settings-gutter-size) var(--settings-gutter-size) var(--settings-gutter-size);
-      &::after {
-        @include absolute(top 2px right 2px);
-      }
     }
     // Direct child of content scroller
     .contentColumnDefault-1VQkGM {
+      order: 2;
+      width: 100%;
+      min-width: 0;
       max-width: 100%;
       min-height: 0;
-      min-width: 0;
-      order: 2;
       padding: 0;
-      width: 100%;
     }
   }
   // Close button outer container
   .toolsContainer-1edPuj {
-    @include reset;
     @include size(100%, 70px);
-    @include sticky(top 0);
-    background: var(--settings-color);
-    display: flex;
-    align-items: center;
-    flex: 0 0 100%;
-    margin-bottom: 20px;
-    max-height: 70px;
-    order: 1;
+    position: sticky;
+    top: 0;
     z-index: 1;
+    display: flex;
+    flex: 0 0 100%;
+    align-items: center;
+    order: 1;
+    max-height: 70px;
+    margin: 0 0 2rem;
+    padding: 0;
+    background: var(--settings-color);
     &::before {
-      @include header('h3');
+      @include component('header', 'h3');
       content: 'Settings';
       width: 100%;
     }
@@ -128,13 +125,14 @@
     flex: 1;
   }
   .closeButton-1tv5uR {
-    @include button-base;
-    @include button('blank');
-    @include flex-center;
+    @include component('button', 'blank', 'base');
     @include size(35px);
-    transform: none!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none !important;
     svg {
-      @include mask(var(--close-icon), RGB(var(--tc-tint-11)), 25px);
+      @include mask(icon('close'), color('tint-11'), 25px);
       g {
         display: none;
       }
@@ -151,8 +149,8 @@
 }
 
 .layer-3QrUeG {
-  transform: none!important;
-  opacity: 1!important;
+  opacity: 1 !important;
+  transform: none !important;
   + .layer-3QrUeG {
     margin: var(--main-nav-height) 0 0 0;
   }
@@ -160,19 +158,19 @@
 
 // Remove button used in various user/server settings sections
 .button-mM-y8i {
-    background-color: var(--fail-color)!important;
-    border-radius: 0!important;
-    box-shadow: none!important;
+    background-color: color('danger') !important;
     background-image: image('close2.png');
+    border-radius: 0 !important;
+    box-shadow: none !important;
     transition: background-color 0.2s;
     &:hover {
-      background-color: var(--fail-color)!important;
-      box-shadow: none!important;
+      background-color: color('danger') !important;
+      box-shadow: none !important;
     }
 }
 
 .cardPrimary-1Hv-to {
-  background: RGB(var(--tc-tint-1))!important;
-  border: 1px solid var(--border-color)!important;
+  background: color('tint-1') !important;
+  border: 1px solid var(--border-color) !important;
   border-radius: var(--panel-roundness);
 }

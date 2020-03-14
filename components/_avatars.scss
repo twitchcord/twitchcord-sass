@@ -3,21 +3,26 @@
 ///  Avatars
 ///  ==========================================================================
 
+:root {
+  --avatar-border-radius: 50%;
+}
+
+
 // Place a generic user background image on the avatar wrapper to
 // show while the real user avatar is loading
 #{classes('components.avatars.wrapper')} {
-  background-image: url(https://client.forgecdn.net/Avatars/UserAvatar.png);
-  background-size: 100% 100%;
+  background-image: url('https://client.forgecdn.net/Avatars/UserAvatar.png');
   background-repeat: no-repeat;
   background-position: center center;
-  border-radius: var(--user-roundness);
+  background-size: 100% 100%;
+  border-radius: var('avatar-border-radius');
 }
 
 #{classes('components.avatars.inner')} {
-  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  border-radius: var(--user-roundness);
+  background-size: 100% 100%;
+  border-radius: var('avatar-border-radius');
 }
 
 // Discord default avatars
@@ -33,18 +38,18 @@
   &[style*="#{discordImages('avatars.user.green')}"],
   &[style*="#{discordImages('avatars.user.grey')}"],
   &[style*="#{discordImages('avatars.user.red')}"] {
-    background-image: url(https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_300x300.png)!important;
-    background-size: contain!important;
+    background-image: url('https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_300x300.png') !important;
+    background-size: contain !important;
   }
   // Groups avatar
   &[style*="#{discordImages('avatars.group')}"] {
-    background: url(https://i.imgur.com/yllzq9o.png) no-repeat 50%!important;
-    background-size: 100%!important;
+    background: url('https://i.imgur.com/yllzq9o.png') no-repeat 50% !important;
+    background-size: 100% !important;
   }
   // Clyde bot avatar
   &[style*="#{discordImages('avatars.clyde')}"] {
-    background: RGB(var(--tc-tint-5)) url('https://i.imgur.com/QVyMXH9.png') no-repeat 50%!important;
-    background-size: contain!important;
+    background: color('tint-5') url('https://i.imgur.com/QVyMXH9.png') no-repeat 50% !important;
+    background-size: contain !important;
   }
 
 
@@ -58,19 +63,19 @@
   [style*="#{discordImages('avatars.user.green')}"],
   [style*="#{discordImages('avatars.user.grey')}"],
   [style*="#{discordImages('avatars.user.red')}"] {
-    background-image: url(https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_300x300.png)!important;
-    background-size: contain!important;
+    background-image: url('https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_300x300.png') !important;
+    background-size: contain !important;
   }
   // Groups avatar
   @at-root
   &[style*="#{discordImages('avatars.group')}"] {
-    background: url(https://i.imgur.com/yllzq9o.png) no-repeat 50%!important;
-    background-size: 100%!important;
+    background: url('https://i.imgur.com/yllzq9o.png') no-repeat 50% !important;
+    background-size: 100% !important;
   }
   // Twitchcord bot
   @at-root
   [src*="#{discordImages('avatars.clyde')}"] {
-    content: image('twitchcord-bot.png')!important;
+    content: image('twitchcord-bot.png') !important;
   }
 }
 
@@ -78,19 +83,19 @@
 
   // Targeting all or most avatars. Placeholder avatar.
   .image-33JSyf {
-    background-clip: border-box;
-    border-radius: var(--user-roundness)!important;
     position: relative;
+    background-clip: border-box;
+    border-radius: var('avatar-border-radius') !important;
   }
   
   .mask-3OgeRz {
-      border-radius: var(--user-roundness);
+      border-radius: var('avatar-border-radius');
       -webkit-mask: none;
       mask: none;
   }
   
   .avatarMasked-3y6o4j {
-      border-radius: var(--user-roundness);
+      border-radius: var('avatar-border-radius');
       -webkit-mask: none;
       mask: none;
   }

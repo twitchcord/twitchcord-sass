@@ -1,0 +1,70 @@
+///  main: _module.scss
+///  ==========================================================================
+///  Scrollbars
+///  ==========================================================================
+
+$module: (
+  'scrollbar': (
+    background-color: transparent,
+    border-radius: .7rem,
+    width: .8rem,
+    'thumb': (
+      background-color: color('primary-3', .7),
+      border-color: color('white', .125),
+      border-style: solid,
+      border-width: .1rem,
+      border-radius: var('scrollbar-border-radius'),
+      box-shadow: none
+    ),
+    'track': (
+      background-color: transparent,
+      border-color: transparent,
+      border-style: none,
+      border-width: 0rem,
+      border-radius: var('scrollbar-border-radius')
+    ),
+    'track-piece': (
+      background-color: var('scrollbar-track-background-color'),
+      border-color: var('scrollbar-track-border-color'),
+      border-style: var('scrollbar-track-border-style'),
+      border-width: var('scrollbar-track-border-width'),
+      border-radius: var('scrollbar-track-border-radius')
+    )
+  )
+);
+
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
+
+
+
+// Setting the main scrollbar style throughout the app
+body {
+  ::-webkit-scrollbar {
+    width: var('scrollbar-width') !important;
+    background-color: var('scrollbar-background-color') !important;
+    border-radius: var('scrollbar-border-radius') !important;
+    &-thumb {
+      background-color: var('scrollbar-thumb-background-color') !important;
+      border-color: var('scrollbar-thumb-border-color') !important;
+      border-style: var('scrollbar-thumb-border-style') !important;
+      border-width: var('scrollbar-thumb-border-width') !important;
+      border-radius: var('scrollbar-thumb-border-radius') !important;
+      box-shadow: var('scrollbar-thumb-box-shadow') !important;
+    }
+    &-track {
+      background-color: var('scrollbar-track-background-color') !important;
+      border-color: var('scrollbar-track-border-color') !important;
+      border-style: var('scrollbar-track-border-style') !important;
+      border-width: var('scrollbar-track-border-width') !important;
+      border-radius: var('scrollbar-track-border-radius') !important;
+    }
+    &-track-piece {
+      background-color: var('scrollbar-track-background-color') !important;
+      border-color: var('scrollbar-track-border-color') !important;
+      border-style: var('scrollbar-track-border-style') !important;
+      border-width: var('scrollbar-track-border-width') !important;
+      border-radius: var('scrollbar-track-border-radius') !important;
+    }
+  }
+}

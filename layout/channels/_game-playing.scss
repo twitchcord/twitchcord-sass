@@ -1,0 +1,18 @@
+/*/ ==========================================================================
+///  Game playing
+///  ==========================================================================
+///  Appears at the bottom of channels when you're currently playing a game
+///  with the option to start streaming the game
+/*/
+
+
+.panel-24C3ux {
+  padding: 1rem 1.5rem;
+  background: color('primary-4');
+  border: none;
+  border-top: 1px solid var('border-color');
+  .subtext-3CDbHg {
+    line-height: 1.6rem;
+    color: color('tint-9');
+  }
+}

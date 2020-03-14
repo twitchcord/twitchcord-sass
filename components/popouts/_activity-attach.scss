@@ -4,31 +4,31 @@
 // https://i.imgur.com/zSvgkGG.png
 
 .attachPopout-1n-ZKM {
-  background: RGB(var(--tc-color-2))!important;
-  border: 1px solid RGB(var(--tc-tint-4))!important;
-  border-radius: 2px;
-  box-sizing: border-box;
-  padding: 10px 0;
   z-index: 99999999;
-  box-shadow: rgba(0, 0, 0, 0.12) 3px 3px 8px!important;
-  margin-left: -211px;
-  margin-bottom: -2px;
+  box-sizing: border-box;
   width: 300px;
+  margin-bottom: -2px;
+  margin-left: -211px;
+  padding: 10px 0;
+  background: color('primary-2') !important;
+  border: 1px solid color('tint-4') !important;
+  border-radius: 2px;
+  box-shadow: color('black', .12) 3px 3px 8px !important;
   .attachPopoutRow-KrE-f6 {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    overflow: hidden;
-    box-sizing: border-box;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 400;
-    list-style-type: none;
-    white-space: nowrap;
-    padding: 3px 10px;
-    border-radius: 2px;
     margin: 0 10px;
+    padding: 3px 10px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    white-space: nowrap;
+    list-style-type: none;
     cursor: pointer;
-    opacity: 1!important;
+    border-radius: 2px;
+    opacity: 1 !important;
     transition: none;
     > #{$flex} {
       overflow: hidden;
@@ -37,22 +37,22 @@
       flex: 0 0 auto;
       opacity: 1;
       .attachPopoutIconForeground-OohRrL {
-        fill: RGB(var(--tc-tint-10));
+        fill: color('tint-10');
       }
     }
     .attachPopoutRowText-1tIocA {
       @include ellipsis;
-      color: RGB(var(--tc-tint-10))!important;
+      color: color('tint-10') !important;
     }
     &:hover {
-      background: RGB(var(--tc-color-4))!important;
+      background: color('primary-4') !important;
       .attachPopoutIcon-26Np2W {
         .attachPopoutIconForeground-OohRrL {
-          fill: RGB(var(--contrasted-color));
+          fill: color('contrasted');
         }
       }
       .attachPopoutRowText-1tIocA {
-        color: RGB(var(--contrasted-color))!important;
+        color: color('contrasted') !important;
       }
     }
   }

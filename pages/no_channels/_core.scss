@@ -1,0 +1,53 @@
+// main: _module.scss
+
+//** 'No channels' screen, appears sometimes when deleting channels or initial starting of Discord
+
+.noChannel-Z1DQK7 {
+  background: color('primary-1') !important;
+  .image-1GzsFd {
+    position: relative;
+    width: 272px;
+    height: 222px;
+    margin: 0 auto 30px;
+    background: url('https://sloanreview.mit.edu/content/uploads/2017/11/FR-Colony-CIO-Future-Ba…usiness-Technology-IT-Information-Customer-Driven-Mindset-1200-300x300.jpg') !important;
+  }
+  .spinner-2enMB9 {
+    position: relative;
+    top: 50px;
+    .inner-1gJC7_ {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 99;
+      display: block;
+      width: 28px;
+      height: 28px;
+      margin-top: -25px;
+      margin-left: -15px;
+      background: none;
+      border-color: color('primary-7') color('primary-7', .4) color('primary-7', .4);
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 28px;
+      box-shadow: none;
+      opacity: 1;
+      transition-delay: 0.2s;
+      animation: rotate360 750ms linear infinite;
+      size: 28px;
+      .circular-2NaZOq {
+        display: none;
+      }
+    }
+  }
+}
+
+// MARKUP:
+// <div class="noChannel-Z1DQK7">
+//   <div class="flex-1xMQg5 flex-1O1GKY vertical-V37hAW flex-1O1GKY directionColumn-35P_nr justifyCenter-3D2jYp alignCenter-1dQNNs noWrap-3jynv6 wrapper-r-6rrt" style="flex: 1 1 auto;">
+//     <div class="image-1GzsFd marginBottom40-2vIwTv" style="flex: 0 1 auto; width: 272px; height: 222px; background-image: url(&quot;/assets/94b5558353f1d01035a874f6eddf6d70.svg&quot;);"></div>
+//     <div class="flexChild-faoVW3" direction="vertical-V37hAW flex-1O1GKY directionColumn-35P_nr" style="flex: 0 1 auto;">
+//       <h4 class="title-2BxgL2">No Text Channels</h4>
+//       <div class="text-GwUZgS marginTop8-1DLZ1n">You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
+//     </div>
+//   </div>
+// </div>

@@ -3,28 +3,28 @@
 //** Tutorial popout
 
 .tutorial-popout {
-    border: 1px solid RGB(var(--tc-color-4));
+    border: 1px solid color('primary-4');
     border-radius: 0;
 }
 
 .tutorial-popout section {
-background: RGB(var(--tc-color-3));
+background: color('primary-3');
 }
 
 .tutorial-popout header {
-    background: RGB(var(--tc-color-3));
-    color: RGB(var(--tc-tint-11))!important;
-    font-weight: 400!important;
-    text-transform: none!important;
-    font-size: 24px!important;
-    line-height: 30px!important;
     padding: 15px 20px 0;
+    font-size: 24px !important;
+    font-weight: 400 !important;
+    line-height: 30px !important;
+    color: color('tint-10') !important;
+    text-transform: none !important;
+    background: color('primary-3');
 }
 
 .tutorial-popout p {
-    color: RGB(var(--tc-tint-8));
+    color: color('tint-8');
 }
 
 .tutorial-popout .button-area .skip-tips a {
-    color: RGB(var(--tc-color-10));
+    color: color('primary-10');
 }

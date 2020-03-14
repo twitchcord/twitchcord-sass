@@ -3,50 +3,60 @@
 ///  Titlebar
 ///  ==========================================================================
 
+:root {
+  --titlebar-background: #{color('primary-4')};
+  --titlebar-height: 3rem;
+}
+
+
 #{classes('base.layers')},
 #{classes('base.layer')} {
-  background: none!important;
+  background: none !important;
 }
 
 .loading-Ags1CY,
 .appMount-3lHmkl,
-.app-19_DXt>div[style*="background-color: rgb(47, 49, 54)"] {
-  background: var(--app-background)!important;
-  background-attachment: fixed!important;
-  background-position: var(--app-background-position, 0 0)!important;
-  background-repeat: var(--app-background-repeat, no-repeat)!important;
-  background-size: var(--app-background-size, cover)!important;
-  opacity: var(--app-opacity, 1)!important;
+.app-2rEoOp {
   z-index: 1;
+  background: var(--app-background) !important;
+  background-repeat: var(--app-background-repeat, no-repeat) !important;
+  background-attachment: fixed !important;
+  background-position: var(--app-background-position, 0 0) !important;
+  background-size: var(--app-background-size, cover) !important;
+  opacity: var(--app-opacity, 1) !important;
   &::before {
-    @include fixed(top 0 left 0);
     @include size(100vw, 100vh);
     content: var(--transparency-app-content);
-    background: var(--transparency-app-background)!important;
-    background-attachment: fixed!important;
-    background-position: var(--transparency-app-background-position, 0 0)!important;
-    background-repeat: var(--transparency-app-background-repeat, no-repeat)!important;
-    background-size: var(--transparency-app-background-size, cover)!important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: var(--transparency-app-background) !important;
     filter: blur(var(--transparency-app-background-blur, 0))
             brightness(var(--transparency-app-background-brightness, 1))
             contrast(var(--transparency-app-background-contrast, 1))
             GRAYSCALE(var(--transparency-app-background-grayscale, 0))
             INVERT(var(--transparency-app-background-invert, 0))
             saturate(var(--transparency-app-background-saturate, 1));
-    mix-blend-mode: var(--transparency-app-background-blending, normal);
+    background-repeat: var(--transparency-app-background-repeat, no-repeat) !important;
+    background-attachment: fixed !important;
+    background-position: var(--transparency-app-background-position, 0 0) !important;
+    background-size: var(--transparency-app-background-size, cover) !important;
     opacity: var(--transparency-app-opacity, 1);
-    pointer-events: none;
-    z-index: -1;
+    mix-blend-mode: var(--transparency-app-background-blending, normal);
   }
   &::after {
-    @include fixed(top 0 left 0);
     @include size(100vw, 100vh);
     content: '';
-    background: var(--transparency-app-background-overlay, #000);
-    display: block;
-    opacity: var(--transparency-app-background-overlay-opacity, 0);
-    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: -1;
+    display: block;
+    pointer-events: none;
+    background: var(--transparency-app-background-overlay, #000);
+    opacity: var(--transparency-app-background-overlay-opacity, 0);
   }
 }
 
@@ -56,14 +66,24 @@
 .messagesWrapper-3lZDfY,
 // guilds list
 .wrapper-1Rf91z,
+// discover
+.pageWrapper-1PgVDX,
 // channels list
-.channels-Ie2l6A,
+#{classes('layout.channels.channels')},
 // members list
 .membersWrap-2h-GB4,
+// .membersWrap-2h-GB4 .member-3-YXUe,
 // channel header
-.titleWrapper-1l0xT9,
+.container-1r6BKw,
+// friends list
+.peopleColumn-29fq28,
+// activity feed (on friends list)
+.nowPlayingColumn-2sl4cE,
+// library
+.table-1tDS6w,
+.base-gE7OpD,
 // chat message input
-.chat-3bRxxu form .inner-zqa7da {
+.chat-3bRxxu form .scrollableContainer-2NUZem {
   backdrop-filter: blur(var(--transparency-layout-background-blur, 0))
                    brightness(var(--transparency-layout-background-brightness, 1))
                    contrast(var(--transparency-layout-background-contrast, 1))
@@ -76,104 +96,175 @@
 
 
 
-.titleBar-AC4pGV {
-  z-index: 99999999;
-  background: none;
-  height: calc(var(--titlebar-height) - 4px);
-  margin-top: 4px;
-  justify-content: flex-start;
-  align-items: stretch;
-  padding: 0;
-  width: 100%;
+.tc-titlebar {
   position: relative;
-  .wordmark-2iDDfm {
-    opacity: 1;
-    width: 100%;
-    background: var(--titlebar-color);
-    margin-top: -4px;
-    padding: 0;
-    &::before {
-      content: '';
-      @include mask(var(--hamburger-menu-icon), #fff, 10px 11px);
-      @include size(45px, var(--titlebar-height));
-      align-items: center;
-      display: inline-flex;
-      position: relative;
-      z-index: 999999999999999999999;
-    }
-    // Old 'TWITCHCORD' app header
-    // &::before,
-    // &::after {
-    //   z-index: 999999999999999999999;
-    //   pointer-events: none!important;
-    //   position: relative;
-    //   width: auto;
-    //   font-size: 12px;
-    //   text-transform: uppercase;
-    //   display: inline-flex;
-    //   align-items: center;
-    //   height: var(--titlebar-height);
-    // }
-    // &::before {
-    //   content: 'Twitch';
-    //   font-weight: 900;
-    //   color: #fff;
-    //   margin-left: 16px;
-    // }
-    // &::after {
-    //   content: 'cord';
-    //   font-weight: 400;
-    //   color: RGB(var(--tc-color-10));
-    //   background-color: transparent;
-    //   margin-left: 1px;
-    // }
-    svg {
-        display: none;
-    }
+  z-index: 99999999;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 30px;
+  margin: 0;
+  background: var('titlebar-background');
+  &-section-left,
+  &-section-right {
+    display: flex;
+    flex: 0 0 auto;
   }
-  .winButton-iRh8-Z {
-      width: 45px;
-      height: var(--titlebar-height);
-      margin-top: -4px;
-      top: 0;
-      opacity: 1;
-      background-color: transparent;
-      background-repeat: no-repeat !important;
-      background-position: center !important;
-      cursor: default;
-      background-size: 10px !important;
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+  &-section-middle {
+    display: flex;
+    flex: 1;
+    margin: 4px 0 0 0;
+    -webkit-app-region: drag;
+  }
+  &-button-container {
+    @include size(45px, 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default !important;
+    &.small {
+      @include size(25px, null);
+    }
+    &.disabled {
+      pointer-events: none !important;
+      opacity: 0.3;
+    }
+    &:hover {
+      background-color: color('white', .2);
+    }
+    &.menu {
+      icon {
+        @include size(16px, 16px);
+        @include mask(icon('app-hamburger'));
       }
-      &.winButtonClose-1HsbF- {
-        &:hover {
-          background-color: var(--fail-color);
+    }
+    &.back {
+      icon.back {
+        @include size(22px, 22px);
+        @include mask(icon('caret-left'));
+      }
+    }
+    &.forward {
+      icon.forward {
+        @include size(22px, 22px);
+        @include mask(icon('caret-right'));
+      }
+    }
+    &.reload {
+      icon.reload {
+        @include size(14px, 14px);
+        @include mask(icon('app-reload'));
+      }
+    }
+    &.minimize {
+      icon.minimize {
+        @include size(10px, 11px);
+        @include mask(icon('app-minimize'));
+      }
+    }
+    &.maximize {
+      icon.maximize {
+        @include size(10px, 11px);
+        @include mask(icon('app-maximize'));
+        @at-root [data-tc-window-maximized] & {
+          @include mask(icon('app-restore'));
         }
       }
-  }
-  svg[name="TitleBarClose"] {
-      @include mask(var(--app-close-icon), #fff, 12px);
-      @include size(10px);
-  }
-
-  svg[name="TitleBarMaximize"] {
-      @include mask(var(--app-maximize-icon), #fff, 10px);
-      @include size(11px, 12px);
-  }
-
-  svg[name="TitleBarMinimize"] {
-      @include mask(var(--app-minimize-icon), #fff, 12px);
-      @include size(10px, 11px);
-  }
-
-  svg[name="TitleBarClose"] polygon, svg[name="TitleBarMaximize"] rect, svg[name="TitleBarMinimize"] rect {
-      display: none;
-  }
-}
-
-//## ixMaximized - change the maximize icon if the app is maximized or not
-.isMaximized:root {
-  svg[name="TitleBarMaximize"] {
-      @include mask(var(--app-restore-icon), #fff, 10px 11px);
     }
+    &.close {
+      &:hover {
+        background-color: color('red');
+      }
+      icon.close {
+        @include size(10px, 11px);
+        @include mask(icon('app-close'));
+      }
+    }
+    icon {
+      background: color('white');
+    }
+  }
 }
+
+// .titleBar-AC4pGV {
+//   position: relative;
+//   z-index: 99999999;
+//   align-items: stretch;
+//   justify-content: flex-start;
+//   width: 100%;
+//   height: calc(var(--titlebar-height) - 4px);
+//   margin-top: 4px;
+//   padding: 0;
+//   background: none;
+//   .wordmark-2iDDfm {
+//     display: none;
+//     width: 100%;
+//     margin-top: -4px;
+//     padding: 0;
+//     background: var('titlebar-background');
+//     opacity: 1;
+//     &::before {
+//       @include mask(icon('app-hamburger'), color('white'), 16px 16px);
+//       @include size(45px, var(--titlebar-height));
+//       content: '';
+//       position: relative;
+//       z-index: 999999999999999999999;
+//       display: inline-flex;
+//       align-items: center;
+//     }
+//     svg {
+//         display: none;
+//     }
+//   }
+//   .winButton-iRh8-Z {
+//     top: 0;
+//     width: 45px;
+//     height: var(--titlebar-height);
+//     margin-top: -4px;
+//     cursor: default;
+//     background-color: transparent;
+//     background-repeat: no-repeat !important;
+//     background-position: center !important;
+//     background-size: 10px !important;
+//     opacity: 1;
+//     &:hover {
+//       background-color: color('white', .2);
+//     }
+//     &.winButtonClose-1HsbF- {
+//       &:hover {
+//         background-color: color('danger');
+//       }
+//     }
+//   }
+//   // Close app
+//   .winButtonClose-1HsbF- {
+//     svg {
+//       @include mask(icon('app-close'), color('white'), 12px);
+//       @include size(10px);
+//       // Display none everything inside the svg
+//       * { display: none; }
+//     }
+//   }
+//   // Maximize app
+//   .winButtonMinMax-PBQ2gm {
+//     svg {
+//       @include mask(icon('app-maximize'), color('white'), 10px);
+//       @include size(11px, 12px);
+//       // Display none everything inside the svg
+//       * { display: none; }
+//     }
+//     // Minimize app
+//     + .winButtonMinMax-PBQ2gm {
+//       svg {
+//         @include mask(icon('app-minimize'), color('white'), 12px);
+//         @include size(10px, 11px);
+//         // Display none everything inside the svg
+//         * { display: none; }
+//         // Restore app
+//         @at-root .isMaximized & {
+//           @include mask(icon('app-restore'), color('white'), 10px 11px);
+//         }
+//       }
+//     }
+//   }
+// }

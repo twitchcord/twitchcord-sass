@@ -1,0 +1,98 @@
+// main: _module.scss
+
+//** Channel message textarea input
+
+// Buttons container (Gift, GIF, Emojis)
+.buttons-3JBrkn {
+  position: sticky;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 2;
+  height: 20px;
+  padding: 0;
+  // Gift button
+  > .buttonWrapper-1ZmCpA {
+    display: none !important;
+  }
+}
+
+.channelTextArea-2VhZ6z {
+  background: none;
+  border-radius: 0;
+  .inner-MADQqc {
+    // GIF button container
+    .buttonContainer-28fw2U {
+      height: 20px;
+      .button-38aScr {
+        &.lookBlank-3eh9lL {
+          @include size(auto, auto!important);
+          padding: 0 !important;
+          border: none !important;
+          .contents-18-Yxp {
+            height: 20px;
+            padding: 0;
+            opacity: 1;
+          }
+          .icon-3D60ES {
+            @include mask(icon('gif'), color('primary-10'), 26px 20px);
+            @include size(26px, 20px);
+            transition: none !important;
+            transform: none !important;
+            path {
+              display: none;
+            }
+          }
+          &:hover,
+          &:active,
+          &:active:hover {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            .icon-3D60ES {
+              background-color: color('contrasted');
+            }
+          }
+        }
+      }
+    }
+    .emojiButton-3uL3Aw {
+      @include size(20px, 20px!important);
+      display: flex !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      margin: 0 0 0 3px !important;
+      padding: 0 !important;
+      background: none !important;
+      border: none !important;
+      opacity: 1 !important;
+      transition: none !important;
+      #{classes('components.buttons.contents')} {
+        padding: 0;
+      }
+      &:hover:active,
+      &:active {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .sprite-2iCowe {
+        @include mask(icon('emoji'), color('primary-10'), $important: true);
+        @include size(2rem);
+        background-image: none;
+        filter: none !important;
+        opacity: 1;
+        transition: none;
+        transform: none !important;
+        &:hover {
+          background-color: color('contrasted') !important;
+          opacity: 1;
+          transform: none !important;
+        }
+      }
+    }
+  }
+}

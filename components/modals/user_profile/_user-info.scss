@@ -1,1 +1,128 @@
 // main: _module.scss
+
+// User profile container
+.root-SR8cQa {
+  .scrollerWrap-2lJEkd {
+    padding: 0 .2rem 0 0;
+  }
+  .scroller-2FKFPG {
+    padding: 0 0 3rem 0;
+    &::-webkit-scrollbar {
+      &,
+      &-thumb,
+      &-track {
+        margin-top: .1rem;
+        visibility: hidden;
+      }
+    }
+  }
+  // User info container - Note and Connections (Platform Identities)
+  .userInfoSection-2acyCx {
+    margin: 0 calc(2rem - var(--scrollbar-width)) 0 2rem;
+    padding: 3rem 0 0;
+    border: none;
+  }
+  // Note header
+  .userInfoSectionHeader-CBvMDh {
+    @include component('header', 'h3');
+    position: relative;
+    margin: 0 0 2rem;
+    padding: 0 0 0 3.5rem;
+    text-transform: capitalize;
+    &::before {
+      @include mask(icon('edit'), color('white'));
+      @include size(2.8rem);
+      content: '';
+      position: absolute;
+      top: -.2rem;
+      left: 0;
+    }
+  }
+  // Note inner container
+  .note-QfFU8y {
+    margin: 0;
+    textarea {
+      min-height: 7rem;
+      max-height: 10rem;
+      padding: 1rem;
+      font-size: 1.4rem;
+      line-height: 1.4;
+      color: var('input-text-color');
+      background: color('tint-1') !important;
+      border: 1px solid color('white', .05);
+      &::placeholder {
+        color: var('input-text-placeholder-color');
+      }
+    }
+  }
+  .connectedAccounts-repVzS {
+    justify-content: start;
+    margin: 0 -1rem;
+    &::before {
+      @include component('header', 'h3');
+      content: 'Platform Identities';
+      width: 100%;
+      margin: 1rem 0 1rem 1rem;
+      padding: 0 0 0 3.5rem;
+      text-transform: capitalize;
+      background: icon('share-secondary') no-repeat center left / 2rem;
+    }
+  }
+  .connectedAccount-36nQx7 {
+    @include component;
+    @include size(calc((80rem - .2rem) / 3 - 2.67rem), 5rem);
+    position: relative;
+    margin: 1rem;
+    padding: 0;
+    box-shadow: none !important;
+    // Open in new window button
+    .anchor-3Z-8Bb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 5rem;
+    }
+  }
+  .connectedAccountName-f8AEe2 {
+    @include component('header', 'h5');
+    margin: 0 0 0 1rem;
+  }
+  .connectedAccountIcon-3P3V6F {
+    $connection-types: battle-net, facebook, league-of-legends, reddit, skype, spotify, steam, twitch, twitter, xbox, youtube;
+    @include remove-img;
+    @include size(5rem);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70%;
+    border-radius: var('component-border-radius') 0 0 var('component-border-radius');
+    @each $name in $connection-types {
+      // This slices the $connection-types value to be only the first word before the first -
+      $name-first-word: $name;
+      @if str-index($name, '-') {
+        $name-first-word: #{str-slice($name, 1, str-index($name, '-') - str-length($name) - 2)};
+      }
+      &[alt*='#{$name-first-word}' i] {
+        background-color: color(#{$name});
+        background-image: logo(#{$name});
+      }
+    }
+  }
+  .connectedAccountNameInner-1phBvE {
+    margin: 0 1rem 0 0;
+  }
+  .connectedAccountVerifiedIcon-3aZz_K {
+    @include size(2rem);
+    z-index: 1;
+    margin: 0 0 0 .5rem;
+    background: badge('verified') no-repeat center / 2rem;
+    .flowerStar-1GeTsn,
+    .childContainer-1wxZNh {
+      display: none;
+    }
+  }
+  .connectedAccountOpenIcon-2cNbq5 {
+    display: none;
+  }
+}

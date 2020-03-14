@@ -1,0 +1,153 @@
+// main: _module.scss
+
+// User profile container
+.root-SR8cQa {
+  .body-3ND3kc {
+    .listScroller-2_vlfo {
+      padding: 7rem 0 2rem 1rem !important;
+    }
+    &.mut-friends {
+      .scroller-2FKFPG {
+        position: relative;
+        &::before {
+          @include component('header', 'h3');
+          content: 'Mutual Friends';
+          position: absolute;
+          top: 2rem;
+          width: auto;
+          margin: 1rem 0 0 1rem;
+          padding: 0 0 0 3.5rem;
+          text-transform: capitalize;
+          background: icon('users') no-repeat center left / 2rem;
+        }
+      }
+    }
+  }
+  .scroller-2FKFPG {
+    &.listScroller-2_vlfo {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      padding: 2rem 0 2rem 1rem;
+    }
+  }
+  .listRow-hutiT_ {
+    @include component('header', 'h8');
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: 370px;
+    height: calc(370px * var(--aspect-ratio-16-9));
+    margin: 1rem;
+    padding: 0;
+    overflow: hidden;
+    background: none !important;
+    border-radius: var('component-border-radius');
+    .wrapper-2F3Zv8 {
+      @include size(5rem);
+      margin: 0 0 1rem;
+    }
+    .image-33JSyf {
+      @include size(5rem);
+      &::before,
+      &::after {
+        @include size(37rem, calc(370px * var(--aspect-ratio-16-9)));
+        content: '';
+        position: absolute;
+        margin: calc((37rem * var(--aspect-ratio-16-9) - 10rem) / -2) 0 0 calc((37rem - 5rem) / -2);
+        border-radius: var('component-border-radius');
+      }
+      &::before {
+        z-index: -1;
+        background: color('black', .6);
+      }
+      &::after {
+        z-index: -2;
+        background-image: url('https://static-cdn.jtvnw.net/jtv_user_pictures/3a3a6569-292f-489e-9046-3245a28be5c4-profile_banner-480.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+    }
+    .status-oxiHuE {
+      position: absolute;
+      right: .1rem;
+      bottom: .1rem;
+    }
+    &:nth-of-type(2) {
+      .image-33JSyf {
+        &::after {
+          background-image: url('https://i.imgur.com/WVcAdaK.jpg');
+        }
+      }
+    }
+    &:nth-of-type(3) {
+      .image-33JSyf {
+        &::after {
+          @include component('placeholder', 'user-profile-banner');
+        }
+      }
+    }
+    &:nth-of-type(4) {
+      .image-33JSyf {
+        &::after {
+          background-image: url('https://blokt.com/wp-content/uploads/2019/01/digital-blockchain-interface-with-cyber-protection-button-concept-at-abstract-technology-background.-3D-Rendering-Illustration.jpg');
+        }
+      }
+    }
+    &:nth-of-type(5) {
+      .image-33JSyf {
+        &::after {
+          background-image: url('https://i.imgur.com/VZtGW9A.jpg');
+        }
+      }
+    }
+    &:nth-of-type(6) {
+      .image-33JSyf {
+        &::after {
+          background-image: url('https://i.imgur.com/dtleBTb.jpg');
+        }
+      }
+    }
+    &:nth-of-type(7) {
+      .image-33JSyf {
+        &::after {
+          background-image: url('https://i.imgur.com/AaTCy2G.jpg');
+        }
+      }
+    }
+  }
+  // User name, discrim container,
+  .listName-3w10cx {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 4rem;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  // Discriminator
+  .listDiscriminator-253zfw {
+    display: block;
+    margin-top: .3rem;
+    color: color('tint-8');
+    text-align: center;
+  }
+  // Sleeping Zelda
+  .emptyIconFriends-BrjhY9 {
+    background: url('https://i.imgur.com/g1jBInb.png') no-repeat center / contain;
+  }
+  .emptyText-6tYmO5 {
+    @include component('header', 'h5');
+    margin: 1.5rem 0 0;
+    text-transform: lowercase;
+    &:first-letter {
+      text-transform: capitalize;
+    }
+    &::after {
+      content: '.';
+    }
+  }
+}

@@ -1,0 +1,211 @@
+// main: _module.scss
+
+//** Login screen
+
+// Login page container
+.splashBackground-1FRCko.wrapper-3Q5DdO {
+  &::before {
+    display: none;
+  }
+  // Getting rid of qr login section
+  .verticalSeparator-3huAjp,
+  .qrLogin-1AOZMt {
+    display: none;
+  }
+  // Background container
+  .rightSplit-2US0xy {
+    background: linear-gradient(to top, color('primary-4') 0, color('primary-1'));
+    // Actual background img
+    &::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 30px;
+      display: block;
+      width: 200%;
+      height: 200%;
+      background: url('https://media.discordapp.net/attachments/291801740024479744/473245962773463050/games-cover-art-bg.png') !important;
+      opacity: 0.15;
+    }
+    .image-2jyRAK {
+      @include remove-img;
+      opacity: 0 !important;
+    }
+  }
+  // Activated when user successfully logs in
+  &.loggingIn-3Hi-BU {
+    .canvas-3XuBXe {
+      @include size(100%!important);
+      left: 0 !important;
+    }
+  }
+  // Discord blobby thing
+  .canvas-3XuBXe {
+    @include size(75%!important);
+    position: fixed;
+    top: 0 !important;
+    left: 30% !important;
+    display: none;
+    margin: 0 auto;
+    filter: brightness(1.8) saturate(0);
+    opacity: 1;
+    transform: scale(-1, 1) !important;
+    mix-blend-mode: color-dodge;
+  }
+  // Login box container
+  .leftSplit-1qOwnR {
+    width: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    .wrapper-6URcxg {
+      right: 0 !important;
+      justify-content: center !important;
+      border-top: 1px solid var(--border-color);
+    }
+    // Login box outter container
+    .authBox-hW6HRx {
+      width: 375px;
+      background: #fff;
+      border-radius: 2px;
+      box-shadow: 0px 0px 100px color('primary-13', .25), 0px 0px 10px color('primary-13', .5) !important;
+      opacity: 1;
+      animation: slideInFromTop 0.6s forwards;
+      // Key image when it requires reCAPTCHA after multiple logins in succession
+      // https://i.imgur.com/4B4HClU.jpg
+      &> img {
+        display: none;
+      }
+      // Replace the welcome header text with "TWITCHCORD"
+      .title-jXR8lp {
+        margin: 0;
+        font-size: 0;
+        font-weight: 900;
+        line-height: 10px;
+        text-transform: uppercase;
+        visibility: hidden;
+        &::before {
+          content: 'Twitch';
+          font-size: 30px;
+          color: color('primary-7');
+          letter-spacing: -1px;
+          visibility: visible;
+        }
+        &::after {
+          content: 'cord';
+          font-size: 30px;
+          font-weight: 400;
+          color: color('tint-6');
+          letter-spacing: -1px;
+          visibility: visible;
+        }
+      }
+      // "We're so excited to see you again!"
+      .subTitle-3TUjmF {
+        font-size: 12px;
+        color: color('tint-4');
+        &::after {
+          content: '';
+          display: block;
+          width: 100px;
+          height: 100px;
+          margin: 20px auto;
+          background: color('primary-7') url('https://i.imgur.com/ZbNKjcQ.png');
+          filter: brightness(1.7) saturate(0.3);
+          background-repeat: no-repeat;
+          background-position: center bottom -28px;
+          background-size: 130px;
+          border-radius: 50%;
+          opacity: 0.2;
+          mix-blend-mode: hard-light;
+        }
+        +.flexCenter-3_1bcw {
+          > div > div {
+            @include size(302px!important, 86px!important);
+            > div {
+              @include size(302px!important, 80px!important);
+              background: color('primary-10');
+              iframe {
+                mix-blend-mode: hard-light;
+              }
+            }
+          }
+        }
+      }
+      // Login box inner container
+      .block-egJnc0 {
+        // When you enter a bad email/password
+        .errorMessage-3Guw2R {
+          font-style: normal;
+          color: color('danger');
+        }
+        // 'Email' and 'Password' field labels
+        .h5-18_1nd {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 12px !important;
+          font-weight: 700;
+          color: color('tint-4') !important;
+          text-transform: capitalize;
+          letter-spacing: 0;
+        }
+        .input-cIJ7To {
+          height: 30px;
+          padding: 0 7px;
+          font-size: 12px;
+          font-weight: 400;
+          color:color('tint-6') !important;
+          background: #fff !important;
+          border: 1px solid color('tint-11') !important;
+          border-radius: 0;
+          box-shadow: none;
+          &:hover {
+            border: 1px solid color('tint-11');
+          }
+          &:focus {
+            @include component('input', 'text', 'focus-within');
+          }
+        }
+        .button-38aScr.lookLink-9FtZy- {
+          padding: 0;
+          background: none !important;
+          .contents-18-Yxp {
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 16px;
+            color: color('primary-7');
+            background: none !important;
+          }
+          &:hover {
+            .contents-18-Yxp {
+              text-decoration: underline;
+            }
+          }
+          &.smallRegisterLink-2LCrMe {
+            min-width: 0;
+            height: 17px;
+            min-height: 0;
+            margin-left: 4px !important;
+            padding: 0;
+            line-height: 17px;
+            background: none !important;
+            .contents-18-Yxp {
+              font-size: 12px;
+            }
+          }
+        }
+        .button-38aScr.lookFilled-1Gx00P {
+          width: 100%;
+          height: 40px;
+          margin: 20px 0 0 !important;
+        }
+        .needAccount-23l_Wh, .subText-1XkjIB {
+          font-size: 12px;
+          color: color('tint-4');
+        }
+      }
+      a {
+        color: color('primary-7');
+      }
+    }
+  }
+}

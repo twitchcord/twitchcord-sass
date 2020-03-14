@@ -1,0 +1,82 @@
+// main: _module.scss
+
+//** Store view > NSFW Game page
+
+// Fix header bar for NSFW game page
+.applicationStore-1pNvnv {
+  > .headerBar-UHpsPw {
+    pointer-events: all;
+    #{$button}#{$buttonlookblank} {
+      &.back-2Z4ATs {
+        min-width: 0;
+        height: auto;
+        margin-left: 12px !important;
+        padding: 0;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        .left-3d-3Co {
+          @include mask(icon('caret-left'), color('tint-7'));
+          @include size(20px);
+          margin: 2px 5px 0 0;
+          transform: none;
+          &:hover {
+            background-color: color('tint-10');
+          }
+          polygon {
+            display: none;
+          }
+        }
+      }
+    }
+    .title-CZQTru {
+      display: flex;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: color('contrasted');
+    }
+  }
+}
+
+.matureListing-3tyHbV {
+  > #{$flex} {
+    overflow-y: auto;
+    #{$nsfwimage} {
+      width: 391px;
+      height: 306px;
+      margin: 0 0 0 110px;
+      background: url('https://i.imgur.com/FHboNgU.png') no-repeat center !important;
+    }
+    #{$nsfwtitle} {
+      margin: 30px 0 10px;
+      font-size: 22px;
+      color: color('contrasted') !important;
+    }
+    #{$nsfwdescription} {
+      font-size: 12px !important;
+      line-height: 20px !important;
+      color: color('tint-8') !important;
+    }
+    // Continue button
+    #{$button}#{$buttonlookfilled} {
+      margin-left: 10px !important;
+    }
+    #{$nsfwseparator} {
+      position: relative;
+      width: 50%;
+      height: 1px;
+      background: none;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, color('primary-10', 0) 0%, color('primary-10') 40%, color('primary-10') 60%, color('primary-10', 0) 100%);
+        transform: translateX(-50%);
+        animation: chatLoadingMessages 1s infinite;
+      }
+    }
+  }
+}

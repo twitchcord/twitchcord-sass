@@ -2,101 +2,235 @@
 
 //** Game modal
 
-.gamePreview-9weYR2 {
-  background: RGB(var(--tc-color-3))!important;
-  box-shadow: none!important;
-  border-radius: 0;
-  .sideBar-2_lxpG {
-    border: 1px solid RGB(var(--tc-color-4));
-    margin: 0;
-    padding: 30px;
-    cursor: default;
-    #{$button} {
-      margin: 0 auto!important;
-      display: flex;
-    }
-    .gameIcon-gg34Dz {
-      height: 125px;
-      width: 90px;
-      border-radius: var(--boxart-roundness);
-      border: 1px solid #fff;
-      box-shadow: 0px 0px 100px RGBA(var(--purple-color), 0.2), 0px 0px 10px RGBA(var(--purple-color), 0.5)!important;
-      background: var(--game-boxart-placeholder) / 140%, radial-gradient(circle at center, RGB(var(--tc-color-8)), RGB(var(--tc-color-7)))!important;
-      background-color: RGB(var(--tc-color-7))!important;
-      // Fix for the question block icon Twitchcord injects
-      svg {
-        display: none;
-      }
-    }
-    .gameName-1W6Ym- {
-      color: RGB(var(--contrasted-color));
-    }
-    .publisher-2ZxPEd {
-      border-bottom: 1px solid RGBA(var(--tc-color-4), 0.5);
-      font-size: 12px;
-      margin-top: 5px;
-      color: #898395;
+:root {
+  --modal-game-header-width: auto;
+  --modal-game-header-height: var(--modal-game-carousel-height);
+
+  --modal-game-carousel-width: 40rem;
+  --modal-game-carousel-height: calc(var(--modal-game-carousel-width) * var(--aspect-ratio-16-9));
+
+  --modal-game-footer-width: var(--modal-game-header-width);
+  --modal-game-footer-height: 7.3rem;
+  --modal-game-footer-padding: 2rem;
+
+  --modal-game-icon-width: 4rem;
+  --modal-game-icon-height: var(--modal-game-icon-width);
+
+  --modal-game-boxart-width: calc(var(--modal-game-boxart-height) / (var(--aspect-ratio-game-boxart)));
+  --modal-game-boxart-height: calc(var(--modal-game-header-height) + var(--modal-game-footer-height));
+}
+
+// Game modal outer container
+.container-jGk-CT {
+  position: relative;
+  // In order to keep it centered horizontally with the
+  // boxart present, we need to move the outer container to
+  // the right by half the outer width of the boxart
+  left: calc(var(--modal-game-boxart-width) / 2 + var(--modal-game-footer-padding) / 2);
+  overflow: visible;
+  border-radius: var(--modal-border-radius);
+  box-shadow: var(--modal-box-shadow);
+  // Header outer container
+  .header-fqGmwY {
+    @include size(var(--modal-game-header-width), var(--modal-game-header-height));
+  }
+  // Carousel outer container
+  .carousel-1j_QfQ {
+    @include size(var(--modal-game-carousel-width), var(--modal-game-carousel-height));
+    border-radius: var(--modal-border-radius) 0 0 0;
+    .outer-s4sY2_ {
+      padding-top: calc(var(--aspect-ratio-16-9) * 100%) !important;
     }
   }
+  // Slide outer container
+  .item-5R5nmE {
+    // Get rid of the gross transform slide transition
+    transform: none !important;
+  }
+  // Slide inner container
   .news-2KwXHF {
-    background: RGB(var(--tc-color-1));
+    @include size(var(--modal-game-carousel-width), var(--modal-game-carousel-height));
     padding: 0;
-  }
-  .background-3zYSQO {
-    height: 100%;
-    -webkit-mask: none!important;
-    mask: none!important;
-  }
-  .body-3NySJS {
-    background: RGBA(var(--tc-color-1), 0.95);
-    width: 100%;
-    .title-1oZsbs {
-      @include ellipsis(480px, block);
-      @include text(#fff, 18px, 400, 30px);
-      box-sizing: border-box;
-      margin-bottom: 4px;
-      padding: 10px 20px 0;
-    }
-    .description-13oVu5 {
-      color: RGB(var(--tc-tint-10));
-      padding: 0 20px;
-      margin-bottom: 15px;
-    }
-    .subtitle-rPfx7J {
-      color: RGB(var(--tc-color-10));
-      text-transform: capitalize;
-      padding: 0 20px 15px;
-    }
-  }
-  .body-1SVoBw {
-    background: RGB(var(--tc-color-2));
-    border: 1px solid RGB(var(--tc-color-3));
-    border-left: none;
-    .info-P9dFwH {
-      background: RGB(var(--tc-color-2));
-      border-radius: 0;
-      padding: 0;
-      transform: translateZ(0);
-    }
-    .overlay-n52Tzn {
+    background-color: var(--modal-background) !important;
+    // Slide background image
+    .background-VmeaHL {
+      background-position: center;
+      animation: blurFadeIn 0.5s forwards;
       -webkit-mask: none;
       mask: none;
+      // Adding our own background overlay
+      &::after {
+        @include size(100%);
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+        background: color('black', .7);
+      }
     }
-    .splashBackup-1SNkdx {
-      background: var(--games-background-placeholder);
-      background-size: cover;
-      mix-blend-mode: luminosity;
-      background-repeat: no-repeat;
+    &[style*='background-image: url("/assets/6a0d045ec452de05f71ee63fece2327f.svg");'],
+    .splashBackup-2UWHIS {
+      @include component('placeholder', 'game-splash');
     }
-    .summary-2pfBY6 {
-      background: RGBA(var(--tc-color-1), 0.85);
-      padding: 20px;
-      line-height: 20px;
+  }
+  // Slide news container
+  .body-3NySJS {
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(0, color('black', .8) 0, color('black', .4) 40%, transparent);
+  }
+  // Slide news header
+  .title-1oZsbs {
+    @include component('header', 'h4');
+    @include ellipsis;
+    margin: 0 0 0.3rem 0;
+    color: color('white') !important;
+  }
+  // Slide news description
+  .description-13oVu5 {
+    @include component('header', 'h7');
+  }
+  // Slide news date
+  .subtitle-rPfx7J {
+    @include component('header', 'h9');
+  }
+  // Pagination outer container
+  .carouselPagination-30iWH5 {
+    @include size(100%, 8rem);
+    position: absolute;
+    top: 0;
+    align-items: flex-start;
+    background: linear-gradient(180deg, color('black', .8) 0, color('black', .4) 40%, transparent);
+  }
+  // Forward and back buttons
+  .arrowHitbox-2_hxtQ {
+    display: none;
+  }
+  // Pagination circles outer container
+  .dots-3VxbPX {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    margin: 1rem auto;
+  }
+  // Pagination circle
+  .dot-2Q_mMZ {
+    @include size(1.2rem);
+    margin-right: 2.5rem;
+    background: color('white', .5);
+    border-radius: 50%;
+    opacity: 1;
+    transition: var(--disable-transitions, 'transform 0.3s, background 0.3s');
+    &:hover {
+      background: color('white');
+    }
+    // Selected item circle
+    &.dotSelected-3RYKgX {
       cursor: default;
-      // For empty game summaries
-      &:empty {
+      background-color: var(--button-primary-hover-background-color);
+      transform: scale(1.3);
+      &::after {
+        @include size(200%);
+        content: '';
+        position: absolute;
+        position: absolute;
+        top: -.6rem;
+        left: -.6rem;
+        display: block;
+        border: 0.1rem solid var(--button-primary-hover-background-color);
+        border-radius: 50%;
+        animation: var(--disable-animations, bouncePie 0.3s forwards);
+      }
+    }
+  }
+  // Recently played outer container
+  .emptyPlayers-dx3qig,
+  .players-1zg2l8 {
+    width: 24rem;
+    background: var(--modal-background) !important;
+    border-radius: 0 var(--modal-border-radius) 0 0;
+  }
+  .players-1zg2l8 {
+    padding: 1rem;
+  }
+  // 'None of your friends have playing this game recently'
+  .emptyPlayers-dx3qig {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    img[src='/assets/5917566c2502226aa777df2eadbb19e6.svg'] {
+      
+    }
+    .size14-e6ZScH {
+      @include component('header', 'h7');
+    }
+  }
+  // Footer outer container
+  .footer-3J5oP4 {
+    @include size(var(--modal-game-footer-width), var(--modal-game-footer-height));
+    padding: var(--modal-game-footer-padding);
+    background: var(--modal-footer-background);
+    border-color: var(--modal-footer-border-color);
+    border-style: var(--modal-footer-border-style);
+    border-width: var(--modal-footer-border-width);
+    border-radius: var(--modal-footer-border-radius);
+  }
+  // Server verified icon
+  .verifiedIcon-3oz8wo {
+    @include size(2rem);
+    .flowerStar-1GeTsn {
+      @include size(2rem);
+      background: badge('verified') no-repeat center / 2rem;
+      path {
         display: none;
       }
+    }
+    .childContainer-1wxZNh {
+      display: none;
+    }
+  }
+  .gameIcon-gg34Dz {
+    @include boxart('before');
+    border-radius: var(--game-icon-border-radius);
+    &::before {
+      // Subtracting .1rem here due to cover scaling issues
+      @include size(var(--modal-game-boxart-width), calc(var(--modal-game-boxart-height) - .1rem));
+      content: '';
+      position: absolute;
+      // Adding .1rem here due to cover scaling issues
+      bottom: calc((var(--modal-game-icon-height) - var(--modal-game-footer-height)) / 2 + .1rem);
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+      cursor: default;
+      background: var(--game-boxart-placeholder) no-repeat center /140%, radial-gradient(circle at center, color('primary-8'), color('primary-7')) !important;
+      background-repeat: no-repeat !important;
+      background-size: 100% 100% !important;
+      border-radius: var(--boxart-border-radius);
+      box-shadow: var(--elevation-5);
+      animation: gameModalBoxartAppear 0.5s forwards;
+    }
+  }
+  // Game info outer container
+  .gameInfo-29FZAT {
+    margin: 0 0 0 1rem;
+    // Game name
+    .gameTitle-1cA_Wo {
+      @include component('header', 'h6');
+    }
+    // # of people online in server
+    .colorStandard-2KCXvj {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: color('tint-7');
+    }
+    // Online dot
+    .dotOnline-1MSGzx {
+      margin-right: 0.5rem;
+      border-radius: var(--status-border-radius);
     }
   }
 }

@@ -1,93 +1,124 @@
-// main: _module.scss
+///  main: _module.scss
+///  ==========================================================================
+///  Image modals--- covers images and GIFV video "images"
+///  ==========================================================================
 
-//** Image modal for images and GIF 'videos'
+// NOTE:
+// ****************************************************************************
+// The following structure seen modal > inner > div > imageWrapper is necessary
+// in order to specifically target image/video modals. Without such, one such
+// conflict is the Changelog modal.
+// ****************************************************************************
 
-.modal-1UGdnR > .inner-1JeGVc > .modal-3HD5ck .imageWrapper-2p5ogY,
-.modal-1UGdnR > .inner-1JeGVc > .modal-3HD5ck .imageWrapper-2p5ogY img {
-  @include size(100%!important);
+// Modal outer container
+#{$modal} {
+  // Modal inner container
+  > #{$modalinner} {
+    > div {
+      // Image wrapper
+      > #{$imagewrapper} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(100vw - 160px) !important;
+        height: calc(100vh - 160px) !important;
+        padding: 110px 40px 40px;
+        overflow: hidden;
+        background: var(--modal-background) !important;
+        border-color: var(--modal-border-color) !important;
+        border-style: var(--modal-border-style) !important;
+        border-width: var(--modal-border-width) !important;
+        border-radius: var(--modal-border-radius) !important;
+        border-radius: 0;
+        box-shadow: var(--modal-box-shadow) !important;
+        // Hide the "Open original" link to insert one with JS
+        ~ .downloadLink-1ywL9o {
+          display: none;
+        }
+        // Direct img or video element
+        > img,
+        > video {
+          @include size(auto!important);
+          position: relative;
+          max-width: 100% !important;
+          max-height: 100% !important;
+          border-radius: var(--image-border-radius);
+        }
+        // Placeholder image
+        #{$imageplaceholder} {
+          z-index: 9;
+          max-width: 100% !important;
+          height: auto !important;
+          max-height: 100% !important;
+          margin: auto;
+          padding-top: 60px;
+          border-radius: var(--image-border-radius);
+          opacity: 0.2;
+        }
+      }
+    }
+  }
 }
 
-
-.modal-1UGdnR > .inner-1JeGVc > div > .imageWrapper-2p5ogY {
-    background: RGB(var(--tc-color-1));
-    border: none;
-    width: calc(100vw - 160px)!important;
-    height: calc(100vh - 160px)!important;
-    padding: 110px 40px 40px;
-    border-radius: 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-// Hide the "Open original" link to insert one with JS
-.modal-1UGdnR > .inner-1JeGVc > div > .imageWrapper-2p5ogY ~ .downloadLink-1ywL9o {
-  display: none;
-}
 
 #{classes('twitchcord.imageTopbar')} {
   $grandparent: &;
-  border: 1px solid var(--modal-border-color);
   &-container {
-    width: calc(100% - 2px);
+    @include size(calc(100% - var(--modal-border-width) * 2), 7rem);
     position: absolute;
-    top: 1px;
-    height: 70px;
+    top: var(--modal-border-width);
+    left: var(--modal-border-width);
     display: flex;
-    background: RGB(var(--tc-tint-1));
-    border-bottom: 1px solid var(--empty-hover-color);
     align-items: center;
-    left: 1px;
-    padding: 0 20px;
-    box-sizing: border-box;
+    padding: var(--modal-padding);
+    background: var(--modal-footer-background);
+    border-bottom: 1px solid color('white', .05);
+    border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
   }
   &-avatar {
     flex: 0 0 auto;
     #{$avatarwrapper} {
       @include size(48px);
-      opacity: 1!important;
       margin: 0;
       cursor: default;
+      opacity: 1 !important;
       #{$avatarimage} {
         @include size(48px);
       }
     }
   }
   &-text {
-    margin-left: 14px;
     flex: 1 1 auto;
+    margin-left: 14px;
     #{$grandparent}-imgname {
       @include ellipsis;
-      color: RGB(var(--tc-tint-10));
-      font-weight: 400;
-      font-size: 14px;
-      user-select: initial;
       float: left;
-      line-height: 20px;
       max-width: 300px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: color('tint-10');
+      user-select: initial;
     }
     #{$grandparent}-userdetails {
       display: flex;
       align-items: center;
       #{$messageusername} {
-        color: #fff;
-        font-weight: 700;
-        font-size: 14px;
         order: 0;
         overflow: hidden;
-        filter: var(--soften-role-colors);
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
         cursor: text;
         &:hover {
           text-decoration: none;
         }
       }
       time {
-        color: RGB(var(--tc-tint-8));
+        margin-left: 7px;
         font-size: 12px;
         line-height: 20px;
-        margin-left: 7px;
+        color: color('tint-8');
       }
     }
   }
@@ -96,36 +127,36 @@
     flex: 0 0 auto;
     align-items: center;
     #copyImage, #copyImageAddress, #downloadA, #openOriginal, #{$grandparent}-close {
-      background-color: RGB(var(--tc-tint-10))!important;
-      opacity: 1;
       display: flex;
       align-items: center;
       margin-left: 10px;
       text-decoration: none;
+      background-color: color('tint-10') !important;
+      opacity: 1;
       &:hover {
-        background-color: #fff!important;
+        background-color: #fff !important;
       }
     }
     #copyImage {
       @include size(24px);
-      @include mask(var(--picture-icon));
+      @include mask(icon('camera'));
     }
     #copyImageAddress {
       @include size(22px);
-      @include mask(var(--link-icon));
+      @include mask(icon('link'));
     }
     #openOriginal {
       @include size(20px);
-      @include mask(var(--open-new-window-icon));
+      @include mask(icon('open-new-window'));
       text-indent: -9999999px;
     }
     #downloadA {
       @include size(20px);
-      @include mask(var(--download-icon));
+      @include mask(icon('download'));
     }
     #{$grandparent}-close {
       @include size(26px);
-      @include mask(var(--close-icon));
+      @include mask(icon('close'));
       margin: 0;
     }
     #copyImage, #copyImageAddress, #openOriginal {
@@ -134,27 +165,7 @@
   }
   &-separator {
     @include size(1px, 40px);
-    background: RGB(var(--tc-color-4));
     margin: 0 20px;
+    background: color('white', .05);
   }
-}
-
-.modal-1UGdnR > .inner-1JeGVc > div > .imageWrapper-2p5ogY > img,
-.modal-1UGdnR > .inner-1JeGVc > div > .imageWrapper-2p5ogY > video {
-  max-width: 100% !important;
-  max-height: 100%!important;
-  position: relative;
-  width: auto!important;
-  height: auto!important;
-}
-
-
-.modal-1UGdnR > .inner-1JeGVc > div > .imageWrapper-2p5ogY .imagePlaceholder-1AxUV5 {
-  margin: auto;
-  padding-top: 60px;
-  z-index: 9;
-  opacity: 0.2;
-  height: auto!important;
-  max-width: 100% !important;
-  max-height: 100% !important;
 }

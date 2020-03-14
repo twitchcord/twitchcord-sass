@@ -1,0 +1,102 @@
+// *** Go to https://discordapp.com/invite/minecraft in browser to have this pop up
+
+// Server invite splash outer container
+.inner-1ilYF7 {
+  // Server invite splash inner container
+  .container-2Yth53 {
+    height: 390px;
+  }
+  .contentWrapper-3WC1ID {
+    z-index: 1;
+    background: var('frosted-glass-background');
+    border: 1px solid var('frosted-glass-background');
+    border-radius: var('component-border-radius');
+    backdrop-filter: blur(40px);
+  }
+  .scroller-2FKFPG {
+    overflow: hidden;
+  }
+  .inviteContent-3R63XV {
+    height: 350px;
+    margin: 30px;
+  }
+  // Server splash image
+  .inviteSplash-40aHus {
+    @include size(100vw, 100vh);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    opacity: 1;
+    &::after {
+      @include size(100%);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: color('black', .5);
+    }
+  }
+  .pillMessage-1btqlx {
+    font-size: 12px !important;
+    color: color('white', .8);
+  }
+  .pillIcon-BaqtHs {
+    margin-right: 7px;
+    &.pillIconTotal-1BqTcA {
+      background: color('status-offline');
+    }
+    &.pillIconOnline-2JGlqR {
+      background: color('status-online');
+    }
+  }
+  .subTitle-3TUjmF {
+    font-size: 14px;
+    color: color('white', .5);
+  }
+  .title-2_aCTw {
+    font-weight: 700;
+    color: color('white');
+  }
+  // Verified server badge
+  .verified-1eC5dy,
+  .partnered-3nJayh {
+    @include size(20px!important);
+    background: url('https://i.imgur.com/svNcOEK.png') no-repeat center / contain;
+    .flowerStar-1GeTsn,
+    .childContainer-1wxZNh {
+      display: none;
+    }
+  }
+  // Partnered server badge
+  .partnered-3nJayh {
+
+  }
+  .pill-1dHPfk {
+    margin-top: 20px;
+    margin-right: 8px;
+    background: none;
+    // Half of height
+    border-radius: 15px / 50%;
+    backdrop-filter: blur(1px);
+  }
+  .marginBottom20-32qID7 {
+    + .marginBottom20-32qID7 {
+      display: flex;
+      flex-flow: row-reverse nowrap;
+      > .button-38aScr {
+        width: 50%;
+        + div {
+          margin: 0 10px 0 0;
+          > .button-38aScr {
+            width: 100%;
+            background-color: var('button-blank-hover-background-color') !important;
+            border-color: var('button-blank-hover-border-color') !important;
+            border-style: var('button-blank-hover-border-style') !important;
+            border-width: var('button-blank-hover-border-width') !important;
+          }
+        }
+      }
+    }
+  }
+}

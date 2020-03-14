@@ -1,5 +1,6 @@
-// main: ../_module.scss
-
-@import 'core';
-@import 'mutual-servers-friends';
-@import 'user-info';
+@import
+  'core',
+  'mutual-friends',
+  'mutual-servers',
+  //'new-concept',
+  'user-info';

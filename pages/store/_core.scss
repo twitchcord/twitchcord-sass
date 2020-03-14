@@ -1,0 +1,56 @@
+//** Nitro view
+
+:root {
+  --nitro-background: #{color('primary-1')};
+  --nitro-padding: 0 4rem;
+}
+
+// When you first click on the Nitro, there is no Nitro div, just a blank div.
+// This changes the background color to match the normal Nitro view.
+// #{$channels} {
+//   + div[style="position: absolute; width: 100%; height: 100%; background-color: transparent;"] {
+//     background: var(--store-background)!important;
+//   }
+// }
+
+// Nitro container
+.applicationStore-1pNvnv {
+  background: var(--nitro-background) !important;
+  // Scrollerwrap
+  #{$scrollerwrap} {
+    padding: 0 2px 0 0;
+  }
+  // Scroller
+  #{$scroller} {
+    overflow-x: hidden;
+    background: none;
+    // For the loading spinner when it first loads the Store
+    // > #{$flex} {
+    //   height: 100%;
+    // }
+  }
+  // Carousel inner container
+  .carouselItem-1qFCGP {
+    position: absolute;
+    top: 0;
+    padding: 0;
+  }
+  .itemBackground-2vEldQ {
+    &::before {
+      background: radial-gradient(ellipse at top, color('primary-1', 0), color('primary-1')),
+                  linear-gradient(90deg, color('primary-1') 0, color('primary-1', 0) 40%, color('primary-1' 0) 60%, color('primary-1')),
+                  linear-gradient(0deg, color('primary-1') 0, color('primary-1', 0) 25%);
+    }
+  }
+  .homeBody-3SD9SR {
+    max-width: 100%;
+    padding: var(--nitro-padding);
+  }
+  // 'Play Trailer' text on slideshow video
+  .text-pPnELr {
+    display: none;
+  }
+  .footer-3oZnEF {
+    display: none;
+  }
+}

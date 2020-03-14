@@ -1,0 +1,31 @@
+.container-1D34oG {
+  .wrapper-3D2qGf {
+    background: var('embed-background');
+    border-color: var('embed-border-color');
+    border-style: var('embed-border-style');
+    border-width: var('embed-border-width');
+    box-shadow: var('embed-box-shadow');
+    &:hover {
+      background: var('embed-background') !important;
+    }
+  }
+  .inset-3sAvek {
+    background: color('tint-2');
+  }
+  .spotifySection-2-AVOl {
+    grid-template-columns: 64px minmax(20px,auto) max-content;
+  }
+  .activitySection-cEg8ae {
+    align-items: center;
+  }
+  .largeImage-DLXk-f {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .header-211Syv {
+    .textContent-3N7xXx {
+      font-size: 13px;
+    }
+  }
+}

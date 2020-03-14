@@ -3,24 +3,588 @@
 ///  HTML5 embedded audio and video files
 ///  ==========================================================================
 
+:root {
+  --html5-video-min-width: 23rem;
+  --html5-video-min-height: calc(var(--html5-video-min-width) * var(--aspect-ratio-16-9));
+
+}
 // All videos
 .video-8eMOth {
-  border-radius: 0;
+  border-radius: var(--component-border-radius);
 }
 
-// Audio / video container
-.wrapper-2TxpI8 {
-  background: RGB(var(--tc-color-2))!important;
-  border-radius: 0;
-  min-height: 130px;
-  // Audio
-  .wrapperAudio-1jDe0Q {
 
+ // Audio / video container
+ .wrapper-2TxpI8 {
+  .durationTimeDisplay-jww5fr,
+  .durationTimeSeparator-2_xpJ7 {
+    font-family: var('font-base');
   }
-  // Video
-  &.wrapperPaused-19pWuK,
-  &.wrapperControlsHidden-35Gtol,
-  &.wrapperPlaying-1pXOW5  {
-
+  &:not(.wrapperAudio-1jDe0Q) {
+    @include size(100%!important);
+    box-sizing: content-box !important;
+    min-width: var(--html5-video-min-width) !important;
+    min-height: var(--html5-video-min-height) !important;
+    padding: 0 !important;
+    background: color('black') !important;
+    border-radius: var(--component-border-radius);
+    box-shadow: var(--component-box-shadow) !important;
+    &::after {
+      @include size(100%);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background: color('black', .5);
+      border-radius: var(--component-border-radius);
+      opacity: 0;
+      transition: opacity .1s ease-out;
+    }
+    .videoVolumeWrapper-3syuC- {
+      position: relative;
+      display: flex;
+      flex: 1 0 auto;
+      order: 3;
+      max-width: 10rem;
+      margin: 0 0 .5rem;
+      pointer-events: none;
+      visibility: visible !important;
+      opacity: 1;
+      transition: opacity .1s ease-out, max-width .1s ease-out;
+      transform: none;
+      &.hidden-3leZhk {
+        max-width: 0;
+        opacity: 0;
+      }
+      + div[role='button'] {
+        position: absolute;
+        right: 1rem;
+        order: 4;
+      }
+    }
+    .playCenter-Fe8u3X {
+      z-index: 2;
+      .wrapper-129saQ {
+        background: none !important;
+      }
+    }
+    .vertical-1gJnJQ {
+      width: 100%;
+      height: 4rem;
+      transform: none;
+      .mediaBarInteractionVolume-3QZqYd {
+        width: 100%;
+        height: 4rem;
+        margin: 0;
+        padding: 0 1rem;
+        pointer-events: all;
+        background: none;
+        border-radius: 0;
+      }
+      .mediaBarWrapperVolume-354-jo {
+        @include size(100%, .4rem);
+        box-shadow: none !important;
+        &,
+        &::after,
+        &::before {
+          background: color('white', .4);
+          border-radius: 0;
+        }
+      }
+      .mediaBarGrabber-1FqnbN {
+        @include size(.4rem, 1.2rem);
+        margin-top: -.6rem;
+        background: color('white');
+        border-radius: 0;
+        opacity: 1;
+        transition: none;
+        transform: scale(1);
+        &::before {
+          display: none;
+        }
+      }
+    }
+    .mediaBarGrabber-1FqnbN {
+      width: 1.4em;
+      height: 1.4em;
+      margin-top: -7px;
+      background: color('white') !important;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity .1s ease-out;
+      &::before {
+        content: '';
+        display: block;
+        width: .4em;
+        height: .4em;
+        margin: .5em;
+        background: color('primary-10');
+        border-radius: 50%;
+      }
+    }
+    .mediaBarInteraction-37i2O4,
+    .mediaBarInteractionDragging-2QurIZ {
+      margin: 0 .5rem;
+    }
+    .mediaBarInteractionDragging-2QurIZ {
+      .mediaBarGrabber-1FqnbN {
+        opacity: 1;
+      }
+    }
+    .mediaBarInteraction-37i2O4 {
+      &:hover {
+        .mediaBarGrabber-1FqnbN {
+          opacity: 1;
+        }
+      }
+    }
+    .mediaBarProgress-1xaPtl {
+      &,
+      &::after,
+      &::before {
+        background: color('primary-10');
+      }
+    }
+    .durationTimeWrapper-OugPFt {
+      display: flex;
+      align-items: center;
+      order: 4;
+      height: 4rem;
+      margin: 0 1rem .5rem;
+    }
+    .videoControls-2kcYic {
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      align-items: flex-end;
+      width: 100%;
+      height: 9.4rem;
+      padding: 0;
+      pointer-events: none;
+      background: linear-gradient(0deg, color('black', .6) 0, color('black', .3) 60%, transparent);
+      opacity: 0;
+      transition: opacity .15s ease-out;
+      transform: none !important;
+      will-change: opacity;
+      [role='button'] {
+        pointer-events: all;
+      }
+      > .flex-1O1GKY {
+        order: 2;
+      }
+      > div:last-of-type:is([role='button']) {
+        flex: 0 0 4.8rem;
+        order: 5;
+        height: 4rem;
+        .controlIcon-3cRbti {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 4.8rem;
+        }
+      }
+      // Timebar container
+      > .horizontal-3Sq5iO {
+        position: absolute;
+        top: 3.5rem;
+        width: 100%;
+        height: 2.4rem;
+        padding: 0 1.2rem;
+        pointer-events: all;
+      }
+    }
+    .mediaBarWrapper-3D7r67 {
+      height: .4rem;
+      &,
+      &::after,
+      &::before {
+        background: color('white', .4);
+        border-radius: 0;
+      }
+    }
+    .buffer-26XPkd {
+      &,
+      &::after,
+      &::before {
+        opacity: 0;
+      }
+    }
+    .mediaBarPreview-1jfyFs {
+      opacity: 0 !important;
+    }
+    // Video control svg
+    .controlIcon-3cRbti {
+      @include size(3rem, 4rem);
+      margin: 0;
+      margin-bottom: .5rem;
+      background-color: color('white');
+      opacity: 1;
+      transform: none !important;
+      -webkit-mask-size: 3rem !important;
+      mask-size: 3rem !important;
+      &:hover {
+        background-color: color('primary-10');
+      }
+      path,
+      polygon {
+        display: none;
+      }
+      // All video control buttons
+      // &[name="FullScreen"],
+      // &[name="Pause"],
+      // &[name="Play"],
+      // &[name="Replay"],
+      // &[name="Speaker"],
+      // &[name="SpeakerOff"]
+      &[name='Pause'],
+      &[name='Play'],
+      &[name='Replay'] {
+        order: 1;
+        width: 4.8rem;
+        margin-right: -.8rem;
+      }
+      &[name='FullScreen'] {
+        @include mask(icon('fullscreen'));
+      }
+      &[name='Pause'] {
+        @include mask(icon('pause'));
+      }
+      &[name='Play'] {
+        @include mask(icon('play'));
+      }
+      &[name='Replay'] {
+        @include mask(icon('replay'));
+      }
+      &[name='Speaker'] {
+        @include mask(icon('volume'));
+      }
+      &[name='SpeakerOff'] {
+        @include mask(icon('volume-mute'));
+      }
+    }
+    .playPausePop-RnpJoM {
+      display: none;
+    }
+    // Timebar tooltip
+    .bubble-3qRl2J {
+      top: -4rem;
+      display: inline-block;
+      height: 2.4rem;
+      margin: 0;
+      padding: 0 .6rem;
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 2.4rem;
+      color: color('white');
+      text-align: center;
+      background: color('black', .95);
+      border-radius: 0 0 .2rem .2rem;
+      box-shadow: 0 .2rem 2rem color('black', .5), 0 1.5rem 4.5rem color('black', .2);
+      transition: none;
+      // Tooltip arrow
+      &::before {
+        @include size(0);
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin: 0 0 0 -.7rem;
+        border-color: color('black', .95) transparent transparent;
+        border-style: solid;
+        border-width: .6rem .7rem 0;
+      }
+    }
+    .metadata-13NcHb {
+      top: 0;
+      z-index: 2;
+      padding: 1rem;
+      background: linear-gradient(180deg, color('black', .6) 0, color('black', .3) 60%, transparent);
+      opacity: 0;
+      transition: opacity .15s ease-out;
+      transform: none !important;
+      will-change: opacity;
+    }
+    .metadataContent-3c_ZXw {
+      margin-right: 1rem;
+    }
+    .metadataName-14STf- {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: color('white');
+    }
+    .metadataSize-2UOOLK {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: color('tint-9');
+      opacity: 1;
+    }
+    // Download container
+    .metadataDownload-1fk90V {
+      opacity: 1;
+    }
+    // Download svg
+    .metadataIcon-2FyCKU {
+      @include mask(icon('download'), color('white'), 2.2rem);
+      g {
+        display: none;
+      }
+      &:hover {
+        background-color: color('primary-10');
+      }
+    }
+    &.wrapperPaused-19pWuK {
+      .audioControls-2HsaU6,
+      .videoControls-2kcYic,
+      .metadata-13NcHb,
+      &::after {
+        opacity: 1;
+      }
+    }
+    &[data-fullscreen='true'] {
+      // Exit fullscreen svg
+      .controlIcon-3cRbti {
+        &[name='FullScreen'] {
+          @include mask(icon('fullscreen-deactivate'));
+        }
+      }
+    }
+    &:hover {
+      .audioControls-2HsaU6,
+      .videoControls-2kcYic,
+      .metadata-13NcHb {
+        opacity: 1;
+      }
+    }
+  }
+  &.wrapperAudio-1jDe0Q {
+    width: 35rem !important;
+    height: 14rem !important;
+    padding: 0;
+    background: var(--component-background);
+    border: none;
+    box-shadow: var(--elevation-1);
+    // File name and file size outer container
+    .audioMetadata-3zOuGv {
+      // Music record image
+      &::before {
+        content: '';
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 12rem;
+        height: 12rem;
+        margin: 1rem 1.5rem 1rem 1rem;
+        background: color('tint-3') icon('music-record') no-repeat center / 80%;
+        border-radius: 4px;
+      }
+    }
+    // File name and file size inner container
+    .metadataContent-3c_ZXw {
+      margin-top: 1.3rem;
+      padding: 0;
+    }
+    // File name
+    .metadataName-14STf- {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: color('tint-10') !important;
+      text-decoration: none !important;
+    }
+    // File size
+    .metadataSize-2UOOLK {
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: color('tint-7');
+    }
+    // Download button container
+    .metadataDownload-1fk90V {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      width: 3rem;
+      height: 4rem;
+      margin: 0 1rem .2rem 0;
+    }
+    // Download button svg
+    .metadataIcon-2FyCKU {
+      @include mask(icon('download'), color('white'), 2.5rem);
+      width: 3rem;
+      height: 3rem;
+      opacity: 1 !important;
+      &:hover {
+        background-color: color('primary-10');
+      }
+      g {
+        display: none;
+      }
+    }
+    // Audio controls outer container
+    .audioControls-2HsaU6 {
+      position: relative;
+      width: calc(100% - 16rem);
+      margin: 0 0 1rem 14.5rem;
+      background: none;
+      border-radius: 0;
+      transform: none !important;
+    }
+    // Play, Pause, Replay svg's
+    .controlIcon-3cRbti {
+      @include size(3rem, 4rem);
+      margin: 0 .8rem .3rem 0;
+      background-color: color('white');
+      opacity: 1;
+      transform: none !important;
+      -webkit-mask-size: 3.5rem !important;
+      mask-size: 3.5rem !important;
+      &:hover {
+        background-color: color('primary-10');
+      }
+      polygon,
+      path {
+        display: none;
+      }
+      &[name='Pause'],
+      &[name='Play'],
+      &[name='Replay'] {
+        margin-left: -.2rem;
+      }
+      &[name='Speaker'],
+      &[name='SpeakerOff'] {
+        margin-right: 0;
+      }
+      &[name='Pause'] {
+        @include mask(icon('pause'));
+      }
+      &[name='Play'] {
+        @include mask(icon('play'));
+      }
+      &[name='Replay'] {
+        @include mask(icon('replay'));
+      }
+      &[name='Speaker'] {
+        @include mask(icon('volume'));
+      }
+      &[name='SpeakerOff'] {
+        @include mask(icon('volume-mute'));
+      }
+    }
+    .durationTimeWrapper-OugPFt {
+      @include size(100%, auto);
+      position: absolute;
+      top: -3.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    .durationTimeDisplay-jww5fr {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: color('tint-7');
+      ~ .durationTimeDisplay-jww5fr {
+        position: absolute;
+        right: 0;
+      }
+    }
+    .durationTimeSeparator-2_xpJ7 {
+      display: none;
+    }
+    // Timebar outer container
+    .horizontal-3Sq5iO {
+      position: absolute;
+      top: -2rem;
+      width: 100%;
+      height: 1.4rem;
+      padding: 0;
+      pointer-events: all;
+    }
+    .mediaBarInteraction-37i2O4,
+    .mediaBarInteractionDragging-2QurIZ {
+      margin: 0;
+    }
+    .mediaBarWrapper-3D7r67 {
+      height: .4rem;
+      background: color('white', .1);
+      border-radius: 0;
+      &::before,
+      &::after {
+        display: none
+      }
+    }
+    .buffer-26XPkd,
+    .mediaBarGrabber-1FqnbN,
+    .bubble-3qRl2J {
+      display: none;
+    }
+    .mediaBarPreview-1jfyFs {
+      &,
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+    .mediaBarProgress-1xaPtl {
+      background: color('primary-9');
+      border-radius: 0;
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+    .audioVolumeWrapper-2t9juP {
+      position: relative;
+      display: flex;
+      flex: 1 0 auto;
+      order: 3;
+      max-width: 9rem;
+      margin: 0 0 .5rem;
+      pointer-events: none;
+      visibility: visible !important;
+      opacity: 1;
+      transition: opacity .1s ease-out, max-width .1s ease-out;
+      transform: none;
+      &.hidden-3leZhk {
+        max-width: 0;
+        opacity: 0;
+      }
+    }
+    .vertical-1gJnJQ {
+      width: 100%;
+      height: 4rem;
+      transform: none;
+      .mediaBarInteractionVolume-3QZqYd {
+        width: 100%;
+        height: 4rem;
+        margin: 0;
+        padding: 0 1rem;
+        pointer-events: all;
+        background: none;
+        border-radius: 0;
+      }
+      .mediaBarWrapperVolume-354-jo {
+        @include size(100%, .4rem);
+        box-shadow: none !important;
+        &,
+        &::after,
+        &::before {
+          background: color('white', .4);
+          border-radius: 0;
+        }
+      }
+      .mediaBarGrabber-1FqnbN {
+        @include size(.4rem, 1.2rem);
+        display: block;
+        margin-top: -.6rem;
+        background: color('white');
+        border-radius: 0;
+        opacity: 1;
+        transition: none;
+        transform: scale(1);
+        &::before {
+          display: none;
+        }
+      }
+    }
   }
 }

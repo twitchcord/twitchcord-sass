@@ -1,20 +1,21 @@
 // main: _module.scss
 
 //** Loading spinners
+:root {
+  --spinner-animation: rotate360 750ms linear infinite;
+  --spinner-border-radius: 50%;
+  --spinner-color: #{color('white', .05)};
+  --spinner-fill-color: #{color('tint-11')};
+  --spinner-size: 2.8rem;
+  --spinner-width: .2rem;
+  --spinner-z-index: 99;
+}
 
 /* reactions spinner centering fix */
 .spinner-j8Y2Rh .inner-1gJC7_ {
-    height: 180px;
     width: 8px;
+    height: 180px;
 }
-
-.message-group .comment .spinner {
-    margin-top: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-}
-
 
 .spinner-2enMB9 .inner-1gJC7_ .wanderingCubesItem-WPXqao:first-of-type,
 .spinner-j8Y2Rh .inner-1gJC7_ .wanderingCubesItem-WPXqao,

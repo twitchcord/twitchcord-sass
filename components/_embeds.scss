@@ -2,137 +2,192 @@
 
 //** Embeds
 
-#{$imagewrapperbackground} {
-	background: var(--placeholder-color);
+:root {
+  --embed-background: var(--component-background);
+  --embed-border-color: var(--component-border-color);
+  --embed-border-style: var(--component-border-style);
+  --embed-border-width: var(--component-border-width);
+  --embed-border-radius: var(--component-border-radius);
+  --embed-box-shadow: var(--elevation-1);
+  --embed-pill-background: #{color('primary-7')};
+  --embed-pill-width: .4rem;
+  --embed-pill-style: solid;
 }
 
+#{$imagewrapperbackground} {
+	background: var(--placeholder-background);
+}
+
+// Embed outer container
 #{$embed} {
-	margin-bottom: 10px;
-	// Not ure why this is needed
+  margin: 0 !important;
+  background: var('embed-background');
+  border-color: var('embed-border-color');
+  border-style: var('embed-border-style');
+  border-width: var('embed-border-width');
+  border-left-color: var('embed-pill-background');
+  border-left-style: var('embed-pill-style');
+  border-left-width: var('embed-pill-width');
+  border-radius: var('embed-border-radius');
+  box-shadow: var('embed-box-shadow');
+  .grid-1nZz7S {
+    padding: 5px 15px 15px;
+  }
+  // Remove pill from image embeds
+  &:not(#{$messagemarkup}) {
+    border: none !important;
+  }
+	// Not sure why this is needed
 	@at-root #{$messagegroup} #{$message} & {
 		#{$messagemarkup} {
-			margin: 0!important;
+			margin: 0 !important;
 			pre {
 				max-width: 100%;
 			}
 		}
-	}
+  }
+  // General grey pill color (Epic Games)
+  &[style*='border-color: rgb(42, 42, 42);'],
+  
+  &[style*='border-color: rgb(51, 51, 51);'],
+  &[style*='border-color: rgb(38, 38, 38);'],
+  &[style*='border-color: rgb(52, 54, 60);'],
+  
+  &[style*='border-color: rgb(0, 0, 0);'],
+  &[style*='border-color: rgb(0, 0, 1);'],
+  &[style*='border-color: rgb(0, 0, 2);'],
+  &[style*='border-color: rgb(0, 0, 3);'],
+  &[style*='border-color: rgb(1, 1, 1);'],
+  &[style*='border-color: rgb(2, 2, 2);'],
+  &[style*='border-color: rgb(3, 3, 3);'],
+  
+  &[style*='border-color: rgb(255, 0, 0);'],
+  
+  &[style*='border-color: rgb(30, 35, 39);'],
+  
+  &[style*='border-color: rgb(23, 26, 33);'],
+  // Github
+  &[style*='border-color: rgb(114, 137, 218);'] {
+    border-left-color: var('embed-pill-background') !important;
+  }
 	#{$imagewrapper} {
-		border-radius: 0;
-		overflow: visible;
+    overflow: visible;
 		#{$imagewrapperinner} {
-	    background-color: var(--placeholder-color);
+	    background-color: var(--placeholder-background);
 		}
 		img {
 			@include size(100%!important, auto!important);
-	    position: relative;
+      position: relative;
+      border-radius: var(--component-border-radius);
 		}
 	}
 	// Gif file attachment 'GIF' container
 	// https://i.imgur.com/2YhxtMz.png
 	@at-root #{$imagewrapper} {
-		border-radius: 0;
+    border-radius: var(--component-border-radius) !important;
+    // Targetting all non-embed images... particularly
+    // trying to target only html 5 video imageWrapper embeds
+    &:not(#{$embedimage}):not(#{$embedthumbnail}):not(#{$imagezoom}):not(.embedVideoImageComponent-34z3di) {
+      min-width: var(--html5-video-min-width) !important;
+      min-height: var(--html5-video-min-height) !important;
+    }
 		#{$imageaccessory} {
-			@include absolute(top 4px right 4px);
+      position: absolute;
+      top: .4rem;
+      right: .4rem;
 	    z-index: 2;
 			// Actual 'GIF'
 			// https://i.imgur.com/BKDCMrD.png
 			@at-root #{$giftag} {
-				background: none;
-				@include absolute(top 8px right 8px);
-				@include mask(var(--gif-icon), #fff);
-				@include size(26px, 14px);
+				@include mask(icon('gif'), color('contrasted'));
+        @include size(2.6rem, 2.1rem);
+        background-image: none;
 				opacity: 0.8;
 			}
 		}
 	}
 	#{$embedinner} {
-    background-color: var(--embed-color)!important;
-    border: none;
-		border-radius: 0!important;
-		box-shadow: var(--elevation-1);
+    padding: 1rem 1.5rem 1.5rem !important;
 		overflow: visible;
-    padding: 10px 15px!important;
+    background-color: var(--embed-color) !important;
+    border: none;
+		border-radius: 0 var(--component-border-radius) var(--component-border-radius) 0 !important;
+		box-shadow: var(--elevation-1);
 		&:empty {
 			margin: 0;
 		}
 	}
 	// Embed pills
 	#{$embedpill} {
-		background-color: RGB(var(--tc-color-7));
-    border-radius: 0!important;
     // In order to put it above embedInner so it stays above the drop shadow
     z-index: 1;
-		// General grey pill color (Epic Games)
-		&[style="background-color: rgb(42, 42, 42);"],
-		// General grey pill color
-		&[style="background-color: rgb(51, 51, 51);"],
-		// General black pill color
-    &[style="background-color: rgb(0, 0, 0);"],
-    &[style="background-color: rgb(0, 0, 1);"],
-    &[style="background-color: rgb(0, 0, 2);"],
-    &[style="background-color: rgb(0, 0, 3);"],
-    &[style="background-color: rgb(1, 1, 1);"],
-    &[style="background-color: rgb(2, 2, 2);"],
-		&[style="background-color: rgb(3, 3, 3);"],
-		// Youtube pill color
-		&[style="background-color: rgb(255, 0, 0);"],
-		// Github pill color
-		&[style="background-color: rgb(30, 35, 39);"],
-		// Steam pill color
-		&[style="background-color: rgb(23, 26, 33);"] {
-		  background-color: var(--embed-pill-color)!important;
-        }
-        // Our bot's 'move' command embed color
-        &[style="background-color: rgb(52, 54, 60);"] {
-            display: none;
-        }
+		background-color: color('primary-7');
+    border-radius: var(--component-border-radius) 0 0 var(--component-border-radius) !important;
 		+ #{$embedinner} {
 	    border-left: none;
-			width: 100%;
 		}
-	}
-	#{$embedauthor},
+  }
+  .embedThumbnail-2Y84-K {
+    overflow: hidden;
+    border-radius: var(--component-border-radius) !important;
+  }
+  #{$embedtitle} {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: color('white') !important;
+  }
 	#{$embedtitlelink} {
-	  display: flex!important;
-	  margin: 0;
-	}
-	#{$embedtitlelink} {
-		@include text(RGB(var(--tc-color-10))!important, $weight: 400, $lh: 1.5);
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: color('primary-10') !important;
 	}
 	#{$embedimage} {
-	  border-radius: 0;
 	  max-width: 100%;
+	  border-radius: var(--component-border-radius);
 	}
 	#{$embeddescription},
 	#{$embedfieldvalue} {
-		color: RGB(var(--tc-tint-10))!important;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: color('tint-10') !important;
 	}
 	#{$embeddescription} {
-		line-height: 20px!important;
+    font-size: 1.4rem;
+		line-height: 1.5 !important;
 		code.inline {
-			margin-right: 5px;
+      margin-right: 5px;
+      background: color('primary-1') !important;
 		}
 	}
 	#{$embedprovider} {
-    @include text(RGB(var(--contrasted-color))!important, $weight: 700, $lh: 1.5);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: color('contrasted') !important;
     &:hover {
-      color: RGB(var(--contrasted-color))!important;
+      color: color('contrasted') !important;
     }
 	}
 	#{$embedauthoricon} {
-		@include size(26px);
-	  border-radius: var(--user-roundness);
+    @include size(26px);
 		margin-bottom: 5px;
+    background: url('https://client.forgecdn.net/Avatars/UserAvatar.png') no-repeat center / 100%;
+	  border-radius: var('avatar-border-radius');
 		+ #{$embedauthorname} {
-			margin-top: -5px;
+      margin-top: -5px;
+      font-size: 1.2rem;
+      font-weight: 700;
 		}
 	}
 	#{$embedauthorname} {
+    font-size: 1.4rem;
 	  font-weight: 400;
-		color: RGB(var(--contrasted-color))!important;
+		color: color('contrasted') !important;
 		&:hover {
-			color: RGB(var(--contrasted-color))!important;
+			color: color('contrasted') !important;
 		}
 	}
 	#{$embedfields} {
@@ -143,37 +198,49 @@
 	}
 	#{$embedfootertext},
 	.embedFooterSeparator-3klTIQ {
-	  color: RGB(var(--tc-tint-7));
-	}
+    font-size: 1.2rem;
+    color: color('tint-7');
+  }
+  .embedFooterIcon-239O1f {
+    border-radius: var(--image-roundness);
+  }
 	// Video embeds
 	@at-root #{$embedvideo} {
-		border-radius: 0;
+    background: var(--placeholder-background);
+		border-radius: var(--component-border-radius);
 		// Image thumbnail
 		#{$imagewrapper} {
-    	border-radius: 0!important;
-			height: auto!important;
-		}
+      height: auto !important;
+    }
 		@at-root #{$embedvideoactions} {
-      background: rgba(0, 0, 0, 0.5);
 			#{$embedvideoactionsinner} {
+				padding: 0;
 				background: transparent;
 				border-radius: 0;
-				padding: 0;
 				// Play button outer container
 				@at-root #{$iconwrapper},
 				& #{$iconwrapper} {
-					@include size(100px);
-					background: none!important;
+          @include size(100%);
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0;
+          background: color('black', .4) !important;
+          border-radius: var(--component-border-radius);
 					// Play button inner container
 					#{$iconwrapperwrapper} {
+            @include size(100%);
+            display: flex;
+            align-self: center;
+            margin: 0 auto;
             opacity: 1;
             transition: none;
 						// Open in new window button link
 						+ #{$iconwrapperwrapper} {
-							display: none!important;
+							display: none !important;
 						}
 						&:hover {
-							opacity: 0.9;
+							opacity: 1;
 						}
 						&:hover:active,
 						&:active {
@@ -182,38 +249,74 @@
 					}
 					// Play button
 					#{$iconplay} {
-						@include absolute(top 0 left 0);
+            @include mask(icon('play'), color('white'), 50% 50%);
 						@include size(100%);
-						background-color: transparent;
-						background: var(--video-play-image);
-						background-size: 100px 100px;
+            margin: 0;
 						transition: none;
 						polygon,
 						+ a {
 							display: none;
-						}
+            }
+            &:hover {
+              background-color: color('primary-10') !important;
+            }
 						&:hover:active,
 						&:active {
 							box-shadow: none;
 						}
-					}
+          }
 				}
 			}
 		}
 	}
 	// Make Steam embed logo white instead of black
 	// https://i.imgur.com/nQqmt52.png
-	img[src*="share_steam_logo.png"],
-	// Make Vimeo embed logo white instead of dark gray
-	// https://i.imgur.com/dwZfvjo.png
-	img[src*="vimeocdn.com"] {
-    filter: grayscale(1) brightness(1000%);
-	}
+	img[src*='share_steam_logo.png'],
+	
+	
+	img[src*='vimeocdn.com'] {
+    filter: grayscale(1) brightness(10);
+  }
+  .embedSuppressButton-1FonMn {
+    @include component('button', 'blank', 'base');
+    @include size(var(--embed-button-suppress-size)!important);
+    position: absolute;
+    top: 0;
+    right: calc(var(--embed-button-suppress-size) * -1 - .7rem);
+    padding: 0 !important;
+    line-height: var(--embed-button-suppress-size) !important;
+    background: var(--button-blank-background) icon('close-thick') no-repeat center / 80% !important;
+    @at-root #{$embed}:hover .embedSuppressButton-1FonMn {
+      opacity: 0.5;
+    }
+    &:hover {
+      background: var(--button-blank-hover-background) icon('close-thick') no-repeat center / 80% !important;
+    }
+    &:active {
+      background: var(--button-blank-active-background) icon('close-thick') no-repeat center / 80% !important;
+    }
+    svg {
+      display: none;
+    }
+  }
 }
 
+:root {
+  --embed-button-suppress-size: 2.2rem;
 
+  --embed-spotify-border-color: transparent;
+  --embed-spotify-border-style: none;
+  --embed-spotify-border-width: 0rem;
+  --embed-spotify-border-radius: var(--component-border-radius);
+  --embed-spotify-box-shadow: var(--component-box-shadow);
+}
 
-// Not sure why this is needed
-#{$messagegroup} .mentioned .markup:not(.embedDescription-1Cuq9a) {
-    padding: 3px 0 5px 0 !important;
+.embedSpotify-tvxDCr {
+  overflow: hidden;
+  background: color('tint-1');
+  border-radius: var(--component-border-radius);
+  iframe {
+    filter: saturate(1) contrast(1.2) brightness(1);
+    mix-blend-mode: lighten;
+  }
 }

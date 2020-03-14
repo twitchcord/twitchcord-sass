@@ -5,10 +5,10 @@
 //
 
 .guildsHorizontalBottom {
-  .wrapper-1Rf91z {
+  .guilds-1SWlCJ {
+    order: 2;
     border: none;
     border-top: 1px solid var(--border-color);
-    order: 2;
     // DM container
     .container-1aNBdK {
       animation: var(--disable-animations, translateTopToBottom 0.6s);
@@ -18,12 +18,15 @@
       // Selected guild indicator
       &, &.unread-2OHH1w, &.selected-nT-gM3, &.unread-2OHH1w.selected-nT-gM3 {
         &::before {
-          @include absolute(top unset!important bottom 0 left 0!important);
+          position: absolute;
+          top: unset !important;
+          bottom: 0;
+          left: 0 !important;
         }
       }
       &.selected-nT-gM3, &.unread-2OHH1w.selected-nT-gM3 {
         &::before {
-          bottom: calc(var(--guilds-height) - 1px)!important;
+          bottom: calc(var(--guilds-height) - 1px) !important;
         }
       }
     }

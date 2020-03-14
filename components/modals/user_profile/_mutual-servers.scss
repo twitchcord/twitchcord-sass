@@ -1,0 +1,88 @@
+// main: _module.scss
+
+// User profile container
+.root-SR8cQa {
+  .body-3ND3kc {
+    &.mut-servers {
+      .scroller-2FKFPG {
+        position: relative;
+        &::before {
+          @include component('header', 'h3');
+          content: 'Mutual Servers';
+          position: absolute;
+          top: 2rem;
+          width: auto;
+          margin: 1rem 0 0 1rem;
+          padding: 0 0 0 3.5rem;
+          text-transform: capitalize;
+          background: icon('guild') no-repeat center left / 2rem;
+        }
+      }
+    }
+  }
+  .icon-3o6xvg {
+    @include size(5rem);
+    margin: 0 0 1rem 0;
+    &::before,
+    &::after {
+      @include size(37rem, calc(370px * var(--aspect-ratio-16-9)));
+      content: '';
+      position: absolute;
+      margin: calc((37rem * var(--aspect-ratio-16-9) - 11rem) / -2) 0 0 calc((37rem - 5rem) / -2);
+      border-radius: var('component-border-radius');
+    }
+    &::before {
+      z-index: -1;
+      background: color('black', .6);
+    }
+    &::after {
+      z-index: -2;
+      background-color: color('tint-1');
+      background-image: url('https://i.imgur.com/Dk6rI4g.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-blend-mode: soft-light;
+    }
+  }
+  .guildIconBadge-1PJHeq {
+    @include size(1.8rem);
+    position: absolute;
+    right: -.2rem;
+    bottom: -.2rem;
+    .flowerStar-1GeTsn {
+      background: badge('verified') no-repeat center / 100%;
+      path {
+        display: none;
+      }
+    }
+    .childContainer-1wxZNh {
+      display: none;
+    }
+  }
+  .listRowContent-3Kih4Q {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 5rem;
+    .listName-3w10cx {
+      height: auto;
+      line-height: 1.5;
+    }
+  }
+  .guildNick-3uAm3i {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: color('tint-8');
+    text-align: center;
+    &:empty {
+      margin-top: 2.1rem;
+    }
+  }
+  // Sleeping Zelda
+  .emptyIconGuilds-3OViNh {
+    background: url('https://i.imgur.com/g1jBInb.png') no-repeat center / contain;
+  }
+}

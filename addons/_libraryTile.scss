@@ -5,7 +5,7 @@
 //
 
 .libraryTile {
-  .gameLibrary-TTDw4Y {
+  .container-3Mxszk {
     #{$scroller} {
       padding: 15px 10px 2px;
       &::-webkit-scrollbar,
@@ -14,11 +14,11 @@
       }
     }
     .table-1tDS6w {
-      width: 100%;
-      flex: 1 1 auto!important;
-      display: flex!important;
+      display: flex !important;
+      flex: 1 1 auto !important;
       flex-wrap: wrap;
       justify-content: flex-start;
+      width: 100%;
     }
     .header-39GIC8 {
       display: none;
@@ -31,49 +31,51 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(0, 0, 0, 0.5);
       padding: 4px;
+      background: color('black', .5);
     }
     #{$gameicon} {
       @include size(auto);
-      border: none;
-      margin: 0 !important;
-      padding-bottom: calc(var(--boxart-aspect) * 100%);
       position: relative;
+      margin: 0 !important;
+      padding-bottom: calc(var(--aspect-ratio-game-boxart) * 100%);
+      border: none;
       &::before,
       &::after {
-        @include absolute(top 0 left 0);
         @include size(100%);
         content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         display: block;
         pointer-events: none;
         opacity: 0;
         transition: opacity 0.15s ease-in;
       }
       &::before {
-        background: rgba(0, 0, 0, 0.6);
+        background: color('black', .6);
       }
       &::after {
-        background: RGBA(var(--tc-color-2), 0.77);
+        background: color('primary-2', 0.77);
       }
     }
     .settingIcons-3QYa5E {
-      margin: 0;
-      pointer-events: all;
       position: absolute;
       top: 20px;
+      margin: 0;
+      pointer-events: all;
     }
     .rowWrapper-2fB6P0 {
-      border-radius: 0;
-      height: auto;
       position: relative;
-      margin: 0 10px 20px;
-      flex: 1 1 auto!important;
+      flex: 1 1 auto !important;
       width: 163px;
+      height: auto;
+      margin: 0 10px 20px;
+      border-radius: 0;
     }
     .nameBodyCell-3JOlnK {
-      width: 100%;
       position: relative;
+      width: 100%;
       > #{$flex} {
         display: block;
         width: 100%;
@@ -88,26 +90,26 @@
     }
     .actionsCell-1awtNi {
       position: absolute;
-      align-content: center;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      pointer-events: none;
       display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
       opacity: 0;
-      transform: translate3d(0, 15px, 0);
       transition: opacity 0.15s ease-in, transform 0.15s ease-in;
+      transform: translate3d(0, 15px, 0);
       > #{$button}#{$buttonlookfilled} {
-        margin-top: -30px!important;
+        margin-top: -30px !important;
       }
     }
     .rowWrapperActive-2L7i9f {
-      background: none!important;
       margin: 0 10px 20px;
+      background: none !important;
       .row-ZLfFhY {
-        color: RGB(var(--tc-color-10));
+        color: color('primary-10');
       }
       #{$gameicon} {
         &::before,

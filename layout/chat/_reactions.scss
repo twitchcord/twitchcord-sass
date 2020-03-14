@@ -1,124 +1,158 @@
 // main: _module.scss
 
 //** Reactions
+:root {
+  --reaction-emoji-size: 2.4rem;
+  --reaction-emoji-border-radius: 0;
+
+  --reaction-background: var(--component-background);
+  --reaction-border-color: var(--component-border-color);
+  --reaction-border-style: var(--component-border-style);
+  --reaction-border-width: var(--component-border-width);
+  --reaction-border-radius: var(--component-border-radius);
+  --reaction-box-shadow: var(--component-box-shadow);
+}
+
+#{$messagebuttoncontainer} {
+  .buttons-cl5qTG {
+    .wrapper-2aW0bm {
+      padding: 0 7px;
+      background: color('tint-1');
+      border: 1px solid var(--border-color);
+      border-radius: 32px / 100%;
+      transition: none;
+      .button-1ZiXG9 {
+        margin: 0 2px;
+      }
+    }
+    .separator-42rNt0 {
+      background: var(--border-color);
+    }
+  }
+}
+
+// Reactions outer container
+#{$messagegroup} {
+  #{$messagereactions} {
+    width: 100%;
+    margin: 0 0 7px !important;
+    // Show reaction button on hover
+    &:hover {
+      #{$messagebtnreaction} {
+        visibility: visible;
+        opacity: 1 !important;
+      }
+    }
+    // Reaction button
+    #{$messagebtnreaction} {
+      @include mask(icon('emoji'), color('tint-7'), 18px, $important: true);
+      margin: 6px 0 0 0;
+      visibility: hidden;
+      background-image: none;
+      opacity: 1 !important;
+      &:hover,
+      &.popout-open {
+        background-color: color('contrasted');
+      }
+    }
+    // Reaction outer container
+    #{$messagereaction} {
+      position: relative;
+      margin: 6px 8px 0 0;
+      padding: 0;
+      background: var(--reaction-background) !important;
+      border-color: var(--reaction-border-color);
+      border-style: var(--reaction-border-style);
+      border-width: var(--reaction-border-width);
+      border-radius: var(--reaction-border-radius);
+      box-shadow: var(--reaction-box-shadow);
+      &::before,
+      &::after {
+        @include size(100%);
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        display: block;
+        pointer-events: none;
+        border-radius: var(--reaction-border-radius);
+        opacity: 0;
+      }
+      // Reaction that the logged in user reacts to
+      &#{$messagereactionme} {
+        background: color('success', .2) !important;
+        // Reaction count
+        #{$messagereactioncount} {
+          color: color('white') !important;
+        }
+        &::before,
+        &::after {
+          @include size(100%);
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 1;
+        }
+        &::before {
+          box-shadow: inset 0 0 .7rem color('success');
+          animation: .6s 1 pulseReact cubic-bezier(.075, .82, .165, 1), .6s 1 fadeOut forwards;
+        }
+        &::after {
+          box-shadow: 0 0 0 .2rem color('success'), 0 0 2rem color('success', .2);
+        }
+      }
+    }
+    // Reaction inner container
+    #{$messagereactioninner} {
+      padding: 0 .5rem;
+    }
+    // Reaction img emoji
+    #{$emoji} {
+      @include size(var(--reaction-emoji-size)!important);
+      margin: 0 !important;
+      padding: .4rem 0;
+      border-radius: var(--reaction-emoji-border-radius);
+    }
+    // Reaction count
+    #{$messagereactioncount} {
+      margin: 0 0 0 .2rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: color('tint-7');
+      letter-spacing: 0;
+    }
+  }
+}
+
+
+
+
+
 
 #{$messagebtnoption},
 	#{$messagebtnreaction} {
-  visibility: hidden;
-  transition: none;
+  z-index: 900;
+  box-sizing: border-box;
   width: 18px;
   height: 18px;
-  margin-right: 0!important;
-  z-index: 900;
-  opacity: 1;
-  border-radius: 0;
-  box-sizing: border-box;
+  margin-right: 0 !important;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  border-radius: 0;
+  opacity: 1;
+  transition: none;
 	&#{$optionpopoutopen},
 	&:hover {
-		background-color: RGB(var(--contrasted-color))!important;
-    visibility: visible;
+		background-color: color('contrasted') !important;
 	}
 }
 #{$messagebtnoption} {
-  background: none;
-	@include mask(var(--vertical-dots-icon), RGB(var(--tc-tint-7)), 20px, $important: true);
+	@include mask(icon('dots-vertical'), color('tint-7'), 2rem, $important: true);
+  background-image: none;
 }
 #{$messagebtnreaction} {
-  background: none;
-	@include mask(var(--emoji-icon), RGB(var(--tc-tint-7)), 18px, $important: true);
-}
-
-
-#{$messagereactioninner} {
-	pointer-events: all;
-	padding: 0 5px;
-}
-#{$messagereactions} {
-	width: 100%;
-	flex: 100%;
-	order: 9999999999;
-  margin: 7px 2px!important;
-	&:hover {
-		#{$messagebtnreaction} {
-			opacity: 0.5!important;
-		}
-	}
-	#{$messagebtnreaction} {
-    margin-left: 0;
-    visibility: hidden;
-		margin-top: 6px;
-		opacity: 0.5!important;
-		&:hover {
-			opacity: 1!important;
-			border-color: RGB(var(--contrasted-color));
-			&::before {
-				color: RGB(var(--contrasted-color));
-			}
-		}
-	}
-}
-#{$messagereaction} {
-	border-radius: 0;
-	position: relative;
-  margin: 6px 8px 0 0;
-  background: RGB(var(--tc-tint-1))!important;
-	box-shadow: var(--elevation-1);
-	padding: 0;
-  pointer-events: none;
-	&::before,
-	&::after {
-		content: "";
-    display: block;
-    position: absolute;
-    border-radius: 0;
-    opacity: 0;
-    pointer-events: none;
-		z-index: 99;
-	}
-	#{$emoji} {
-		border-radius: 0;
-  	padding: 4px 0;
-    margin: 0!important;
-    width: 22px !important;
-    height: 26px !important;
-	}
-	&#{$messagereactionme} {
-		background: var(--success-inner-color)!important;
-		#{$messagereactioncount} {
-			color: RGB(var(--contrasted-color))!important;
-		}
-		&::before {
-	    box-shadow: inset 0 0 7px var(--success-color);
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    height: 100%;
-	    animation: .6s 1 pulseReact cubic-bezier(.075, .82, .165, 1), .6s 1 fadeOut;
-		}
-		&::after {
-	    opacity: 1;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			box-shadow: 0 0 0 2px var(--success-color), 0px 0px 20px var(--success-inner-color);
-		}
-	}
-	#{$messagereactioncount} {
-		@include text(RGB(var(--tc-tint-7)), 11px, 400);
-    letter-spacing: 0;
-		margin: 0;
-	}
-}
-#{$messageaccessory} {
-	&:hover {
-		#{$messagereactions} {
-			#{$messagebtnreaction} {
-				visibility: visible;
-			}
-		}
-	}
+  @include mask(icon('emoji'), color('tint-7'), 1.8rem, $important: true);
+  background-image: none;
 }

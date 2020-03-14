@@ -1,44 +1,81 @@
-// main: _module.scss
+///  ==========================================================================
+///  Region Select modal
+///  **************************************************************************
 
-//** Region select modal
 
-.regionSelectModal-12e-57 .regionSelectModalHeader-21khC1 {
-    color: RGB(var(--tc-tint-11))!important;
-    font-weight: 400!important;
-    text-transform: none!important;
-    font-size: 24px!important;
-    line-height: 30px!important;
-    padding-bottom: 5px;
-}
+$module: (
+  'modal': (
+    'region-select': (
+      width: 70rem,
+      background: var('modal-background'),
+      border-color: var('modal-border-color'),
+      border-style: var('modal-border-style'),
+      border-width: var('modal-border-width'),
+      border-radius: var('modal-border-radius'),
+      box-shadow: var('modal-box-shadow')
+    )
+  )
+);
 
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
+
+
+
+// Region Select modal container
 .regionSelectModal-12e-57 {
-    background: RGB(var(--tc-color-3));
-    border: 1px solid RGB(var(--tc-color-4));
-    border-radius: 0;
-    width: 702px;
-}
-
-.regionSelectModal-12e-57 .regionSelectModalOption-2DSIZ3 {
-    border-radius: 0;
-    background: RGB(var(--tc-color-2));
-    color: RGB(var(--tc-tint-8));
+  @include size(var(--modal-region-select-width), auto);
+  padding: 0;
+  background: var(--modal-region-select-background);
+  border: var(--modal-region-select-border-width) var(--modal-region-select-border-style)  var(--modal-region-select-border-color);
+  border-radius: var(--modal-region-select-border-radius);
+  box-shadow: var(--modal-region-select-box-shadow);
+  .regionSelectModalOptions-2TWQOB {
+    padding: 0 2.5rem;
+  }
+  // 'Select A Server Region' header
+  .regionSelectModalHeader-21khC1 {
+    @include component('header', 'h3');
+    margin: 0;
+    padding: 2.5rem;
+    text-transform: capitalize;
+  }
+  // Country option flag
+  .regionSelectFlag-3uwFtG {
+    @include size(4.4rem, 3rem);
+    margin: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 4.4rem 3rem;
+    border-radius: var('component-border-radius');
+  }
+  // Country option container
+  .regionSelectModalOption-2DSIZ3 {
+    // 25% - 2 times the margin
+    flex: 0 1 calc(25% - 1.4rem);
+    margin: 0.7rem;
+    background: color('tint-2');
     border: none;
-    box-shadow: inset 0 0 0 1px RGB(var(--tc-color-4));
-    transition: box-shadow 0.2s;
-    width: 22%;
-}
-
-.regionSelectModal-12e-57 .regionSelectModalOption-2DSIZ3:hover {
-  box-shadow: inset 0 0 0 1px RGB(var(--tc-color-8)), 0 0 6px -2px RGB(var(--tc-color-8));
-  transition: box-shadow 0.2s;
-}
-
-.regionSelectModal-12e-57 .regionSelectModalOption-2DSIZ3 .regionSelectName-2-2FWh {
-  font-size: 14px;
-  font-weight: 400;
-  color: RGB(var(--tc-tint-7));
-}
-
-.regionSelectModal-12e-57 .regionSelectModalFooter-20C5iA {
-  color: RGB(var(--tc-tint-8));
+    border-radius: var('component-border-radius');
+    box-shadow: none;
+    &:hover {
+      background: color('tint-3');
+    }
+  }
+  // Country name
+  .regionSelectName-2-2FWh {
+    @include component('header', 'h7');
+  }
+  // Region select footer text
+  .regionSelectModalFooter-20C5iA {
+    @include component('header', 'h7');
+    margin: 2.5rem 0 0 0;
+    padding: 1rem;
+    background: var(--modal-footer-background);
+    border-color: var(--modal-footer-border-color);
+    border-style: var(--modal-footer-border-style);
+    border-width: var(--modal-footer-border-width);
+    border-radius: var(--modal-footer-border-radius);
+    box-shadow: none !important;
+  }
 }

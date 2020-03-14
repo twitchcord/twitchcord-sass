@@ -1,60 +1,87 @@
-// main: _module.scss
+$module: (
+  'modal': (
+    'keyboard-shortcuts': (
+      background: var('modal-footer-background'),
+      border-color: var('modal-border-color'),
+      border-style: var('modal-border-style'),
+      border-width: var('modal-border-width'),
+      border-radius: var('modal-border-radius'),
+      box-shadow: var('modal-box-shadow')
+    )
+  )
+);
 
-//** Keyboard shortcuts modal
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
 
-.ragingDemon-bDcoXE .symbol-3ffeCr img {
-    height: auto;
-    max-height: none;
-    max-width: none;
-    width: 50%;
-    filter: hue-rotate(20deg);
-}
 
 .keyboardShortcutsModal-3piNz7 {
-    background-color: RGB(var(--tc-color-3))!important;
-    border: 1px solid RGB(var(--tc-color-4));
-    border-radius: 0;
-}
+  @include get-props($module, 'modal', 'keyboard-shortcuts');
+  .scroller-2FKFPG {
+    background: var('modal-background');
+  }
+  .modalSubtitle-1Pj5nv {
+    @include component('header', 'h7');
+    border: none !important;
+    border-bottom: 1px solid var('modal-footer-border-color') !important;
+  }
+  .keybindShortcut-1BD6Z1 {
+    color: color('primary-8');
+    span {
+      height: 23px;
+      padding: 0 6px;
+      font-size: 11px;
+      line-height: 23px;
+      color: color('contrasted');
+      background-color: color('primary-8') !important;
+      border: none;
+      border-radius: var('component-border-radius');
+      box-shadow: var('elevation-1') !important;
+    }
+  }
+  .keyboardShortcutList-13cQ-8 {
+    flex-direction: row;
+    height: 590px;
+    padding: 20px;
+  }
+  .keybindDescription-2RDbC2 {
+    @include component('header', 'h6');
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize !important;
+    white-space: nowrap;
+  }
+  .keybindGroup--6Qp-w {
+    @include component('component', 'secondary');
+    position: relative;
+    width: calc(33.3333% - 20px);
+    height: 120px;
+    margin: 10px;
+    padding: 15px;
+    &.groupEnd-1cdweh {
+      margin: 10px;
+    }
+  }
+  .ddrArrows-lSnH7P {
+    .arrow-2enltQ {
+      @include mask(icon('arrow-right'), color('tint-5'));
+      margin: 0 10px;
+      background-image: none !important;
+      &.active-2X6Ewx {
+        background-color: color('contrasted') !important;
+      }
+      &.left-21PxOi {
+        transform: rotate(180deg);
+      }
+      &.right-1AEPK3 {
 
-.keybindShortcut-1BD6Z1 span {
-  background-color: RGB(var(--tc-color-2)) !important;
-  border: 1px solid RGB(var(--tc-color-4))!important;
-  box-shadow: none!important;
-  padding: 0 6px;
-  line-height: 23px;
-  height: 23px;
-  font-size: 11px;
-  color: RGB(var(--contrasted-color));
-}
-
-.keybindShortcut-1BD6Z1 {
-  color: RGB(var(--tc-color-8));
-  font-family: var(--font)!important;
-}
-
-.keybindShortcut-1BD6Z1 span .bindArrow-2X3Aom *,
-.keybindShortcut-1BD6Z1 span .bindArrow-2X3Aom.up-2cOsD2 *,
-.keybindShortcut-1BD6Z1 span .bindArrow-2X3Aom.left-3u1rVI *,
-.keybindShortcut-1BD6Z1 span .bindArrow-2X3Aom.right-CbUyiH * {
-  fill: RGB(var(--tc-color-8))!important;
-}
-
-.keyboardShortcutsModal-3piNz7 .modalTitle-37O4n6 .content-2Add9f {
-    color: RGB(var(--tc-tint-11))!important;
-}
-
-.keyboardShortcutsModal-3piNz7 .ddrArrows-lSnH7P .arrow-2enltQ {
-    filter: hue-rotate(40deg) saturate(2);
-}
-
-.keyboardShortcutsModal-3piNz7 .ddrArrows-lSnH7P .arrow-2enltQ.active-2X6Ewx {
-    filter: none;
-}
-
-.keyboardShortcutsModal-3piNz7 .keyboardShortcutList-13cQ-8 .keybindGroup--6Qp-w .keybindDescription-2RDbC2 {
-    color: RGB(var(--contrasted-color));
-}
-.keyboardShortcutsModal-3piNz7 .modalSubtitle-1Pj5nv {
-    color: RGB(var(--tc-tint-8));
-    font-size: 14px;
+      }
+      &.up-fkTose {
+        transform: rotate(-90deg);
+      }
+      &.down-2Ju7Q_ {
+        transform: rotate(90deg);
+      }
+    }
+  }
 }

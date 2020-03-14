@@ -1,308 +1,491 @@
-///  main: _module.scss
 ///  ==========================================================================
-///  Guilds list section
+///  Guilds (Servers) list
 ///  ==========================================================================
 
-.hideGuildsUntilHover {
-  --guilds-width: 0;
-  #{$guildswrapper} {
-    @include size(var(--guilds-width), var(--guilds-height));
-  }
-}
+
+$module: (
+  'guilds': (
+    background: color('tint-2'),
+    border-color: color('white', .05),
+    border-style: solid,
+    border-width: 0 .1rem 0 0,
+    border-radius: 0,
+    box-shadow: none,
+    columns: 1,
+    flex-direction: column,
+    height: auto,
+    margin: var('layout-margin'),
+    width: calc((var(--guild-size) + var(--guild-size) / 2 + var(--guild-size) / 20) * var(--guilds-columns)),
+    z-index: 0,
+    'scroller': (
+      flex-direction: row,
+      padding: 0.5rem,
+      overflow: hidden scroll
+    )
+  ),
+  'guild': (
+    border-radius: 50%,
+    // MAGIC NUMBER: Where the 5.1 comes from
+    margin: calc(#{var('guild-size')} / 2),
+    size: 42px,
+    'separator': (
+      background: var('guilds-border-color'),
+      height: .1rem,
+      width: var('guild-size')
+    ),
+    'badge': (
+      border-radius: var('notification-badge-border-radius'),
+      box-shadow: 0 0 0 .4rem var('guilds-background'),
+      height: calc(#{var('guild-size')} / 3),
+      'audio-video': (
+        background: color('green')
+      )
+    ),
+    'no-icon': (
+      background: color('primary-4'),
+      color: color('white')
+      // font-size: calc(#{var('guild-size')} - #{var('guild-size')} / 2);
+    ),
+    'placeholder': (
+      background: color('tint-1'),
+      border-color: color('white', .2),
+      border-style: dashed,
+      border-width: .2rem
+    ),
+    'selected': (
+      animation: bounceIn 0.3s forwards,
+      background: color('primary-7'),
+      border-radius: 0 .4rem .4rem 0,
+      height: var('guild-size'),
+      // MAGIC NUMBER: Where the 7 comes from
+      width: calc(#{var('guild-size')} / 7)
+    ),
+    'unread': (
+      animation: hmmm 0.82s cubic-bezier(.36, .07, .19, .97) both 1, // UNUSED
+      border-color: color('primary-13'),
+      border-style: solid,
+      border-width: 0.2rem,
+      box-shadow: 'inset 0 0 0 .2rem #{var('guilds-background')}, 0 0 2rem #{color('primary-13', .3)}'
+      // outer-box-shadow: 0 0 2rem color('white', .2)
+    ),
+    'folder': (
+      padding: 1rem
+    )
+  )
+);
+
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
+
+
 
 // Guilds outer container
 #{classes('layout.guilds.guildsWrapper')} {
-  @include size(var(--guilds-width), var(--guilds-height));
-  background: var(--guilds-background)!important;
-  border-radius: var(--layout-roundness, 0);
-  border-right: 1px solid var(--border-color);
-  margin: var(--layout-gutter-size, 0);
-  z-index: 0;
+  @include get-props($module, 'guilds');
+  position: relative;
+  // Scrollerwrap
   #{classes('layout.guilds.scrollerWrap')} {
-    @include size(calc(var(--guilds-width) + 10px), var(--guilds-height));
-  }
-  #{classes('layout.guilds.guildSeparator')} {
-    @include size(100%, auto);
-    margin: 10px 0;
-    display: none;
-    &,
-    &::before,
-    &::after {
-      pointer-events: none;
-    }
-    &::after {
-      background-color: var(--border-color);
-      height: 1px;
-    }
-  }
-    // Show the separator when there is at least one DM
-  #{classes('layout.guilds.dm')} {
-    + #{classes('layout.guilds.guildSeparator')} {
-      display: block;
-    }
+    @include size(var('guilds-width'), var('guilds-height'));
+    z-index: -1;
+    // Keep guilds close together
+    flex: 1;
   }
   // Mentions indicators
   #{classes('layout.guilds.mentionsIndicatorTop')},
   #{classes('layout.guilds.mentionsIndicatorBottom')} {
-    left: 3px;
-    margin: 0 auto;
-    overflow: visible;
-    padding: 0;
-    transform: none!important;
-    transition: none;
-    width: calc(var(--guild-icon-size) + 6px);
+    @include size(calc(100% - #{var('guild-margin')}), 1.8rem);
+    left: .1rem;
     z-index: 2;
+    margin: 0 auto;
+    padding: 0;
+    overflow: visible;
+    transition: none;
+    transform: none !important;
+    #{classes('layout.guilds.bar')} {
+      &#{classes('layout.guilds.barActive')}:not(#{classes('layout.guilds.mentionActive')}) {
+        // Hide the unread bar when no mentions are active
+        display: none;
+      }
+    }
   }
   // Top mentions indicator
   #{classes('layout.guilds.mentionsIndicatorTop')} {
-    top: -3px;
+    top: var(--guilds-scroller-padding);
+    #{classes('layout.guilds.mentionActive')} {
+      animation: unreadBarTopAppear 0.3s forwards;
+    }
   }
   // Bottom mentions indicator
   #{classes('layout.guilds.mentionsIndicatorBottom')} {
-    bottom: -3px;
-    // Mentions indicator is active
-    #{classes('base.unreadBar.mention')} {
-      transform: translate3d(0, calc((var(--guilds-width) * -1) + 3px), 0)!important
+    bottom: calc(var(--guild-size) + var(--guilds-scroller-padding) + var(--guild-margin));
+    #{classes('layout.guilds.mentionActive')} {
+      animation: unreadBarBottomAppear 0.3s forwards;
     }
   }
+  // Guilds scroller
   #{classes('layout.guilds.scroller')} {
+    display: block;
+    margin: 0;
+    contain: none;
+    // Uses padding here instead of margin so the overflow from unread glow
+    // on the first guild item isn't cut off
+    padding: 0 0 calc(var(--guild-size) + var(--guilds-scroller-padding) + var(--guild-margin) / 2);
+    overflow: var(--guilds-scroller-overflow);
+    background: none;
+    // "Hide" the scrollbar by giving it 0 width
+    &::-webkit-scrollbar {
+      @include size(0!important);
+    }
+    #{classes('layout.guilds.guild')} {
+      width: 100%;
+      margin: var('guild-margin') auto;
+      border-radius: var('guild-border-radius');
+    }
+    // Outer container for DMs
+    > div[style*='height: 56px;'],
+    > #{classes('layout.guilds.guild')} {
+      @include size(var(--guild-size)!important);
+      display: flex;
+      flex: 0 0 var(--guild-size);
+      margin: var('guild-margin') auto;
+      // Separator container between DMs and gilds
+      &#{classes('twitchcord.guildSeparatorContainer')} {
+        flex: 1 0 100% !important;
+        height: var(--guild-separator-height) !important;
+      }
+      // Get rid of the mask animation Discord uses
+      mask {
+        display: none;
+      }
+      // Discord home button container
+      &:first-of-type,
+      &#{classes('twitchcord.guildHomeContainer')} {
+        display: none;
+        // Hide guild separator when no DM's or Server Discovery servers are present
+        + #{classes('twitchcord.guildSeparatorContainer')} {
+          display: none;
+        }
+      }
+      // Server Discovery outer container
+      &#{classes('twitchcord.serverDiscoveryButton')} {
+        display: none;
+      }
+      // Create/Join server outer container
+      &#{classes('twitchcord.createJoinButton')} {
+        @include size(100%!important, calc(var(--guild-size) + var(--guild-margin))!important);
+        position: fixed;
+        bottom: 0;
+        z-index: 2;
+        align-items: center;
+        margin: 0;
+        // padding: var(--guild-margin) 0 !important;
+        background: var(--guilds-background);
+        border-radius: var('guild-border-radius') var('guild-border-radius') 0 0;
+      }
+      // For DMs
+      > #{classes('layout.guilds.guild')} {
+        @include size(var(--guild-size)!important);
+        display: flex;
+        margin: 0;
+      }
+    }
+  }
+  // Indicators for DM and Home / Server Discovery / Create + Join buttons
+  #{classes('layout.guilds.dmPill')},
+  #{classes('layout.guilds.extrasPill')} {
+    display: none;
+  }
+  // Unread / Selected indicator container
+  #{classes('layout.guilds.pill')} {
+    @include size(0!important);
+    z-index: 1;
+    overflow: visible;
+    pointer-events: none;
+  }
+  // Unread / Selected indicator inner item
+  #{classes('layout.guilds.pillInner')} {
+    // Unread guild indicator
+    &[style='opacity: 1; height: 8px; transform: none;'],
+    // Hover guild indicator
+    &[style='opacity: 1; height: 20px; transform: none;'] {
+      @include size(calc(var(--guild-size) + var(--guild-unread-border-width) * 2)!important);
+      position: absolute;
+      top: 0;
+      margin: calc(var(--guild-unread-border-width) * -1);
+      background: none;
+      border-color: var(--guild-unread-border-color);
+      border-style: var(--guild-unread-border-style);
+      border-width: var(--guild-unread-border-width);
+      border-radius: var(--guild-border-radius);
+      box-shadow: var(--guild-unread-box-shadow);
+      opacity: 1 !important;
+      animation: none;
+    }
+    // Selected guild indicator
+    &[style='opacity: 1; height: 40px; transform: none;'] {
+      @include size(var(--guild-selected-width)!important, var(--guild-selected-height)!important);
+      position: absolute;
+      top: 0 !important;
+      right: unset;
+      bottom: unset;
+      left: calc((var(--guilds-width) - var(--guild-size)) / -2) !important;
+      min-width: 0.3rem !important;
+      margin: 0;
+      background: var(--guild-selected-background);
+      border: none !important;
+      border-radius: var(--guild-selected-border-radius);
+      box-shadow: none !important;
+      opacity: 1 !important;
+      animation: var(--disable-animations, var(--disable-guild-selected-animation, var(--guild-selected-animation)));
+    }
+    // Not selected and not unread
+    &:not([style='opacity: 1; height: 8px; transform: none;']):not([style='opacity: 1; height: 40px; transform: none;']) {
+      opacity: 0 !important;
+    }
+  }
+  // Guild/DM badges
+  #{classes('layout.guilds.badgeWrapper')} {
+    // to put it above the unread indicator
+    z-index: 2;
+  }
+  #{classes('layout.guilds.upperBadge')} {
+    // position: absolute;
+    // top: calc(var(--guild-size) / -10);
+    // right: calc(var(--guild-size) / -10);
+    position: absolute;
+    top: -.4rem;
+    right: -.4rem;
+    z-index: 1;
+  }
+  #{classes('layout.guilds.lowerBadge')} {
+        // position: absolute;
+    // top: calc(var(--guild-size) / -10);
+    // right: calc(var(--guild-size) / -10);
+    position: absolute;
+    right: -.4rem;
+    bottom: -.4rem;
+    z-index: 1;
+  }
+  // Mention notificaiton badge inner
+  #{classes('layout.guilds.numberBadge')},
+  // Audio and video badges
+  #{classes('layout.guilds.audioVideoBadge')} {
+    box-shadow: var(--guild-badge-box-shadow);
+    // font-size: calc(var(--guild-size) / 5)!important;
+  }
+  // Audio and video badges
+  #{classes('layout.guilds.audioVideoBadge')} {
+    @include size(var(--guild-badge-height)!important);
+    padding: .2rem !important;
+    background: var(--guild-badge-audio-video-background) !important;
+    border-radius: var(--notification-badge-border-radius) !important;
+    box-shadow: var(--guild-badge-box-shadow) !important;
+  }
+  // Audio and video svg
+  #{classes('layout.guilds.audioVideoIcon')} {
+    padding: 0;
+  }
+  // Fix it so the guild doesn't move when clicked
+  #{classes('layout.guilds.blobContainer')},
+  #{classes('layout.guilds.listItemWrapper')},
+  
+  div[draggable='false'] {
+    @include size(var(--guild-size));
+    &:active {
+      transform: none;
+    }
+  }
+  // Guild svg container
+  #{classes('layout.guilds.svg')},
+  #{classes('layout.guilds.svgWrapper')},
+  // When dragging a guild
+  #{classes('layout.guilds.placeholderMask')} {
+    @include size(100%);
+    overflow: visible;
+  }
+  // Guild icon
+  #{classes('layout.guilds.guildIcon')} {
+    position: absolute;
+    border-radius: var(--guild-border-radius);
+  }
+  // Guild when there is no icon present
+  #{classes('layout.guilds.acronym')} {
+    position: absolute;
+    color: var(--guild-no-icon-color) !important;
+    background: var(--guild-no-icon-background) !important;
+    border-radius: var(--guild-border-radius);
+    // font-size: var(--guild-no-icon-font-size);
+    transition: none;
+  }
+  .noIcon-1a_FrS {
+    color: var(--guild-no-icon-color) !important;
+    background: var(--guild-no-icon-background) !important;
+  }
+  // Guild wrapper
+  #{classes('layout.guilds.guildWrapper')},
+  #{classes('layout.guilds.guildsError')} {
+    @include size(var(--guild-size));
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin: 0 0 calc(var(--guild-icon-size) + 25px) 0;
-    padding: 9px 0 0 0;
-    flex-direction: column;
-    // Needed in order to center guilds horizontally when there are very few
-    overflow-y: scroll;
-    // Join / Create Server button
-    #{classes('layout.guilds.createJoinContainer')} {
-        @include absolute(bottom 0 left 0, !important);
-        @include flex-center;
-        @include size(calc(var(--guilds-width) - 1px)!important, calc(var(--guild-icon-size) + 25px)!important);
-        border: none;
-        background: var(--guilds-background);
-        border-radius: 0;
-        margin: 0!important;
-        pointer-events: none;
-        z-index: 3;
-        &:hover,
-        &:hover:active,
-        &:active {
-          border: none!important;
-          box-shadow: none!important;
-          color: #fff!important;
-        }
-        #{classes('layout.guilds.circleIconButton')} {
-          @include size(var(--guild-icon-size));
-          background: none;
-          border: none;
-          border-radius: 0;
-          margin: 0;
-        }
-        #{classes('layout.guilds.plus')} {
-          @extend %button-primary;
-          @include flex-center;
-          @include size(var(--guild-icon-size));
-          @include text(#fff, calc(var(--guild-icon-size) - calc(var(--guild-icon-size) / 10)), 400, var(--guild-icon-size));
-          background: RGB(var(--tc-color-6))!important;
-          border-color: RGB(var(--tc-color-6))!important;
-          border-radius: var(--guild-roundness);
-          margin: 0 auto;
-          padding: 0;
-          pointer-events: all;
-          top: 0;
-      }
+    justify-content: center;
+    overflow: visible;
+    background: none !important;
+    border-radius: var(--guild-border-radius) !important;
+    &:active {
+      transform: none;
     }
-  }
-  // Friends online count
-  #{classes('layout.guilds.friendsOnline')} {
-    @include text(RGB(var(--tc-tint-9)), 10px, 400, 36px, uppercase);
-    @include sticky(top -10px);
-    @include reset;
-    width: calc(100% - 2px);
-    background: var(--guilds-background);
-    z-index: 2;
-    display: none;
-  }
-  // Guild outer container
-  #{classes('layout.guilds.guild')},
-  #{classes('layout.guilds.dm')},
-  #{classes('layout.guilds.guildsErrorContainer')} {
-    @include size(var(--guild-icon-size)!important);
-    margin: 9px auto;
-    // Selected guild indicator
-    &,
-    &#{classes('layout.guilds.unread')},
-    &#{classes('layout.guilds.selected')},
-    &#{classes('layout.guilds.unread')}#{classes('layout.guilds.selected')} {
-      &::before {
-        @include absolute(top 20px!important left -14px!important);
-        @include size(5px!important, var(--guild-icon-size)!important);
-        border-radius: 0 var(--button-roundness) var(--button-roundness) 0!important;
-        border: none!important;
-        background: RGB(var(--tc-color-7));
-        transition: none!important;
-        transform: translateX(100px);
-      }
-    }
-    // Guild badge
-    #{classes('layout.guilds.badge')} {
-      @include absolute(top unset right -4px bottom -4px);
-      @include flex-center;
-      box-shadow: 0 0 0 2px var(--guilds-background);
-      height: calc(var(--guild-icon-size) / 3);
-      min-height: 14px;
-      min-width: 14px;
-    }
-    &#{$guildaudio},
-    &#{$guildvideo} {
-      #{$guildinner} {
-        &::after {
-          content: '';
-          @include absolute(top -6px right -6px);
-          @include size(18px);
-          background: RGB(var(--tc-color-7)) var(--video-volume-icon) no-repeat center / 18px;
-          border: 2px solid var(--guilds-background);
-          border-radius: var(--guild-roundness);
-          overflow: hidden;
-          pointer-events: none;
-        }
-      }
-    }
-    // Fix the border-radius so it doesn't change when user
-    // clicks on a guild
-    #{classes('layout.guilds.dragFix')} {
-      &:active {
-        border-radius: inherit;
-        overflow: visible;
-      }
-    }
-    // Guild icon
-    #{classes('layout.guilds.guildIcon')},
-    // DM user avatar
-    #{classes('layout.guilds.dmIconInner')} {
-      @include flex-center;
-      @include size(var(--guild-icon-size));
-      background: none;
-      background-repeat: no-repeat;
-      background-color: transparent;
-      background-clip: initial;
-      border-radius: var(--guild-roundness);
-      background-size: var(--guild-icon-size) var(--guild-icon-size);
-      margin: 0;
-      // DM user avatar wrapper div
-      #{$avatarwrapper} & {
-        // Fix for inner DM avatar border messing up
-        border: none;
-      }
-    }
-    // DM user avatar wrapper div
-    #{classes('layout.guilds.dmIcon')} {
-      @include flex-center;
-      @include size(var(--guild-icon-size));
-      background-image: url(https://client.forgecdn.net/Avatars/UserAvatar.png);
-      // DM user avatar
-      #{classes('layout.guilds.dmIconInner')} {
-        @include size(var(--guild-icon-size));
-        border: none;
-      }
-    }
-    // When there is no icon present
-    #{classes('layout.guilds.noIcon')} {
-      background: RGB(var(--tc-tint-3));
-    }
-    #{classes('layout.guilds.guildWrapper')},
-    #{classes('layout.guilds.guildsError')} {
-      @include flex-center;
-      @include size(var(--guild-icon-size));
-      border-radius: var(--guild-roundness)!important;
-      background: none!important;
+    // 
+    foreignObject {
+      mask: none;
       overflow: visible;
-      a {
-        @include flex-center;
-        @include size(calc(var(--guild-icon-size) + 4px));
-        border: 2px solid transparent;
-        border-radius: var(--guild-roundness);
-      }
-    }
-    // Guild error / guild unavailable
-    #{classes('layout.guilds.guildsError')} {
-      background: var(--fail-inner-color)!important;
-      border: 2px solid var(--fail-color);
-      color: #fff!important;
-    }
-    // Guild unread
-    &#{classes('layout.guilds.unread')} {
-      #{classes('layout.guilds.guildWrapper')} {
-        a {
-          border-color: #fff;
-        }
-      }
-      // Fix for when Discord adds .stop-animation class to layers when settings is closed
-      @at-root #{classes('base.stopAnimation')} &, // targetting '.stop-animation guild'
-      & { // targetting 'guild'
-        @include hardware;
-        animation: guildUnreadShake 0.82s cubic-bezier(.36, .07, .19, .97) both 1!important;
-        transform: translate3d(0, 0, 0);
-      }
-      &::after {
-        content: '';
-        @include size(100%);
-        @include absolute(top 0 left 0);
-        border-radius: var(--guild-roundness);
-        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.15)!important;
-        display: block;
-        pointer-events: none;
-        transform: scale(1.2);
-        transition: transform 0.2s;
-      }
-      // This is to make sure it's only targeting unread guilds, not unread and selected guilds
-      &:not(#{classes('layout.guilds.selected')}) {
-        #{classes('layout.guilds.guildWrapper')} {
-          #{classes('layout.guilds.guildIcon')} {
-            border: 2px solid RGB(var(--tc-tint-1));
-            background-size: calc(var(--guild-icon-size) - 4px) calc(var(--guild-icon-size) - 4px);
-            // Fix for the border being off at 110% zoom
-            @at-root .zoomLevel1 & {
-              border-width: 3px;
-            }
-          }
-        }
-      }
-      // Guild selected and unread
-      &#{classes('layout.guilds.selected')} {
-        #{classes('layout.guilds.guildWrapper')} {
-          a {
-            border-color: transparent;
-          }
-        }
-        &::after {
-          transform: scale(0);
-          transition: transform 0.2s;
-        }
-      }
-    }
-    // Guild selected (not unread)
-    &#{classes('layout.guilds.selected')} {
-      // Selected guild indicator
-      &::before {
-        animation: bounceIn 0.3s forwards;
-      }
     }
   }
-  // Discord 'Home' button
-  #{classes('layout.guilds.homeButtonContainer')},
-  // Discord 'Server Discovery' button
-  #{classes('layout.guilds.serverDiscoveryContainer')} {
-    display: none;
+  // Guild error / guild unavailable
+  #{classes('layout.guilds.guildsError')} {
+    @include component('alert', 'danger', 'base');
+    border-radius: var('guild-border-radius') !important;
   }
-  // Placeholder when dragging guild
+  // Separator between DMs and guilds
+  #{classes('layout.guilds.guildSeparator')} {
+    @include size(calc(var(--guild-separator-width) * var(--guilds-columns) + var(--guild-margin) * var(--guilds-columns)), var(--guild-separator-height));
+    margin: 0 auto;
+    background: var(--guild-separator-background);
+    border-radius: 0;
+  }
+  // Create / join guild button
+  #{classes('layout.guilds.circleIconButton')} {
+    @include component('button', 'primary', 'base');
+    @include size(100%!important);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: var(--guild-border-radius) !important;
+  }
+  //  Create / join guild button plus symbol svg
+  #{classes('layout.guilds.circleIcon')} {
+    @include mask(icon('plus'), var(--button-primary-color));
+    @include size(50%);
+    path {
+      display: none;
+    }
+  }
+  // Placeholder shown when dragging a guild
   #{classes('layout.guilds.dragPlaceholder')} {
-    @include size(var(--guild-icon-size));
-    border: 2px dashed var(--border-color);
-    border-radius: var(--guild-roundness);
-    background: RGB(var(--tc-tint-1));
-    display: table;
-    margin: 9px auto;
+    @include size(100%);
+    background: var(--guild-placeholder-background);
+    border-color: var(--guild-placeholder-border-color);
+    border-style: var(--guild-placeholder-border-style);
+    border-width: var(--guild-placeholder-border-width);
+    border-radius: var(--guild-border-radius);
+  }
+  // Folder container
+  #{classes('layout.guilds.folder')} {
+      background: none;
+      transition: none;
+  }
+  // Closed folder inner container {
+  #{classes('layout.guilds.folderIconWrapper')} {
+    border-radius: var('guild-border-radius');
+    transition: none !important;
+    transform: none !important;
+    &[style='background-color: rgba(114, 137, 218, 0.4);'] {
+      background: color('primary-1') !important;
+    }
+  }
+  // Closed folder small guild icon
+  #{classes('layout.guilds.closedFolderGuildIcon')} {
+    border-radius: var('guild-border-radius');
+  }
+  // Expanded folder container
+  #{classes('layout.guilds.expandedFolderBackground')} {
+    @include size(70%, 95%);
+    position: absolute;
+    right: 0;
+    bottom: -2rem;
+    left: 0;
+    margin: auto;
+    background: color('primary-1');
+    // Folder container inside opened folder
+    + #{classes('layout.guilds.guild')} {
+      margin-bottom: 0;
+    }
+    &#{classes('layout.guilds.collapsed')} {
+      height: 100%;
+      background: none;
+      border-radius: var('guild-border-radius');
+      // Folder container inside closed folder
+      + #{classes('layout.guilds.guild')} {
+        margin: 0;
+      }
+    }
+    &:not(#{classes('layout.guilds.collapsed')}) {
+      // Make the folder container 85% larger than the guilds
+      + #{classes('layout.guilds.guild')} {
+        background: color('primary-1');
+        transform: scale(1.2);
+      }
+    }
+  }
+  // Closed folder guilds container
+  #{classes('layout.guilds.closedFolderIconWrapper')} {
+    transform: none !important;
+  }
+  // Guild folder wrapper outer container
+  #{classes('layout.guilds.folderWrapper')} {
+    position: relative;
+    width: var('guild-size');
+    margin: var('guild-margin') auto;
+    overflow: visible;
+  }
+  // Folder icon wrapper
+  #{classes('layout.guilds.expandedFolderIconWrapper')} {
+    svg {
+      @include mask(#{icon('folder-opened')}, currentColor, $extras: no-repeat center left 12px, $size: 60%);
+      @include size(100%);
+      path {
+        display: none;
+      }
+      &[style*='color: rgb(114, 137, 218);'] {
+        background-color: color('primary-7') !important;
+      }
+    }
+  }
+  // Guilds container inside a folder
+  #{classes('layout.guilds.expandedGuilds')} {
+    height: auto !important;
+    overflow: visible;
+    > #{classes('layout.guilds.guild')} {
+      margin: calc(#{var('guild-margin')} / 2) auto;
+      background: color('primary-1');
+      border-radius: var('guild-border-radius');
+      box-shadow: 0 0 0 .4rem color('primary-1');
+    }
   }
 }
+
+// MARKUP: Guild error
+// ------------
+// <div class="guildsErrorContainer-2uWYsE">
+// 	<a tabindex="0" class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB guildsError-b7zR5H" href="//twitter.com/discordapp" rel="noreferrer noopener" target="_blank" role="button">!</a>
+// </div>
+
+// MARKUP: Guild dragging
+//
+// <div class="listItem-2P_4kh">
+//   <div class="pill-31IEus wrapper-sa6paO">
+//     <span class="item-2hkk8m" style="opacity: 0; height: 8px; transform: translate3d(-4px, 0px, 0px);"></span>
+//   </div>
+//   <div class="blobContainer-239gwq" draggable="false">
+//     <svg width="48" height="48" class="placeholderMask-3K9THS" viewBox="0 0 48 48" style="display: block;">
+//       <foreignObject x="0" y="0" width="48" height="48" mask="url(#svg-mask-squircle)">
+//           <div class="dragInner-_SHftW"></div>
+//       </foreignObject>
+//     </svg>
+//   </div>
+//   <div class="wrapper-2B2Wx1" aria-hidden="true">
+//     <span class="edge-1OJQxL"></span>
+//     <span class="edge-1OJQxL"></span>
+//   </div>
+// </div>

@@ -1,31 +1,110 @@
 // main: _module.scss
 
 //** Modals core
+:root {
+  --backdrop-background: #{color('black', .8)};
+
+  --modal-background: #{color('tint-1')};
+  --modal-border-color: transparent;
+  --modal-border-style: none;
+  --modal-border-width: 0rem;
+  --modal-border-radius: var(--component-border-radius);
+  --modal-box-shadow: var(--elevation-5);
+  --modal-padding: 2rem;
+  --modal-z-index: 1000;
+
+  --modal-footer-background: #{color('tint-2')};
+  --modal-footer-border-color: #{color('white', .05)};
+  --modal-footer-border-style: solid;
+  --modal-footer-border-width: 0.1rem 0 0 0;
+  --modal-footer-border-radius: 0 0 var(--modal-border-radius) var(--modal-border-radius);
+  --modal-footer-box-shadow: none;
+  --modal-footer-padding: 1rem;
+}
 
 //## Sub modal
 .content-8biNdB a {
-    color: RGB(var(--tc-color-10));
+    color: color('primary-10');
 }
 
-div[class*="modal-"] {
-    z-index: 1000000;
+// Modal outer container
+#{$modal} {
+  z-index: var(--modal-z-index);
 }
 
-.modal-3HD5ck {
+// Backdrop
+#{$backdrop} {
+  background: var(--backdrop-background) !important
+}
+
+// Modal container
+#{$modalsub} {
+  background: var(--modal-background) !important;
+  border-color: var(--modal-border-color) !important;
+  border-style: var(--modal-border-style) !important;
+  border-width: var(--modal-border-width) !important;
+  border-radius: var(--modal-border-radius);
+  box-shadow: var(--modal-box-shadow) !important;
+  #{$modalsubcontent} {
     border-radius: 0;
-    border: 1px solid RGB(var(--tc-color-4))!important;
-    background: RGB(var(--tc-color-3))!important;
-    padding: 0 20px!important;
-    box-sizing: border-box;
-    box-shadow: none!important;
+  }
+  // Header
+  .h2-2gWE-o {
+    @include component('header', 'h3');
+    margin: 0 0 2rem;
+    text-transform: capitalize;
+  }
+  // A "chat" area message
+  .message-2qRu38 {
+    background: var(--chat-background) !important;
+    border-radius: var(--component-border-radius);
+    box-shadow: none !important;
+    // Message
+    .message-1PNnaP {
+      margin: 0;
+    }
+    .container-1YxwTf {
+      padding: 2rem;
+    }
+    // Markup
+    .markup-2BOw-j {
+      margin: 0 !important;
+    }
+  }
+  // Content
+  #{$modalsubinner} {
+    padding: var(--modal-padding);
+  }
+  // Footer
+  #{$modalfooter} {
+    padding: var(--modal-footer-padding) !important;
+    background: var(--modal-footer-background) !important;
+    border-color: var(--modal-footer-border-color) !important;
+    border-style: var(--modal-footer-border-style) !important;
+    border-width: var(--modal-footer-border-width) !important;
+    border-radius: var(--modal-footer-border-radius) !important;
+    box-shadow: var(--modal-footer-box-shadow) !important;
+    &.directionRowReverse-m8IjIq {
+      justify-content: flex-start;
+    }
+    &:not(.directionRowReverse-m8IjIq) {
+      justify-content: flex-end;
+    }
+    .minorAction-OVxOke {
+      @include component('button', 'blank', 'base');
+      margin: 0 1rem 0 0 !important;
+      text-decoration: none !important;
+      opacity: 1;
+    }
+  }
 }
 
-  // Close button
+// Close button
 #{$button}#{$buttonlookblank} {
   &#{$modalclose} {
-    background: none!important;
-    border: none!important;
-    min-width: auto!important;
     top: 10px;
+    min-width: auto !important;
+    background: none !important;
+    border: none !important;
   }
 }

@@ -1,42 +1,121 @@
-// main: _module.scss
+///  main: _module.scss
+///  ==========================================================================
+///  Statuses
+///  ==========================================================================
 
-//** Statuses
+$module: (
+  'status': (
+    size: 1.2rem,
+    border-radius: 50%,
+    stroke: transparent,
+    stroke-width: .3rem,
+    'online': (
+      color: color('green')
+    ),
+    'dnd': (
+      color: color('red')
+    ),
+    'idle': (
+      color: color('gold')
+    ),
+    'streaming': (
+      color: color('purple')
+    ),
+    'offline': (
+      color: color('gray')
+    )
+  )
+);
 
-// Status squares
-#{classes('components.statuses.status')} {
-  @include absolute(right -4px bottom -4px);
-  @include size(10px);
-  border: none!important;
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
+
+
+
+// Members list status
+rect[mask='url(#svg-mask-status-online)'],
+rect[mask='url(#svg-mask-status-dnd)'], 
+rect[mask='url(#svg-mask-status-idle)'], 
+rect[mask='url(#svg-mask-status-streaming)'], 
+rect[mask='url(#svg-mask-status-invisible)'], 
+rect[mask='url(#svg-mask-status-offline)'],
+.cursorDefault-dsQJ1n rect {
+  @include size(var('status-size')!important);
+  min-width: .8rem;
+  min-height: .8rem;
   // Remove color blind icons
-  background-image: none!important;
-  border-radius: var(--status-roundness)!important;
-  &#{classes('components.statuses.online')} {
-    background: var(--status-online-color);
+  background-image: none !important;
+  mask: none;
+  stroke: var('status-stroke');
+  stroke-width: var('status-stroke-width');
+  ry: var('status-size');
+}
+
+rect {
+  @at-root .cursorDefault-dsQJ1n rect[fill='rgba(67, 181, 129, 1)'],
+  &[mask='url(#svg-mask-status-online)'] {
+    fill: var('status-online-color');
   }
-  &#{classes('components.statuses.dnd')} {
-    background: var(--status-dnd-color);
+  @at-root .cursorDefault-dsQJ1n rect[fill='rgba(240, 71, 71, 1)'],
+  &[mask='url(#svg-mask-status-dnd)'] {
+    fill: var('status-dnd-color');
   }
-  &#{classes('components.statuses.idle')} {
-    background: var(--status-idle-color);
+  @at-root .cursorDefault-dsQJ1n rect[fill='rgba(250, 166, 26, 1)'],
+  &[mask='url(#svg-mask-status-idle)'] {
+    fill: var('status-idle-color');
   }
-  &#{classes('components.statuses.streaming')} {
-    background: var(--status-streaming-color);
+  @at-root .cursorDefault-dsQJ1n rect[fill='rgba(89, 54, 149, 1)'],
+  &[mask='url(#svg-mask-status-streaming)'] {
+    fill: var('status-streaming-color');
   }
-  &#{classes('components.statuses.offline')},
-  &#{classes('components.statuses.invisible')} {
-    background: var(--status-offline-color);
+  @at-root .cursorDefault-dsQJ1n rect[fill='rgba(116, 127, 141, 1)'],
+  &[mask='url(#svg-mask-status-offline)'],
+  &[mask='url(#svg-mask-status-invisible)'] {
+    fill: var('status-offline-color');
   }
+}
+
+.cursorDefault-dsQJ1n {
+  rect {
+    x: 8;
+    y: 4;
+  }
+  rect[width='25'] {
+    // width: 100% !important;
+    // x: 0;
+  }
+}
+
+// User avatars
+foreignObject[mask='url(#svg-mask-avatar-status-round-32)'],
+foreignObject[width='32'][height='32'] {
+  overflow: hidden;
+  border-radius: 50%;
+  mask: none;
+}
+
+foreignObject[mask*='url(#svg-mask-avatar-status-mobile-32)'] {
+  mask: url('#svg-mask-avatar-status-mobile-32') !important;
+}
+
+rect[mask*='url(#svg-mask-status-online-mobile)'] {
+  @include size(1rem!important, 1.5rem!important);
+  stroke: unset;
+  stroke-width: unset;
+  ry: unset;
+  mask: url('#svg-mask-status-online-mobile');
 }
 
   // Typing status on avatars (DM convos and server members list)
   .status-oxiHuE.typing-1KJk_j {
-    @include size(20px!important, 6px!important);
+    @include size(20px!important, 8px!important);
     right: -2px !important;
+    border-radius: calc(var(--component-border-radius) * 1000) !important;
     .spinner-2enMB9 {
-      margin-left: 1px;
       width: 19px;
+      margin-left: 1px;
       .pulsingEllipsis-3YiXRF {
-        width: 20px!important;
+        width: 20px !important;
         .pulsingEllipsisItem-32hhWL {
           opacity: 0.7;
         }

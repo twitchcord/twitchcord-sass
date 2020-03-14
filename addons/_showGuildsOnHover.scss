@@ -1,0 +1,17 @@
+.showGuildsOnHover {
+  #{classes('layout.guilds.guildsWrapper')} {
+    &:hover {
+      + #{classes('base.flex.flex')} {
+        .channels-Ie2l6A {
+          margin-left: var(--guilds-width);
+        }
+      }
+    }
+  }
+  .channels-Ie2l6A {
+    transition: var(--disable-transitions, margin 0.3s);
+    &:hover {
+      margin-left: var(--guilds-width);
+    }
+  }
+}

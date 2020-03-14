@@ -5,10 +5,10 @@
 
 .everyonePopout-nEbJY3 {
   width: 490px;
-  background: RGB(var(--tc-tint-1))!important;
-  border-radius: var(--autocomplete-roundness);
+  background: color('tint-1') !important;
   border: 1px solid var(--border-color);
-  box-shadow: var(--elevation-1)!important;
+  border-radius: var(--autocomplete-roundness);
+  box-shadow: var(--elevation-1) !important;
   opacity: 0;
   animation: fadeIn 0.3s forwards, translateBottomToTop 0.3s forwards;
   .body-2iXqIL {
@@ -17,38 +17,38 @@
       margin-top: 10px;
     }
     .header-3_S6dz {
-      font-size: 22px;
       margin: 0 0 10px;
-      color: RGB(var(--tc-tint-11))!important;
-      text-transform: none;
+      font-size: 22px;
       font-weight: 400;
+      color: color('tint-11') !important;
+      text-transform: none;
       letter-spacing: 0;
       &+div {
-        color: RGB(var(--tc-tint-8))!important;
         font-size: 12px !important;
         line-height: 18px !important;
+        color: color('tint-8') !important;
       }
     }
     strong {
-      color: RGB(var(--tc-tint-10));
+      color: color('tint-10');
     }
     .icon-2qOzDL {
       path {
-        fill: RGB(var(--contrasted-color));
+        fill: color('contrasted');
       }
     }
     .buttonHint-2OxJB8 {
-      color: RGB(var(--tc-tint-7));
       font-size: 11px;
+      color: color('tint-7');
       strong {
-        color: RGB(var(--tc-color-10));
+        color: color('tint-10');
       }
     }
     .animation-3GofIz {
       @include size(171px, 150px);
       svg {
         @include size(171px!important, 150px!important);
-        background: url(https://i.imgur.com/Gv1JVp0.png) no-repeat center;
+        background: url('https://i.imgur.com/Gv1JVp0.png') no-repeat center;
         background-size: 171px 150px;
         & > g {
           transform: translate(-20px, 0);
@@ -67,13 +67,13 @@
             &:nth-of-type(14),
             &:nth-of-type(15),
             &:nth-of-type(16) {
-              display: none!important;
+              display: none !important;
             }
             &:nth-of-type(10),
             &:nth-of-type(11) {
               > g:first-of-type {
                 path {
-                  fill: RGB(var(--contrasted-color));
+                  fill: color('contrasted');
                 }
               }
             }
@@ -83,12 +83,12 @@
     }
   }
   .footer-2aTx0s {
-    background: RGB(var(--tc-tint-2))!important;
-    border-top: 1px solid var(--empty-hover-color);
-    color: RGB(var(--tc-tint-7));
+    color: color('tint-7');
+    background: color('tint-2') !important;
+    border-top: 1px solid color('white', .05);
     .icon-2qOzDL {
       path {
-        fill: RGB(var(--tc-tint-7));
+        fill: color('tint-7');
       }
     }
   }

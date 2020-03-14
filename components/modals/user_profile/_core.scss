@@ -1,677 +1,575 @@
-// main: _module.scss
+///  main: _module.scss
+///  ==========================================================================
+///  User profile modals
+///  ==========================================================================
 
-//** User profiles modal
+$module: (
+  'modal': (
+    'user-profile': (
+      background: color('primary-1'),
+      border-color: var('modal-border-color'),
+      border-style: var('modal-border-style'),
+      border-width: var('modal-border-width'),
+      border-radius: var('modal-border-radius'),
+      box-shadow: var('modal-box-shadow'),
+      width: 80rem,
+      max-height: 80rem,
+      'activity': (
+        background: color('tint-2'),
+        border-color: color('white', .05),
+        border-style: solid,
+        border-width: 0 0 .1rem 0,
+        border-radius: 0,
+        box-shadow: none
+      ),
+      'banner': (
+        width: var('modal-user-profile-width'),
+        height: calc(#{var('modal-user-profile-banner-width')} * #{var('aspect-ratio-user-profile-banner')})
+      ),
+      'nav': (
+        background: color('tint-1'),
+        border-color: transparent,
+        border-style: none,
+        border-width: 0,
+        border-radius: 0,
+        box-shadow: none,
+        height: 5rem
+      )
+    )
+  )
+);
 
+// Generating CSS variables from map . . .
+:root { @include generate-css-vars($module); }
+
+
+// User profile container
 .root-SR8cQa {
-  background: RGB(var(--tc-color-2))!important;
-  border-radius: 0;
-  box-sizing: border-box;
-  width: 800px;
-  border: 1px solid RGB(var(--tc-color-4));
-  height: 800px;
-  max-height: 800px;
-}
-
-.root-SR8cQa .bodyNormal-2D39hT {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-  .root-SR8cQa .contentNoImagesProfile-371_Rv .nameWrap-3Z4G_9 {
-    padding-left: 16px;
-    margin: 10px 0 20px;
+  @include get-props($module, 'modal', 'user-profile');
+  height: auto;
+  // Top section outer container (user profile banner,
+  // user avatar, user name, tab menu bar, activity status)
+  .topSectionNormal-2-vo2m,
+  .topSectionPlaying-1J5E4n,
+  .topSectionStreaming-1Tpf5X,
+  .topSectionSpotify-1lI0-P,
+  .topSectionXbox-3fWLjS {
+    background: none;
   }
-
-  .root-SR8cQa .topSectionStreaming-1Tpf5X .headerText-1HLrL7 {
-      margin-left: 15px;
-  }
-
-  .root-SR8cQa .guildNick-3uAm3i:empty::after {
-    content: 'No nickname set';
-  }
-
-.root-SR8cQa .header-QKLPzZ + div {
-    background-color: transparent;
+  // Header outer container (user profile banner,
+  // user avatar, user name)
+  .header-QKLPzZ {
+    @include size(var('modal-user-profile-banner-width'), var('modal-user-profile-banner-height'));
     position: relative;
-    min-height: 53px;
-}
-
-.root-SR8cQa .topSectionNormal-2-vo2m {
-  background-color: transparent;
-  background: none;
-}
-
-.root-SR8cQa .assetsLargeMaskProfile-1Qkfen {
-    -webkit-mask: none;
-    mask: none;
-}
-
-.root-SR8cQa .profileBadgePremium-3kZ9Qj, .root-SR8cQa .profileBadgeHypesquad-1YIe7Z,
-.root-SR8cQa .profileBadgePartner-SjK6L2, .root-SR8cQa .profileBadgeStaff-13GO7z {
-  height: 16px;
-}
-
-#{$userprofile} {
-  #{$userprofilebadge} {
-    @include size(16px!important);
-    background: none!important;
-    &#{$userprofilebadgebughunter} {
-      @include mask(var(--discord-bughunter-badge), #fff, $important: true);
-    }
-    &#{$userprofilebadgenitro} {
-      @include mask(var(--discord-nitro-badge), #fff, 22px, $important: true);
-      width: 26px!important;
-    }
-    &#{$userprofilebadgehypesquad} {
-      @include mask(var(--discord-hypesquad-badge), #fff, $important: true);
-      @include relative(top 1px);
-    }
-    &#{$userprofilebadgepartner} {
-      @include mask(var(--discord-partner-badge), #fff, $important: true);
-      @include relative(top 3px);
-      width: 21px!important;
-    }
-    &#{$userprofilebadgestaff} {
-      @include mask(var(--discord-staff-badge), #fff, $important: true);
-    }
-    &#{$userprofilebadgehypesquadhouse1} {
-      @include mask(var(--discord-hypesquad-bravery-badge), #fff, $important: true);
-    }
-    &#{$userprofilebadgehypesquadhouse2} {
-      @include mask(var(--discord-hypesquad-brilliance-badge), #fff, $important: true);
-    }
-    &#{$userprofilebadgehypesquadhouse3} {
-      @include mask(var(--discord-hypesquad-balance-badge), #fff, $important: true);
-    }
-  }
-}
-
-.root-SR8cQa .topSectionStreaming-1Tpf5X .headerText-1HLrL7::before {
-  content: '';
-  background: var(--fail-color);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  position: absolute;
-  margin-top: 12px;
-  left: 15px;
-}
-
-.root-SR8cQa .topSectionStreaming-1Tpf5X .headerText-1HLrL7::after {
-  content: '';
-  background: var(--fail-color);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  position: absolute;
-  margin-top: 12px;
-  left: 15px;
-  animation: StreamLivePulseCircle 2s;
-  animation-iteration-count: infinite;
-}
-
-.root-SR8cQa .topSectionStreaming-1Tpf5X .headerText-1HLrL7::before,
-.root-SR8cQa .topSectionStreaming-1Tpf5X .headerText-1HLrL7::after {
-  top: 13px;
-  left: 28px;
-}
-
-.root-SR8cQa .header-QKLPzZ {
-    opacity: 1;
+    align-items: flex-end;
+    min-width: var('modal-user-profile-min-width');
     padding: 0;
-    z-index: 2;
-    position: relative;
-    background-color: RGB(var(--tc-color-2));
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 240px;
-    width: 800px;
-    &:not([style*="background-image"]) {
-      background-color: RGB(var(--tc-color-7));
-      background-image: url(https://i.imgur.com/GKqK6Cy.png);
-      background-blend-mode: multiply;
+    border-radius: var('modal-user-border-radius') var('modal-user-border-radius') 0 0;
+    &::after {
+      @include component('placeholder', 'user-profile-banner');
+      @include size(var('modal-user-profile-banner-width'), var('modal-user-profile-banner-height'));
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
-}
-
-.root-SR8cQa .avatar-3EQepX {
-  @include relative(bottom calc(var(--user-profile-avatar-size) * -1));
-  @include size(var(--user-profile-avatar-size)!important);
-  border: 4px solid RGB(var(--tc-color-1))!important;
-  margin: 0 15px!important;
-  z-index: 2;
-}
-
-.root-SR8cQa .profile-ZOdGIb.image-33JSyf {
-  @include absolute(top -4px left -4px);
-  @include size(var(--user-profile-avatar-size)!important);
-  border: 4px solid transparent;
-}
-
-.root-SR8cQa .listAvatar-1NlAhb .image-33JSyf {
-  @include size(40px);
-}
-
-.root-SR8cQa .status-oxiHuE {
-    height: 14px !important;
-    width: 14px !important;
-    bottom: -5px !important;
-    right: -5px !important;
-    border: 3px solid RGB(var(--tc-color-1));
-    box-shadow: none;
-    box-sizing: border-box;
-}
-
-.root-SR8cQa .headerInfo-30uryT {
-    position: absolute;
-    left: 0;
-    bottom: -40px;
-    top: unset!important;
-    width: 100%;
-    height: 40px;
-    padding-left: 140px;
-    background: RGB(var(--tc-color-1))!important;
-    border-top: 1px solid RGB(var(--tc-color-3));
-    z-index: 1;
-}
-
-.root-SR8cQa .header-QKLPzZ .headerInfo-30uryT .nameTag-m8r81H {
-    line-height: 40px;
-    height: 40px;
-    top: 0!important;
-    position: relative!important;
+    // Profile avatar wrapper
+    .wrapper-2F3Zv8 {
+      @include size(6rem);
+      z-index: 0;
+      margin: 0 1.5rem 2rem;
+      // Profile avatar
+      .image-33JSyf {
+        @include size(6rem);
+        background-color: color('primary-1');
+        box-shadow: 0 0 0 2px color('tint-1');
+        &::before,
+        &::after {
+          @include size(80rem, 25rem);
+          content: '';
+          position: absolute;
+          margin: calc((25rem - 8rem) * -1) 0 0 -1.5rem;
+        }
+        &::before {
+          z-index: -1;
+          background: color('black', .2);
+        }
+        &::after {
+          z-index: -2;
+          background-image: url('http://pluspng.com/img-png/computer-game-png-hd-video-game-backgrounds-latest-hd-wallpapers-1920.png');
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+      }
+      .status-oxiHuE {
+        --status-box-shadow-color: #{color('tint-1')};
+        right: 0 !important;
+        bottom: 0 !important;
+      }
+    }
+    // Discord uses a generic div wrapper for users without an activity status
+    // so, this targets both users with an activity status and those without
+    + div {
+      display: flex;
+      flex-flow: column wrap;
+      background: none;
+    }
+    // `Send Friend Request`, `Send Message` button
+    .button-38aScr {
+      @include component('button', 'primary');
+      position: absolute;
+      right: 4rem;
+      bottom: -4rem;
+      // `More` vertical ... menu button
+      + [role='button'] {
+        @include component('button', 'blank', 'base');
+        position: absolute;
+        right: 1rem;
+        bottom: -4rem;
+        z-index: 1;
+        display: flex !important;
+        align-items: center;
+        width: auto !important;
+        padding: 0 !important;
+        .additionalActionsIcon-1FoUlE {
+          @include mask(icon('dots-vertical'), color('white', .3), 2.4rem);
+          margin: 0;
+          background-image: none;
+        }
+      }
+    }
+    &:hover {
+      .profileBadges-2vWUYb {
+        // animation: none;
+        // animation: fadeIn 0.3s forwards;
+      }
+    }
+  }
+  // Name, discrim, badges container
+  .headerInfo-30uryT {
     display: flex;
-    align-items: center;
-}
-
-.root-SR8cQa .header-QKLPzZ .headerInfo-30uryT .nameTag-m8r81H .discriminator {
-    @include ellipsis;
-    @include relative(top 0 right 0);
-    @include text(RGB(var(--tc-tint-7)), 11px, 400, 40px);
-    margin-left: 3px;
-    order: 3;
-    opacity: 0;
-}
-
-.root-SR8cQa .header-QKLPzZ .nameTag-m8r81H .username-3gJmXY:hover + .discriminator {
-  opacity: 1;
-}
-
-.root-SR8cQa .headerInfo-30uryT + .flex-1xMQg5, .root-SR8cQa .headerInfo-30uryT + button {
-    position: absolute;
-    bottom: 13px!important;
-    right: 20px;
-}
-
-.root-SR8cQa .tabBarContainer-1s1u-z {
-    background-color: RGB(var(--tc-color-3));
-    border-top: none;
-    box-shadow: none;
-    padding-left: 30px;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 6rem;
+    margin-bottom: 1.6rem;
+    padding: 0;
+    overflow: hidden;
+  }
+  // Name, discrim inner container
+  .nameTag-2IFDfL {
     position: relative;
-    margin-top: 40px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.root-SR8cQa .tab-bar .tabBarItem-1b8RUP {
-  color: RGB(var(--tc-tint-11))!important;
-  border-bottom: none!important;
-  position: relative;
-  margin: 0 20px;
-  padding: 0;
-  &::after {
-    @include absolute(bottom 0 left 0);
-    @include size(100%, 4px);
-    content: '';
-    background: RGB(var(--tc-color-7));
+    order: 2;
+    margin: 0;
+    line-height: 1.5;
+  }
+  // Username
+  .username-3gJmXY {
+    margin-right: .4rem;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: color('white');
+  }
+  // Discriminator
+  .discriminator-xUhQkU {
     display: none;
   }
-  &.selected {
-    color: RGB(var(--tc-color-10))!important;
+  // Profile badges container
+  .profileBadges-2vWUYb {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    margin: 0;
+    // transition: transform 0.3s ease;
+    // animation: translateRightToLeft 0.5s forwards reverse 2s;
+  }
+  .profileBadge-2BqF-Z {
+    @include size(2rem, 1.6rem);
+    background-image: none !important;
+    opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
+    // Discord Staff badge
+    &.profileBadgeStaff-13GO7z {
+      @include mask(icon('staff'), #fff);
+    }
+    // Discord Partner badge
+    &.profileBadgePartner-SjK6L2 {
+      @include mask(icon('partner'), #fff);
+    }
+    // HypeSquad Events badge
+    &.profileBadgeHypesquad-1YIe7Z {
+      @include mask(icon('hypesquad-events'), #fff);
+    }
+    // HypeSquad Bravery badge
+    &.profileBadgeHypeSquadOnlineHouse1-xN6tES {
+      @include mask(icon('hypesquad-bravery'), #fff);
+    }
+    // HypeSquad Brilliance badge
+    &.profileBadgeHypeSquadOnlineHouse2-3jBpXR {
+      @include mask(icon('hypesquad-brilliance'), #fff);
+    }
+    // HypeSquad Balance badge
+    &.profileBadgeHypeSquadOnlineHouse3-1YbjMX {
+      @include mask(icon('hypesquad-balance'), #fff);
+    }
+    // Discord Nitro badge
+    &.profileBadgePremium-3kZ9Qj {
+      @include mask(icon('nitro'), #fff);
+    }
+    // Discord Bug Hunter badge
+    &.profileBadgeBugHunter-IV0vLE {
+      @include mask(icon('bug'), #fff);
+    }
+    // Early Supporter badge
+    &.profileBadgeEarlySupporter-PQB_0a {
+      @include mask(icon('early-supporter'), #fff);
+      width: 3rem;
+    }
+    // Nitro Boosting badge, level 1
+    &.profileGuildSubscriberlvl1-pKd1EZ {
+      @include mask(icon('booster-level-1'), #fff);
+    }
+    // Nitro Boosting badge, level 2
+    &.profileGuildSubscriberlvl2-1aIFve {
+
+    }
+    // Nitro Boosting badge, level 3
+    &.profileGuildSubscriberlvl3-33AROf {
+
+    }
+    // Nitro Boosting badge, level 4
+    &.profileGuildSubscriberlvl4-2yY8EG {
+
+    }
+  }
+  // Custom status text container
+  .customStatus-154i-H {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  // Activity outer container
+  .activity-1ythUs {
+    position: relative;
+    order: 2;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    overflow: hidden;
+    background: var('modal-user-profile-activity-background');
+    border-color: var('modal-user-profile-activity-border-color');
+    border-style: var('modal-user-profile-activity-border-style');
+    border-width: var('modal-user-profile-activity-border-width');
+    border-radius: var('modal-user-profile-activity-border-radius');
+    box-shadow: var('modal-user-profile-activity-box-shadow');
+    &::before,
     &::after {
-      animation: bounceIn 0.4s ease-out forwards;
+      @include size(100%);
+      content: '';
+      position: absolute;
+      top: 0;
+      // MAGIC NUMBER: Dunno why -38% works here
+      right: -38%;
       display: block;
     }
+    &::before {
+      @include mask(icon('circle-pulsing'), color('white', .05), auto 250%, no-repeat center center);
+    }
+    &::after {
+      @include mask(icon('dpad'), color('tint-1'), auto 100%, no-repeat center center);
+    }
+  }
+  .topSectionPlaying-1J5E4n {
+    .headerText-1HLrL7 {
+      &::before {
+        @include mask(icon('dpad'), color('white'));
+        @include size(1.4rem);
+        content: '';
+        margin: 0 .4rem 0 0;
+      }
+    }
+  }
+  .topSectionSpotify-1lI0-P {
+    .content-3JfFJh {
+      grid-row-end: -1;
+    }
+    .headerText-1HLrL7 {
+      &::before {
+        @include mask(icon('music-note'), color('white'));
+        @include size(1.6rem);
+        content: '';
+        margin: 0 .4rem 0 0;
+      }
+    }
+    .activity-1ythUs {
+      &::after {
+        @include mask(icon('music-record'), color('tint-1'), auto 80%, no-repeat center center);
+      }
+    }
+  }
+  .topSectionStreaming-1Tpf5X {
+    .headerText-1HLrL7 {
+      &::before {
+        @include size(1rem);
+        content: '';
+        margin: 0 .8rem 0 0;
+        background: color('red');
+        border-radius: 50%;
+      }
+      &::after {
+        @include size(1rem);
+        content: '';
+        position: absolute;
+        background: color('red');
+        border-radius: 50%;
+        animation: StreamLivePulseCircle 2s infinite;
+      }
+    }
+    .activity-1ythUs {
+      &::after {
+        @include mask(icon('streaming'), color('tint-1'), auto 100%, no-repeat center center);
+      }
+    }
+  }
+  .topSectionXbox-3fWLjS {
+    .headerText-1HLrL7 {
+      &::before {
+        @include mask(icon('dpad'), color('white'));
+        @include size(1.4rem);
+        content: '';
+        margin: 0 .4rem 0 0;
+      }
+    }
+    .activity-1ythUs {
+      &::after {
+        @include mask(logo('xbox'), color('tint-1'), auto 80%, no-repeat center center);
+      }
+    }
+  }
+  .textRow-19NEd_ {
+    @include ellipsis;
+    margin: 0;
+    // If it has any children, give it a margin
+    + div,
+    + span {
+      margin: .4rem 0 0;
+    }
+  }
+  .body-ZAhrcj {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    align-items: center;
+    justify-content: flex-start;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto .6fr;
+    grid-template-areas: 'image info info'
+                         'image buttons .';
+    gap: 0 1.5rem;
+  }
+  .assets-VMAukC {
+    grid-area: image;
+    position: relative;
+  }
+  .gameIcon-gg34Dz {
+    @include boxart('before');
+    border-radius: var(--game-icon-border-radius);
+    grid-area: image;
+    opacity: 1 !important;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: 23px;
+      z-index: -1;
+      display: block;
+      width: calc(140px * 3 / 4);
+      height: 140px;
+      pointer-events: none;
+      cursor: default;
+      background: var(--game-boxart-placeholder) no-repeat center / 140%,radial-gradient(circle at center, color('primary-8'), color('primary-7')) !important;
+      background-repeat: no-repeat !important;
+      background-size: 100% 100% !important;
+      border-radius: var(--boxart-border-radius);
+      box-shadow: 0 0 0 2px color('primary-8'), 0 0 140px 0px color('primary-13', .8);
+      animation: translateBottomToTop 1s forwards;
+    }
+  }
+  .assetsLargeImageProfile-3YXDex {
+    @include size(10rem);
+    -webkit-mask: none;
+    mask: none;
+  }
+  .assetsSmallImageProfile-3JcsV1 {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    background: color('tint-2');
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px color('tint-2');
+  }
+  .timestamp-VjAZmo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: color('tint-7');
+  }
+  .activityName-1IaRLn {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: color('white');
+  }
+  .nameNormal-2lqVQK {
+    .activityName-1IaRLn {
+      font-size: 1.6rem !important;
+    }
+  }
+  .details-38sfDr,
+  // Not sure what this is for... Pulled from Discor CSS
+  .name-29ETJS {
+    color: color('tint-9') !important;
+  }
+  .content-3JfFJh {
+    margin: 0;
+    color: color('tint-9') !important;
+    grid-area: info;
+    &:last-child {
+      grid-row-end: -1;
+    }
+    &:only-child {
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+    }
+    &.contentNoImagesProfile-371_Rv {
+      grid-column-start: 1;
+      + .actionsProfile-1QS4n- {
+        margin-top: 1rem;
+        grid-column-start: 1;
+      }
+    }
+  }
+  .actionsProfile-1QS4n- {
+    grid-area: buttons;
+    margin: 0;
+  }
+  .listeningActionsProfile-1fYwru {
+    position: absolute;
+    top: -4rem;
+    right: 0;
+    grid-area: none;
+    margin: 0;
+  }
+  .headerText-1HLrL7 {
+    @include component('header', 'h6');
+    display: flex;
+    align-items: center;
+    margin: 0 0 1.5rem;
+    text-transform: capitalize;
+  }
+  .timeBarProfile-10b-fm {
+    margin: 1.5rem 0 0 !important;
+  }
+  .bar-3urHkF,
+  .barInner-3NDaY_ {
+    border-radius: 0;
+  }
+  .bar-3urHkF {
+    margin: 0 0 .5rem 0;
+    background: color('tint-3');
+  }
+  .barInner-3NDaY_ {
+    background: color('primary-9');
+  }
+  // Current / end time
+  .text-AOoUen {
+    color: color('tint-7');
+  }
+  .button-38aScr {
+    width: auto;
+    max-width: none;
+    &:disabled {
+      .listenAlongIcon-2vb1HG {
+        color: var('button-disabled-color');
+      }
+    }
+    .contents-18-Yxp {
+      .flex-1xMQg5 {
+        justify-content: center;
+      }
+    }
+  }
+  .iconButtonSize-3s24uQ {
+    min-width: auto;
+    max-width: 100%;
+  }
+  // Nav outer container
+  .tabBarContainer-1s1u-z {
+    order: 1;
+    height: var('modal-user-profile-nav-height');
+    padding: 0;
+    background: var('modal-user-profile-nav-background');
+    border-color: var('modal-user-profile-nav-border-color');
+    border-style: var('modal-user-profile-nav-border-style');
+    border-width: var('modal-user-profile-nav-border-width');
+  }
+  // Nav inner container
+  .tabBar-2MuP6- {
+    height: 100%;
+  }
+  // Nav item
+  .tabBarItem-1b8RUP {
+    margin: 0;
+    padding: .5rem 2rem;
+    overflow: visible;
+    font-size: 1.4rem;
+    color: var('link-color') !important;
+    border: none;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -.1rem;
+      width: .1rem;
+      height: 3.6rem;
+      background: color('white', .05);
+      transform: translateY(-50%);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: .1rem;
+      display: block;
+      width: 100%;
+      border-bottom: 4px solid transparent;
+      transition: border .25s;
+    }
+    &:hover {
+      &::after {
+        border-bottom-color: color('primary-5');
+      }
+    }
+    &.selected-3s45Ha,
+    &[style*='border-color: rgb(255, 255, 255);'] {
+      &::after {
+        border-bottom-color: color('primary-7');
+      }
+    }
+    &:last-of-type {
+      &::before {
+        display: none;
+      }
+    }
+  }
+  // Content container
+  .body-3ND3kc {
+    height: 40rem;
+    background: none !important;
   }
 }
 
-.tab-bar.tabBar-2MuP6- .tabBarItem-1b8RUP+.tabBarItem-1b8RUP {
-    margin: 0 20px;
-}
-
-.root-SR8cQa .tab-bar .tab-bar-item:hover {
-  color: RGB(var(--contrasted-color))!important;
-}
-
-.root-SR8cQa .tab-bar .tabBarItem-1b8RUP:first-child {
-  margin-left: 0;
-}
-
-.root-SR8cQa .body-3ND3kc {
-    display: flex;
-    flex: 1 1 auto;
-    background: none;
-}
-
-.root-SR8cQa .scroller-2FKFPG {
-    background: none!important;
-    overflow-y: auto;
-}
-
-.root-SR8cQa .VIP {
-  display: none;
-}
-
-.root-SR8cQa .scroller-2FKFPG > div:not(.listRow-hutiT_):not(.empty-2WtT5s) {
-  background: none!important;
-  border: none!important;
-  padding: 0px!important;
-  margin: 30px !important;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx {
-    box-sizing: border-box;
-}
-
-.root-SR8cQa .activityProfile-2bJRaP {
-  min-height: 30px;
-  padding: 20px 30px;
-  position: relative;
-  margin-bottom: 0px;
-  border-bottom: 1px solid RGB(var(--tc-color-3));
-  display: block;
-  background: RGB(var(--tc-color-1))!important;
-}
-
-.root-SR8cQa .profileBadges-2vWUYb {
-    margin: 0;
-    position: absolute;
-    bottom: 50px;
-    margin-left: 0;
-}
-
-.root-SR8cQa .scroller-2FKFPG {
-    background: RGB(var(--tc-color-2));
-    overflow-y: auto;
-}
-
-.root-SR8cQa .scroller-2FKFPG::-webkit-scrollbar-track {
-    border-radius: 0;
-    background-color: transparent!important;
-    border: 4px solid RGB(var(--tc-color-2));
-}
-
-.root-SR8cQa .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-thumb,
-.root-SR8cQa .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track,
-.root-SR8cQa .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track-piece {
-    border-left: 10px solid RGB(var(--tc-color-2))!important;
-    border-right: 10px solid RGB(var(--tc-color-2))!important;
-    border-top: none!important;
-    border-bottom: none!important;
-    margin: 5px 0;
-    visibility: visible;
-}
-
-.root-SR8cQa .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track-piece {
-    border-radius: 0px;
-    background-color: RGB(var(--tc-color-2))!important;
-}
-
-.root-SR8cQa .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-thumb {
-    background-color: RGB(var(--tc-color-5))!important;
-}
-
-.root-SR8cQa .scroller-2FKFPG::-webkit-scrollbar {
-    width: 27px!important;
-}
-
-.root-SR8cQa .listRow-hutiT_:hover .status-oxiHuE {
-  border-color: RGB(var(--tc-color-4));
-}
-
-.root-SR8cQa .listRow-hutiT_ .status-oxiHuE {
-  @include size(10px!important);
-    border: 2px solid RGB(var(--tc-color-2));
-    bottom: -4px!important;
-    right: -4px!important;
-}
-
-.root-SR8cQa .tab-bar.tabBar-2MuP6- {
-    margin: -1px 0;
-    height: 45px;
-}
-
-.root-SR8cQa .username-3gJmXY {
-  @include ellipsis(320px, inline-block);
-  @include text(RGB(var(--contrasted-color))!important, 18px, 700, 22px);
-  order: 2;
-}
-
-.root-SR8cQa .assetsLargeImage-eYwpTX {
-  border-radius: var(--image-roundness);
-  background-color: RGB(var(--tc-color-1));
-}
-
-.root-SR8cQa .assetsSmallImage-3_3Bzj {
-  border-radius: 50%;
-  background-color: RGB(var(--tc-color-1));
-}
-
-.root-SR8cQa .assetsSmallImageProfile-3JcsV1 {
-    right: -6px;
-    bottom: -6px;
-    height: 20px;
-    width: 20px;
-    padding: 3px;
-}
-
-.root-SR8cQa .contentImagesProfile-1Mz07W {
-    padding: 0;
-}
-
-.root-SR8cQa .assetsLargeImageProfile-3YXDex {
-    width: 80px;
-    height: 80px;
-}
-
-.root-SR8cQa .listRow-hutiT_ .avatar-16XVId { top: 0; }
-
-.root-SR8cQa .listRow-hutiT_ .avatar-16XVId::before { display: none; }
-
-.root-SR8cQa .listRow-hutiT_ .avatar-large,
-.root-SR8cQa .listRow-hutiT_ .avatar-16XVId {
-    width: 50px;
-    height: 50px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-color: transparent;
-    border: none;
-    transition: border 0.2s;
-    margin: 0;
-    margin-right: 10px;
-}
-
-.root-SR8cQa .listRow-hutiT_ {
-    width: 184px;
-    box-sizing: border-box;
-    display: inline-flex;
-    background: none;
-    border: none;
-    margin: 5px!important;
-    padding: 10px;
-    &:hover {
-      background: RGB(var(--tc-color-4));
-      .listName-3w10cx {
-        color: RGB(var(--contrasted-color));
-      }
-      .listDiscriminator-253zfw,
-      .guildNick-3uAm3i {
-        color: RGB(var(--tc-tint-10));
-      }
-    }
-}
-
-.root-SR8cQa .listName-3w10cx {
-  @include text(RGB(var(--tc-tint-11)), 14px, 700, 18px);
-}
-
-.root-SR8cQa .listDiscriminator-253zfw {
-  @include text(RGB(var(--tc-tint-7)), 11px, 400);
-  display: block;
-  opacity: 1;
-}
-
-.root-SR8cQa .guildNick-3uAm3i {
-  @include text(RGB(var(--tc-tint-7)), 12px, 400, 14px);
-}
-
-.root-SR8cQa .listAvatar-1NlAhb {
-  border-radius: 0;
-}
-
-.root-SR8cQa .listRow-hutiT_ .guild-name {
-    color: RGB(var(--tc-tint-8));
-    font-size: 14px;
-    line-height: 16px;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .note-3kmerW  textarea {
-    color: RGB(var(--contrasted-color));
-    overflow: hidden;
-    line-height: 20px;
-    &:focus {
-      background: none!important;
-    }
-}
-
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7 .connectedAccountVerifiedIcon-3aZz_K {
-    width: 18px;
-    height: 18px;
-    background: image('verified5.png') no-repeat 50%;
-    z-index: 1;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7 .connectedAccountVerifiedIcon-3aZz_K g {
-    display: none;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7 a {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx {
-    box-sizing: border-box;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7 {
-    border-radius: 0;
-    width: 49%;
-    height: 50px;
-    padding: 0;
-    position: relative;
-    background: RGB(var(--tc-color-1));
-    margin-top: 10px;
-    border: none;
-    transition: border-color 0.2s;
-    &:hover {
-      .connectedAccountIcon-3P3V6F {
-        background: RGB(var(--tc-color-8));
-      }
-    }
-}
-
-.root-SR8cQa .scroller-2FKFPG > div:not(.listRow-hutiT_):not(.empty-2WtT5s) {
-    background-color: RGB(var(--tc-color-3));
-    border: 1px solid RGB(var(--tc-color-4));
-    padding: 20px;
-    margin: 10px;
-}
-
-.root-SR8cQa .scroller-2FKFPG > .empty-2WtT5s {
-    margin-bottom: 0!important;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx+.userInfoSection-2acyCx {
-    border-top: 1px solid RGB(var(--tc-color-4))!important;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7:nth-of-type(1),
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7:nth-of-type(2) {
-    margin-top: 15px;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS::before, .root-SR8cQa .headerText-1HLrL7 {
-    margin-top: 20px;
-    content: 'Platform Identities';
-    font-weight: 400;
-    text-transform: capitalize;
-    width: 100%;
-    background: none;
-    border: none;
-    padding-bottom: 5px;
-    color: RGB(var(--tc-tint-11))!important;
-    font-size: 24px;
-    line-height: 30px;
-}
-
-.root-SR8cQa .headerText-1HLrL7 {
-    font-size: 12px;
-    line-height: 20px;
-    height: 20px;
-    font-weight: 700;
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 0 0 10px;
-    text-transform: uppercase;
-}
-
-.root-SR8cQa .topSectionPlaying-1J5E4n {
-    border: none;
-    margin: 0;
-    background: none;
-}
-
-.root-SR8cQa .listScroller-2_vlfo {
-  margin: 10px;
-  padding: 0;
-}
-
-.root-SR8cQa .playTime-2uWd1Z {
-    opacity: 0.7;
-}
-
-.root-SR8cQa .header-QKLPzZ + div {
-    background-color: RGB(var(--tc-color-3));
-    position: relative;
-    min-height: 40px;
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-.root-SR8cQa .header-QKLPzZ + div:empty {
-    background-color: RGB(var(--tc-color-3));
-}
-
-.root-SR8cQa .scrollerWrap-2lJEkd {
-    border-right: none;
-    height: auto;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7 .connectedAccountIcon-3P3V6F {
-    content: '';
-    background: RGB(var(--tc-color-7));
-    width: 50px!important;
-    height: 50px!important;
-    box-sizing: border-box;
-    padding: 10px;
-    display: block;
-    transition: background-color 0.2s;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7 a .connectedAccountOpenIcon-2cNbq5 {
-    display: none;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .connectedAccounts-repVzS .connectedAccount-36nQx7 .connectedAccountName-f8AEe2 {
-    font-size: 14px;
-    line-height: 16px;
-    color: RGB(var(--tc-tint-8));
-}
-
-.root-SR8cQa .header-QKLPzZ .additionalActionsIcon-1FoUlE {
-    width: 5px;
-    height: 18px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 20px;
-    height: 30px;
-    background: image('dots-vertical.png') no-repeat 50%;
-}
-
-.root-SR8cQa .userInfoSection-2acyCx .userInfoSectionHeader-CBvMDh {
-    font-size: 18px;
-    color: RGB(var(--tc-tint-3));
-    font-weight: 400;
-    text-transform: capitalize;
-}
-
-.root-SR8cQa .header-QKLPzZ button {
-    cursor: pointer;
-    background: RGB(var(--tc-color-2))!important;
-    border-radius: 0px;
-    border-width: 1px!important;
-    border-style: solid!important;
-    border-color: RGB(var(--tc-color-10))!important;
-    color: RGB(var(--tc-color-10))!important;
-    font-size: 12px;
-    transition: border-color 0.2s, background-color 0.2s, color 0.2s;
-}
-
-.root-SR8cQa .header-QKLPzZ button + button {
-  margin-left: 10px!important;
-}
-
-.root-SR8cQa .header-QKLPzZ button:hover,
-.root-SR8cQa .header-QKLPzZ button:active {
-    background-color: RGB(var(--tc-color-8))!important;
-    border-color: RGB(var(--tc-color-8))!important;
-    color: #fff!important;
-}
-
-.root-SR8cQa .empty-2WtT5s {
-    padding-top: 0;
-    background-color: RGB(var(--tc-color-2));
-    position: relative;
-    overflow: hidden;
-}
-
-.root-SR8cQa .empty-2WtT5s .emptyText-6tYmO5 {
-    margin: 0;
-    font-size: 16px;
-    line-height: 16px;
-    color: RGB(var(--tc-tint-8));
-    font-weight: 500;
-    text-transform: capitalize;
-}
-
-.root-SR8cQa .empty-2WtT5s .emptyIconStreamerMode-3RfWOW {
-    margin: 0;
-    width: 200px;
-    height: 166px;
-    position: relative;
-    background: image('supersonic-pixelart.gif') no-repeat 50%!important;
-    background-size: 200px 166px!important;
-}
-
-.root-SR8cQa .empty-2WtT5s .emptyIconStreamerMode-3RfWOW + .emptyText-6tYmO5 {
-    position: relative;
-    margin-top: 40px;
-}
-
-.root-SR8cQa .empty-2WtT5s .emptyIconFriends-BrjhY9,
-.root-SR8cQa .empty-2WtT5s .emptyIconGuilds-3OViNh {
-    transform: scale(0.6);
-    margin: 0;
-    width: 256px;
-    height: 186px;
-    position: relative;
-    background: image('yoshi-pixelart.gif') no-repeat 50%!important;
-    background-size: 75%!important;
-}
-
-.root-SR8cQa .empty-2WtT5s .spinner {
-    margin-top: -100px;
-}
-
-.root-SR8cQa .topSectionStreaming-1Tpf5X .nameStreaming-2hBnmV {
-    line-height: 22px;
+[src='/assets/d8e257d7526932dcf7f88e8816a49b30.png'] {
+  @include size(4rem);
+  content: var(--logo-xbox);
 }

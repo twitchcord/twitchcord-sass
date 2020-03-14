@@ -2,91 +2,59 @@
 
 //** Tooltips
 
-// Add tooltip to locked voice channel on hover
-#{classes('layout.channels.wrapperLockedVoice')} {
-  &::before {
-    @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
-    background: RGB(var(--tooltip-color))!important;
-    border: none!important;
-    border-radius: var(--tooltip-roundness)!important;
-    padding: 4px 10px;
-    text-align: center;
-    z-index: 9999999;
-  }
+:root {
+  --tooltip-color: #{color('primary-1')};
+  --tooltip-border: none;
+  --tooltip-shadow: none;
+  --tooltip-font-size: 1.2rem;
+  --tooltip-font-weight: 400;
+  --tooltip-animation: none; //fadeIn 0.3s forwards;
+  --tooltip-background: #{color('white')};
+  --tooltip-arrow-size: 0.5rem;
+  --tooltip-roundness: var(--button-border-radius);
+  --tooltip-padding: 0.4rem 1rem;
+  // --tooltip-z-index: 9999999999999999999;
 }
 
 // Tooltips
 #{$tooltip} {
-  @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
-  animation: fadeIn 0.3s forwards;
-  background: RGB(var(--tooltip-color))!important;
-  border: none!important;
-  border-radius: var(--tooltip-roundness)!important;
-  padding: 4px 10px;
+  z-index: var(--tooltip-z-index);
+  padding: var(--tooltip-padding);
+  font-size: var(--tooltip-font-size);
+  font-weight: var(--tooltip-font-weight);
+  line-height: 1.5;
+  color: var(--tooltip-color) !important;
   text-align: center;
-  z-index: 9999999;
-  // Tooltip brand tooltips and tooltip black tooltips
-  &#{$tooltipbrand},
-  &#{$tooltipblack} {
-    &#{$tooltipleft} {
-      &::after {
-        @include triangle(right, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
-        border-radius: 0;
-        margin-top: calc(var(--tooltip-arrow-size) * -1);
-      }
-    }
-    &#{$tooltipright} {
-      &::after {
-        @include triangle(left, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
-        border-radius: 0;
-        margin-top: calc(var(--tooltip-arrow-size) * -1);
-      }
-    }
-    &#{$tooltiptop} {
-      &::after {
-        @include triangle(bottom, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
-        border-radius: 0;
-        margin-left: calc(var(--tooltip-arrow-size) * -1 + 2px);
-      }
-    }
-    &#{$tooltipbottom} {
-      &::after {
-        @include triangle(top, RGB(var(--tooltip-color)), var(--tooltip-arrow-size));
-        border-radius: 0;
-        margin-left: calc(var(--tooltip-arrow-size) * -1 + 2px);
-      }
-    }
+  background: var(--tooltip-background) !important;
+  border: var(--tooltip-border) !important;
+  border-radius: var(--tooltip-roundness) !important;
+  box-shadow: var(--tooltip-shadow) !important;
+  opacity: 1;
+  transform: none !important;
+  animation: var(--disable-animations, var(--disable-tooltip-animation, var(--tooltip-animation)));
+  #{$tooltipPointer} {
+    border-width: var(--tooltip-arrow-size) !important;
+    border-top-color: var(--tooltip-background) !important;
   }
-  // Tooltip top and bottom
-  &#{$tooltiptop},
-  &#{$tooltipbottom} {
-    margin-left: -2px;
-  }
-  // Tooltip top
-  &#{$tooltiptop} {
-    margin-top: -15px;
-  }
-  // Tooltip bottom
-  &#{$tooltipbottom} {
-    margin-top: 15px;
-  }
-  // Tooltip left and right
+  // Right and left tooltips
   &#{$tooltipright},
   &#{$tooltipleft} {
-    margin-top: 0;
+    #{$tooltipPointer} {
+      margin-top: calc(var(--tooltip-arrow-size) * -1);
+    }
+  }
+  // Top and bottom tooltips
+  &#{$tooltiptop},
+  &#{$tooltipbottom} {
+    #{$tooltipPointer} {
+      margin-left: calc(var(--tooltip-arrow-size) * -1);
+    }
   }
   // Red, danger tooltips
   &#{$tooltipred} {
-    background-color: var(--fail-color);
-    &#{$tooltipright} {
-      &::after {
-        border-right-color: var(--fail-color);
-      }
-    }
-    &#{$tooltipleft} {
-      &::after {
-        border-left-color: var(--fail-color);
-      }
+    background-color: color('danger') !important;
+    #{$tooltipPointer} {
+      border-top-color: color('danger') !important;
     }
   }
 }
@@ -94,15 +62,18 @@
 // Settings grabber tooltips
 #{$bubble} {
   @include size(80px, auto);
-  @include text(RGB(var(--tooltip-text-color))!important, 12px, 400, 18px);
-  background: RGB(var(--tooltip-color))!important;
-  border-radius: var(--tooltip-roundness)!important;
+  top: -36px;
   left: -35px;
   padding: 6px 20px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--tooltip-color) !important;
   text-align: center;
-  top: -36px;
   white-space: nowrap;
+  background: var(--tooltip-background) !important;
+  border-radius: var(--tooltip-roundness) !important;
   &::before {
-    border-top-color: RGB(var(--tooltip-color))!important;
+    border-top-color: var(--tooltip-background) !important;
   }
 }

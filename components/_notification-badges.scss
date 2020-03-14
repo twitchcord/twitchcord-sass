@@ -2,17 +2,9 @@
 
 //** Notification badges
 
-#{$badgewrapper} {
-  @include text(#fff, 10px, 700, 14px);
-  background: var(--fail-color);
-  border-radius: var(--notification-badge-roundness)!important;
-  box-shadow: none;
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: center;
-  left: auto;
-  min-width: 10px;
-  padding: 0 2px!important;
+.base-PmTxvP {
+  @include component('notification-badge');
   top: auto;
-  animation: var(--disable-animations, 0.5s mentionBadgePulse);
+  left: auto;
+  box-shadow: none;
 }

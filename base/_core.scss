@@ -3,10 +3,17 @@
 ///  Base styles section
 ///  ==========================================================================
 
-// Border-box everywhere!
+:root {
+  --app-background: #{color('primary-4')};
+  --app-border-color: hsl(0, 0%, 39%, .3);
+  --app-border-style: solid;
+  --app-border-width: .1rem;
+  --app-font-size: 62.5%;
+}
+
+// border-box everywhere!
 * {
-  box-sizing: border-box;
-  font-size: 62.5%;
+  &,
   &::before,
   &::after {
     box-sizing: border-box;
@@ -14,7 +21,7 @@
 }
 
 // Really trying to target everything here
-*,
+// Using root for higher specificity
 html,
 body,
 button,
@@ -22,19 +29,25 @@ input,
 select,
 textarea,
 ::-webkit-input-placeholder {
-  font-family: var(--font)!important;
+  font-family: var('font-base') !important;
+}
+
+// This is so we can use 1rem : 10px
+html {
+  font-size: var('app-font-size') !important;
 }
 
 html,
 body {
-  background-color: RGB(var(--tc-color-4));
   height: 100%;
+  background: var(--app-background);
   text-rendering: optimizeLegibility;
 }
 
 // Links
-a {
-  color: RGB(var(--tc-color-10));
+a,
+.anchor-3Z-8Bb {
+  color: var(--link-color);
 }
 
 .disabled,
@@ -44,8 +57,8 @@ input:disabled,
 input:disabled:hover,
 textarea:disabled,
 textarea:disabled:hover {
-  cursor: not-allowed!important;
-  pointer-events: all!important;
+  pointer-events: all !important;
+  cursor: not-allowed !important;
 }
 
 .strong,
@@ -53,133 +66,121 @@ strong {
   font-weight: 700;
 }
 
-  // Image zoom images
-  #{$imagezoom} {
-    border-radius: 0;
-    cursor: zoom-in!important;
+// Avatar + status svg mask container
+.mask-1l8v16 {
+  overflow: visible;
+  foreignObject {
+    mask: none;
   }
+}
 
 // Direct child of app container div
 .layer-3QrUeG {
-  padding: 0!important;
-  top: 0!important;
+  top: 0 !important;
+  padding: 0 !important;
+  // Guilds Wrapper outer container
+  .container-2lgZY8 {
+    display: flex;
+    background: none;
+  }
 }
 
 // To immitate Twitch's gray border around the app
-body::after {
-  content: '';
-  @include absolute(top 0 left 0 bottom 0 right 0);
-  border: 1px solid rgba(100, 100, 100, 0.3);
-  z-index: 999999999;
-  pointer-events: none;
+body {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // Should be the highest z-index
+    // It goes above everything, including modals
+    z-index: var('z-index-app');
+    pointer-events: none;
+    border: var('app-border-width') var('app-border-style') var('app-border-color');
+  }
 }
 
-
-
-  // Early loading BG fix, connection background
-  .loading-Ags1CY,
-  .appMount-3lHmkl,
-  .app-19_DXt > div[style*="background-color: rgb(47, 49, 54)"] {
-    background: RGB(var(--tc-color-4))!important;
-    opacity: 1!important;
-  }
-  
-
-
-  // Add red flash to replace Ctrl+Alt+Shift up/down shake animation
-  #{classes('base.app2')}[style*="transform: translate3d(2px"]::after,
-  #{classes('base.app2')}[style*="transform: translate3d(-2px"]::after {
-    content: '';
-    @include size(100vw, 100vh);
-    @include fixed(top 0 left 0);
-    display: block;
-    background: RGBA(var(--notification-color), 0.2);
-    z-index: 99999999999;
-    animation: fadeOut 0.5s forwards;
-  }
+// Early loading BG fix, connection background
+.loading-Ags1CY,
+.appMount-3lHmkl,
+.app-1q1i1E > div[style*='background-color: rgb(47, 49, 54)'] {
+  background: var(--app-background) !important;
+  opacity: 1 !important;
+}
 
 // Just in case it isn't margin-left: 0
-// https://i.imgur.com/0wAgpbV.png
-// Guild wrapper direct sibling div
+// Guilds wrapper direct sibling div
 #{classes('base.base')} {
-  margin-left: 0!important;
-  border-radius: 0;
+  position: relative;
+  left: 0;
+  width: 100%;
+  margin-left: 0 !important;
+  border-radius: 0 !important;
 }
 
-// guildsWrapper outer container
-.container-2lgZY8 {
-  background: none;
-}
-
-// Mentions indicator container for guilds and channels
-#{classes('base.unreadBar.bar')} {
-  background: var(--unread-bar-color)!important;
-  border-radius: var(--button-roundness);
-  box-shadow: none!important;
+// Not entirely sure what this is for,
+// maybe Discord uses it as a fallback background
+// for the app?
+#{classes('base.bg')} {
   display: none;
-  font-weight: 700;
-  transition: none;
-  // Active when the user has an unread mention
-  &#{classes('base.unreadBar.mention')} {
-      background: var(--fail-color)!important;
-      display: flex;
-      &:hover {
-          background: var(--fail-color)!important;
-      }
-  }
-  &:hover {
-      background: var(--unread-bar-hover-color)!important;
-  }
-  // Down and up arrow icons on unread mentions indicators
-  #{classes('base.unreadBar.icon')} {
-      display: none;
-  }
 }
-
-// Setting the main scrollbar style throughout the app
-body {
-  @include scrollbar('primary');
-  ::-webkit-scrollbar-thumb {
-    background-clip: content-box;
-  }
-  ::-webkit-scrollbar-track,
-  ::-webkit-scrollbar-track-piece {
-    border: none!important;
-  }
-  // Textarea scrollbar adjustments
-  textarea {
-    &::-webkit-scrollbar-thumb {
-      border: 3px solid RGB(var(--tc-color-1))!important;
-    }
-    &::-webkit-scrollbar-track,
-    &::-webkit-scrollbar-track-piece {
-      background: none!important;
-    }
-  }
-}
-
 
 // Text used throughout the app
 // Settings switch labels
 .title-31JmR4,
 .primary-jw0I4K,
 .h3-3PDeKG {
-  @include header('h7');
+  @include component('header', 'h7');
 }
 // Minor text descriptions
 .description-3_Ncsb,
 .labelDescriptor-1PqHgD {
-  @include header('h7');
-  color: RGB(var(--tc-tint-7))!important;
+  @include component('header', 'h7');
+  color: color('tint-7') !important;
 }
 // Used for headings all over Discord, namely settings and modals
 .h2-2gWE-o {
-  @include header('h4');
+  @include component('header', 'h4');
   text-transform: capitalize;
 }
 // Used for sub text
 // https://i.imgur.com/VSkLGxy.png
-.h5-18_1nd {
-  @include header('h6');
+.h5-18_1nd,
+.label-wQQoIq {
+  @include component('header', 'h6');
   text-transform: capitalize;
+}
+
+
+// Image error "poop"
+.imageError-2OefUi {
+  width: 100%;
+  height: 100%;
+  background: icon('twitchcord-dead') no-repeat center / 50%,
+  radial-gradient(circle at center, color('primary-8'), color('primary-7')) !important;
+}
+
+// Image zoom images
+#{$imagezoom} {
+  cursor: zoom-in !important;
+}
+
+// Mentions indicator container for guilds and channels
+#{classes('base.unreadBar.bar')} {
+  @include component('unread-bar', 'messages', 'base');
+  display: none;
+  // Active when the user has an unread mention
+  &#{classes('base.unreadBar.mention')} {
+    @include component('unread-bar', 'mentions');
+    display: flex;
+  }
+  &:active {
+    top: 0;
+  }
+  // Down and up arrow icons on unread mentions indicators
+  #{classes('base.unreadBar.icon')} {
+    display: none;
+  }
 }

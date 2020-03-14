@@ -5,9 +5,9 @@
 .userSettingsVoice-iwdUCU {
   > #{classes('base.flex.flex')} {
     > div {
-      background: RGB(var(--tc-tint-1));
-      border: 1px solid var(--border-color);
       padding: 20px;
+      background: color('tint-1');
+      border: 1px solid var(--border-color);
       + div {
         border-top: none;
       }
@@ -18,10 +18,10 @@
       &:last-of-type {
         display: flex;
         justify-content: flex-end;
+        margin: 30px 0;
+        padding: 0;
         background: none;
         border: none;
-        padding: 0;
-        margin: 30px 0;
       }
     }
   }
@@ -35,5 +35,5 @@
 // that causes the settings content to stretch out of
 // its normal bounds
 .container-3PXSwK {
-  width: 100%!important;
+  width: 100% !important;
 }

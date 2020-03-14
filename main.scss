@@ -1,55 +1,33 @@
+@charset 'utf-8';
+
+/* /
+///  @name         Twitchcord
+///  @version      1.0
+///  @description  The CSS for
+///
+///  @author       Dustin Perolio [alias] Baked
+///  @started      August 29, 2017
+///  @updated      July 6, 2019
+///
+///  @source       https://github.com/twitchcord/twitchcord-sass
+///  @website      https://www.twitchcord.com
+///  @discord      https://discord.gg/s5wVRA3
+/ */
+
 @import 'utilities/module';
 @import 'base/module';
 @import 'layout/module';
 @import 'components/module';
-@import 'views/module';
+@import 'pages/module';
 @import 'plugins/module';
 @import 'addons/module';
 
-/*
-///////////////////////////////////////
-//
-//  Created by Baked
-//  First started: 8/29/2017
-//  http://www.twitchcord.com
-//  https://discord.me/twitchcord
-//
-///////////////////////////////////////
-*/
-
 .tc-refreshing {
-    animation: rotate360 1s infinite;
-  }
+  animation: rotate360 1s infinite;
+}
 
-
-
-  // Not sure yet. Look for a copy/confirm button.
-  // tc.webpack.find(m => m.hiddenMessage)
-  .hiddenMessage-1iiFV5, .input-31cgnL {
-      font-size: 12px;
-  }
-  .copyInputSuccess-XZc7BO {
-      box-shadow: inset 0 0 0 1px var(--success-color), 0 0 0 transparent;
-      transition: box-shadow .12s ease-in;
-  }
-
-  
-  // Rich presence details, appear on profile, user popouts, and Activity page
-  .details-38sfDr {
-    margin-top: 5px;
-    color: RGB(var(--tc-tint-8))!important;
-  }
-  .details-38sfDr, .nameNormal-2lqVQK, .playTime-2uWd1Z, .state-Tt0LO3, .timestamp-VjAZmo {
-    color: RGB(var(--tc-tint-10));
-  }
-  
-  
-  .header-2BwW8b .avatarStatusStreaming-3lGjGk {
-      background-color: rgb(89, 54, 149);
-  }
-
-    // Problems / Conecting text
-    .problemsText-1Yx-Kl,
-    .contentBase-11jeVK {
-      color: RGB(var(--tc-tint-11));
-    }
+// Problems / Conecting text
+.problemsText-1Yx-Kl,
+.contentBase-11jeVK {
+  color: color('tint-11');
+}

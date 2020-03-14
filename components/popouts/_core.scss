@@ -2,6 +2,27 @@
 
 //** Popouts core
 
+:root {
+  --popout-animation: fadeIn 0.3s forwards;
+  --popout-background: #{color('tint-1')};
+  --popout-border-color: var(--border-color);
+  --popout-border-style: solid;
+  --popout-border-width: 0.1rem;
+  --popout-border-radius: var(--component-border-radius);
+  --popout-box-shadow: var(--elevation-3);
+}
+
+
+.translate-2dAEQ6 {
+  &.animatorLeft-1EQxU0,
+  &.animatorRight-3i_YPs,
+  &.animatorBottom-fS5rNO,
+  &.animatorTop-2Y7x2r {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 
 #{$popout} {
   box-shadow: none;
@@ -9,32 +30,35 @@
 
 // Remove popout transform slide animation
 #{$popouttop} {
-  transform: translateX(-50%) translateY(-100%) translateZ(0px)!important;
+  transform: translateX(-50%) translateY(-100%) translateZ(0px) !important;
 }
 #{$popoutright} {
-  transform: translateX(0%) translateY(0%) translateZ(0px)!important;
+  transform: translateX(0%) translateY(0%) translateZ(0px) !important;
 }
 #{$popoutbottom} {
-  transform: translateX(-50%) translateY(0%) translateZ(0px)!important;
+  transform: translateX(-50%) translateY(0%) translateZ(0px) !important;
 }
 #{$popoutbottomleft} {
-  transform: translateX(0%) translateY(0%) translateZ(0px)!important;
+  transform: translateX(0%) translateY(0%) translateZ(0px) !important;
 }
 #{$popoutleft} {
-  transform: translateX(-100%) translateY(0%) translateZ(0px)!important;
+  transform: translateX(-100%) translateY(0%) translateZ(0px) !important;
 }
 
 // Make game popout look like a modal
 #{$popouts} {
+  // z-index: 9999999;
   #{$popout} {
-    overflow: visible!important;
+    overflow: visible !important;
   }
   // &#{classes('twitchcord.gamePopout')} {
   //   @include size(100%);
-  //   @include fixed(top 0 left 0);
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
   //   align-content: center;
   //   align-items: center;
-  //   background: rgba(0, 0, 0, 0.65);
+  //   background: rgb(0, 0, 0, 0.65);
   //   box-sizing: border-box;
   //   contain: content;
   //   display: flex;

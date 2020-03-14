@@ -4,9 +4,9 @@
 //  Codeblocks
 // ==========================================================================
 
-Aggressive targeting of code elements
-[class*="hljs-"], [class*="cm-"] {
-  font-family: var(--font-coding)!important;
+// Aggressive targeting of code elements
+[class*='hljs-'], [class*='cm-'] {
+  font-family: var('font-coding') !important;
 }
 
 #{$messagegroup} {
@@ -14,43 +14,45 @@ Aggressive targeting of code elements
   #{$messagemarkup} {
     // Code block container
     pre {
-      background: none!important;
-      border: none!important;
-      border-radius: 0;
       max-width: 90%;
       margin: 0;
+      background: none !important;
+      border: none !important;
+      border-radius: 0;
+      border-radius: 15px 50px 30px 5px;
       outline: none;
     }
     // Inline and full code blocks
     code.inline,
     pre code {
-      @include text(var(--chat-text-color), 14px, $lh: 1.5!important);
-      background-color: var(--embed-color)!important;
+      font-size: 1.4rem;
+      line-height: 1.5 !important;
+      color: var(--chat-text-color);
+      background-color: var(--embed-color) !important;
       border: none;
+      border-radius: var(--component-border-radius);
       box-shadow: var(--elevation-1);
     }
     // Inline code only
     code.inline {
-      border: 1px solid RGB(var(--tc-tint-3));
-      border-radius: 0;
       display: inline-block;
-      font-family: var(--font)!important;
-      letter-spacing: 0!important;
-      margin: 2px 0;
       max-width: 90%;
-      padding: 0 5px;
+      margin: 0;
+      padding: .2rem .5rem;
+      font-family: var('font-base') !important;
+      letter-spacing: 0 !important;
       word-wrap: break-word;
     }
     // Full code blocks only
     pre code {
-      margin: 6px 0;
-      padding: 10px 15px!important;
-      font-family: var(--font)!important;
-      max-height: 500px;
-      outline: none;
-      overflow-x: hidden;
       position: relative;
-      white-space: pre-wrap!important;
+      max-height: 500px;
+      margin: 6px 0;
+      padding: 10px 15px !important;
+      overflow-x: hidden;
+      font-family: var('font-base') !important;
+      white-space: pre-wrap !important;
+      outline: none;
     }
   }
   // Adjust for code blocks in embeds
@@ -58,7 +60,8 @@ Aggressive targeting of code elements
     #{$messagemarkup} {
       a {
         .inline {
-          color: var(--link-color)!important;
+          font-size: 1.2rem;
+          color: var(--link-color) !important;
           &:hover {
             text-decoration: underline;
           }
@@ -66,68 +69,141 @@ Aggressive targeting of code elements
       }
       code.inline,
       pre code {
-        background: RGB(var(--tc-tint-2))!important;
-        border: 1px solid RGB(var(--tc-tint-3));
-        box-shadow: none!important
+        background: color('tint-2') !important;
+        border: 1px solid color('tint-3');
+        box-shadow: none !important;
       }
     }
   }
 }
 
-//## Codeblocks color theme: Ocean
-#{$messagegroup} {
-  #{$hljs} {
-    &-comment,
-    &-quote {
-     color:#65737e
-    }
-    &-variable,
-    &-template-variable,
-    &-tag,.hljs-name,
-    &-selector-id,
-    &-selector-class,
-    &-regexp,
-    &-deletion {
-     color:#bf616a
-    }
-    &-number,
-    &-built_in,
-    &-builtin-name,
-    &-literal,
-    &-type,
-    &-params,
-    &-meta,
-    &-link {
-     color:#d08770
-    }
-    &-attribute {
-     color:#ebcb8b
-    }
-    &-string,
-    &-symbol,
-    &-bullet,
-    &-addition {
-     color:#a3be8c
-    }
-    &-title,
-    &-section {
-     color:#8fa1b3
-    }
-    &-keyword,
-    &-selector-tag {
-     color:#b48ead
-    }
-    & {
-     color:#c0c5ce;
-    }
-    &-emphasis {
-     font-style:italic
-    }
-    &-strong {
-     font-weight:bold
-    }
+//## Codeblocks color theme: Dracula
+.hljs {
+  color: #f8f8f2 !important;
+  &-built_in,
+  &-selector-id,
+  &-attribute,
+  &-link,
+  &-meta-string,
+  &-doctag {
+    color: #8be9fd !important;
+  }
+  &-keyword,
+  &-selector-tag,
+  &-subst,
+  &-meta {
+    color: #ff79c6 !important;
+  }
+  &-title,
+  &-selector-pseudo,
+  &-selector-class {
+    color: #50fa7b !important;
+  }
+  &-params,
+  &-strong {
+    font-style: italic !important;
+    color: #ffb86c !important;
+  }
+  &-string,
+  &-name,
+  &-type,
+  &-attr,
+  &-emphasis,
+  &-symbol,
+  &-regexp,
+  &-bullet,
+  &-addition,
+  &-variable,
+  &-selector-attr,
+  &-template-tag,
+  &-template-variable {
+    color: #f1fa8c !important;
+  }
+
+  &-comment,
+  &-quote,
+  &-deletion {
+    color: #6272a4 !important;
+  }
+
+  &-keyword,
+  &-selector-tag,
+  &-literal,
+  &-title,
+  &-section,
+  &-doctag,
+  &-type,
+  &-name,
+  &-strong {
+    font-weight: bold !important;
+  }
+
+  &-literal,
+  &-number,
+  &-section {
+    color: #bd93f9 !important;
+  }
+
+  &-emphasis {
+    font-style: italic !important;
   }
 }
+
+
+//## Codeblocks color theme: Ocean
+// #{$messagegroup} {
+//   #{$hljs} {
+//     &-comment,
+//     &-quote {
+//      color:#65737e
+//     }
+//     &-variable,
+//     &-template-variable,
+//     &-tag,.hljs-name,
+//     &-selector-id,
+//     &-selector-class,
+//     &-regexp,
+//     &-deletion {
+//      color:#bf616a
+//     }
+//     &-number,
+//     &-built_in,
+//     &-builtin-name,
+//     &-literal,
+//     &-type,
+//     &-params,
+//     &-meta,
+//     &-link {
+//      color:#d08770
+//     }
+//     &-attribute {
+//      color:#ebcb8b
+//     }
+//     &-string,
+//     &-symbol,
+//     &-bullet,
+//     &-addition {
+//      color:#a3be8c
+//     }
+//     &-title,
+//     &-section {
+//      color:#8fa1b3
+//     }
+//     &-keyword,
+//     &-selector-tag {
+//      color:#b48ead
+//     }
+//     & {
+//      color:#c0c5ce;
+//     }
+//     &-emphasis {
+//      font-style:italic
+//     }
+//     &-strong {
+//      font-weight:bold
+//     }
+//   }
+// }
 
 //## Codeblocks color theme: Monokai Sublime
 // #{$messagegroup} {
@@ -192,330 +268,337 @@ Aggressive targeting of code elements
 //     &-comment,
 //     &-deletion,
 //     &-meta {
-//       color: RGB(var(--tc-tint-7));
+//       color: color('tint-7');
 //     }
 //   }
 // }
 
 #{$messagegroup} {
     #{$hljs} {
-      padding-bottom: 10px!important;
-      &::before {
-        @include size(200%, 24px);
-        @include text(#fff, 11px, 400, $transform: uppercase);
-        margin: -10px -15px 10px -15px;
-        padding: 0 0 0 25px;
-        @include sticky(top -10px);
-        align-items: center;
-        background: RGB(var(--tc-color-3)) var(--codeblock-icon) no-repeat center / 18px;
-        background-position: center left 10px!important;
-        box-sizing: border-box;
-        display: flex;
-        filter: grayscale(10%);
-        font-family: var(--font)!important;
-        justify-content: flex-start;
-        text-indent: 10px;
-      }
 
       // Used for darkening codeblock language header colors below
       $darkness: 20%;
+      padding-bottom: 10px !important;
+      &::before {
+        @include size(200%, 24px);
+        position: sticky;
+        top: -1rem;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: -10px -15px 10px -15px;
+        padding: 0 0 0 25px;
+        font-family: var('font-base') !important;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: color('white');
+        text-indent: 10px;
+        text-transform: uppercase;
+        background: color('primary-5') icon('code') no-repeat center / 24px;
+        filter: grayscale(10%);
+        background-position: top 6px left 10px !important;
+      }
 
-      &[class~='1c']::before {
+      &[class~='1c' i]::before {
         background-color: darken(#814CCC, $darkness);
       }
-      &[class~='actionscript']::before,
-      &[class~='as']::before {
+      &[class~='actionscript' i]::before,
+      &[class~='as' i]::before {
         background-color: #a74b38;
       }
-      &[class~='ada']::before {
+      &[class~='ada' i]::before {
         background-color: darken(#02f88c, $darkness);
       }
-      &[class~='applescript']::before {
+      &[class~='applescript' i]::before {
         background-color: darken(#101F1F, $darkness);
       }
-      &[class~='arduino']::before {
+      &[class~='arduino' i]::before {
         background-color: darken(#bd79d1, $darkness);
       }
-      &[class~='aspectj']::before {
+      &[class~='aspectj' i]::before {
         background-color: darken(#a957b0, $darkness);
       }
-      &[class~='autohotkey']::before {
+      &[class~='autohotkey' i]::before {
         background-color: darken(#6594b9, $darkness);
       }
-      &[class~='autoit']::before {
+      &[class~='autoit' i]::before {
         background-color: darken(#1C3552, $darkness);
       }
-      &[class~='dos']::before,
-      &[class~='bat']::before,
-      &[class~='cmd']::before {
+      &[class~='dos' i]::before,
+      &[class~='bat' i]::before,
+      &[class~='cmd' i]::before {
         background-color: darken(#C1F12E, $darkness);
       }
-      &[class~='brainfuck']::before {
+      &[class~='brainfuck' i]::before {
         background-color: darken(#2F2530, $darkness);
       }
-      &[class~='c']::before,
-      &[class~='cc']::before,
-      &[class~='cpp']::before,
-      &[class~='h']::before,
-      &[class~='hpp']::before {
+      &[class~='c' i]::before,
+      &[class~='cc' i]::before,
+      &[class~='cpp' i]::before,
+      &[class~='h' i]::before,
+      &[class~='hpp' i]::before {
         background-color: darken(#555555, $darkness);
       }
-      &[class~='cs']::before,
-      &[class~='csharp']::before {
-        background-color: darken(red, $darkness);
+      &[class~='cs' i]::before,
+      &[class~='csharp' i]::before {
+        background-color: darken(#ff0000, $darkness);
       }
-      &[class~='ceylon']::before {
+      &[class~='ceylon' i]::before {
         background-color: darken(#dfa535, $darkness);
       }
-      &[class~='clean']::before {
+      &[class~='clean' i]::before {
         background-color: darken(#3F85AF, $darkness);
       }
-      &[class~='clojure']::before {
+      &[class~='clojure' i]::before {
         background-color: darken(#db5855, $darkness);
       }
-      &[class~='coffeescript']::before,
-      &[class~='coffee']::before,
-      &[class~='cson']::before,
-      &[class~='iced']::before {
+      &[class~='coffeescript' i]::before,
+      &[class~='coffee' i]::before,
+      &[class~='cson' i]::before,
+      &[class~='iced' i]::before {
         background-color: darken(#244776, $darkness);
       }
-      &[class~='crystal']::before {
+      &[class~='crystal' i]::before {
         background-color: darken(#776791, $darkness);
       }
-      &[class~='css']::before,
-      &[class~='sass']::before,
-      &[class~='scss']::before,
-      &[class~='less']::before,
-      &[class~='stylus']::before,
-      &[class~='styl']::before {
+      &[class~='css' i]::before,
+      &[class~='sass' i]::before,
+      &[class~='scss' i]::before,
+      &[class~='less' i]::before,
+      &[class~='stylus' i]::before,
+      &[class~='styl' i]::before {
         background-color: #ed143d;
       }
-      &[class~='d']::before {
+      &[class~='d' i]::before {
         background-color: darken(#ba595e, $darkness);
       }
-      &[class~='dart']::before {
+      &[class~='dart' i]::before {
         background-color: darken(#00B4AB, $darkness);
       }
-      &[class~='elixir']::before {
+      &[class~='elixir' i]::before {
         background-color: darken(#6e4a7e, $darkness);
       }
-      &[class~='elm']::before {
+      &[class~='elm' i]::before {
         background-color: darken(#60B5CC, $darkness);
       }
-      &[class~='erlang']::before,
-      &[class~='erl']::before {
+      &[class~='erlang' i]::before,
+      &[class~='erl' i]::before {
         background-color: darken(#B83998, $darkness);
       }
-      &[class~='fs']::before,
-      &[class~='fsharp']::before {
+      &[class~='fs' i]::before,
+      &[class~='fsharp' i]::before {
         background-color: darken(#b845fc, $darkness);
       }
-      &[class~='fortran']::before {
+      &[class~='fortran' i]::before {
         background-color: darken(#4d41b1, $darkness);
       }
-      &[class~='gherkin']::before {
+      &[class~='gherkin' i]::before {
         background-color: darken(#5B2063, $darkness);
       }
-      &[class~='go']::before,
-      &[class~='golang']::before {
+      &[class~='go' i]::before,
+      &[class~='golang' i]::before {
         background-color: darken(#375eab, $darkness);
       }
-      &[class~='groovy']::before {
+      &[class~='groovy' i]::before {
         background-color: darken(#e69f56, $darkness);
       }
-      &[class~='haskell']::before,
-      &[class~='hs']::before {
+      &[class~='haskell' i]::before,
+      &[class~='hs' i]::before {
         background-color: darken(#5e5086, $darkness);
       }
-      &[class~='haxe']::before,
-      &[class~='hx']::before {
+      &[class~='haxe' i]::before,
+      &[class~='hx' i]::before {
         background-color: darken(#df7900, $darkness);
       }
-      &[class~='html']::before {
+      &[class~='html' i]::before {
         background-color: darken(#e34c26, $darkness);
       }
-      &[class~='hy']::before,
-      &[class~='hylang']::before {
+      &[class~='hy' i]::before,
+      &[class~='hylang' i]::before {
         background-color: darken(#7790B2, $darkness);
       }
-      &[class~='java']::before,
-      &[class~='jsp']::before {
+      &[class~='java' i]::before,
+      &[class~='jsp' i]::before {
         background-color: darken(#b07219, $darkness);
       }
-      &[class~='javascript']::before,
-      &[class~='js']::before,
-      &[class~='jsx']::before {
+      &[class~='javascript' i]::before,
+      &[class~='js' i]::before,
+      &[class~='jsx' i]::before {
         background-color: desaturate(#f77a1e, 15%);
       }
-      &[class~='json']::before {
+      &[class~='json' i]::before {
         background-color: darken(#40d47e, $darkness);
       }
-      &[class~='julia']::before {
+      &[class~='julia' i]::before {
         background-color: darken(#a270ba, $darkness);
       }
-      &[class~='kotlin']::before {
+      &[class~='kotlin' i]::before {
         background-color: darken(#F18E33, $darkness);
       }
-      &[class~='lasso']::before,
-      &[class~='lassoscript']::before,
-      &[class~='ls']::before {
+      &[class~='lasso' i]::before,
+      &[class~='lassoscript' i]::before,
+      &[class~='ls' i]::before {
         background-color: darken(#999999, $darkness);
       }
-      &[class~='livescript']::before,
-      &[class~='ls']::before {
+      &[class~='livescript' i]::before,
+      &[class~='ls' i]::before {
         background-color: darken(#499886, $darkness);
       }
-      &[class~='llvm']::before {
+      &[class~='llvm' i]::before {
         background-color: darken(#185619, $darkness);
       }
-      &[class~='lsl']::before {
+      &[class~='lsl' i]::before {
         background-color: darken(#3d9970, $darkness);
       }
-      &[class~='lua']::before {
+      &[class~='lua' i]::before {
         background-color: darken(#000080, $darkness);
       }
-      &[class~='makefile']::before,
-      &[class~='mk']::before,
-      &[class~='mak']::before {
+      &[class~='makefile' i]::before,
+      &[class~='mk' i]::before,
+      &[class~='mak' i]::before {
         background-color: darken(#427819, $darkness);
       }
-      &[class~='markdown']::before,
-      &[class~='md']::before,
-      &[class~='mkd']::before,
-      &[class~='mkdown']::before {
+      &[class~='markdown' i]::before,
+      &[class~='md' i]::before,
+      &[class~='mkd' i]::before,
+      &[class~='mkdown' i]::before {
         background-color: darken(#ff6375, 40%);
       }
-      &[class~='mercury']::before {
+      &[class~='mercury' i]::before {
         background-color: darken(#ff2b2b, 45%);
       }
-      &[class~='nix']::before {
+      &[class~='nix' i]::before {
         background-color: darken(#7e7eff, $darkness);
       }
-      &[class~='objectivec']::before {
+      &[class~='objectivec' i]::before {
         background-color: darken(#438eff, $darkness);
       }
-      &[class~='ocaml']::before {
+      &[class~='ocaml' i]::before {
         background-color: darken(#3be133, $darkness);
       }
-      &[class~='pascal']::before,
-      &[class~='pas']::before,
-      &[class~='freepascal']::before,
-      &[class~='lazarus']::before,
-      &[class~='lfm']::before,
-      &[class~='lpr']::before {
+      &[class~='pascal' i]::before,
+      &[class~='pas' i]::before,
+      &[class~='freepascal' i]::before,
+      &[class~='lazarus' i]::before,
+      &[class~='lfm' i]::before,
+      &[class~='lpr' i]::before {
         background-color: darken(#E3F171, $darkness);
       }
-      &[class~='perl']::before,
-      &[class~='pl']::before,
-      &[class~='pm']::before {
+      &[class~='perl' i]::before,
+      &[class~='pl' i]::before,
+      &[class~='pm' i]::before {
         background-color: darken(#0298c3, $darkness);
       }
-      &[class~='php']::before {
+      &[class~='php' i]::before {
         background-color: darken(#4F5D95, $darkness);
       }
-      &[class~='powershell']::before,
-      &[class~='ps']::before {
+      &[class~='powershell' i]::before,
+      &[class~='ps' i]::before {
         background-color: darken(#012456, $darkness);
       }
-      &[class~='processing']::before {
+      &[class~='processing' i]::before {
         background-color: #2c2541;
       }
-      &[class~='prolog']::before {
+      &[class~='prolog' i]::before {
         background-color: darken(#74283c, $darkness);
       }
-      &[class~='puppet']::before,
-      &[class~='pp']::before {
+      &[class~='puppet' i]::before,
+      &[class~='pp' i]::before {
         background-color: darken(#302B6D, $darkness);
       }
-      &[class~='purebasic']::before {
+      &[class~='purebasic' i]::before {
         background-color: darken(#5a6986, $darkness);
       }
-      &[class~='python']::before,
-      &[class~='py']::before,
-      &[class~='gyp']::before {
+      &[class~='python' i]::before,
+      &[class~='py' i]::before,
+      &[class~='gyp' i]::before {
         background-color: darken(#3572A5, $darkness);
       }
-      &[class~='qml']::before {
+      &[class~='qml' i]::before {
         background-color: darken(#44a51c, $darkness);
       }
-      &[class~='r']::before {
+      &[class~='r' i]::before {
         background-color: darken(#198CE7, $darkness);
       }
-      &[class~='ruby']::before,
-      &[class~='rb']::before {
+      &[class~='ruby' i]::before,
+      &[class~='rb' i]::before {
         background-color: darken(#701516, $darkness);
       }
-      &[class~='rust']::before,
-      &[class~='rs']::before {
+      &[class~='rust' i]::before,
+      &[class~='rs' i]::before {
         background-color: darken(#dea584, $darkness);
       }
-      &[class~='scala']::before {
+      &[class~='scala' i]::before {
         background-color: darken(#c22d40, $darkness);
       }
-      &[class~='scheme']::before {
+      &[class~='scheme' i]::before {
         background-color: darken(#1e4aec, $darkness);
       }
-      &[class~='shell']::before,
-      &[class~='console']::before {
+      &[class~='shell' i]::before,
+      &[class~='console' i]::before {
         background-color: darken(#89e051, $darkness);
       }
-      &[class~='smalltalk']::before,
-      &[class~='st']::before {
+      &[class~='smalltalk' i]::before,
+      &[class~='st' i]::before {
         background-color: darken(#596706, $darkness);
       }
-      &[class~='sqf']::before {
+      &[class~='sqf' i]::before {
         background-color: darken(#3F3F3F, $darkness);
       }
-      &[class~='stan']::before {
+      &[class~='stan' i]::before {
         background-color: darken(#b2011d, $darkness);
       }
-      &[class~='swift']::before {
+      &[class~='swift' i]::before {
         background-color: darken(#ffac45, $darkness);
       }
-      &[class~='tcl']::before,
-      &[class~='tk']::before {
+      &[class~='tcl' i]::before,
+      &[class~='tk' i]::before {
         background-color: darken(#e4cc98, $darkness);
       }
-      &[class~='tex']::before {
+      &[class~='tex' i]::before {
         background-color: darken(#3D6117, $darkness);
       }
-      &[class~='typescript']::before,
-      &[class~='ts']::before {
+      &[class~='typescript' i]::before,
+      &[class~='ts' i]::before {
         background-color: darken(#2b7489, $darkness);
       }
-      &[class~='vala']::before {
+      &[class~='vala' i]::before {
         background-color: darken(#fbe5cd, $darkness);
       }
-      &[class~='vbnet']::before,
-      &[class~='vb']::before {
+      &[class~='vbnet' i]::before,
+      &[class~='vb' i]::before {
         background-color: darken(#945db7, $darkness);
       }
-      &[class~='verilog']::before,
-      &[class~='v']::before {
+      &[class~='verilog' i]::before,
+      &[class~='v' i]::before {
         background-color: darken(#b2b7f8, $darkness);
       }
-      &[class~='vhdl']::before {
+      &[class~='vhdl' i]::before {
         background-color: darken(#adb2cb, $darkness);
       }
-      &[class~='vim']::before {
+      &[class~='vim' i]::before {
         background-color: darken(#199f4b, $darkness);
       }
-      &[class~='xquery']::before,
-      &[class~='xq']::before,
-      &[class~='xpath']::before {
+      &[class~='xquery' i]::before,
+      &[class~='xq' i]::before,
+      &[class~='xpath' i]::before {
         background-color: darken(#5232e7, $darkness);
       }
-      &[class~='zephir']::before,
-      &[class~='zep']::before {
+      &[class~='zephir' i]::before,
+      &[class~='zep' i]::before {
         background-color: darken(#118f9e, $darkness);
       }
 		@each $name, $n in $codeLanguages {
 			@each $extension, $e in $n {
-				&[class~="#{$extension}"] {
-          font-family: var(--font-coding)!important;
+				&[class~='#{$extension}' i] {
+          font-family: var('font-coding') !important;
 					&::before {
-            content: "#{$name}";
-					}
+            content: '#{$name}';
+          }
+          span {
+            font-family: var('font-coding') !important;
+          }
 				}
 			}
     }

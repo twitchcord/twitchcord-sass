@@ -1,0 +1,31 @@
+// main: _module.scss
+
+//** DM convo sub top nav
+
+.titleText-3X-zRE {
+  @include size(100%, var(--sub-nav-height));
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 18px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: default;
+  border: none;
+  #{$status} {
+    @include size(10px!important);
+    position: absolute !important;
+    top: unset;
+    bottom: .3rem;
+    left: calc(var(--sub-nav-guild-icon-size) + 1.2rem);
+    z-index: 10;
+    border: 2px solid color('tint-1');
+    border-radius: var(--status-roundness);
+  }
+}
+
+// Channel header AKA
+#{$channelheaderaka} {
+  display: none;
+}

@@ -32,8 +32,9 @@
   right: 0;
   height: 2rem;
   border-radius: var(--members-activity-playing-roundness);
-  @at-root .members-1998pB & + .layout-2DM8Md {
-    padding-right: calc(20px + 20px); /* activity image size + decent margin */
+  &-img {
+    text-indent: -99999px;
+    pointer-events: none;
   }
 }
 
@@ -63,6 +64,7 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
+    cursor: pointer;
   }
   &:hover,
   &.selected-aXhQR6 {
@@ -175,7 +177,8 @@
 
 .members-1998pB .layout-2DM8Md {
   @include size(100%);
-  padding: 0 .8rem;
+  /* calc is activity image size + decent margin */
+  padding: 0 calc(20px + 20px) 0 8px;
   border-radius: .4rem;
 }
 
@@ -244,6 +247,7 @@
 
 .members-1998pB .member-3-YXUe .ownerIcon-2NH9FM {
   @include size(1.4rem);
+  top: 0;
   order: 1;
   margin: 0 .4rem 0 0;
   background: badge('server-owner') no-repeat center / 100%;

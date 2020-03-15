@@ -4,6 +4,8 @@
 
 // Spoiler outer container
 .spoilerContainer-331r0R {
+  padding: 10px;
+  background: var('embed-background') !important;
   box-shadow: var('embed-box-shadow') !important;
   &:hover {
     .spoilerWarning-2aAZq1 {
@@ -40,12 +42,21 @@
     outline: none;
   }
   &.hidden-HHr2R9 {
-    background: color('tint-3') image('diagonal-lines-white') repeat center / 50px !important;
-    opacity: 0.5;
-    background-blend-mode: overlay;
     &:hover {
-      background: color('tint-3') image('diagonal-lines-white') repeat center / 50px !important;
-      opacity: 0.7;
+      filter: brightness(1.2);
     }
+    .hiddenSpoilers-1ksnR6 {
+      pointer-events: none;
+    }
+    .inlineContent-3ZjPuv {
+      pointer-events: all;
+      filter: blur(4px);
+      opacity: 1;
+    }
+  }
+  // inline image
+  .hiddenSpoilers-1ksnR6 {
+    visibility: visible;
+    filter: blur(10px);
   }
 }

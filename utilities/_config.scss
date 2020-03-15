@@ -15,7 +15,6 @@
 // TODO: Replace `@include button` entries
 // TODO: Change `guild-icon` instances to `guild-avatar` to avoid confusion with our `icon()` function
 
-$brand-abbreviation: 'tc';
 
 /*/  Aspect ratios
 ///  ~~~~~~~~~~~~~~~~~~~~~~
@@ -600,7 +599,8 @@ $badge-list: (
   'bot',
   'contributor',
   'developer',
-  'donor',
+  'moderator',
+  'supporter',
   'nitro',
   'server-owner',
   'staff',

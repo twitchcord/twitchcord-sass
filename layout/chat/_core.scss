@@ -12,7 +12,6 @@
   --chat-component-box-shadow: var(--elevation-1);
 }
 
-#{$messageswrapper} {
   // Links
   @at-root #{$messagemarkup} a,
   // Channel tagging
@@ -174,6 +173,7 @@
       .container-1ov-mD {
         margin: 0 0 0 calc(var(--chat-avatar-size) + var(--chat-avatar-margin));
         padding: 0;
+        overflow: visible;
         clear: both;
         font-size: 14px;
         font-weight: 400;
@@ -364,7 +364,6 @@
       }
     }
   }
-}
 
 // Jumbo emojis... i.e. when a message contains only a single emoji
 .emoji.jumboable {

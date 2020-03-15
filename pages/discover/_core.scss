@@ -7,7 +7,7 @@
   --discover-background: #{color('primary-1')};
 
   --discover-splash-image-width: 36rem;
-  --discover-splash-image-height: calc(var(--discover-splash-image-width) / var(--aspect-ratio-16-9) * .8);
+  --discover-splash-image-height: calc(var(--discover-splash-image-width) * (var(--aspect-ratio-16-9)));
 }
 
 
@@ -98,6 +98,20 @@
     flex-wrap: wrap;
     min-width: 100%;
     margin: 0 -1rem;
+    > .card-3DjzTQ {
+      @include size(var('discover-splash-image-width'), var('discover-splash-image-height'));
+      display: flex;
+      flex: 1 0 auto;
+      max-width: 50%;
+      min-height: var('discover-splash-image-height');
+      margin: 0 1rem 2rem;
+      overflow: visible;
+      background: var('placeholder-background') !important;
+      border-radius: 0 !important;
+    }
+  }
+  .cardPlaceholder-1zrbbe {
+
   }
   // Guild outer container
   .guildCard-2arfcG {
@@ -108,16 +122,41 @@
     padding: 0 1rem 2rem;
     background: none !important;
     border-radius: 0 !important;
-  }
-  // Guild inner container
-  .card-3DjzTQ {
-    position: relative;
-    width: 100%;
-    background: none !important;
-    border-radius: 0;
-    box-shadow: none !important;
-    transition: none;
-    transform: none;
+    // Guild inner container
+    .card-3DjzTQ {
+      position: relative;
+      width: 100%;
+      background: none !important;
+      border-radius: 0;
+      box-shadow: none !important;
+      transition: none;
+      transform: none;
+      &:hover {
+        .cardHeader-Int16m {
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: color('primary-2', .75); 
+          }
+        }
+        .button-38aScr {
+          &::after {
+            visibility: visible;
+          }
+        }
+      }
+      &:active {
+        .button-38aScr {
+          &::after {
+
+          }
+        }
+      }
+    }
   }
   // Language selector
   .languageSelector-1R8fPE {
@@ -147,9 +186,20 @@
     border-radius: var(--image-border-radius);
     // View button
     .button-38aScr {
+      @include size(100%, 100%!important);
       position: absolute;
-      right: 1rem;
-      bottom: 1rem;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      padding: 0 !important;
+      visibility: hidden;
+      .contents-18-Yxp {
+        display: none;
+      }
+      &::after {
+        @include localize('View');
+        @include component('button', 'primary', 'base');
+      }
     }
   }
   // Verified icon
@@ -173,7 +223,6 @@
     display: flex;
     background: var(--placeholder-background);
     border-radius: var(--image-border-radius);
-    transition: none !important;
     transform: none !important;
     backface-visibility: unset !important;
     svg {

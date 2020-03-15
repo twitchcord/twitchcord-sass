@@ -485,6 +485,8 @@
     }
   }
   .panels-j1Uci_ {
+    display: flex;
+    flex-flow: column wrap;
     background: none;
   }
 }

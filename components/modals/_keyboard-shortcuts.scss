@@ -18,6 +18,7 @@ $module: (
 .keyboardShortcutsModal-3piNz7 {
   @include get-props($module, 'modal', 'keyboard-shortcuts');
   .scroller-2FKFPG {
+    overflow: scroll;
     background: var('modal-background');
   }
   .modalSubtitle-1Pj5nv {

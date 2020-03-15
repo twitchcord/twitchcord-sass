@@ -1,42 +1,71 @@
-// main: _module.scss
-
+// System messages
 #{$messagegroup} {
-  > #{$messagecontent} {
-    #{$messagebuttoncontainerouter} {
-      display: none;
+  &.systemMessage-1I9LCe {
+    margin-right: 0;
+    margin-left: 0;
+    background: color('white', .05) !important;
+    border-left: 4px solid color('primary-7');
+    + .systemMessage-1I9LCe {
+     margin-top: 10px; 
+    }
+    #{$messagemarkup} {
+      margin: 0;
     }
     #{$messagesystem} {
-      align-items: center;
-      width: calc(100% + var(--chat-gutter-size) * 3);
-      margin: 0 calc(var(--chat-gutter-size) * -1) 0;
       padding: 1rem 1.5rem;
-      font-size: 1.2rem;
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--chat-text-color);
-      background: color('white', .05);
-      border-left: 4px solid color('primary-7');
       #{$messagesystemicon} {
         @include size(1.6rem);
         position: relative;
         margin: 0;
         padding: 0;
         line-height: 1.6rem;
+        background-color: color('tint-7');
+        background-image: none !important;
+        // Arrow for leaving a group
+        &[style*='background-image: url("/assets/aff52bc375fe2da876174301a5c6d09d.svg");'] {
+          @include mask(icon('arrow-right'), color('danger'));
+          transform: rotate(180deg);
+        }
+        // Arrow for joining a group
+        &[style*='background-image: url("/assets/b8029fe196b8f1382e90bbe81dab50dc.svg");'] {
+          @include mask(icon('arrow-right'), color('success'));
+        }
+        // Pinned a message
+        &[style*='background-image: url("/assets/5da4cdab01d4d89c593c48c62ae0d937.svg");'] {
+          @include mask(icon('thumbtack'));
+        }
+        // Started a voice call
+        &[style*='background-image: url("/assets/c30220457097b064286a8759a9b6c4af.svg");'] {
+          @include mask(icon('phone'),  color('success'));
+        }
+        // Changed group icon
+        &[style*='background-image: url("/assets/0c9615349350c4185381d58c69b88cbc.svg");'] {
+          @include size(18px);
+          @include mask(icon('edit'));
+        }
+      }
+      #{$messagesystemiconcontainer} {
+        position: relative;
+        right: 0;
+        width: auto;
+        margin: 0;
+        padding: 0;
       }
       #{$messagesystemcontent} {
-        margin-left: 5px;
-        overflow: hidden;
+        margin-left: 8px;    
+        font-size: 1.2rem;
         font-weight: 400;
-        line-height: 1.6rem;
+        line-height: 1.5;
+        color: var(--chat-text-color);
       }
       // User's name link
       #{$anchor} {
         font-weight: 700;
-        color: color('primary-10') !important;
+        color: var('link-color') !important;
         // Any other links
         &:nth-of-type(2) {
           font-weight: 400;
-          color: color('primary-10') !important;
+          color: var('link-color') !important;
         }
       }
       #{$messagesystemtimestamp} {

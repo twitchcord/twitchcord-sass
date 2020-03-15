@@ -13,24 +13,6 @@
   @include remove-img;
 }
 
-//## System message icons
-#{$messagesystemicon} {
-  // Edit channel name icon
-  &[style*='/assets/0c9615349350c4185381d58c69b88cbc.svg'] {
-    @include mask(icon('edit'), color('tint-7'), 22px, no-repeat top -4px center, $important: true);
-    background: none !important;
-  }
-  // Pinned message icon
-  &[style*='/assets/5da4cdab01d4d89c593c48c62ae0d937.svg'] {
-    @include mask(icon('thumbtack'), color('tint-7'), 1.6rem, $important: true);
-    background: none !important;
-  }
-  // Call icon
-  &[style*='/assets/d80d1fdc43a3c42134a31a39581160ac.svg'] {
-    @include mask(icon('phone'), color('tint-7'), 16px, no-repeat top center, $important: true);
-    background: none !important;
-  }
-}
 
 // 'Import your games' image replacement on Library
 .gameLibrary-TTDw4Y .emptyWumpus-12J3jI {

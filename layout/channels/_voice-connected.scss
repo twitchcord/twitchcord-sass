@@ -8,6 +8,7 @@
 // Main container
 #{classes('layout.channels.voiceConnected.container')} {
   position: relative;
+  order: 1;
   padding: 5px 15px;
   background: color('primary-3');
   border-top: 1px solid var('border-color');

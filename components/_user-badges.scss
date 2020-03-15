@@ -12,7 +12,7 @@
   &-badge {
     @include size(var(--user-badge-size));
     display: inline-block;
-    margin: 0 3px 0 0;
+    margin: 0 3px 2px 0;
     padding: 0;
     cursor: default;
     background-repeat: no-repeat !important;
@@ -21,6 +21,9 @@
     border-radius: var(--user-badge-roundness);
     &.staff {
       background: badge('staff') no-repeat center;
+    }
+    &.moderator {
+      background: badge('moderator') no-repeat center;
     }
     &.admin {
       background: badge('admin') no-repeat center;
@@ -34,11 +37,14 @@
     &.contributor {
       background: badge('contributor') no-repeat center;
     }
+    &.server-owner {
+      background: badge('server-owner') no-repeat center;
+    }
     &.turbo {
       background: badge('turbo') no-repeat center;
     }
-    &.donor {
-      background: badge('donor') no-repeat center;
+    &.supporter {
+      background: badge('supporter') no-repeat center;
     }
     &.beta {
       background: badge('beta') no-repeat center;

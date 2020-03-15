@@ -19,12 +19,18 @@
     'avatar description';
   grid-column-gap: 2rem;
   #{$avatarwrapper} {
+    @include size(80px);
     overflow: hidden;
     background: color('primary-2');
     border-radius: var('avatar-border-radius');
     box-shadow:
       0 0 4rem color('info', .2);
     grid-area: avatar;
+    .avatar-VxgULZ {
+      @include size(70px);
+      margin: 5px auto;
+      border-radius: var('avatar-border-radius');
+    }
   }
   .header-20hgvr {
     margin: .5rem 0;

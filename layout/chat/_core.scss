@@ -221,7 +221,7 @@
       .avatar-1BDn8e {
         @include size(var(--chat-avatar-size));
         position: absolute;
-        top: 4px;
+        top: 2px;
         right: 0;
         bottom: 0;
         left: 0;
@@ -426,12 +426,12 @@
   // Chat area scroller container
   #{$messages} {
     // "Welcome to your server"
-    .welcomeMessage-3_Mcht {
+    .welcomeMessage-ULm0mo {
       @include component('alert', 'success', 'base');
       flex-direction: row;
       flex-wrap: nowrap;
       margin: 20px calc(var(--chat-gutter-size) - 10px) 20px var(--chat-gutter-size);
-      .base-34jWEe {
+      .base-19D3Qq {
         @include mask(icon('castle'), #fff, 40px);
         @include size(50px);
         margin: 0 10px 0;
@@ -439,7 +439,7 @@
         background-image: none;
         border: none;
       }
-      .h1-1IDj26 {
+      .h1-3fOAWv {
         order: 2;
         margin: 0;
         font-size: 14px;
@@ -447,7 +447,7 @@
         color: #fff;
         text-transform: none;
       }
-      .itemContainer-WiE19S {
+      .itemContainer-1tq6cd {
         display: none;
       }
     }

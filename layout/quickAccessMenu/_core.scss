@@ -1,0 +1,51 @@
+///  ==========================================================================
+///  Quick Access Menu
+///  ==========================================================================
+
+.quickAccessMenu {
+  @include size(100%, 200px);
+  position: fixed;
+  top: var('titlebar-height');
+  left: 0;
+  overflow: hidden;
+  background: color('tint-1');
+  &.opened {
+    ~ #{classes('base.app')},
+    .titlebar {
+      transform: translate3d(0, 195px, 0);
+    }
+  }
+  &-items-container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    margin: 2px 2px 0px 2px;
+    overflow-y: auto;
+    // transform: rotateX(180deg);
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track {
+      @include size(var('scrollbar-width')!important);
+      visibility: hidden;
+    }
+    &:hover {
+      &::-webkit-scrollbar,
+      &::-webkit-scrollbar-thumb,
+      &::-webkit-scrollbar-track {
+        visibility: visible;
+      }
+    }
+    &::after {
+      content: '';
+      flex: 0 0 5px;
+    }
+  }
+  &-item-container {
+    @include size(150px);
+    flex: 1 0 auto;
+    margin: 20px 10px 12px 10px;
+    background: color('tint-2');
+    border-radius: var('embed-border-radius');
+    // transform: rotateX(180deg);
+  }
+}

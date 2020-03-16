@@ -491,7 +491,8 @@ $icons: ();
 $misc-list: (
   'game-boxart-placeholder',
   'question-block',
-  'speech-bubble'
+  'speech-bubble',
+  'jumping-dots'
 );
 
 // In the same process we use for badges and logos,
@@ -592,10 +593,7 @@ $badge-list: (
   'admin',
   'beta',
   'beta-v2',
-  'booster-level-1',
-  'booster-level-2',
-  'booster-level-3',
-  'booster-level-4',
+  'server-booster',
   'bot',
   'contributor',
   'developer',

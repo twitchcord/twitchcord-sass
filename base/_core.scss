@@ -50,6 +50,29 @@ a,
   color: var(--link-color);
 }
 
+#{classes('base.app')} {
+  transition: transform 500ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  // Adding transform and transition for the quick access menu animation
+  transform: translate3d(0, 0, 0);
+  &::after {
+    @include size(100vw, 100vh);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: color('black', .5);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  @at-root .quickAccessMenu.opened ~ & {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
 .disabled,
 button:disabled,
 button:disabled:hover,

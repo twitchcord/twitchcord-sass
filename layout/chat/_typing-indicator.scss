@@ -1,6 +1,14 @@
-// main: _module.scss
+// <div class="typing-2GQL18 base-gE7OpD stop-animation">
+//    <svg width="24.5" height="7" class="ellipsis-19qdx6 dots-3Bkt3k themed-IQiCm3">
+//       <g style="opacity: 1;">
+//          <circle cx="3.5" cy="3.5" r="3.5" fill="currentColor" style="opacity: 1;"></circle>
+//          <circle cx="12.25" cy="3.5" r="3.5" fill="currentColor" style="opacity: 1;"></circle>
+//          <circle cx="21" cy="3.5" r="3.5" fill="currentColor" style="opacity: 1;"></circle>
+//       </g>
+//    </svg>
+//    <span class="text-1y-e8-"><strong>.intrnl</strong> is typing...</span>
+// </div>
 
-//** Typing indicator
 
 #{$chat} form .typing-2GQL18 {
   position: absolute;
@@ -35,8 +43,12 @@
 }
 
 #{$chat} form .typing-2GQL18 .ellipsis-19qdx6 {
-    display: inline-block;
-    margin: 0px 4px 0 3px;
+  @include mask(misc('jumping-dots'), color('white'));
+  display: inline-block;
+  margin: 0px 4px 0 3px;
+  g {
+    display: none;
+  }
 }
 
 // `Slowdown is enabled` container

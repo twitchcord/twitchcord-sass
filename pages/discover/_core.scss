@@ -196,7 +196,21 @@
       .contents-18-Yxp {
         display: none;
       }
+      &.submitting-3qlO9O {
+        visibility: visible;
+        background: none !important;
+        .spinner-3a9zLT {
+          @extend %spinner;
+        }
+        .inner-1gJC7_ {
+          display: none;
+        }
+        &::after {
+          display: none !important;
+        }
+      }
       &::after {
+        // TODO: Add to $localize
         @include localize('View');
         @include component('button', 'primary', 'base');
       }
@@ -204,10 +218,9 @@
   }
   // Verified icon
   .verifiedIcon-1vpk3S {
-    @include size(2rem);
-    order: 2;
-    margin: 0 0 0 0.7rem;
-    background: badge('verified') no-repeat center / 2rem;
+    @include size(20px!important);
+    margin: 0 7px 0 0;
+    background: url('https://i.imgur.com/svNcOEK.png') no-repeat center / contain;
     // Flower shape and checkmark container
     .flowerStar-1GeTsn,
     .childContainer-1wxZNh {

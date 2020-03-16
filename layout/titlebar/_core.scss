@@ -98,7 +98,7 @@
 
 
 
-.tc-titlebar {
+.titlebar {
   position: relative;
   z-index: 99999999;
   display: flex;
@@ -107,6 +107,9 @@
   height: 30px;
   margin: 0;
   background: var('titlebar-background');
+  transition: transform 500ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  // Adding transform and transition for the quick access menu animation
+  transform: translate3d(0, 0, 0);
   &-section-left,
   &-section-right {
     display: flex;
@@ -135,9 +138,21 @@
       background-color: color('white', .2);
     }
     &.menu {
-      icon {
+      icon.menu {
         @include size(16px, 16px);
         @include mask(icon('app-hamburger'));
+        transition: transform 0.5s;
+      }
+    }
+    &.opened {
+      background: color('white', .2);
+      &:hover {
+        background: color('white', .3);
+      }
+      &.menu {
+        icon.menu {
+          transform: rotate(90deg);
+        }
       }
     }
     &.back {

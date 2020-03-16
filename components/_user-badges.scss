@@ -57,7 +57,9 @@
   @at-root #{$bottag},
   #{$bottagregular},
   #{$bottaginvert},
-  #{$bottagold} {
+  #{$bottagold},
+  // Server booster
+  .premiumIcon-1rDbWQ {
     @include size(var(--user-badge-size));
     top: 0;
     right: 0;
@@ -65,7 +67,7 @@
     left: 0;
     display: inline-block;
     order: 1;
-    margin: 0 .4rem .2rem 0;
+    margin: 0 4px 2px 0;
     padding: 0;
     font-size: 0;
     cursor: default;
@@ -78,7 +80,12 @@
     // Bot badges on members lists
     @at-root #{$memberswrap} & {
       @include size(1.4rem);
+      margin: 0 4px 0 0;
       background-size: 100% 100% !important;
     }
+  }
+  // Server booster
+  .premiumIcon-1rDbWQ {
+    background: badge('server-booster') no-repeat center;
   }
 }

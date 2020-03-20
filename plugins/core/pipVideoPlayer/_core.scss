@@ -400,7 +400,7 @@
     }
   }
   // Fullscreen mode
-  @at-root .videoMaximized & {
+  @at-root [data-video-fullscreen] & {
     &-frame {
       top: 0 !important;
       left: 0 !important;

@@ -115,15 +115,13 @@
 
 #{classes('twitchcord.channelInfo')} {
   $grandparent: &;
-  @at-root #{classes('html.routes.private')} & {
-    &-topic {
-      color: color('contrasted');
-    }
+  @at-root [data-current-route='private'] & {
     &-topic-type,
     &-listening-song,
     &-listening-by,
     &-listening-artist,
-    &-listening-on {
+    &-listening-on,
+    &-topic {
       display: inline-block;
       &:empty {
         display: none;
@@ -142,6 +140,7 @@
     }
     &-listening-song,
     &-listening-artist {
+      font-weight: 700;
       color: color('contrasted');
     }
     &-listening-song {

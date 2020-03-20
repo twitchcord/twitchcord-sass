@@ -236,38 +236,6 @@
           opacity: 1;
         }
       }
-      // Avatar container
-      #{$avatarwrapper} {
-        @include size(var(--chat-avatar-size)!important);
-        margin: 4px var(--chat-avatar-margin) 0 0;
-        overflow: hidden;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: var(--chat-avatar-size) !important;
-        border: none;
-        border-radius: var('avatar-border-radius');
-        &:hover {
-          opacity: 1;
-        }
-        // Avatar image
-        #{$avatarimage} {
-          @include size(var(--chat-avatar-size));
-          margin: 0;
-          background-color: transparent;
-          background-repeat: no-repeat;
-          background-size: var(--chat-avatar-size) !important;
-          &:hover {
-            box-shadow: inset 0 0 0 2px color('primary-10');
-            opacity: 1;
-          }
-        }
-        &.popout-open {
-          #{$avatarimage} {
-            box-shadow: inset 0 0 0 2px color('primary-10');
-            opacity: 1;
-          }
-        }
-      }
       .mention {
         padding: 0;
         font-size: 14px;

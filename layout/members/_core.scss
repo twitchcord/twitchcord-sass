@@ -26,18 +26,6 @@
     border-radius: var(--component-border-radius);
 }
 
-// Twitchcord member list activity playing images
-#{classes('twitchcord.activityPlaying')} {
-  position: absolute;
-  right: 0;
-  height: 2rem;
-  border-radius: var(--members-activity-playing-roundness);
-  &-img {
-    text-indent: -99999px;
-    pointer-events: none;
-  }
-}
-
 .mobileIndicator-329Gd6 {
   order: 2;
   color: color('tint-7') !important;

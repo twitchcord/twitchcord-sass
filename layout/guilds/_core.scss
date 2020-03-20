@@ -25,7 +25,6 @@ $module: (
   ),
   'guild': (
     border-radius: 50%,
-    // MAGIC NUMBER: Where the 5.1 comes from
     margin: calc(#{var('guild-size')} / 2),
     size: 42px,
     'separator': (

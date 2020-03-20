@@ -81,11 +81,18 @@
     @at-root #{$memberswrap} & {
       @include size(1.4rem);
       margin: 0 4px 0 0;
+      cursor: pointer;
       background-size: 100% 100% !important;
     }
   }
+}
+
+#{$memberswrap} {
   // Server booster
   .premiumIcon-1rDbWQ {
     background: badge('server-booster') no-repeat center;
+    path {
+      display: none;
+    }
   }
 }

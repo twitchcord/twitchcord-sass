@@ -1,0 +1,14 @@
+// Twitchcord member list activity playing images
+.user-activity-image {
+  text-indent: -99999px;
+  pointer-events: none;
+  &-container {
+    position: absolute;
+    right: 0;
+    height: 2rem;
+    text-indent: -99999px;
+    pointer-events: none;
+    cursor: pointer;
+    border-radius: var(--members-activity-playing-roundness);
+  }
+}

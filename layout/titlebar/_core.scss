@@ -183,7 +183,7 @@
       icon.maximize {
         @include size(10px, 11px);
         @include mask(icon('app-maximize'));
-        @at-root [data-tc-window-maximized] & {
+        @at-root [data-window-maximized] & {
           @include mask(icon('app-restore'));
         }
       }
